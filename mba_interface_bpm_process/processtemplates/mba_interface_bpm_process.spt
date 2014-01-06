@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Process name="mba_interface_bpm_process" type="BIZLOGIC" webbpaID="1389010968813">
+  <Package xmlns="http://www.wfmc.org/2004/XPDL2.0alpha" Id="1" Name="">
+    <PackageHeader>
+      <XPDLVersion>2.0</XPDLVersion>
+      <Vendor>Progress Software Corporation</Vendor>
+      <Created>1389010968836</Created>
+    </PackageHeader>
+    <Pools>
+      <Pool BoundaryVisible="true" Id="mba_interface_bpm_process" Process="mba_interface_bpm_process">
+        <Lanes/>
+      </Pool>
+    </Pools>
+  </Package>
+  <Description/>
+  <Application name="mba_interface_bpm"/>
+  <Category level="0"/>
+  <Group/>
+  <Manager>@CREATOR</Manager>
+  <EstimatedDuration>1d</EstimatedDuration>
+  <TimeCreated>1389010968836</TimeCreated>
+  <Author>andrei.tarba</Author>
+  <Version/>
+  <Resources runtime="false"/>
+  <Simulation count="10" distribution="ct" interval="600" scenario="(default)"/>
+  <Alerts>
+    <Alert name="Default">
+      <AlertSeverity>High</AlertSeverity>
+      <AlertMessage>This is the default alert.</AlertMessage>
+      <AlertDescription/>
+      <AlertCondition type="java:expression"/>
+      <AlertDelivery type="sbm">
+        <AlertRecipient type="USER">@CREATOR</AlertRecipient>
+      </AlertDelivery>
+    </Alert>
+  </Alerts>
+  <Performers>
+    <Performer name="@CREATOR" type="user" webbpaID="1389010968812"/>
+  </Performers>
+  <TabularViewWorkstepOrder/>
+  <History>
+    <Created as="mba_interface_bpm_process" by="andrei.tarba" on="1389010968837">Mon Jan 06 14:22:48 EET 2014</Created>
+  </History>
+  <Repository/>
+  <Forms/>
+</Process>

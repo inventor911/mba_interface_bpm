@@ -1,0 +1,13 @@
+#Mon Jan 06 14:22:48 EET 2014
+publishing.type=Copy_Files_Only
+application.name=mba_interface_bpm
+inherit.acl=true
+adapter.version=8.1
+module.type=com.savvion.studio.designer.module.bpm
+publish.webservice=false
+application.mainprocessname=mba_interface_bpm_process
+module.id=3701edcd-7053-422c-bce7-3b4908004198
+module.version=8
+application.mainappfile=mba_interface_bpm_process/processtemplates/mba_interface_bpm_process.spt
+module.name=mba_interface_bpm_process
+application.root=mba_interface_bpm_process

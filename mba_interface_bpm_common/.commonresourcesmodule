@@ -1,0 +1,7 @@
+#Mon Jan 06 14:22:48 EET 2014
+module.name=mba_interface_bpm_common
+adapter.type=BIZLOGIC
+module.version=8
+module.type=com.savvion.studio.designer.module.common.resources
+adapter.version=8.1
+module.id=b6257d0b-256f-4b17-b9a5-a8c6bb33c9c9
