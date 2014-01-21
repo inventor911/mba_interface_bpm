@@ -1,0 +1,13 @@
+#Tue Jan 21 12:20:16 EET 2014
+publishing.type=Copy_Files_Only
+application.name=MBAInterfaceHeartBeat
+inherit.acl=true
+adapter.version=8.1
+module.type=com.savvion.studio.designer.module.bpm
+publish.webservice=false
+application.mainprocessname=MBAInterfaceHeartBeat
+module.id=a6a3e470-3063-4692-b6a5-7e80e0bb99b7
+module.version=8
+application.mainappfile=MBAInterfaceHeartBeat/processtemplates/MBAInterfaceHeartBeat.spt
+module.name=MBAInterfaceHeartBeat
+application.root=MBAInterfaceHeartBeat
