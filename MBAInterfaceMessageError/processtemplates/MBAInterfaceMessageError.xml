@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE Process SYSTEM "../../common/processtemplates/processTemplate.dtd">
+<Process name="MBAInterfaceMessageError" type="BIZLOGIC">
+  <Description/>
+  <Application name="MBAInterfaceMessageError"/>
+  <Category level="0"/>
+  <Category level="1"/>
+  <Group/>
+  <Manager>@CREATOR</Manager>
+  <EstimatedDuration>1d</EstimatedDuration>
+  <TimeCreated>1390367888600</TimeCreated>
+  <Author>daniel.baciu</Author>
+  <Version/>
+  <Attributes>
+    <Attribute name="ProcessType" required="true">
+      <Label>Process Type</Label>
+      <Description>Type of the process</Description>
+      <Value>BusinessProcess</Value>
+    </Attribute>
+  </Attributes>
+  <Alerts>
+    <Alert name="Default">
+      <AlertSeverity>High</AlertSeverity>
+      <AlertMessage>This is the default alert.</AlertMessage>
+      <AlertDescription/>
+      <AlertCondition type="java:expression"/>
+      <AlertDelivery type="sbm">
+        <AlertRecipient type="USER">${@CREATOR}</AlertRecipient>
+      </AlertDelivery>
+    </Alert>
+  </Alerts>
+  <AtomicWS height="36" name="Start" width="36" worktime="false" x="60" y="60">
+    <AtomicType>START</AtomicType>
+    <PerformingApp>
+      <Metadata name="TARGETTYPE">JSP</Metadata>
+      <Metadata name="TARGET">Start.jsp</Metadata>
+    </PerformingApp>
+    <Priority>MEDIUM</Priority>
+    <RollbackPoint>FALSE</RollbackPoint>
+    <Option name="Instructions" visible="true"/>
+    <Option name="Priority" visible="true"/>
+    <Option name="StartDate" visible="false"/>
+    <Option name="DueDate" visible="false"/>
+    <Option name="Reassign" visible="true"/>
+    <Simulation distribution="ct" scenario="(default)"/>
+  </AtomicWS>
+  <AtomicWS height="60" name="Handle Message Error" width="132" worktime="false" x="168" y="48">
+    <AtomicType>ACTIVITY</AtomicType>
+    <Performer>MBAInterface</Performer>
+    <PerformBy>ANY</PerformBy>
+    <PerformingApp>
+      <Metadata name="TARGETTYPE">JSP</Metadata>
+      <Metadata name="TARGET">HandleMessageError.jsp</Metadata>
+    </PerformingApp>
+    <Collaboration>
+      <CollabFunction enabled="true" type="Reassign"/>
+    </Collaboration>
+    <Instruction>@HandleErrorInstructions</Instruction>
+    <Duration value="7200">2h</Duration>
+    <Priority>HIGH</Priority>
+    <EmailSupport>TRUE</EmailSupport>
+    <Datainput>SendingMailErrorText</Datainput>
+    <Dataoutput>SendingMailErrorText</Dataoutput>
+    <Format editable="true" input="SendingMailErrorText" label="Sending mail error text" password="false" required="false" size="20" type="abl_text">
+      <Label>Sending mail error text</Label>
+    </Format>
+    <RollbackPoint>FALSE</RollbackPoint>
+    <OnOverdue>
+      <ActivateTimeoutFlow/>
+    </OnOverdue>
+    <Simulation distribution="ct" scenario="(default)">
+      <Duration value="7200">2h</Duration>
+    </Simulation>
+  </AtomicWS>
+  <AtomicWS height="36" name="End 1" width="36" worktime="false" x="528" y="60">
+    <AtomicType>END</AtomicType>
+    <Priority>MEDIUM</Priority>
+    <RollbackPoint>FALSE</RollbackPoint>
+    <Simulation distribution="ct" scenario="(default)"/>
+  </AtomicWS>
+  <ExternalWS height="60" name="Notify Message Error" width="132" x="168" y="168">
+    <Performer category="EmailAdapters" generate="false" managed="true" name="GenericEmailAdapter">com.savvion.sbm.adapters.email.EmailAdapter</Performer>
+    <PerformBy>execute</PerformBy>
+    <ClosedConnection>TRUE</ClosedConnection>
+    <Priority>MEDIUM</Priority>
+    <Datainput>RecipientsToNotify</Datainput>
+    <Dataoutput>SendingMailErrorText</Dataoutput>
+    <RollbackPoint>FALSE</RollbackPoint>
+    <Simulation distribution="ct" scenario="(default)"/>
+    <InlineExecution>FALSE</InlineExecution>
+    <AdapterType>process</AdapterType>
+  </ExternalWS>
+  <Link Name="Connection 4" default="true" type="timeout" value="Connection 4" x="1" y="-1">
+    <Label>Connection 4</Label>
+    <Source cp="8">Handle Message Error</Source>
+    <Point x="267.0" y="108.0"/>
+    <Point x="267.0" y="148.0"/>
+    <Point x="201.0" y="148.0"/>
+    <Point x="201.0" y="168.0"/>
+    <Target cp="4">Notify Message Error</Target>
+  </Link>
+  <Link Name="Connection 1" default="true">
+    <Label>Connection 1</Label>
+    <Source cp="1">Start</Source>
+    <Point x="96.0" y="78.0"/>
+    <Point x="168.0" y="78.0"/>
+    <Target cp="3">Handle Message Error</Target>
+  </Link>
+  <Link Name="Connection 2" default="true">
+    <Label>Connection 2</Label>
+    <Source cp="3">Notify Message Error</Source>
+    <Point x="168.0" y="198.0"/>
+    <Point x="148.0" y="198.0"/>
+    <Point x="148.0" y="78.0"/>
+    <Point x="168.0" y="78.0"/>
+    <Target cp="3">Handle Message Error</Target>
+  </Link>
+  <Link Name="Connection 3" default="true">
+    <Label>Connection 3</Label>
+    <Source cp="1">Handle Message Error</Source>
+    <Point x="300.0" y="78.0"/>
+    <Point x="528.0" y="78.0"/>
+    <Target cp="3">End 1</Target>
+  </Link>
+  <Dataslot Name="RecipientsToNotify" category="User" name="RecipientsToNotify" type="ABL_CHARACTER">
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="SendingMailErrorText" category="User" name="SendingMailErrorText" type="ABL_CHARACTER">
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="HandleErrorInstructions" category="User" name="HandleErrorInstructions" type="ABL_CHARACTER">
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <History>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390489910606" to="http://WF28:18793/sbm/deployment">Thu Jan 23 17:11:50 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390481727809" to="http://WF28:18793/sbm/deployment">Thu Jan 23 14:55:27 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390401902448" to="http://WF28:18793/sbm/deployment">Wed Jan 22 16:45:02 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390382668175" to="http://WF28:18793/sbm/deployment">Wed Jan 22 11:24:28 EET 2014</Deployed>
+    <Created as="MBAInterfaceMessageError" by="daniel.baciu" on="1390367888600">Wed Jan 22 07:18:08 EET 2014</Created>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390394943623" to="http://WF28:18793/sbm/deployment">Wed Jan 22 14:49:03 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390475424811" to="http://WF28:18793/sbm/deployment">Thu Jan 23 13:10:24 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390475522507" to="http://WF28:18793/sbm/deployment">Thu Jan 23 13:12:02 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390476099884" to="http://WF28:18793/sbm/deployment">Thu Jan 23 13:21:39 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390548612244" to="http://WF28:18793/sbm/deployment">Fri Jan 24 09:30:12 EET 2014</Deployed>
+  </History>
+  <Repository/>
+</Process>
