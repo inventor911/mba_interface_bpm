@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE Process SYSTEM "../../common/processtemplates/processTemplate.dtd">
 <Process name="MBAInterfaceHeartBeat" type="BIZLOGIC">
-  <Description>description of the step</Description>
+  <Label>Message Processor Heart Beat</Label>
+  <Description>Work flow to identify the cases when the Message processor is not running well or it is not started by the scheduler at given time period.</Description>
   <Application name="MBAInterfaceHeartBeat"/>
   <Category level="0"/>
   <Category level="1"/>
@@ -10,7 +11,7 @@
   <EstimatedDuration>1d</EstimatedDuration>
   <TimeCreated>1390299616744</TimeCreated>
   <Author>daniel.baciu</Author>
-  <Version/>
+  <Version>1.0</Version>
   <Attributes>
     <Attribute name="ProcessType" required="true">
       <Label>Process Type</Label>
@@ -179,28 +180,72 @@ aXRpb24+Cg==</ConditionXMLEncoded>
     <InlineExecution>FALSE</InlineExecution>
     <AdapterType>process</AdapterType>
   </ExternalWS>
-  <Link Name="Connection 13" default="true">
-    <Label>Connection 13</Label>
-    <Source cp="1">Start</Source>
-    <Point x="60.0" y="114.0"/>
-    <Point x="108.0" y="114.0"/>
-    <Target cp="3">Scheduler Waiting</Target>
+  <Link Name="Task Closed" default="true" x="-23" y="-1">
+    <Label>Task Closed</Label>
+    <Source cp="6">Message Processor is not Alive</Source>
+    <Point x="672.0" y="234.0"/>
+    <Point x="692.0" y="234.0"/>
+    <Point x="692.0" y="196.0"/>
+    <Point x="260.0" y="196.0"/>
+    <Point x="260.0" y="135.0"/>
+    <Point x="240.0" y="135.0"/>
+    <Target cp="7">Scheduler Waiting</Target>
   </Link>
-  <Link Name="Message processor started" default="true">
-    <Label>Message processor started</Label>
-    <Source cp="1">Scheduler Waiting</Source>
-    <Point x="240.0" y="114.0"/>
-    <Point x="540.0" y="114.0"/>
-    <Target cp="3">Processing Message</Target>
+  <Link Name="Connection 7" default="true">
+    <Label>Connection 7</Label>
+    <Source cp="6">Escalate Msr Processor not Alive</Source>
+    <Point x="852.0" y="234.0"/>
+    <Point x="872.0" y="234.0"/>
+    <Point x="872.0" y="196.0"/>
+    <Point x="260.0" y="196.0"/>
+    <Point x="260.0" y="135.0"/>
+    <Point x="240.0" y="135.0"/>
+    <Target cp="7">Scheduler Waiting</Target>
   </Link>
-  <Link Name="Start waiting again" default="true">
-    <Label>Start waiting again</Label>
-    <Source cp="4">Processing Message</Source>
-    <Point x="573.0" y="72.0"/>
-    <Point x="573.0" y="52.0"/>
-    <Point x="174.0" y="52.0"/>
-    <Point x="174.0" y="72.0"/>
-    <Target cp="0">Scheduler Waiting</Target>
+  <Link Name="No reaction" default="true" type="timeout" value="No reaction" x="-14" y="42">
+    <Label>No reaction</Label>
+    <Source cp="1">Message Processor is not Alive</Source>
+    <Point x="672.0" y="252.0"/>
+    <Point x="732.0" y="252.0"/>
+    <Target cp="3">Escalate Msr Processor not Alive</Target>
+  </Link>
+  <Link Name="Processing Message Timeout" default="true" type="timeout" value="Processing Message Timeout" x="-59" y="-2">
+    <Label>Processing Message Timeout</Label>
+    <Source cp="9">Processing Message</Source>
+    <Point x="573.0" y="156.0"/>
+    <Point x="573.0" y="216.0"/>
+    <Target cp="4">Message Processor is not Alive</Target>
+  </Link>
+  <Link Name="Connection 6" default="true">
+    <Label>Connection 6</Label>
+    <Source cp="0">Escalate Scheduler Error</Source>
+    <Point x="366.0" y="216.0"/>
+    <Point x="366.0" y="135.0"/>
+    <Point x="240.0" y="135.0"/>
+    <Target cp="7">Scheduler Waiting</Target>
+  </Link>
+  <Link Name="No action" default="true" type="timeout" value="No action" x="-4" y="41">
+    <Label>No action</Label>
+    <Source cp="7">Scheduler Error</Source>
+    <Point x="240.0" y="270.0"/>
+    <Point x="312.0" y="270.0"/>
+    <Target cp="10">Escalate Scheduler Error</Target>
+  </Link>
+  <Link Name="Fixed" default="true" x="-30" y="-10">
+    <Label>Fixed</Label>
+    <Source cp="6">Scheduler Error</Source>
+    <Point x="240.0" y="234.0"/>
+    <Point x="260.0" y="234.0"/>
+    <Point x="260.0" y="135.0"/>
+    <Point x="240.0" y="135.0"/>
+    <Target cp="7">Scheduler Waiting</Target>
+  </Link>
+  <Link Name="Scheduler Timeout" default="true" type="timeout" value="Scheduler Timeout" x="-65" y="9">
+    <Label>Scheduler Timeout</Label>
+    <Source cp="9">Scheduler Waiting</Source>
+    <Point x="141.0" y="156.0"/>
+    <Point x="141.0" y="216.0"/>
+    <Target cp="4">Scheduler Error</Target>
   </Link>
   <Link Name="end point is mandatory" default="false" x="93" y="6">
     <Label>end point is mandatory</Label>
@@ -225,72 +270,28 @@ aW5OZXh0PkFORDwvam9pbk5leHQ+CiAgICAgIDwvZXhwcmVzc2lvbj4KICAgIDwvY29uZmlndXJh&#13
 dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
     </Condition>
   </Link>
-  <Link Name="Scheduler Timeout" default="true" type="timeout" value="Scheduler Timeout" x="-65" y="9">
-    <Label>Scheduler Timeout</Label>
-    <Source cp="9">Scheduler Waiting</Source>
-    <Point x="141.0" y="156.0"/>
-    <Point x="141.0" y="216.0"/>
-    <Target cp="4">Scheduler Error</Target>
+  <Link Name="Start waiting again" default="true">
+    <Label>Start waiting again</Label>
+    <Source cp="4">Processing Message</Source>
+    <Point x="573.0" y="72.0"/>
+    <Point x="573.0" y="52.0"/>
+    <Point x="174.0" y="52.0"/>
+    <Point x="174.0" y="72.0"/>
+    <Target cp="0">Scheduler Waiting</Target>
   </Link>
-  <Link Name="Fixed" default="true" x="-30" y="-10">
-    <Label>Fixed</Label>
-    <Source cp="6">Scheduler Error</Source>
-    <Point x="240.0" y="234.0"/>
-    <Point x="260.0" y="234.0"/>
-    <Point x="260.0" y="135.0"/>
-    <Point x="240.0" y="135.0"/>
-    <Target cp="7">Scheduler Waiting</Target>
+  <Link Name="Message processor started" default="true">
+    <Label>Message processor started</Label>
+    <Source cp="1">Scheduler Waiting</Source>
+    <Point x="240.0" y="114.0"/>
+    <Point x="540.0" y="114.0"/>
+    <Target cp="3">Processing Message</Target>
   </Link>
-  <Link Name="No action" default="true" type="timeout" value="No action" x="-4" y="41">
-    <Label>No action</Label>
-    <Source cp="7">Scheduler Error</Source>
-    <Point x="240.0" y="270.0"/>
-    <Point x="312.0" y="270.0"/>
-    <Target cp="10">Escalate Scheduler Error</Target>
-  </Link>
-  <Link Name="Connection 6" default="true">
-    <Label>Connection 6</Label>
-    <Source cp="0">Escalate Scheduler Error</Source>
-    <Point x="366.0" y="216.0"/>
-    <Point x="366.0" y="135.0"/>
-    <Point x="240.0" y="135.0"/>
-    <Target cp="7">Scheduler Waiting</Target>
-  </Link>
-  <Link Name="Processing Message Timeout" default="true" type="timeout" value="Processing Message Timeout" x="-59" y="-2">
-    <Label>Processing Message Timeout</Label>
-    <Source cp="9">Processing Message</Source>
-    <Point x="573.0" y="156.0"/>
-    <Point x="573.0" y="216.0"/>
-    <Target cp="4">Message Processor is not Alive</Target>
-  </Link>
-  <Link Name="No reaction" default="true" type="timeout" value="No reaction" x="-14" y="42">
-    <Label>No reaction</Label>
-    <Source cp="1">Message Processor is not Alive</Source>
-    <Point x="672.0" y="252.0"/>
-    <Point x="732.0" y="252.0"/>
-    <Target cp="3">Escalate Msr Processor not Alive</Target>
-  </Link>
-  <Link Name="Connection 7" default="true">
-    <Label>Connection 7</Label>
-    <Source cp="6">Escalate Msr Processor not Alive</Source>
-    <Point x="852.0" y="234.0"/>
-    <Point x="872.0" y="234.0"/>
-    <Point x="872.0" y="196.0"/>
-    <Point x="440.0" y="196.0"/>
-    <Point x="440.0" y="135.0"/>
-    <Point x="240.0" y="135.0"/>
-    <Target cp="7">Scheduler Waiting</Target>
-  </Link>
-  <Link Name="Task Closed" default="true" x="-23" y="-1">
-    <Label>Task Closed</Label>
-    <Source cp="6">Message Processor is not Alive</Source>
-    <Point x="672.0" y="234.0"/>
-    <Point x="692.0" y="234.0"/>
-    <Point x="692.0" y="196.0"/>
-    <Point x="440.0" y="196.0"/>
-    <Point x="440.0" y="135.0"/>
-    <Point x="240.0" y="135.0"/>
-    <Target cp="7">Scheduler Waiting</Target>
+  <Link Name="Connection 13" default="true">
+    <Label>Connection 13</Label>
+    <Source cp="1">Start</Source>
+    <Point x="60.0" y="114.0"/>
+    <Point x="108.0" y="114.0"/>
+    <Target cp="3">Scheduler Waiting</Target>
   </Link>
   <Dataslot Name="ProcessingMessageTimeout" category="User" name="ProcessingMessageTimeout" type="ABL_INT64">
     <DataType>ABL_INT64</DataType>
@@ -303,20 +304,6 @@ dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
     <Access type="GLOBAL" value="false"/>
     <Access type="BIZ_SITE_COLUMN" value="false"/>
     <Format editable="true" label="" required="false" size="20" type="abl_text"/>
-  </Dataslot>
-  <Dataslot Name="RecipientsToNotify" category="User" name="RecipientsToNotify" type="ABL_CHARACTER">
-    <DataType>ABL_CHARACTER</DataType>
-    <DataValue unknown="false"/>
-    <DataSize>256</DataSize>
-    <IsPublic>true</IsPublic>
-    <MultiLine>false</MultiLine>
-    <BizManageAccessFlag>true</BizManageAccessFlag>
-    <Access type="PUBLIC" value="true"/>
-    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
-    <Access type="GLOBAL" value="false"/>
-    <Access type="BIZ_SITE_COLUMN" value="false"/>
-    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
-    <Storage size="256" type="CHAR"/>
   </Dataslot>
   <Dataslot Name="ProcessedAll" category="User" name="ProcessedAll" type="ABL_LOGICAL">
     <DataType>ABL_LOGICAL</DataType>
@@ -331,6 +318,7 @@ dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
     <Format editable="true" label="" type="checkbox"/>
   </Dataslot>
   <Dataslot Name="ProcessingMessageInfo" category="User" name="ProcessingMessageInfo" type="ABL_CHARACTER">
+    <Label>Processing Message Info</Label>
     <DataType>ABL_CHARACTER</DataType>
     <DataValue unknown="false"/>
     <DataSize>256</DataSize>
@@ -341,10 +329,13 @@ dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
     <Access type="BIZ_MANAGE_ACCESS" value="true"/>
     <Access type="GLOBAL" value="false"/>
     <Access type="BIZ_SITE_COLUMN" value="false"/>
-    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
+    <Format editable="true" label="Processing Message Info" password="false" required="false" size="20" type="abl_text">
+      <Label>Processing Message Info</Label>
+    </Format>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
   <Dataslot Name="SendingMailErrorText" category="User" name="SendingMailErrorText" type="ABL_CHARACTER">
+    <Label>Sending e-mail Errors</Label>
     <DataType>ABL_CHARACTER</DataType>
     <DataValue unknown="false"/>
     <DataSize>256</DataSize>
@@ -355,10 +346,13 @@ dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
     <Access type="BIZ_MANAGE_ACCESS" value="true"/>
     <Access type="GLOBAL" value="false"/>
     <Access type="BIZ_SITE_COLUMN" value="false"/>
-    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
+    <Format editable="true" label="Sending e-mail Errors" password="false" required="false" size="20" type="abl_text">
+      <Label>Sending e-mail Errors</Label>
+    </Format>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
   <Dataslot Name="PrcErrorHandlingInstructions" category="User" name="PrcErrorHandlingInstructions" type="ABL_CHARACTER">
+    <Label>Handeling Instructions</Label>
     <DataType>ABL_CHARACTER</DataType>
     <DataValue unknown="false"/>
     <DataSize>256</DataSize>
@@ -369,21 +363,9 @@ dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
     <Access type="BIZ_MANAGE_ACCESS" value="true"/>
     <Access type="GLOBAL" value="false"/>
     <Access type="BIZ_SITE_COLUMN" value="false"/>
-    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
-    <Storage size="256" type="CHAR"/>
-  </Dataslot>
-  <Dataslot Name="SenderRecipient" category="User" name="SenderRecipient" type="ABL_CHARACTER">
-    <DataType>ABL_CHARACTER</DataType>
-    <DataValue unknown="false"/>
-    <DataSize>256</DataSize>
-    <IsPublic>true</IsPublic>
-    <MultiLine>false</MultiLine>
-    <BizManageAccessFlag>true</BizManageAccessFlag>
-    <Access type="PUBLIC" value="true"/>
-    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
-    <Access type="GLOBAL" value="false"/>
-    <Access type="BIZ_SITE_COLUMN" value="false"/>
-    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
+    <Format editable="true" label="Handeling Instructions" password="false" required="false" size="20" type="abl_text">
+      <Label>Handeling Instructions</Label>
+    </Format>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
   <Dataslot Name="SchedulerTimeout" category="User" name="SchedulerTimeout" type="ABL_INT64">
@@ -463,6 +445,7 @@ dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
   <Dataslot Name="SchErrorHandlingInstructions" category="User" name="SchErrorHandlingInstructions" type="ABL_CHARACTER">
+    <Label>Handeling Instructions</Label>
     <DataType>ABL_CHARACTER</DataType>
     <DataValue unknown="false"/>
     <DataSize>256</DataSize>
@@ -473,21 +456,25 @@ dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
     <Access type="BIZ_MANAGE_ACCESS" value="true"/>
     <Access type="GLOBAL" value="false"/>
     <Access type="BIZ_SITE_COLUMN" value="false"/>
-    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
+    <Format editable="true" label="Handeling Instructions" password="false" required="false" size="20" type="abl_text">
+      <Label>Handeling Instructions</Label>
+    </Format>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
   <History>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390489908839" to="http://WF28:18793/sbm/deployment">Thu Jan 23 17:11:48 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390394927951" to="http://WF28:18793/sbm/deployment">Wed Jan 22 14:48:47 EET 2014</Deployed>
-    <Created as="MBAInterfaceHeartBeat" by="daniel.baciu" on="1390299616744">Tue Jan 21 12:20:16 EET 2014</Created>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390382666332" to="http://WF28:18793/sbm/deployment">Wed Jan 22 11:24:26 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390401897400" to="http://WF28:18793/sbm/deployment">Wed Jan 22 16:44:57 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390403080420" to="http://WF28:18793/sbm/deployment">Wed Jan 22 17:04:40 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390403229986" to="http://WF28:18793/sbm/deployment">Wed Jan 22 17:07:09 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390403624449" to="http://WF28:18793/sbm/deployment">Wed Jan 22 17:13:44 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390403909492" to="http://WF28:18793/sbm/deployment">Wed Jan 22 17:18:29 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390479795912" to="http://WF28:18793/sbm/deployment">Thu Jan 23 14:23:15 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390569754609" to="http://WF28:18793/sbm/deployment">Fri Jan 24 15:22:34 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390568227180" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:57:07 EET 2014</Deployed>
     <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390548610822" to="http://WF28:18793/sbm/deployment">Fri Jan 24 09:30:10 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390479795912" to="http://WF28:18793/sbm/deployment">Thu Jan 23 14:23:15 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390403909492" to="http://WF28:18793/sbm/deployment">Wed Jan 22 17:18:29 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390403624449" to="http://WF28:18793/sbm/deployment">Wed Jan 22 17:13:44 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390403229986" to="http://WF28:18793/sbm/deployment">Wed Jan 22 17:07:09 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390403080420" to="http://WF28:18793/sbm/deployment">Wed Jan 22 17:04:40 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390401897400" to="http://WF28:18793/sbm/deployment">Wed Jan 22 16:44:57 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390382666332" to="http://WF28:18793/sbm/deployment">Wed Jan 22 11:24:26 EET 2014</Deployed>
+    <Created as="MBAInterfaceHeartBeat" by="daniel.baciu" on="1390299616744">Tue Jan 21 12:20:16 EET 2014</Created>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390394927951" to="http://WF28:18793/sbm/deployment">Wed Jan 22 14:48:47 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390489908839" to="http://WF28:18793/sbm/deployment">Thu Jan 23 17:11:48 EET 2014</Deployed>
   </History>
   <Repository/>
 </Process>

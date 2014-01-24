@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Process name="MBAInterfaceMessageError" type="BIZLOGIC" webbpaID="1390298999763">
-  <Package xmlns="http://www.wfmc.org/2004/XPDL2.0alpha" Id="1" Name="">
+  <Package xmlns="http://www.wfmc.org/2004/XPDL2.0alpha" Id="1" Name="Interface Message Failed">
     <PackageHeader>
       <XPDLVersion>2.0</XPDLVersion>
       <Vendor>Progress Software Corporation</Vendor>
@@ -11,7 +11,7 @@
         <Lanes>
           <Lane Id="1" Name="Handle Error" ParentLane="MBAInterfaceMessageError">
             <NodeGraphicsInfos>
-              <NodeGraphicsInfo BorderColor="0,0,0" FillColor="255,102,0" Height="144px" Width="0px">
+              <NodeGraphicsInfo BorderColor="0,0,0" FillColor="255,102,0" Height="252px" Width="0px">
                 <Coordinates XCoordinate="0px" YCoordinate="0px"/>
               </NodeGraphicsInfo>
             </NodeGraphicsInfos>
@@ -21,6 +21,7 @@
       </Pool>
     </Pools>
   </Package>
+  <Label>Interface Message Failed</Label>
   <Description/>
   <Application name="MBAInterfaceMessageError"/>
   <Category level="0"/>
@@ -62,26 +63,37 @@
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
   </AtomicWS>
-  <AtomicWS height="60" id="" name="Handle Message Error" webbpaID="1390298999766" width="132" worktime="false" x="168" y="48">
+  <AtomicWS height="60" id="" name="Handle Message Error" webbpaID="1390546161938" width="144" worktime="false" x="228" y="48">
+    <Label>Handle Message Error</Label>
     <AtomicType>ACTIVITY</AtomicType>
     <Performer>MBAInterface</Performer>
     <PerformBy>ANY</PerformBy>
     <PerformingApp>
       <Metadata name="TARGETTYPE">JSP</Metadata>
-      <Metadata name="TARGET">HandleMessageError.jsp</Metadata>
+      <Metadata name="TARGET">Activity1.jsp</Metadata>
     </PerformingApp>
     <Collaboration>
       <CollabFunction enabled="true" type="Reassign"/>
     </Collaboration>
-    <Form empty="true" name="HandleMessageError.jsp" type="form/mime64"/>
-    <Instruction>@HandleErrorInstructions</Instruction>
-    <Duration value="7200">2h</Duration>
-    <Priority>HIGH</Priority>
+    <Form empty="true" name="Activity1.jsp" type="form/mime64"/>
+    <Instruction>@ErrorHandlingInstructions</Instruction>
+    <Duration>@ErrorHandlingTimeout</Duration>
+    <Priority>MEDIUM</Priority>
     <EmailSupport>TRUE</EmailSupport>
-    <Datainput>SendingMailErrorText</Datainput>
-    <Dataoutput>SendingMailErrorText</Dataoutput>
-    <Format editable="true" input="SendingMailErrorText" label="Sending mail error text" password="false" required="false" size="20" type="abl_text">
-      <Label>Sending mail error text</Label>
+    <Datainput>MessageQueueId</Datainput>
+    <Datainput>MessageInfo</Datainput>
+    <Datainput>MessageErrors</Datainput>
+    <Dataoutput>MessageQueueId</Dataoutput>
+    <Dataoutput>MessageInfo</Dataoutput>
+    <Dataoutput>MessageErrors</Dataoutput>
+    <Format editable="true" input="MessageQueueId" label="Message Queue ID" password="false" required="false" size="20" type="abl_text">
+      <Label>Message Queue ID</Label>
+    </Format>
+    <Format editable="true" input="MessageInfo" label="Messahe Queue Info" password="false" required="false" size="20" type="abl_text">
+      <Label>Messahe Queue Info</Label>
+    </Format>
+    <Format editable="true" input="MessageErrors" label="Errors on Processing Message" password="false" required="false" size="20" type="abl_text">
+      <Label>Errors on Processing Message</Label>
     </Format>
     <RollbackPoint>FALSE</RollbackPoint>
     <OnOverdue>
@@ -97,20 +109,20 @@
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
   </AtomicWS>
-  <ExternalWS height="60" id="" name="Notify Message Error" webbpaID="1390298999768" width="132" x="168" y="168">
+  <ExternalWS height="72" id="" name="Escalate Error Handling Delay" webbpaID="1390546161955" width="144" x="228" y="156">
     <Performer category="EmailAdapters" generate="false" managed="true" name="GenericEmailAdapter">com.savvion.sbm.adapters.email.EmailAdapter</Performer>
     <PerformBy>execute</PerformBy>
     <ClosedConnection>TRUE</ClosedConnection>
     <Priority>MEDIUM</Priority>
-    <Datainput>RecipientsToNotify</Datainput>
-    <Dataoutput>SendingMailErrorText</Dataoutput>
+    <Datainput>BPMSenderRecipient</Datainput>
+    <Datainput>OnErrorEscalationList</Datainput>
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
     <InlineExecution>FALSE</InlineExecution>
     <AdapterType>process</AdapterType>
     <Configuration>
       <File name="mapping.prop" type="form/mime64">
-I1dlZCBKYW4gMjIgMDc6MjU6NDMgRUVUIDIwMTQNCmFkYXB0ZXItY2xhc3M9Y29tLnNhdnZpb24u&#13;
+I0ZyaSBKYW4gMjQgMTQ6NDA6MTAgRUVUIDIwMTQNCmFkYXB0ZXItY2xhc3M9Y29tLnNhdnZpb24u&#13;
 c2JtLmFkYXB0ZXJzLmVtYWlsLkVtYWlsQWRhcHRlcg0KbWFwLWNvbmZpZ3VyYXRvcj1jb20uc2F2&#13;
 dmlvbi5zYm0uYWRhcHRlcnMuZnJhbWV3b3JrLkdyb3VwTWFwQ29uZmlndXJhdG9yDQphZGFwdGVy&#13;
 LWNvbmZpZ3VyYXRvcj1jb20uc2F2dmlvbi5zYm0uYWRhcHRlcnMuZW1haWwuRW1haWxBZGFwdGVy&#13;
@@ -131,106 +143,126 @@ IG5hbWU9IkNDIiBhY2Nlc3M9IkkiIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjUi&#13
 IHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSIiIG1hbmRhdG9yeT0iZmFsc2UiLz4KICAg&#13;
 ICAgICA8cGFyYW0gbmFtZT0iQkNDIiBhY2Nlc3M9IkkiIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29u&#13;
 ZmlnLmxhYmVsLjYiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSIiIG1hbmRhdG9yeT0i&#13;
-ZmFsc2UiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iU1VCSkVDVCIgYWNjZXNzPSJQUkVTRVQiIGxh&#13;
-YmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjkiIHR5cGU9ImphdmEubGFuZy5PYmplY3Qi&#13;
-IHZhbHVlPSJNZXNzYWdlIGZhaWxlZCIgbWFuZGF0b3J5PSJ0cnVlIi8+CiAgICAgICAgPHBhcmFt&#13;
-IG5hbWU9IlBBUlRfQ09VTlQiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNv&#13;
-bmZpZy5sYWJlbC4xMiIgdHlwZT0iamF2YS5sYW5nLkludGVnZXIiIHZhbHVlPSIxIiBtYW5kYXRv&#13;
-cnk9InRydWUiLz4KICAgIDwvYmxvY2s+CiAgICA8YmxvY2sgdGl0bGU9IlBhcnQgMTogVmVsb2Np&#13;
-dHkgVGVtcGxhdGUiIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjE6MTpWZWxvY2l0&#13;
-eSBUZW1wbGF0ZSIgaGlkZGVuPSJmYWxzZSI+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBMVUdJTi4x&#13;
-Lk5BTUUiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iUGx1Z2luIG5hbWUiIHR5cGU9ImphdmEubGFu&#13;
-Zy5TdHJpbmciIHZhbHVlPSJWZWxvY2l0eSBUZW1wbGF0ZSIvPgogICAgICAgIDxwYXJhbSBuYW1l&#13;
-PSJQTFVHSU4uMS5DT05GIiBhY2Nlc3M9IkhJRERFTiIgbGFiZWw9IlBsdWdpbiBjb25maWd1cmF0&#13;
-aW9uIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJTBBJTNDZW50ZXIrdGV4dCtoZXJl&#13;
-JTNFIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBMVUdJTi4xLk1JTUUiIGFjY2Vzcz0iSElEREVO&#13;
-IiBsYWJlbD0iTWltZSB0eXBlIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0idGV4dC9w&#13;
-bGFpbiIvPgogICAgPC9ibG9jaz4KICAgIDxibG9jayB0aXRsZT0iQ29uZmlndXJhdGlvbiIgbGFi&#13;
-ZWw9ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMiIgaGlkZGVuPSJmYWxzZSI+CiAgICAgICAg&#13;
-PHBhcmFtIG5hbWU9IlBST1BFUlRZLmFsbG93Lm51bGwuY2MiIGFjY2Vzcz0iSElEREVOIiBsYWJl&#13;
-bD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIg&#13;
-dmFsdWU9InRydWUiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkuYWxsb3cubnVsbC5i&#13;
-Y2MiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIg&#13;
-dHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4KICAgICAgICA8cGFyYW0gbmFt&#13;
-ZT0iUFJPUEVSVFkubWFpbC50cmFuc3BvcnQucHJvdG9jb2wiIGFjY2Vzcz0iSElEREVOIiBsYWJl&#13;
-bD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIg&#13;
-dmFsdWU9InNtdHAiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFpbC5zbXRwLmhv&#13;
-c3QiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIg&#13;
-dHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiIvPgogICAgICAgIDxwYXJhbSBuYW1lPSJB&#13;
-VVRIX1VTRVIiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJl&#13;
-bC43IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iIiBtYW5kYXRvcnk9ImZhbHNlIi8+&#13;
-CiAgICAgICAgPHBhcmFtIG5hbWU9IkFVVEhfUEFTU1dPUkQiIGFjY2Vzcz0iSElEREVOIiBsYWJl&#13;
-bD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC44IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2&#13;
-YWx1ZT0iIiBtYW5kYXRvcnk9ImZhbHNlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IkVYQ0VQVElP&#13;
-Tl9PVVRQVVQiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iRXJyb3IgYXMgb3V0cHV0IiB0eXBlPSJq&#13;
-YXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0idHJ1ZSIgbWFuZGF0b3J5PSJmYWxzZSIvPgogICAgICAg&#13;
-IDxwYXJhbSBuYW1lPSJFWENFUFRJT04iIGFjY2Vzcz0iTyIgbGFiZWw9IkVycm9yIiB0eXBlPSJq&#13;
-YXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iIiBtYW5kYXRvcnk9ImZhbHNlIi8+CiAgICA8L2Jsb2Nr&#13;
-Pgo8L2NvbmZpZ2Zvcm0+Cg==
+ZmFsc2UiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iU1VCSkVDVCIgYWNjZXNzPSJJIiBsYWJlbD0i&#13;
+ZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC45IiB0eXBlPSJqYXZhLmxhbmcuT2JqZWN0IiB2YWx1&#13;
+ZT0iIiBtYW5kYXRvcnk9InRydWUiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUEFSVF9DT1VOVCIg&#13;
+YWNjZXNzPSJISURERU4iIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjEyIiB0eXBl&#13;
+PSJqYXZhLmxhbmcuSW50ZWdlciIgdmFsdWU9IjEiIG1hbmRhdG9yeT0idHJ1ZSIvPgogICAgPC9i&#13;
+bG9jaz4KICAgIDxibG9jayB0aXRsZT0iUGFydCAxOiBWZWxvY2l0eSBUZW1wbGF0ZSIgbGFiZWw9&#13;
+ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMToxOlZlbG9jaXR5IFRlbXBsYXRlIiBoaWRkZW49&#13;
+ImZhbHNlIj4KICAgICAgICA8cGFyYW0gbmFtZT0iUExVR0lOLjEuTkFNRSIgYWNjZXNzPSJISURE&#13;
+RU4iIGxhYmVsPSJQbHVnaW4gbmFtZSIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IlZl&#13;
+bG9jaXR5IFRlbXBsYXRlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBMVUdJTi4xLk1JTUUiIGFj&#13;
+Y2Vzcz0iSElEREVOIiBsYWJlbD0iTWltZSB0eXBlIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2&#13;
+YWx1ZT0idGV4dC9wbGFpbiIvPgogICAgPC9ibG9jaz4KICAgIDxibG9jayB0aXRsZT0iQ29uZmln&#13;
+dXJhdGlvbiIgbGFiZWw9ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMiIgaGlkZGVuPSJmYWxz&#13;
+ZSI+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLmFsbG93Lm51bGwuY2MiIGFjY2Vzcz0i&#13;
+SElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2YS5s&#13;
+YW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVSVFku&#13;
+YWxsb3cubnVsbC5iY2MiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZp&#13;
+Zy5sYWJlbC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4KICAgICAg&#13;
+ICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFpbC50cmFuc3BvcnQucHJvdG9jb2wiIGFjY2Vzcz0i&#13;
+SElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2YS5s&#13;
+YW5nLlN0cmluZyIgdmFsdWU9InNtdHAiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVSVFku&#13;
+bWFpbC5zbXRwLmhvc3QiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZp&#13;
+Zy5sYWJlbC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiIvPgogICAgICAgIDxw&#13;
+YXJhbSBuYW1lPSJBVVRIX1VTRVIiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVy&#13;
+OmNvbmZpZy5sYWJlbC43IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iIiBtYW5kYXRv&#13;
+cnk9ImZhbHNlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IkFVVEhfUEFTU1dPUkQiIGFjY2Vzcz0i&#13;
+SElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC44IiB0eXBlPSJqYXZhLmxh&#13;
+bmcuU3RyaW5nIiB2YWx1ZT0iIiBtYW5kYXRvcnk9ImZhbHNlIi8+CiAgICA8L2Jsb2NrPgo8L2Nv&#13;
+bmZpZ2Zvcm0+Cg==
 </File>
       <File name="input.map" type="form/mime64">
 PG1hcCB2ZXJzaW9uPSIxLjMiPgogIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5tYWlsLnRyYW5zcG9y&#13;
 dC5wcm90b2NvbCIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InNtdHAiLz4KICA8cGFy&#13;
-YW0gbmFtZT0iU1VCSkVDVCIgdHlwZT0iamF2YS5sYW5nLk9iamVjdCIgdmFsdWU9Ik1lc3NhZ2Ug&#13;
-ZmFpbGVkIi8+CiAgPHBhcmFtIG5hbWU9IlBMVUdJTi4xLk1JTUUiIHR5cGU9ImphdmEubGFuZy5T&#13;
-dHJpbmciIHZhbHVlPSJ0ZXh0L3BsYWluIi8+CiAgPHBhcmFtIG5hbWU9IlBMVUdJTi4xLk5BTUUi&#13;
-IHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJWZWxvY2l0eSBUZW1wbGF0ZSIvPgogIDxw&#13;
-YXJhbSBuYW1lPSJCQ0MiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSIiLz4KICA8cGFy&#13;
-YW0gbmFtZT0iUFJPUEVSVFkubWFpbC5zbXRwLmhvc3QiIHR5cGU9ImphdmEubGFuZy5TdHJpbmci&#13;
-IHZhbHVlPSIiLz4KICA8cGFyYW0gbmFtZT0iUEFSVF9DT1VOVCIgdHlwZT0iamF2YS5sYW5nLklu&#13;
-dGVnZXIiIHZhbHVlPSIxIi8+CiAgPHBhcmFtIG5hbWU9IkFVVEhfVVNFUiIgdHlwZT0iamF2YS5s&#13;
-YW5nLlN0cmluZyIgdmFsdWU9IiIvPgogIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5hbGxvdy5udWxs&#13;
-LmNjIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0idHJ1ZSIvPgogIDxwYXJhbSBuYW1l&#13;
-PSJTRU5ERVIiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJCUE1Ad2F5ZmFyZS5ybyIv&#13;
-PgogIDxwYXJhbSBuYW1lPSJSRUNJUElFTlRTIiB0eXBlPSJqYXZhLmxhbmcuT2JqZWN0IiB2YWx1&#13;
-ZT0iQFJlY2lwaWVudHNUb05vdGlmeSIvPgogIDxwYXJhbSBuYW1lPSJQTFVHSU4uMS5DT05GIiB0&#13;
-eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJTBBJTNDZW50ZXIrdGV4dCtoZXJlJTNFIi8+&#13;
-CiAgPHBhcmFtIG5hbWU9IkVYQ0VQVElPTl9PVVRQVVQiIHR5cGU9ImphdmEubGFuZy5TdHJpbmci&#13;
-IHZhbHVlPSJ0cnVlIi8+CiAgPHBhcmFtIG5hbWU9IkNDIiB0eXBlPSJqYXZhLmxhbmcuT2JqZWN0&#13;
-IiB2YWx1ZT0iIi8+CiAgPHBhcmFtIG5hbWU9IkFVVEhfUEFTU1dPUkQiIHR5cGU9ImphdmEubGFu&#13;
-Zy5TdHJpbmciIHZhbHVlPSIiLz4KICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkuYWxsb3cubnVsbC5i&#13;
-Y2MiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJ0cnVlIi8+CjwvbWFwPgo=
+YW0gbmFtZT0iU1VCSkVDVCIgdHlwZT0iamF2YS5sYW5nLk9iamVjdCIgdmFsdWU9Ind3Ii8+CiAg&#13;
+PHBhcmFtIG5hbWU9IlBMVUdJTi4xLk1JTUUiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVl&#13;
+PSJ0ZXh0L3BsYWluIi8+CiAgPHBhcmFtIG5hbWU9IlBMVUdJTi4xLk5BTUUiIHR5cGU9ImphdmEu&#13;
+bGFuZy5TdHJpbmciIHZhbHVlPSJWZWxvY2l0eSBUZW1wbGF0ZSIvPgogIDxwYXJhbSBuYW1lPSJC&#13;
+Q0MiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSIiLz4KICA8cGFyYW0gbmFtZT0iUFJP&#13;
+UEVSVFkubWFpbC5zbXRwLmhvc3QiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIiLz4K&#13;
+ICA8cGFyYW0gbmFtZT0iUEFSVF9DT1VOVCIgdHlwZT0iamF2YS5sYW5nLkludGVnZXIiIHZhbHVl&#13;
+PSIxIi8+CiAgPHBhcmFtIG5hbWU9IkFVVEhfVVNFUiIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIg&#13;
+dmFsdWU9IiIvPgogIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5hbGxvdy5udWxsLmNjIiB0eXBlPSJq&#13;
+YXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0idHJ1ZSIvPgogIDxwYXJhbSBuYW1lPSJTRU5ERVIiIHR5&#13;
+cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJAQlBNU2VuZGVyUmVjaXBpZW50Ii8+CiAgPHBh&#13;
+cmFtIG5hbWU9IlJFQ0lQSUVOVFMiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSJAT25F&#13;
+cnJvckVzY2FsYXRpb25MaXN0Ii8+CiAgPHBhcmFtIG5hbWU9IkNDIiB0eXBlPSJqYXZhLmxhbmcu&#13;
+T2JqZWN0IiB2YWx1ZT0iIi8+CiAgPHBhcmFtIG5hbWU9IkFVVEhfUEFTU1dPUkQiIHR5cGU9Imph&#13;
+dmEubGFuZy5TdHJpbmciIHZhbHVlPSIiLz4KICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkuYWxsb3cu&#13;
+bnVsbC5iY2MiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJ0cnVlIi8+CjwvbWFwPgo=
 </File>
       <File name="output.map" type="form/mime64">
-PG1hcCB2ZXJzaW9uPSIxLjMiPgogIDxwYXJhbSBuYW1lPSJTZW5kaW5nTWFpbEVycm9yVGV4dCIg&#13;
-dHlwZT0iY29tLnByb2dyZXNzLmxhbmcuQ2hhcmFjdGVyIiB2YWx1ZT0iQEVYQ0VQVElPTiIvPgo8&#13;
-L21hcD4K
+PG1hcCB2ZXJzaW9uPSIxLjMiPgo8L21hcD4K
 </File>
     </Configuration>
   </ExternalWS>
-  <Link Name="Connection 4" default="true" type="timeout" value="Connection 4" webbpaID="1390401897111" x="1" y="-1">
-    <Label>Connection 4</Label>
-    <Source cp="8">Handle Message Error</Source>
-    <Point x="267.0" y="108.0"/>
-    <Point x="267.0" y="148.0"/>
-    <Point x="201.0" y="148.0"/>
-    <Point x="201.0" y="168.0"/>
-    <Target cp="4">Notify Message Error</Target>
+  <Link Name="Connection 6" default="true" webbpaID="1390546161956">
+    <Label>Connection 6</Label>
+    <Source cp="3">Escalate Error Handling Delay</Source>
+    <Point x="228.0" y="192.0"/>
+    <Point x="208.0" y="192.0"/>
+    <Point x="208.0" y="93.0"/>
+    <Point x="228.0" y="93.0"/>
+    <Target cp="10">Handle Message Error</Target>
   </Link>
-  <Link Name="Connection 1" default="true" webbpaID="1390298999771">
+  <Link Name="Connection 5" default="true" type="timeout" value="Connection 5" webbpaID="1390546161957">
+    <Label>Connection 5</Label>
+    <Source cp="8">Handle Message Error</Source>
+    <Point x="336.0" y="108.0"/>
+    <Point x="336.0" y="156.0"/>
+    <Target cp="5">Escalate Error Handling Delay</Target>
+  </Link>
+  <Link Name="Connection 1" default="true" webbpaID="1390546161940">
     <Label>Connection 1</Label>
     <Source cp="1">Start</Source>
     <Point x="96.0" y="78.0"/>
-    <Point x="168.0" y="78.0"/>
+    <Point x="228.0" y="78.0"/>
     <Target cp="3">Handle Message Error</Target>
   </Link>
-  <Link Name="Connection 2" default="true" webbpaID="1390298999770">
+  <Link Name="Connection 2" default="true" webbpaID="1390546161939">
     <Label>Connection 2</Label>
-    <Source cp="3">Notify Message Error</Source>
-    <Point x="168.0" y="198.0"/>
-    <Point x="148.0" y="198.0"/>
-    <Point x="148.0" y="78.0"/>
-    <Point x="168.0" y="78.0"/>
-    <Target cp="3">Handle Message Error</Target>
-  </Link>
-  <Link Name="Connection 3" default="true" webbpaID="1390298999769">
-    <Label>Connection 3</Label>
     <Source cp="1">Handle Message Error</Source>
-    <Point x="300.0" y="78.0"/>
+    <Point x="372.0" y="78.0"/>
     <Point x="528.0" y="78.0"/>
     <Target cp="3">End 1</Target>
   </Link>
-  <Dataslot Name="RecipientsToNotify" category="User" name="RecipientsToNotify" type="ABL_CHARACTER" webbpaID="1390298999764">
+  <Dataslot Name="SendingMailError" category="User" name="SendingMailError" type="ABL_CHARACTER" webbpaID="1390401897106">
+    <Label>Sending mail</Label>
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Sending mail" password="false" required="false" size="20" type="abl_text">
+      <Label>Sending mail</Label>
+    </Format>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="ErrorHandlingInstructions" category="User" name="ErrorHandlingInstructions" type="ABL_CHARACTER" webbpaID="1390401897110">
+    <Label>Error Handeling Instructions</Label>
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Error Handeling Instructions" password="false" required="false" size="20" type="abl_text">
+      <Label>Error Handeling Instructions</Label>
+    </Format>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="OnErrorEscalationList" category="User" name="OnErrorEscalationList" type="ABL_CHARACTER" webbpaID="1390546161930">
     <DataType>ABL_CHARACTER</DataType>
     <DataValue unknown="false"/>
     <DataSize>256</DataSize>
@@ -244,7 +276,7 @@ L21hcD4K
     <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
-  <Dataslot Name="SendingMailErrorText" category="User" name="SendingMailErrorText" type="ABL_CHARACTER" webbpaID="1390401897106">
+  <Dataslot Name="BPMSenderRecipient" category="User" name="BPMSenderRecipient" type="ABL_CHARACTER" webbpaID="1390546161931">
     <DataType>ABL_CHARACTER</DataType>
     <DataValue unknown="false"/>
     <DataSize>256</DataSize>
@@ -258,7 +290,8 @@ L21hcD4K
     <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
-  <Dataslot Name="HandleErrorInstructions" category="User" name="HandleErrorInstructions" type="ABL_CHARACTER" webbpaID="1390401897110">
+  <Dataslot Name="MessageInfo" category="User" name="MessageInfo" type="ABL_CHARACTER" webbpaID="1390546161932">
+    <Label>Messahe Queue Info</Label>
     <DataType>ABL_CHARACTER</DataType>
     <DataValue unknown="false"/>
     <DataSize>256</DataSize>
@@ -269,17 +302,69 @@ L21hcD4K
     <Access type="BIZ_MANAGE_ACCESS" value="true"/>
     <Access type="GLOBAL" value="false"/>
     <Access type="BIZ_SITE_COLUMN" value="false"/>
-    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
+    <Format editable="true" label="Messahe Queue Info" password="false" required="false" size="20" type="abl_text">
+      <Label>Messahe Queue Info</Label>
+    </Format>
     <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="MessageQueueId" category="User" name="MessageQueueId" type="ABL_CHARACTER" webbpaID="1390546161933">
+    <Label>Message Queue ID</Label>
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Message Queue ID" password="false" required="false" size="20" type="abl_text">
+      <Label>Message Queue ID</Label>
+    </Format>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="MessageErrors" category="User" name="MessageErrors" type="ABL_CHARACTER" webbpaID="1390546161934">
+    <Label>Errors on Processing Messages</Label>
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Errors on Processing Messages" password="false" required="false" size="20" type="abl_text">
+      <Label>Errors on Processing Messages</Label>
+    </Format>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="ErrorHandlingTimeout" category="User" name="ErrorHandlingTimeout" type="ABL_INT64" webbpaID="1390546161937">
+    <DataType>ABL_INT64</DataType>
+    <DataValue unknown="false">0</DataValue>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="" required="false" size="20" type="abl_text"/>
   </Dataslot>
   <Performers>
     <Performer name="@CREATOR" type="user" webbpaID="1390298999730"/>
     <Performer name="MBAInterface" select="ANY" type="group" webbpaID="1390298999772"/>
     <Performer category="" class="" generate="false" id="EmailAdapter 1" managed="true" name="" type="managed" webbpaID="1390298999773"/>
     <Performer category="EmailAdapters" class="com.savvion.sbm.adapters.email.EmailAdapter" generate="false" id="Notify Message Error" managed="true" name="GenericEmailAdapter" type="managed" webbpaID="1390298999781"/>
+    <Performer category="EmailAdapters" class="com.savvion.sbm.adapters.email.EmailAdapter" generate="false" id="Escalate Error Handling Delay" managed="true" name="GenericEmailAdapter" type="managed" webbpaID="1390546161961"/>
   </Performers>
   <TabularViewWorkstepOrder/>
   <History>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390566841255" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:34:01 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390566337344" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:25:37 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390566122585" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:22:02 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1390489910606" to="http://WF28:18793/sbm/deployment">Thu Jan 23 17:11:50 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1390481727809" to="http://WF28:18793/sbm/deployment">Thu Jan 23 14:55:27 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1390401902448" to="http://WF28:18793/sbm/deployment">Wed Jan 22 16:45:02 EET 2014</Deployed>
@@ -290,6 +375,8 @@ L21hcD4K
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1390475522507" to="http://WF28:18793/sbm/deployment">Thu Jan 23 13:12:02 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1390476099884" to="http://WF28:18793/sbm/deployment">Thu Jan 23 13:21:39 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1390548612244" to="http://WF28:18793/sbm/deployment">Fri Jan 24 09:30:12 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390553422254" to="http://WF28:18793/sbm/deployment">Fri Jan 24 10:50:22 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390553939493" to="http://WF28:18793/sbm/deployment">Fri Jan 24 10:58:59 EET 2014</Deployed>
   </History>
   <Repository/>
   <Forms/>

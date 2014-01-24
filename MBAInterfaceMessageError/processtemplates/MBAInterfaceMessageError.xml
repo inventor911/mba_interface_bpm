@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE Process SYSTEM "../../common/processtemplates/processTemplate.dtd">
 <Process name="MBAInterfaceMessageError" type="BIZLOGIC">
+  <Label>Interface Message Failed</Label>
   <Description/>
   <Application name="MBAInterfaceMessageError"/>
   <Category level="0"/>
@@ -44,25 +45,36 @@
     <Option name="Reassign" visible="true"/>
     <Simulation distribution="ct" scenario="(default)"/>
   </AtomicWS>
-  <AtomicWS height="60" name="Handle Message Error" width="132" worktime="false" x="168" y="48">
+  <AtomicWS height="60" name="Handle Message Error" width="144" worktime="false" x="228" y="48">
+    <Label>Handle Message Error</Label>
     <AtomicType>ACTIVITY</AtomicType>
     <Performer>MBAInterface</Performer>
     <PerformBy>ANY</PerformBy>
     <PerformingApp>
       <Metadata name="TARGETTYPE">JSP</Metadata>
-      <Metadata name="TARGET">HandleMessageError.jsp</Metadata>
+      <Metadata name="TARGET">Activity1.jsp</Metadata>
     </PerformingApp>
     <Collaboration>
       <CollabFunction enabled="true" type="Reassign"/>
     </Collaboration>
-    <Instruction>@HandleErrorInstructions</Instruction>
-    <Duration value="7200">2h</Duration>
-    <Priority>HIGH</Priority>
+    <Instruction>@ErrorHandlingInstructions</Instruction>
+    <Duration>@ErrorHandlingTimeout</Duration>
+    <Priority>MEDIUM</Priority>
     <EmailSupport>TRUE</EmailSupport>
-    <Datainput>SendingMailErrorText</Datainput>
-    <Dataoutput>SendingMailErrorText</Dataoutput>
-    <Format editable="true" input="SendingMailErrorText" label="Sending mail error text" password="false" required="false" size="20" type="abl_text">
-      <Label>Sending mail error text</Label>
+    <Datainput>MessageQueueId</Datainput>
+    <Datainput>MessageInfo</Datainput>
+    <Datainput>MessageErrors</Datainput>
+    <Dataoutput>MessageQueueId</Dataoutput>
+    <Dataoutput>MessageInfo</Dataoutput>
+    <Dataoutput>MessageErrors</Dataoutput>
+    <Format editable="true" input="MessageQueueId" label="Message Queue ID" password="false" required="false" size="20" type="abl_text">
+      <Label>Message Queue ID</Label>
+    </Format>
+    <Format editable="true" input="MessageInfo" label="Messahe Queue Info" password="false" required="false" size="20" type="abl_text">
+      <Label>Messahe Queue Info</Label>
+    </Format>
+    <Format editable="true" input="MessageErrors" label="Errors on Processing Message" password="false" required="false" size="20" type="abl_text">
+      <Label>Errors on Processing Message</Label>
     </Format>
     <RollbackPoint>FALSE</RollbackPoint>
     <OnOverdue>
@@ -78,51 +90,83 @@
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
   </AtomicWS>
-  <ExternalWS height="60" name="Notify Message Error" width="132" x="168" y="168">
+  <ExternalWS height="72" name="Escalate Error Handling Delay" width="144" x="228" y="156">
     <Performer category="EmailAdapters" generate="false" managed="true" name="GenericEmailAdapter">com.savvion.sbm.adapters.email.EmailAdapter</Performer>
     <PerformBy>execute</PerformBy>
     <ClosedConnection>TRUE</ClosedConnection>
     <Priority>MEDIUM</Priority>
-    <Datainput>RecipientsToNotify</Datainput>
-    <Dataoutput>SendingMailErrorText</Dataoutput>
+    <Datainput>BPMSenderRecipient</Datainput>
+    <Datainput>OnErrorEscalationList</Datainput>
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
     <InlineExecution>FALSE</InlineExecution>
     <AdapterType>process</AdapterType>
   </ExternalWS>
-  <Link Name="Connection 4" default="true" type="timeout" value="Connection 4" x="1" y="-1">
-    <Label>Connection 4</Label>
+  <Link Name="Connection 6" default="true">
+    <Label>Connection 6</Label>
+    <Source cp="3">Escalate Error Handling Delay</Source>
+    <Point x="228.0" y="192.0"/>
+    <Point x="208.0" y="192.0"/>
+    <Point x="208.0" y="93.0"/>
+    <Point x="228.0" y="93.0"/>
+    <Target cp="10">Handle Message Error</Target>
+  </Link>
+  <Link Name="Connection 5" default="true" type="timeout" value="Connection 5">
+    <Label>Connection 5</Label>
     <Source cp="8">Handle Message Error</Source>
-    <Point x="267.0" y="108.0"/>
-    <Point x="267.0" y="148.0"/>
-    <Point x="201.0" y="148.0"/>
-    <Point x="201.0" y="168.0"/>
-    <Target cp="4">Notify Message Error</Target>
+    <Point x="336.0" y="108.0"/>
+    <Point x="336.0" y="156.0"/>
+    <Target cp="5">Escalate Error Handling Delay</Target>
   </Link>
   <Link Name="Connection 1" default="true">
     <Label>Connection 1</Label>
     <Source cp="1">Start</Source>
     <Point x="96.0" y="78.0"/>
-    <Point x="168.0" y="78.0"/>
+    <Point x="228.0" y="78.0"/>
     <Target cp="3">Handle Message Error</Target>
   </Link>
   <Link Name="Connection 2" default="true">
     <Label>Connection 2</Label>
-    <Source cp="3">Notify Message Error</Source>
-    <Point x="168.0" y="198.0"/>
-    <Point x="148.0" y="198.0"/>
-    <Point x="148.0" y="78.0"/>
-    <Point x="168.0" y="78.0"/>
-    <Target cp="3">Handle Message Error</Target>
-  </Link>
-  <Link Name="Connection 3" default="true">
-    <Label>Connection 3</Label>
     <Source cp="1">Handle Message Error</Source>
-    <Point x="300.0" y="78.0"/>
+    <Point x="372.0" y="78.0"/>
     <Point x="528.0" y="78.0"/>
     <Target cp="3">End 1</Target>
   </Link>
-  <Dataslot Name="RecipientsToNotify" category="User" name="RecipientsToNotify" type="ABL_CHARACTER">
+  <Dataslot Name="SendingMailError" category="User" name="SendingMailError" type="ABL_CHARACTER">
+    <Label>Sending mail</Label>
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Sending mail" password="false" required="false" size="20" type="abl_text">
+      <Label>Sending mail</Label>
+    </Format>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="ErrorHandlingInstructions" category="User" name="ErrorHandlingInstructions" type="ABL_CHARACTER">
+    <Label>Error Handeling Instructions</Label>
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Error Handeling Instructions" password="false" required="false" size="20" type="abl_text">
+      <Label>Error Handeling Instructions</Label>
+    </Format>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="OnErrorEscalationList" category="User" name="OnErrorEscalationList" type="ABL_CHARACTER">
     <DataType>ABL_CHARACTER</DataType>
     <DataValue unknown="false"/>
     <DataSize>256</DataSize>
@@ -136,7 +180,7 @@
     <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
-  <Dataslot Name="SendingMailErrorText" category="User" name="SendingMailErrorText" type="ABL_CHARACTER">
+  <Dataslot Name="BPMSenderRecipient" category="User" name="BPMSenderRecipient" type="ABL_CHARACTER">
     <DataType>ABL_CHARACTER</DataType>
     <DataValue unknown="false"/>
     <DataSize>256</DataSize>
@@ -150,7 +194,8 @@
     <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
-  <Dataslot Name="HandleErrorInstructions" category="User" name="HandleErrorInstructions" type="ABL_CHARACTER">
+  <Dataslot Name="MessageInfo" category="User" name="MessageInfo" type="ABL_CHARACTER">
+    <Label>Messahe Queue Info</Label>
     <DataType>ABL_CHARACTER</DataType>
     <DataValue unknown="false"/>
     <DataSize>256</DataSize>
@@ -161,10 +206,61 @@
     <Access type="BIZ_MANAGE_ACCESS" value="true"/>
     <Access type="GLOBAL" value="false"/>
     <Access type="BIZ_SITE_COLUMN" value="false"/>
-    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
+    <Format editable="true" label="Messahe Queue Info" password="false" required="false" size="20" type="abl_text">
+      <Label>Messahe Queue Info</Label>
+    </Format>
     <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="MessageQueueId" category="User" name="MessageQueueId" type="ABL_CHARACTER">
+    <Label>Message Queue ID</Label>
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Message Queue ID" password="false" required="false" size="20" type="abl_text">
+      <Label>Message Queue ID</Label>
+    </Format>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="MessageErrors" category="User" name="MessageErrors" type="ABL_CHARACTER">
+    <Label>Errors on Processing Messages</Label>
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Errors on Processing Messages" password="false" required="false" size="20" type="abl_text">
+      <Label>Errors on Processing Messages</Label>
+    </Format>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="ErrorHandlingTimeout" category="User" name="ErrorHandlingTimeout" type="ABL_INT64">
+    <DataType>ABL_INT64</DataType>
+    <DataValue unknown="false">0</DataValue>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="" required="false" size="20" type="abl_text"/>
   </Dataslot>
   <History>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390566841255" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:34:01 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390566337344" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:25:37 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390566122585" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:22:02 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1390489910606" to="http://WF28:18793/sbm/deployment">Thu Jan 23 17:11:50 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1390481727809" to="http://WF28:18793/sbm/deployment">Thu Jan 23 14:55:27 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1390401902448" to="http://WF28:18793/sbm/deployment">Wed Jan 22 16:45:02 EET 2014</Deployed>
@@ -175,6 +271,8 @@
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1390475522507" to="http://WF28:18793/sbm/deployment">Thu Jan 23 13:12:02 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1390476099884" to="http://WF28:18793/sbm/deployment">Thu Jan 23 13:21:39 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1390548612244" to="http://WF28:18793/sbm/deployment">Fri Jan 24 09:30:12 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390553422254" to="http://WF28:18793/sbm/deployment">Fri Jan 24 10:50:22 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390553939493" to="http://WF28:18793/sbm/deployment">Fri Jan 24 10:58:59 EET 2014</Deployed>
   </History>
   <Repository/>
 </Process>
