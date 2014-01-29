@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Process name="MBAInterfaceDeliveryToLocation" type="BIZLOGIC" webbpaID="1390912704219">
+  <Package xmlns="http://www.wfmc.org/2004/XPDL2.0alpha" Id="1" Name="">
+    <PackageHeader>
+      <XPDLVersion>2.0</XPDLVersion>
+      <Vendor>Progress Software Corporation</Vendor>
+      <Created>1390913486625</Created>
+    </PackageHeader>
+    <Pools>
+      <Pool BoundaryVisible="true" Id="MBAInterfaceDeliveryToLocation" Process="MBAInterfaceDeliveryToLocation">
+        <Lanes>
+          <Lane Id="1" Name="Delivery" ParentLane="MBAInterfaceDeliveryToLocation">
+            <NodeGraphicsInfos>
+              <NodeGraphicsInfo BorderColor="0,0,0" FillColor="51,102,255" Height="132px" Width="0px">
+                <Coordinates XCoordinate="0px" YCoordinate="0px"/>
+              </NodeGraphicsInfo>
+            </NodeGraphicsInfos>
+            <Performer xmlns="http://www.savvion.com/2006/SPT7.0" name="@CREATOR" type="user"/>
+          </Lane>
+          <Lane Id="2" Name="Exceptions" ParentLane="MBAInterfaceDeliveryToLocation">
+            <NodeGraphicsInfos>
+              <NodeGraphicsInfo BorderColor="0,0,0" FillColor="255,102,0" Height="108px" Width="0px">
+                <Coordinates XCoordinate="0px" YCoordinate="0px"/>
+              </NodeGraphicsInfo>
+            </NodeGraphicsInfos>
+            <Performer xmlns="http://www.savvion.com/2006/SPT7.0" name="MBAInterface" select="ANY" type="group"/>
+          </Lane>
+        </Lanes>
+      </Pool>
+    </Pools>
+  </Package>
+  <Description/>
+  <Application name="MBAInterfaceDeliveryToLocation"/>
+  <Category level="0"/>
+  <Category level="1"/>
+  <Group/>
+  <Manager>@CREATOR</Manager>
+  <EstimatedDuration>1d</EstimatedDuration>
+  <TimeCreated>1390913486625</TimeCreated>
+  <Author>daniel.baciu</Author>
+  <Version/>
+  <Attributes>
+    <Attribute name="ProcessType" required="true">
+      <Label>Process Type</Label>
+      <Description>Type of the process</Description>
+      <Value>BusinessProcess</Value>
+    </Attribute>
+  </Attributes>
+  <Resources runtime="false"/>
+  <Simulation count="10" distribution="ct" interval="600" scenario="(default)" stddev="0"/>
+  <Alerts>
+    <Alert name="Default">
+      <AlertSeverity>High</AlertSeverity>
+      <AlertMessage>This is the default alert.</AlertMessage>
+      <AlertDescription/>
+      <AlertCondition type="java:expression"/>
+      <AlertDelivery type="sbm">
+        <AlertRecipient type="USER">${@CREATOR}</AlertRecipient>
+      </AlertDelivery>
+    </Alert>
+  </Alerts>
+  <AtomicWS height="36" id="" name="Start" webbpaID="1390912704220" width="36" worktime="false" x="48" y="48">
+    <AtomicType>START</AtomicType>
+    <PerformingApp>
+      <Metadata name="TARGETTYPE">JSP</Metadata>
+      <Metadata name="TARGET">Start.jsp</Metadata>
+    </PerformingApp>
+    <Form empty="true" name="Start.jsp" type="form/mime64"/>
+    <Priority>MEDIUM</Priority>
+    <RollbackPoint>FALSE</RollbackPoint>
+    <Simulation distribution="ct" scenario="(default)"/>
+  </AtomicWS>
+  <AtomicWS height="84" id="" name="Waiting for DeliveryConfirmation" webbpaID="1390912704223" width="144" worktime="false" x="228" y="24">
+    <AtomicType>ACTIVITY</AtomicType>
+    <Performer>@CREATOR</Performer>
+    <PerformingApp>
+      <Metadata name="TARGETTYPE">JSP</Metadata>
+      <Metadata name="TARGET">WaitingforDeliveryConfirmation.jsp</Metadata>
+    </PerformingApp>
+    <Collaboration>
+      <CollabFunction enabled="true" type="Reassign"/>
+    </Collaboration>
+    <Form empty="true" name="WaitingforDeliveryConfirmation.jsp" type="form/mime64"/>
+    <Duration>@ConfirmationTimeout</Duration>
+    <Priority>MEDIUM</Priority>
+    <EmailSupport>FALSE</EmailSupport>
+    <RollbackPoint>FALSE</RollbackPoint>
+    <OnOverdue>
+      <ActivateTimeoutFlow/>
+    </OnOverdue>
+    <Simulation distribution="ct" scenario="(default)"/>
+  </AtomicWS>
+  <AtomicWS height="36" id="" name="End 1" webbpaID="1390912704222" width="36" worktime="false" x="624" y="48">
+    <AtomicType>END</AtomicType>
+    <Priority>MEDIUM</Priority>
+    <RollbackPoint>FALSE</RollbackPoint>
+    <Simulation distribution="ct" scenario="(default)"/>
+  </AtomicWS>
+  <ExternalWS height="72" id="" name="Follow up No Acknowledge" webbpaID="1390912704224" width="144" x="228" y="144">
+    <Label>Follow up No Acknowledge</Label>
+    <Performer category="EmailAdapters" generate="false" managed="true" name="GenericEmailAdapter">com.savvion.sbm.adapters.email.EmailAdapter</Performer>
+    <PerformBy>execute</PerformBy>
+    <ClosedConnection>TRUE</ClosedConnection>
+    <Priority>MEDIUM</Priority>
+    <RollbackPoint>FALSE</RollbackPoint>
+    <Simulation distribution="ct" scenario="(default)"/>
+    <InlineExecution>FALSE</InlineExecution>
+    <AdapterType>process</AdapterType>
+    <Configuration>
+      <File name="mapping.prop" type="form/mime64">
+I1R1ZSBKYW4gMjggMTY6MjE6MjUgRUVUIDIwMTQNCmFkYXB0ZXItY2xhc3M9Y29tLnNhdnZpb24u&#13;
+c2JtLmFkYXB0ZXJzLmVtYWlsLkVtYWlsQWRhcHRlcg0KbWFwLWNvbmZpZ3VyYXRvcj1jb20uc2F2&#13;
+dmlvbi5zYm0uYWRhcHRlcnMuZnJhbWV3b3JrLkdyb3VwTWFwQ29uZmlndXJhdG9yDQphZGFwdGVy&#13;
+LWNvbmZpZ3VyYXRvcj1jb20uc2F2dmlvbi5zYm0uYWRhcHRlcnMuZW1haWwuRW1haWxBZGFwdGVy&#13;
+Q29uZmlndXJhdG9yRGlhbG9nDQpBZGFwdGVyTmFtZT1HZW5lcmljRW1haWxBZGFwdGVyDQpsb2ct&#13;
+bGV2ZWw9MTANCnJ1bnRpbWUtbWFwcGVyPWNvbS5zYXZ2aW9uLnNibS5hZGFwdGVycy5mcmFtZXdv&#13;
+cmsuR3JvdXBNYXBwZXINCkFkYXB0ZXJDYXRlZ29yeT1FbWFpbEFkYXB0ZXJzDQppY29uPW1haWwu&#13;
+cG5nDQppbnN0YW5jZT10cnVlDQphZGFwbGV0PWZhbHNlDQo=
+</File>
+      <File name="config.xml" type="form/mime64">
+PGNvbmZpZ2Zvcm0gc3luY2hyb25vdXM9InRydWUiIHZlcnNpb249IjEuMyI+CiAgICA8YmxvY2sg&#13;
+dGl0bGU9Ik1lc3NhZ2UiIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjAiIGhpZGRl&#13;
+bj0iZmFsc2UiPgogICAgICAgIDxwYXJhbSBuYW1lPSJTRU5ERVIiIGFjY2Vzcz0iSSIgbGFiZWw9&#13;
+ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFs&#13;
+dWU9IiIgbWFuZGF0b3J5PSJ0cnVlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IlJFQ0lQSUVOVFMi&#13;
+IGFjY2Vzcz0iSSIgbGFiZWw9ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuNCIgdHlwZT0iamF2&#13;
+YS5sYW5nLk9iamVjdCIgdmFsdWU9IiIgbWFuZGF0b3J5PSJ0cnVlIi8+CiAgICAgICAgPHBhcmFt&#13;
+IG5hbWU9IkNDIiBhY2Nlc3M9IkkiIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjUi&#13;
+IHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSIiIG1hbmRhdG9yeT0iZmFsc2UiLz4KICAg&#13;
+ICAgICA8cGFyYW0gbmFtZT0iQkNDIiBhY2Nlc3M9IkkiIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29u&#13;
+ZmlnLmxhYmVsLjYiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSIiIG1hbmRhdG9yeT0i&#13;
+ZmFsc2UiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iU1VCSkVDVCIgYWNjZXNzPSJJIiBsYWJlbD0i&#13;
+ZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC45IiB0eXBlPSJqYXZhLmxhbmcuT2JqZWN0IiB2YWx1&#13;
+ZT0iIiBtYW5kYXRvcnk9InRydWUiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUEFSVF9DT1VOVCIg&#13;
+YWNjZXNzPSJISURERU4iIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjEyIiB0eXBl&#13;
+PSJqYXZhLmxhbmcuSW50ZWdlciIgdmFsdWU9IjEiIG1hbmRhdG9yeT0idHJ1ZSIvPgogICAgPC9i&#13;
+bG9jaz4KICAgIDxibG9jayB0aXRsZT0iUGFydCAxOiBWZWxvY2l0eSBUZW1wbGF0ZSIgbGFiZWw9&#13;
+ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMToxOlZlbG9jaXR5IFRlbXBsYXRlIiBoaWRkZW49&#13;
+ImZhbHNlIj4KICAgICAgICA8cGFyYW0gbmFtZT0iUExVR0lOLjEuTkFNRSIgYWNjZXNzPSJISURE&#13;
+RU4iIGxhYmVsPSJQbHVnaW4gbmFtZSIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IlZl&#13;
+bG9jaXR5IFRlbXBsYXRlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBMVUdJTi4xLk1JTUUiIGFj&#13;
+Y2Vzcz0iSElEREVOIiBsYWJlbD0iTWltZSB0eXBlIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2&#13;
+YWx1ZT0idGV4dC9wbGFpbiIvPgogICAgPC9ibG9jaz4KICAgIDxibG9jayB0aXRsZT0iQ29uZmln&#13;
+dXJhdGlvbiIgbGFiZWw9ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMiIgaGlkZGVuPSJmYWxz&#13;
+ZSI+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLmFsbG93Lm51bGwuY2MiIGFjY2Vzcz0i&#13;
+SElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2YS5s&#13;
+YW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVSVFku&#13;
+YWxsb3cubnVsbC5iY2MiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZp&#13;
+Zy5sYWJlbC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4KICAgICAg&#13;
+ICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFpbC50cmFuc3BvcnQucHJvdG9jb2wiIGFjY2Vzcz0i&#13;
+SElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2YS5s&#13;
+YW5nLlN0cmluZyIgdmFsdWU9InNtdHAiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVSVFku&#13;
+bWFpbC5zbXRwLmhvc3QiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZp&#13;
+Zy5sYWJlbC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiIvPgogICAgICAgIDxw&#13;
+YXJhbSBuYW1lPSJBVVRIX1VTRVIiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVy&#13;
+OmNvbmZpZy5sYWJlbC43IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iIiBtYW5kYXRv&#13;
+cnk9ImZhbHNlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IkFVVEhfUEFTU1dPUkQiIGFjY2Vzcz0i&#13;
+SElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC44IiB0eXBlPSJqYXZhLmxh&#13;
+bmcuU3RyaW5nIiB2YWx1ZT0iIiBtYW5kYXRvcnk9ImZhbHNlIi8+CiAgICA8L2Jsb2NrPgo8L2Nv&#13;
+bmZpZ2Zvcm0+Cg==
+</File>
+    </Configuration>
+  </ExternalWS>
+  <Link Name="Connection 4" default="true" webbpaID="1390912704225">
+    <Source cp="1">Follow up No Acknowledge</Source>
+    <Point x="372.0" y="180.0"/>
+    <Point x="642.0" y="180.0"/>
+    <Point x="642.0" y="84.0"/>
+    <Target cp="2">End 1</Target>
+  </Link>
+  <Link Name="No Ack on time" default="true" type="timeout" webbpaID="1390912704226" y="-1">
+    <Source cp="8">Waiting for DeliveryConfirmation</Source>
+    <Point x="336.0" y="108.0"/>
+    <Point x="336.0" y="144.0"/>
+    <Target cp="5">Follow up No Acknowledge</Target>
+  </Link>
+  <Link Name="Fully received" default="true" webbpaID="1390912704227">
+    <Source cp="1">Waiting for DeliveryConfirmation</Source>
+    <Point x="372.0" y="66.0"/>
+    <Point x="624.0" y="66.0"/>
+    <Target cp="3">End 1</Target>
+  </Link>
+  <Link Name="Connection 1" default="true" webbpaID="1390912704228">
+    <Source cp="1">Start</Source>
+    <Point x="84.0" y="66.0"/>
+    <Point x="228.0" y="66.0"/>
+    <Target cp="3">Waiting for DeliveryConfirmation</Target>
+  </Link>
+  <Dataslot Name="ConfirmationTimeout" category="User" name="ConfirmationTimeout" type="ABL_INTEGER" webbpaID="1390912704229">
+    <Label>Confirmation timeout</Label>
+    <DataType>ABL_INTEGER</DataType>
+    <DataValue unknown="false">0</DataValue>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Confirmation timeout" required="false" size="20" type="abl_text">
+      <Label>Confirmation timeout</Label>
+    </Format>
+  </Dataslot>
+  <Dataslot Name="FullyConfirmed" category="User" name="FullyConfirmed" type="ABL_LOGICAL" webbpaID="1390912704232">
+    <Label>Delivery is fully confirmed</Label>
+    <DataType>ABL_LOGICAL</DataType>
+    <DataValue unknown="false">false</DataValue>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Delivery is fully confirmed" type="checkbox">
+      <Label>Delivery is fully confirmed</Label>
+    </Format>
+  </Dataslot>
+  <Dataslot Name="Status" category="User" name="Status" type="ABL_CHARACTER" webbpaID="1390912704233">
+    <Label>Status</Label>
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false">false</DataValue>
+    <DataSize>30000</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Status" type="checkbox">
+      <Label>Status</Label>
+    </Format>
+    <Storage size="30000" type="CHAR"/>
+  </Dataslot>
+  <Performers>
+    <Performer name="@CREATOR" type="user" webbpaID="1390912704218"/>
+    <Performer name="MBAInterface" select="ANY" type="group" webbpaID="1390912704221"/>
+    <Performer category="EmailAdapters" class="com.savvion.sbm.adapters.email.EmailAdapter" generate="false" id="EmailAdapter 1" managed="true" name="GenericEmailAdapter" type="managed" webbpaID="1390912704230"/>
+  </Performers>
+  <TabularViewWorkstepOrder/>
+  <History>
+    <Created as="MBAInterfaceDeliveryToLocation" by="daniel.baciu" on="1390913486625">Tue Jan 28 14:51:26 EET 2014</Created>
+  </History>
+  <Repository/>
+  <Forms/>
+</Process>

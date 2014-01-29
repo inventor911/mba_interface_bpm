@@ -163,6 +163,7 @@ aXRpb24+Cg==</ConditionXMLEncoded>
     <Priority>MEDIUM</Priority>
     <Datainput>BPMSenderRecipient</Datainput>
     <Datainput>OnErrorEscalationList</Datainput>
+    <Dataoutput>SendingMailErrorText</Dataoutput>
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
     <InlineExecution>FALSE</InlineExecution>
@@ -175,6 +176,7 @@ aXRpb24+Cg==</ConditionXMLEncoded>
     <Priority>MEDIUM</Priority>
     <Datainput>BPMSenderRecipient</Datainput>
     <Datainput>OnErrorEscalationList</Datainput>
+    <Dataoutput>SendingMailErrorText</Dataoutput>
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
     <InlineExecution>FALSE</InlineExecution>
@@ -338,7 +340,7 @@ dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
     <Label>Sending e-mail Errors</Label>
     <DataType>ABL_CHARACTER</DataType>
     <DataValue unknown="false"/>
-    <DataSize>256</DataSize>
+    <DataSize>2256</DataSize>
     <IsPublic>true</IsPublic>
     <MultiLine>false</MultiLine>
     <BizManageAccessFlag>true</BizManageAccessFlag>
@@ -349,7 +351,7 @@ dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
     <Format editable="true" label="Sending e-mail Errors" password="false" required="false" size="20" type="abl_text">
       <Label>Sending e-mail Errors</Label>
     </Format>
-    <Storage size="256" type="CHAR"/>
+    <Storage size="2256" type="CHAR"/>
   </Dataslot>
   <Dataslot Name="PrcErrorHandlingInstructions" category="User" name="PrcErrorHandlingInstructions" type="ABL_CHARACTER">
     <Label>Handeling Instructions</Label>
@@ -462,6 +464,14 @@ dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
   <History>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390909304606" to="http://WF28:18793/sbm/deployment">Tue Jan 28 13:41:44 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390896504443" to="http://WF28:18793/sbm/deployment">Tue Jan 28 10:08:24 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390893052928" to="http://WF28:18793/sbm/deployment">Tue Jan 28 09:10:52 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390892251782" to="http://WF28:18793/sbm/deployment">Tue Jan 28 08:57:31 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390891682123" to="http://WF28:18793/sbm/deployment">Tue Jan 28 08:48:02 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390690027822" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:47:07 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390688834677" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:27:14 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390688766727" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:26:06 EET 2014</Deployed>
     <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390569754609" to="http://WF28:18793/sbm/deployment">Fri Jan 24 15:22:34 EET 2014</Deployed>
     <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390568227180" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:57:07 EET 2014</Deployed>
     <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390548610822" to="http://WF28:18793/sbm/deployment">Fri Jan 24 09:30:10 EET 2014</Deployed>
@@ -475,6 +485,25 @@ dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
     <Created as="MBAInterfaceHeartBeat" by="daniel.baciu" on="1390299616744">Tue Jan 21 12:20:16 EET 2014</Created>
     <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390394927951" to="http://WF28:18793/sbm/deployment">Wed Jan 22 14:48:47 EET 2014</Deployed>
     <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390489908839" to="http://WF28:18793/sbm/deployment">Thu Jan 23 17:11:48 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390573587376" to="http://WF28:18793/sbm/deployment">Fri Jan 24 16:26:27 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390660844880" to="http://WF28:18793/sbm/deployment">Sat Jan 25 16:40:44 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390683049654" to="http://WF28:18793/sbm/deployment">Sat Jan 25 22:50:49 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390690726923" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:58:46 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390691766296" to="http://WF28:18793/sbm/deployment">Sun Jan 26 01:16:06 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390692893312" to="http://WF28:18793/sbm/deployment">Sun Jan 26 01:34:53 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390693311465" to="http://WF28:18793/sbm/deployment">Sun Jan 26 01:41:51 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390694232433" to="http://WF28:18793/sbm/deployment">Sun Jan 26 01:57:12 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390805754238" to="http://WF28:18793/sbm/deployment">Mon Jan 27 08:55:54 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390808388761" to="http://WF28:18793/sbm/deployment">Mon Jan 27 09:39:48 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390808680139" to="http://WF28:18793/sbm/deployment">Mon Jan 27 09:44:40 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390817313978" to="http://WF28:18793/sbm/deployment">Mon Jan 27 12:08:33 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390817727115" to="http://WF28:18793/sbm/deployment">Mon Jan 27 12:15:27 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390817871550" to="http://WF28:18793/sbm/deployment">Mon Jan 27 12:17:51 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390818093882" to="http://WF28:18793/sbm/deployment">Mon Jan 27 12:21:33 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390913929337" to="http://WF28:18793/sbm/deployment">Tue Jan 28 14:58:49 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390914015414" to="http://WF28:18793/sbm/deployment">Tue Jan 28 15:00:15 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390919752209" to="http://WF28:18793/sbm/deployment">Tue Jan 28 16:35:52 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390920724883" to="http://WF28:18793/sbm/deployment">Tue Jan 28 16:52:04 EET 2014</Deployed>
   </History>
   <Repository/>
 </Process>

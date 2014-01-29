@@ -60,22 +60,50 @@
     </PerformingApp>
     <Form empty="true" name="Start.jsp" type="form/mime64"/>
     <Priority>MEDIUM</Priority>
+    <Dataoutput>ErrorHandlingTimeout</Dataoutput>
+    <Dataoutput>MessageQueueId</Dataoutput>
+    <Dataoutput>OnErrorEscalationList</Dataoutput>
+    <Dataoutput>BPMSenderRecipient</Dataoutput>
+    <Dataoutput>ErrorHandlingInstructions</Dataoutput>
+    <Dataoutput>MessageErrors</Dataoutput>
+    <Dataoutput>MessageInfo</Dataoutput>
+    <Format editable="true" input="ErrorHandlingTimeout" label="Error handling timeout" required="true" size="20" type="abl_text">
+      <Label>Error handling timeout</Label>
+    </Format>
+    <Format editable="true" input="MessageQueueId" label="Message Queue ID" password="false" required="true" size="40" type="abl_text">
+      <Label>Message Queue ID</Label>
+    </Format>
+    <Format editable="true" input="OnErrorEscalationList" label="On error escalation list" password="false" required="true" size="200" type="abl_text">
+      <Label>On error escalation list</Label>
+    </Format>
+    <Format editable="true" input="BPMSenderRecipient" label="Sender recipient" password="false" required="false" size="200" type="abl_text">
+      <Label>Sender recipient</Label>
+    </Format>
+    <Format editable="true" input="ErrorHandlingInstructions" label="Error Handeling Instructions" password="false" required="false" size="1000" type="abl_text">
+      <Label>Error Handeling Instructions</Label>
+    </Format>
+    <Format editable="true" input="MessageErrors" label="Errors on Processing Messages" password="false" required="false" size="1000" type="abl_text">
+      <Label>Errors on Processing Messages</Label>
+    </Format>
+    <Format editable="true" input="MessageInfo" label="Messahe Queue Info" password="false" required="false" size="300" type="abl_text">
+      <Label>Messahe Queue Info</Label>
+    </Format>
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
   </AtomicWS>
-  <AtomicWS height="60" id="" name="Handle Message Error" webbpaID="1390546161938" width="144" worktime="false" x="228" y="48">
+  <AtomicWS height="60" id="" name="Handle Message Error" webbpaID="1390546161938" width="144" worktime="false" x="312" y="48">
     <Label>Handle Message Error</Label>
     <AtomicType>ACTIVITY</AtomicType>
     <Performer>MBAInterface</Performer>
     <PerformBy>ANY</PerformBy>
     <PerformingApp>
       <Metadata name="TARGETTYPE">JSP</Metadata>
-      <Metadata name="TARGET">Activity1.jsp</Metadata>
+      <Metadata name="TARGET">HandleMessageError.jsp</Metadata>
     </PerformingApp>
     <Collaboration>
       <CollabFunction enabled="true" type="Reassign"/>
     </Collaboration>
-    <Form empty="true" name="Activity1.jsp" type="form/mime64"/>
+    <Form empty="true" name="HandleMessageError.jsp" type="form/mime64"/>
     <Instruction>@ErrorHandlingInstructions</Instruction>
     <Duration>@ErrorHandlingTimeout</Duration>
     <Priority>MEDIUM</Priority>
@@ -109,20 +137,21 @@
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
   </AtomicWS>
-  <ExternalWS height="72" id="" name="Escalate Error Handling Delay" webbpaID="1390546161955" width="144" x="228" y="156">
+  <ExternalWS height="72" id="" name="Escalate Error Handling Delay" webbpaID="1390546161955" width="144" x="312" y="144">
     <Performer category="EmailAdapters" generate="false" managed="true" name="GenericEmailAdapter">com.savvion.sbm.adapters.email.EmailAdapter</Performer>
     <PerformBy>execute</PerformBy>
     <ClosedConnection>TRUE</ClosedConnection>
     <Priority>MEDIUM</Priority>
     <Datainput>BPMSenderRecipient</Datainput>
     <Datainput>OnErrorEscalationList</Datainput>
+    <Dataoutput>SendingMailError</Dataoutput>
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
     <InlineExecution>FALSE</InlineExecution>
     <AdapterType>process</AdapterType>
     <Configuration>
       <File name="mapping.prop" type="form/mime64">
-I0ZyaSBKYW4gMjQgMTQ6NDA6MTAgRUVUIDIwMTQNCmFkYXB0ZXItY2xhc3M9Y29tLnNhdnZpb24u&#13;
+I1N1biBKYW4gMjYgMDE6Mzc6MzggRUVUIDIwMTQNCmFkYXB0ZXItY2xhc3M9Y29tLnNhdnZpb24u&#13;
 c2JtLmFkYXB0ZXJzLmVtYWlsLkVtYWlsQWRhcHRlcg0KbWFwLWNvbmZpZ3VyYXRvcj1jb20uc2F2&#13;
 dmlvbi5zYm0uYWRhcHRlcnMuZnJhbWV3b3JrLkdyb3VwTWFwQ29uZmlndXJhdG9yDQphZGFwdGVy&#13;
 LWNvbmZpZ3VyYXRvcj1jb20uc2F2dmlvbi5zYm0uYWRhcHRlcnMuZW1haWwuRW1haWxBZGFwdGVy&#13;
@@ -147,92 +176,101 @@ ZmFsc2UiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iU1VCSkVDVCIgYWNjZXNzPSJJIiBsYWJlbD0i&#13
 ZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC45IiB0eXBlPSJqYXZhLmxhbmcuT2JqZWN0IiB2YWx1&#13;
 ZT0iIiBtYW5kYXRvcnk9InRydWUiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUEFSVF9DT1VOVCIg&#13;
 YWNjZXNzPSJISURERU4iIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjEyIiB0eXBl&#13;
-PSJqYXZhLmxhbmcuSW50ZWdlciIgdmFsdWU9IjEiIG1hbmRhdG9yeT0idHJ1ZSIvPgogICAgPC9i&#13;
-bG9jaz4KICAgIDxibG9jayB0aXRsZT0iUGFydCAxOiBWZWxvY2l0eSBUZW1wbGF0ZSIgbGFiZWw9&#13;
-ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMToxOlZlbG9jaXR5IFRlbXBsYXRlIiBoaWRkZW49&#13;
-ImZhbHNlIj4KICAgICAgICA8cGFyYW0gbmFtZT0iUExVR0lOLjEuTkFNRSIgYWNjZXNzPSJISURE&#13;
-RU4iIGxhYmVsPSJQbHVnaW4gbmFtZSIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IlZl&#13;
-bG9jaXR5IFRlbXBsYXRlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBMVUdJTi4xLk1JTUUiIGFj&#13;
-Y2Vzcz0iSElEREVOIiBsYWJlbD0iTWltZSB0eXBlIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2&#13;
-YWx1ZT0idGV4dC9wbGFpbiIvPgogICAgPC9ibG9jaz4KICAgIDxibG9jayB0aXRsZT0iQ29uZmln&#13;
-dXJhdGlvbiIgbGFiZWw9ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMiIgaGlkZGVuPSJmYWxz&#13;
-ZSI+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLmFsbG93Lm51bGwuY2MiIGFjY2Vzcz0i&#13;
-SElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2YS5s&#13;
-YW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVSVFku&#13;
-YWxsb3cubnVsbC5iY2MiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZp&#13;
-Zy5sYWJlbC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4KICAgICAg&#13;
-ICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFpbC50cmFuc3BvcnQucHJvdG9jb2wiIGFjY2Vzcz0i&#13;
-SElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2YS5s&#13;
-YW5nLlN0cmluZyIgdmFsdWU9InNtdHAiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVSVFku&#13;
-bWFpbC5zbXRwLmhvc3QiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZp&#13;
-Zy5sYWJlbC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiIvPgogICAgICAgIDxw&#13;
-YXJhbSBuYW1lPSJBVVRIX1VTRVIiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVy&#13;
-OmNvbmZpZy5sYWJlbC43IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iIiBtYW5kYXRv&#13;
-cnk9ImZhbHNlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IkFVVEhfUEFTU1dPUkQiIGFjY2Vzcz0i&#13;
-SElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC44IiB0eXBlPSJqYXZhLmxh&#13;
-bmcuU3RyaW5nIiB2YWx1ZT0iIiBtYW5kYXRvcnk9ImZhbHNlIi8+CiAgICA8L2Jsb2NrPgo8L2Nv&#13;
-bmZpZ2Zvcm0+Cg==
+PSJqYXZhLmxhbmcuSW50ZWdlciIgdmFsdWU9IjAiIG1hbmRhdG9yeT0idHJ1ZSIvPgogICAgPC9i&#13;
+bG9jaz4KICAgIDxibG9jayB0aXRsZT0iQ29uZmlndXJhdGlvbiIgbGFiZWw9ImVtYWlsYWRhcHRl&#13;
+cjpjb25maWcubGFiZWwuMiIgaGlkZGVuPSJmYWxzZSI+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBS&#13;
+T1BFUlRZLmFsbG93Lm51bGwuY2MiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVy&#13;
+OmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4K&#13;
+ICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkuYWxsb3cubnVsbC5iY2MiIGFjY2Vzcz0iSElE&#13;
+REVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2YS5sYW5n&#13;
+LlN0cmluZyIgdmFsdWU9InRydWUiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFp&#13;
+bC50cmFuc3BvcnQucHJvdG9jb2wiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVy&#13;
+OmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InNtdHBzIi8+&#13;
+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwuc210cC5ob3N0IiBhY2Nlc3M9IkhJ&#13;
+RERFTiIgbGFiZWw9ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMTMiIHR5cGU9ImphdmEubGFu&#13;
+Zy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1haWwucHJvcGVydGllczpvZWJwcy5lbWFpbC5vdXRn&#13;
+b2luZy5zZXJ2ZXJ9Ii8+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwudHJhbnNw&#13;
+b3J0LnBvcnQiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJl&#13;
+bC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IjQ2NSIvPgogICAgICAgIDxwYXJh&#13;
+bSBuYW1lPSJBVVRIX1VTRVIiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNv&#13;
+bmZpZy5sYWJlbC43IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWls&#13;
+LnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyLnVzZXJ9IiBtYW5kYXRvcnk9&#13;
+ImZhbHNlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IkFVVEhfUEFTU1dPUkQiIGFjY2Vzcz0iSElE&#13;
+REVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC44IiB0eXBlPSJqYXZhLmxhbmcu&#13;
+U3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29p&#13;
+bmcuc2VydmVyLnBhc3N3b3JkfSIgbWFuZGF0b3J5PSJmYWxzZSIvPgogICAgICAgIDxwYXJhbSBu&#13;
+YW1lPSJFWENFUFRJT05fT1VUUFVUIiBhY2Nlc3M9IkhJRERFTiIgbGFiZWw9IkVycm9yIGFzIG91&#13;
+dHB1dCIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InRydWUiIG1hbmRhdG9yeT0iZmFs&#13;
+c2UiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iRVhDRVBUSU9OIiBhY2Nlc3M9Ik8iIGxhYmVsPSJF&#13;
+cnJvciIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiIgbWFuZGF0b3J5PSJmYWxzZSIv&#13;
+PgogICAgPC9ibG9jaz4KPC9jb25maWdmb3JtPgo=
 </File>
       <File name="input.map" type="form/mime64">
 PG1hcCB2ZXJzaW9uPSIxLjMiPgogIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5tYWlsLnRyYW5zcG9y&#13;
-dC5wcm90b2NvbCIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InNtdHAiLz4KICA8cGFy&#13;
-YW0gbmFtZT0iU1VCSkVDVCIgdHlwZT0iamF2YS5sYW5nLk9iamVjdCIgdmFsdWU9Ind3Ii8+CiAg&#13;
-PHBhcmFtIG5hbWU9IlBMVUdJTi4xLk1JTUUiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVl&#13;
-PSJ0ZXh0L3BsYWluIi8+CiAgPHBhcmFtIG5hbWU9IlBMVUdJTi4xLk5BTUUiIHR5cGU9ImphdmEu&#13;
-bGFuZy5TdHJpbmciIHZhbHVlPSJWZWxvY2l0eSBUZW1wbGF0ZSIvPgogIDxwYXJhbSBuYW1lPSJC&#13;
-Q0MiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSIiLz4KICA8cGFyYW0gbmFtZT0iUFJP&#13;
-UEVSVFkubWFpbC5zbXRwLmhvc3QiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIiLz4K&#13;
-ICA8cGFyYW0gbmFtZT0iUEFSVF9DT1VOVCIgdHlwZT0iamF2YS5sYW5nLkludGVnZXIiIHZhbHVl&#13;
-PSIxIi8+CiAgPHBhcmFtIG5hbWU9IkFVVEhfVVNFUiIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIg&#13;
-dmFsdWU9IiIvPgogIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5hbGxvdy5udWxsLmNjIiB0eXBlPSJq&#13;
-YXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0idHJ1ZSIvPgogIDxwYXJhbSBuYW1lPSJTRU5ERVIiIHR5&#13;
-cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJAQlBNU2VuZGVyUmVjaXBpZW50Ii8+CiAgPHBh&#13;
-cmFtIG5hbWU9IlJFQ0lQSUVOVFMiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSJAT25F&#13;
-cnJvckVzY2FsYXRpb25MaXN0Ii8+CiAgPHBhcmFtIG5hbWU9IkNDIiB0eXBlPSJqYXZhLmxhbmcu&#13;
-T2JqZWN0IiB2YWx1ZT0iIi8+CiAgPHBhcmFtIG5hbWU9IkFVVEhfUEFTU1dPUkQiIHR5cGU9Imph&#13;
-dmEubGFuZy5TdHJpbmciIHZhbHVlPSIiLz4KICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkuYWxsb3cu&#13;
-bnVsbC5iY2MiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJ0cnVlIi8+CjwvbWFwPgo=
+dC5wcm90b2NvbCIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InNtdHBzIi8+CiAgPHBh&#13;
+cmFtIG5hbWU9IlNVQkpFQ1QiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSJJbnRlcmZh&#13;
+Y2U6IE1lZXNhZ2UgZXJyb3Igbm90IGhhbmRsZWQgb24gdGltZSIvPgogIDxwYXJhbSBuYW1lPSJQ&#13;
+Uk9QRVJUWS5tYWlsLnRyYW5zcG9ydC5wb3J0IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1&#13;
+ZT0iNDY1Ii8+CiAgPHBhcmFtIG5hbWU9IkJDQyIgdHlwZT0iamF2YS5sYW5nLk9iamVjdCIgdmFs&#13;
+dWU9IiIvPgogIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5tYWlsLnNtdHAuaG9zdCIgdHlwZT0iamF2&#13;
+YS5sYW5nLlN0cmluZyIgdmFsdWU9IiR7b2VicHNlbWFpbC5wcm9wZXJ0aWVzOm9lYnBzLmVtYWls&#13;
+Lm91dGdvaW5nLnNlcnZlcn0iLz4KICA8cGFyYW0gbmFtZT0iUEFSVF9DT1VOVCIgdHlwZT0iamF2&#13;
+YS5sYW5nLkludGVnZXIiIHZhbHVlPSIwIi8+CiAgPHBhcmFtIG5hbWU9IkFVVEhfVVNFUiIgdHlw&#13;
+ZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiR7b2VicHNlbWFpbC5wcm9wZXJ0aWVzOm9lYnBz&#13;
+LmVtYWlsLm91dGdvaW5nLnNlcnZlci51c2VyfSIvPgogIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5h&#13;
+bGxvdy5udWxsLmNjIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0idHJ1ZSIvPgogIDxw&#13;
+YXJhbSBuYW1lPSJTRU5ERVIiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJAQlBNU2Vu&#13;
+ZGVyUmVjaXBpZW50Ii8+CiAgPHBhcmFtIG5hbWU9IlJFQ0lQSUVOVFMiIHR5cGU9ImphdmEubGFu&#13;
+Zy5PYmplY3QiIHZhbHVlPSJAT25FcnJvckVzY2FsYXRpb25MaXN0Ii8+CiAgPHBhcmFtIG5hbWU9&#13;
+IkVYQ0VQVElPTl9PVVRQVVQiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJ0cnVlIi8+&#13;
+CiAgPHBhcmFtIG5hbWU9IkNDIiB0eXBlPSJqYXZhLmxhbmcuT2JqZWN0IiB2YWx1ZT0iIi8+CiAg&#13;
+PHBhcmFtIG5hbWU9IkFVVEhfUEFTU1dPUkQiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVl&#13;
+PSIke29lYnBzZW1haWwucHJvcGVydGllczpvZWJwcy5lbWFpbC5vdXRnb2luZy5zZXJ2ZXIucGFz&#13;
+c3dvcmR9Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLmFsbG93Lm51bGwuYmNjIiB0eXBlPSJq&#13;
+YXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0idHJ1ZSIvPgo8L21hcD4K
 </File>
       <File name="output.map" type="form/mime64">
-PG1hcCB2ZXJzaW9uPSIxLjMiPgo8L21hcD4K
+PG1hcCB2ZXJzaW9uPSIxLjMiPgogIDxwYXJhbSBuYW1lPSJTZW5kaW5nTWFpbEVycm9yIiB0eXBl&#13;
+PSJjb20ucHJvZ3Jlc3MubGFuZy5DaGFyYWN0ZXIiIHZhbHVlPSJARVhDRVBUSU9OIi8+CjwvbWFw&#13;
+Pgo=
 </File>
     </Configuration>
   </ExternalWS>
-  <Link Name="Connection 6" default="true" webbpaID="1390546161956">
-    <Label>Connection 6</Label>
-    <Source cp="3">Escalate Error Handling Delay</Source>
-    <Point x="228.0" y="192.0"/>
-    <Point x="208.0" y="192.0"/>
-    <Point x="208.0" y="93.0"/>
-    <Point x="228.0" y="93.0"/>
-    <Target cp="10">Handle Message Error</Target>
-  </Link>
-  <Link Name="Connection 5" default="true" type="timeout" value="Connection 5" webbpaID="1390546161957">
-    <Label>Connection 5</Label>
-    <Source cp="8">Handle Message Error</Source>
-    <Point x="336.0" y="108.0"/>
-    <Point x="336.0" y="156.0"/>
-    <Target cp="5">Escalate Error Handling Delay</Target>
-  </Link>
-  <Link Name="Connection 1" default="true" webbpaID="1390546161940">
-    <Label>Connection 1</Label>
+  <Link Name="Connection 3" default="true" webbpaID="1390546161962">
+    <Label>Connection 3</Label>
     <Source cp="1">Start</Source>
     <Point x="96.0" y="78.0"/>
-    <Point x="228.0" y="78.0"/>
+    <Point x="312.0" y="78.0"/>
     <Target cp="3">Handle Message Error</Target>
   </Link>
   <Link Name="Connection 2" default="true" webbpaID="1390546161939">
     <Label>Connection 2</Label>
     <Source cp="1">Handle Message Error</Source>
-    <Point x="372.0" y="78.0"/>
+    <Point x="456.0" y="78.0"/>
     <Point x="528.0" y="78.0"/>
     <Target cp="3">End 1</Target>
   </Link>
+  <Link Name="Connection 5" default="true" type="timeout" value="Connection 5" webbpaID="1390546161957">
+    <Label>Connection 5</Label>
+    <Source cp="8">Handle Message Error</Source>
+    <Point x="420.0" y="108.0"/>
+    <Point x="420.0" y="144.0"/>
+    <Target cp="5">Escalate Error Handling Delay</Target>
+  </Link>
+  <Link Name="Connection 6" default="true" webbpaID="1390546161956">
+    <Label>Connection 6</Label>
+    <Source cp="3">Escalate Error Handling Delay</Source>
+    <Point x="312.0" y="180.0"/>
+    <Point x="292.0" y="180.0"/>
+    <Point x="292.0" y="93.0"/>
+    <Point x="312.0" y="93.0"/>
+    <Target cp="10">Handle Message Error</Target>
+  </Link>
   <Dataslot Name="SendingMailError" category="User" name="SendingMailError" type="ABL_CHARACTER" webbpaID="1390401897106">
-    <Label>Sending mail</Label>
+    <Label>Error on Sending mail</Label>
     <DataType>ABL_CHARACTER</DataType>
     <DataValue unknown="false"/>
-    <DataSize>256</DataSize>
+    <DataSize>2256</DataSize>
     <IsPublic>true</IsPublic>
     <MultiLine>false</MultiLine>
     <BizManageAccessFlag>true</BizManageAccessFlag>
@@ -240,16 +278,16 @@ PG1hcCB2ZXJzaW9uPSIxLjMiPgo8L21hcD4K
     <Access type="BIZ_MANAGE_ACCESS" value="true"/>
     <Access type="GLOBAL" value="false"/>
     <Access type="BIZ_SITE_COLUMN" value="false"/>
-    <Format editable="true" label="Sending mail" password="false" required="false" size="20" type="abl_text">
-      <Label>Sending mail</Label>
+    <Format editable="true" label="Error on Sending mail" password="false" required="false" size="20" type="abl_text">
+      <Label>Error on Sending mail</Label>
     </Format>
-    <Storage size="256" type="CHAR"/>
+    <Storage size="2256" type="CHAR"/>
   </Dataslot>
   <Dataslot Name="ErrorHandlingInstructions" category="User" name="ErrorHandlingInstructions" type="ABL_CHARACTER" webbpaID="1390401897110">
     <Label>Error Handeling Instructions</Label>
     <DataType>ABL_CHARACTER</DataType>
     <DataValue unknown="false"/>
-    <DataSize>256</DataSize>
+    <DataSize>1000</DataSize>
     <IsPublic>true</IsPublic>
     <MultiLine>false</MultiLine>
     <BizManageAccessFlag>true</BizManageAccessFlag>
@@ -260,7 +298,7 @@ PG1hcCB2ZXJzaW9uPSIxLjMiPgo8L21hcD4K
     <Format editable="true" label="Error Handeling Instructions" password="false" required="false" size="20" type="abl_text">
       <Label>Error Handeling Instructions</Label>
     </Format>
-    <Storage size="256" type="CHAR"/>
+    <Storage size="1000" type="CHAR"/>
   </Dataslot>
   <Dataslot Name="OnErrorEscalationList" category="User" name="OnErrorEscalationList" type="ABL_CHARACTER" webbpaID="1390546161930">
     <DataType>ABL_CHARACTER</DataType>
@@ -294,7 +332,7 @@ PG1hcCB2ZXJzaW9uPSIxLjMiPgo8L21hcD4K
     <Label>Messahe Queue Info</Label>
     <DataType>ABL_CHARACTER</DataType>
     <DataValue unknown="false"/>
-    <DataSize>256</DataSize>
+    <DataSize>500</DataSize>
     <IsPublic>true</IsPublic>
     <MultiLine>false</MultiLine>
     <BizManageAccessFlag>true</BizManageAccessFlag>
@@ -305,7 +343,7 @@ PG1hcCB2ZXJzaW9uPSIxLjMiPgo8L21hcD4K
     <Format editable="true" label="Messahe Queue Info" password="false" required="false" size="20" type="abl_text">
       <Label>Messahe Queue Info</Label>
     </Format>
-    <Storage size="256" type="CHAR"/>
+    <Storage size="500" type="CHAR"/>
   </Dataslot>
   <Dataslot Name="MessageQueueId" category="User" name="MessageQueueId" type="ABL_CHARACTER" webbpaID="1390546161933">
     <Label>Message Queue ID</Label>
@@ -328,7 +366,7 @@ PG1hcCB2ZXJzaW9uPSIxLjMiPgo8L21hcD4K
     <Label>Errors on Processing Messages</Label>
     <DataType>ABL_CHARACTER</DataType>
     <DataValue unknown="false"/>
-    <DataSize>256</DataSize>
+    <DataSize>1000</DataSize>
     <IsPublic>true</IsPublic>
     <MultiLine>false</MultiLine>
     <BizManageAccessFlag>true</BizManageAccessFlag>
@@ -339,7 +377,7 @@ PG1hcCB2ZXJzaW9uPSIxLjMiPgo8L21hcD4K
     <Format editable="true" label="Errors on Processing Messages" password="false" required="false" size="20" type="abl_text">
       <Label>Errors on Processing Messages</Label>
     </Format>
-    <Storage size="256" type="CHAR"/>
+    <Storage size="1000" type="CHAR"/>
   </Dataslot>
   <Dataslot Name="ErrorHandlingTimeout" category="User" name="ErrorHandlingTimeout" type="ABL_INT64" webbpaID="1390546161937">
     <DataType>ABL_INT64</DataType>
@@ -362,21 +400,31 @@ PG1hcCB2ZXJzaW9uPSIxLjMiPgo8L21hcD4K
   </Performers>
   <TabularViewWorkstepOrder/>
   <History>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390566841255" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:34:01 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390566337344" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:25:37 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390566122585" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:22:02 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390489910606" to="http://WF28:18793/sbm/deployment">Thu Jan 23 17:11:50 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390481727809" to="http://WF28:18793/sbm/deployment">Thu Jan 23 14:55:27 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390401902448" to="http://WF28:18793/sbm/deployment">Wed Jan 22 16:45:02 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390382668175" to="http://WF28:18793/sbm/deployment">Wed Jan 22 11:24:28 EET 2014</Deployed>
-    <Created as="MBAInterfaceMessageError" by="daniel.baciu" on="1390367888600">Wed Jan 22 07:18:08 EET 2014</Created>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390394943623" to="http://WF28:18793/sbm/deployment">Wed Jan 22 14:49:03 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390475424811" to="http://WF28:18793/sbm/deployment">Thu Jan 23 13:10:24 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390475522507" to="http://WF28:18793/sbm/deployment">Thu Jan 23 13:12:02 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390476099884" to="http://WF28:18793/sbm/deployment">Thu Jan 23 13:21:39 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390548612244" to="http://WF28:18793/sbm/deployment">Fri Jan 24 09:30:12 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390553422254" to="http://WF28:18793/sbm/deployment">Fri Jan 24 10:50:22 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390909306064" to="http://WF28:18793/sbm/deployment">Tue Jan 28 13:41:46 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390896517684" to="http://WF28:18793/sbm/deployment">Tue Jan 28 10:08:37 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390891423422" to="http://WF28:18793/sbm/deployment">Tue Jan 28 08:43:43 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390690728879" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:58:48 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1390553939493" to="http://WF28:18793/sbm/deployment">Fri Jan 24 10:58:59 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390553422254" to="http://WF28:18793/sbm/deployment">Fri Jan 24 10:50:22 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390548612244" to="http://WF28:18793/sbm/deployment">Fri Jan 24 09:30:12 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390476099884" to="http://WF28:18793/sbm/deployment">Thu Jan 23 13:21:39 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390475522507" to="http://WF28:18793/sbm/deployment">Thu Jan 23 13:12:02 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390475424811" to="http://WF28:18793/sbm/deployment">Thu Jan 23 13:10:24 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390394943623" to="http://WF28:18793/sbm/deployment">Wed Jan 22 14:49:03 EET 2014</Deployed>
+    <Created as="MBAInterfaceMessageError" by="daniel.baciu" on="1390367888600">Wed Jan 22 07:18:08 EET 2014</Created>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390382668175" to="http://WF28:18793/sbm/deployment">Wed Jan 22 11:24:28 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390401902448" to="http://WF28:18793/sbm/deployment">Wed Jan 22 16:45:02 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390481727809" to="http://WF28:18793/sbm/deployment">Thu Jan 23 14:55:27 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390489910606" to="http://WF28:18793/sbm/deployment">Thu Jan 23 17:11:50 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390566122585" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:22:02 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390566337344" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:25:37 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390566841255" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:34:01 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390690029518" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:47:09 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390891683852" to="http://WF28:18793/sbm/deployment">Tue Jan 28 08:48:03 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390913931225" to="http://WF28:18793/sbm/deployment">Tue Jan 28 14:58:51 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390914016861" to="http://WF28:18793/sbm/deployment">Tue Jan 28 15:00:16 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390919754152" to="http://WF28:18793/sbm/deployment">Tue Jan 28 16:35:54 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390920727817" to="http://WF28:18793/sbm/deployment">Tue Jan 28 16:52:07 EET 2014</Deployed>
   </History>
   <Repository/>
   <Forms/>

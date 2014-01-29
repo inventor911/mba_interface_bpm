@@ -9,7 +9,7 @@
     <Pools>
       <Pool BoundaryVisible="true" Id="MBAInterfaceHeartBeat" Process="MBAInterfaceHeartBeat">
         <Lanes>
-          <Lane Id="1" Name="ProcessMessage" ParentLane="MBAInterfaceHeartBeat">
+          <Lane Id="1" Name="Process Message" ParentLane="MBAInterfaceHeartBeat">
             <NodeGraphicsInfos>
               <NodeGraphicsInfo BorderColor="0,0,0" FillColor="51,102,255" Height="192px" Width="0px">
                 <Coordinates XCoordinate="0px" YCoordinate="0px"/>
@@ -193,6 +193,7 @@ aXRpb24+Cg==</ConditionXMLEncoded>
     <Priority>MEDIUM</Priority>
     <Datainput>BPMSenderRecipient</Datainput>
     <Datainput>OnErrorEscalationList</Datainput>
+    <Dataoutput>SendingMailErrorText</Dataoutput>
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
     <InlineExecution>FALSE</InlineExecution>
@@ -229,26 +230,35 @@ bG9jaz4KICAgIDxibG9jayB0aXRsZT0iUGFydCAxOiBWZWxvY2l0eSBUZW1wbGF0ZSIgbGFiZWw9&#13
 ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMToxOlZlbG9jaXR5IFRlbXBsYXRlIiBoaWRkZW49&#13;
 ImZhbHNlIj4KICAgICAgICA8cGFyYW0gbmFtZT0iUExVR0lOLjEuTkFNRSIgYWNjZXNzPSJISURE&#13;
 RU4iIGxhYmVsPSJQbHVnaW4gbmFtZSIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IlZl&#13;
-bG9jaXR5IFRlbXBsYXRlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBMVUdJTi4xLk1JTUUiIGFj&#13;
-Y2Vzcz0iSElEREVOIiBsYWJlbD0iTWltZSB0eXBlIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2&#13;
-YWx1ZT0idGV4dC9wbGFpbiIvPgogICAgPC9ibG9jaz4KICAgIDxibG9jayB0aXRsZT0iQ29uZmln&#13;
-dXJhdGlvbiIgbGFiZWw9ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMiIgaGlkZGVuPSJmYWxz&#13;
-ZSI+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLmFsbG93Lm51bGwuY2MiIGFjY2Vzcz0i&#13;
-SElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2YS5s&#13;
-YW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVSVFku&#13;
-YWxsb3cubnVsbC5iY2MiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZp&#13;
-Zy5sYWJlbC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4KICAgICAg&#13;
-ICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFpbC50cmFuc3BvcnQucHJvdG9jb2wiIGFjY2Vzcz0i&#13;
-SElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2YS5s&#13;
-YW5nLlN0cmluZyIgdmFsdWU9InNtdHAiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVSVFku&#13;
-bWFpbC5zbXRwLmhvc3QiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZp&#13;
-Zy5sYWJlbC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiIvPgogICAgICAgIDxw&#13;
-YXJhbSBuYW1lPSJBVVRIX1VTRVIiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVy&#13;
-OmNvbmZpZy5sYWJlbC43IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iIiBtYW5kYXRv&#13;
-cnk9ImZhbHNlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IkFVVEhfUEFTU1dPUkQiIGFjY2Vzcz0i&#13;
-SElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC44IiB0eXBlPSJqYXZhLmxh&#13;
-bmcuU3RyaW5nIiB2YWx1ZT0iIiBtYW5kYXRvcnk9ImZhbHNlIi8+CiAgICA8L2Jsb2NrPgo8L2Nv&#13;
-bmZpZ2Zvcm0+Cg==
+bG9jaXR5IFRlbXBsYXRlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBMVUdJTi4xLkNPTkYiIGFj&#13;
+Y2Vzcz0iSElEREVOIiBsYWJlbD0iUGx1Z2luIGNvbmZpZ3VyYXRpb24iIHR5cGU9ImphdmEubGFu&#13;
+Zy5TdHJpbmciIHZhbHVlPSIlMEElM0NlbnRlcit0ZXh0K2hlcmUlM0UiLz4KICAgICAgICA8cGFy&#13;
+YW0gbmFtZT0iUExVR0lOLjEuTUlNRSIgYWNjZXNzPSJISURERU4iIGxhYmVsPSJNaW1lIHR5cGUi&#13;
+IHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJ0ZXh0L3BsYWluIi8+CiAgICA8L2Jsb2Nr&#13;
+PgogICAgPGJsb2NrIHRpdGxlPSJDb25maWd1cmF0aW9uIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNv&#13;
+bmZpZy5sYWJlbC4yIiBoaWRkZW49ImZhbHNlIj4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVS&#13;
+VFkuYWxsb3cubnVsbC5jYyIgYWNjZXNzPSJISURERU4iIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29u&#13;
+ZmlnLmxhYmVsLjEzIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0idHJ1ZSIvPgogICAg&#13;
+ICAgIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5hbGxvdy5udWxsLmJjYyIgYWNjZXNzPSJISURERU4i&#13;
+IGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjEzIiB0eXBlPSJqYXZhLmxhbmcuU3Ry&#13;
+aW5nIiB2YWx1ZT0idHJ1ZSIvPgogICAgICAgIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5tYWlsLnRy&#13;
+YW5zcG9ydC5wcm90b2NvbCIgYWNjZXNzPSJISURERU4iIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29u&#13;
+ZmlnLmxhYmVsLjEzIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0ic210cCIvPgogICAg&#13;
+ICAgIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5tYWlsLnNtdHAuaG9zdCIgYWNjZXNzPSJISURERU4i&#13;
+IGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjEzIiB0eXBlPSJqYXZhLmxhbmcuU3Ry&#13;
+aW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcu&#13;
+c2VydmVyfSIvPgogICAgICAgIDxwYXJhbSBuYW1lPSJBVVRIX1VTRVIiIGFjY2Vzcz0iSElEREVO&#13;
+IiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC43IiB0eXBlPSJqYXZhLmxhbmcuU3Ry&#13;
+aW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcu&#13;
+c2VydmVyLnVzZXJ9IiBtYW5kYXRvcnk9ImZhbHNlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IkFV&#13;
+VEhfUEFTU1dPUkQiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5s&#13;
+YWJlbC44IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3Bl&#13;
+cnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyLnBhc3N3b3JkfSIgbWFuZGF0b3J5PSJm&#13;
+YWxzZSIvPgogICAgICAgIDxwYXJhbSBuYW1lPSJFWENFUFRJT05fT1VUUFVUIiBhY2Nlc3M9IkhJ&#13;
+RERFTiIgbGFiZWw9IkVycm9yIGFzIG91dHB1dCIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFs&#13;
+dWU9InRydWUiIG1hbmRhdG9yeT0iZmFsc2UiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iRVhDRVBU&#13;
+SU9OIiBhY2Nlc3M9Ik8iIGxhYmVsPSJFcnJvciIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFs&#13;
+dWU9IiIgbWFuZGF0b3J5PSJmYWxzZSIvPgogICAgPC9ibG9jaz4KPC9jb25maWdmb3JtPgo=
 </File>
       <File name="input.map" type="form/mime64">
 PG1hcCB2ZXJzaW9uPSIxLjMiPgogIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5tYWlsLnRyYW5zcG9y&#13;
@@ -259,20 +269,28 @@ bSBuYW1lPSJQTFVHSU4uMS5NSU1FIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0idGV4&#13
 dC9wbGFpbiIvPgogIDxwYXJhbSBuYW1lPSJQTFVHSU4uMS5OQU1FIiB0eXBlPSJqYXZhLmxhbmcu&#13;
 U3RyaW5nIiB2YWx1ZT0iVmVsb2NpdHkgVGVtcGxhdGUiLz4KICA8cGFyYW0gbmFtZT0iQkNDIiB0&#13;
 eXBlPSJqYXZhLmxhbmcuT2JqZWN0IiB2YWx1ZT0iIi8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZ&#13;
-Lm1haWwuc210cC5ob3N0IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iIi8+CiAgPHBh&#13;
-cmFtIG5hbWU9IlBBUlRfQ09VTlQiIHR5cGU9ImphdmEubGFuZy5JbnRlZ2VyIiB2YWx1ZT0iMSIv&#13;
-PgogIDxwYXJhbSBuYW1lPSJBVVRIX1VTRVIiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVl&#13;
-PSIiLz4KICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkuYWxsb3cubnVsbC5jYyIgdHlwZT0iamF2YS5s&#13;
-YW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4KICA8cGFyYW0gbmFtZT0iU0VOREVSIiB0eXBlPSJq&#13;
-YXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iQEJQTVNlbmRlclJlY2lwaWVudCIvPgogIDxwYXJhbSBu&#13;
-YW1lPSJSRUNJUElFTlRTIiB0eXBlPSJqYXZhLmxhbmcuT2JqZWN0IiB2YWx1ZT0iQE9uRXJyb3JF&#13;
-c2NhbGF0aW9uTGlzdCIvPgogIDxwYXJhbSBuYW1lPSJDQyIgdHlwZT0iamF2YS5sYW5nLk9iamVj&#13;
-dCIgdmFsdWU9IiIvPgogIDxwYXJhbSBuYW1lPSJBVVRIX1BBU1NXT1JEIiB0eXBlPSJqYXZhLmxh&#13;
-bmcuU3RyaW5nIiB2YWx1ZT0iIi8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLmFsbG93Lm51bGwu&#13;
-YmNjIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0idHJ1ZSIvPgo8L21hcD4K
+Lm1haWwuc210cC5ob3N0IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2Vt&#13;
+YWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyfSIvPgogIDxwYXJhbSBu&#13;
+YW1lPSJQQVJUX0NPVU5UIiB0eXBlPSJqYXZhLmxhbmcuSW50ZWdlciIgdmFsdWU9IjEiLz4KICA8&#13;
+cGFyYW0gbmFtZT0iQVVUSF9VU0VSIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtv&#13;
+ZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyLnVzZXJ9Ii8+&#13;
+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLmFsbG93Lm51bGwuY2MiIHR5cGU9ImphdmEubGFuZy5T&#13;
+dHJpbmciIHZhbHVlPSJ0cnVlIi8+CiAgPHBhcmFtIG5hbWU9IlNFTkRFUiIgdHlwZT0iamF2YS5s&#13;
+YW5nLlN0cmluZyIgdmFsdWU9IkBCUE1TZW5kZXJSZWNpcGllbnQiLz4KICA8cGFyYW0gbmFtZT0i&#13;
+UkVDSVBJRU5UUyIgdHlwZT0iamF2YS5sYW5nLk9iamVjdCIgdmFsdWU9IkBPbkVycm9yRXNjYWxh&#13;
+dGlvbkxpc3QiLz4KICA8cGFyYW0gbmFtZT0iUExVR0lOLjEuQ09ORiIgdHlwZT0iamF2YS5sYW5n&#13;
+LlN0cmluZyIgdmFsdWU9IiUwQSUzQ2VudGVyK3RleHQraGVyZSUzRSIvPgogIDxwYXJhbSBuYW1l&#13;
+PSJFWENFUFRJT05fT1VUUFVUIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0idHJ1ZSIv&#13;
+PgogIDxwYXJhbSBuYW1lPSJDQyIgdHlwZT0iamF2YS5sYW5nLk9iamVjdCIgdmFsdWU9IiIvPgog&#13;
+IDxwYXJhbSBuYW1lPSJBVVRIX1BBU1NXT1JEIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1&#13;
+ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyLnBh&#13;
+c3N3b3JkfSIvPgogIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5hbGxvdy5udWxsLmJjYyIgdHlwZT0i&#13;
+amF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4KPC9tYXA+Cg==
 </File>
       <File name="output.map" type="form/mime64">
-PG1hcCB2ZXJzaW9uPSIxLjMiPgo8L21hcD4K
+PG1hcCB2ZXJzaW9uPSIxLjMiPgogIDxwYXJhbSBuYW1lPSJTZW5kaW5nTWFpbEVycm9yVGV4dCIg&#13;
+dHlwZT0iY29tLnByb2dyZXNzLmxhbmcuQ2hhcmFjdGVyIiB2YWx1ZT0iQEVYQ0VQVElPTiIvPgo8&#13;
+L21hcD4K
 </File>
     </Configuration>
   </ExternalWS>
@@ -283,6 +301,7 @@ PG1hcCB2ZXJzaW9uPSIxLjMiPgo8L21hcD4K
     <Priority>MEDIUM</Priority>
     <Datainput>BPMSenderRecipient</Datainput>
     <Datainput>OnErrorEscalationList</Datainput>
+    <Dataoutput>SendingMailErrorText</Dataoutput>
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
     <InlineExecution>FALSE</InlineExecution>
@@ -319,26 +338,35 @@ bG9jaz4KICAgIDxibG9jayB0aXRsZT0iUGFydCAxOiBWZWxvY2l0eSBUZW1wbGF0ZSIgbGFiZWw9&#13
 ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMToxOlZlbG9jaXR5IFRlbXBsYXRlIiBoaWRkZW49&#13;
 ImZhbHNlIj4KICAgICAgICA8cGFyYW0gbmFtZT0iUExVR0lOLjEuTkFNRSIgYWNjZXNzPSJISURE&#13;
 RU4iIGxhYmVsPSJQbHVnaW4gbmFtZSIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IlZl&#13;
-bG9jaXR5IFRlbXBsYXRlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBMVUdJTi4xLk1JTUUiIGFj&#13;
-Y2Vzcz0iSElEREVOIiBsYWJlbD0iTWltZSB0eXBlIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2&#13;
-YWx1ZT0idGV4dC9wbGFpbiIvPgogICAgPC9ibG9jaz4KICAgIDxibG9jayB0aXRsZT0iQ29uZmln&#13;
-dXJhdGlvbiIgbGFiZWw9ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMiIgaGlkZGVuPSJmYWxz&#13;
-ZSI+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLmFsbG93Lm51bGwuY2MiIGFjY2Vzcz0i&#13;
-SElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2YS5s&#13;
-YW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVSVFku&#13;
-YWxsb3cubnVsbC5iY2MiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZp&#13;
-Zy5sYWJlbC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4KICAgICAg&#13;
-ICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFpbC50cmFuc3BvcnQucHJvdG9jb2wiIGFjY2Vzcz0i&#13;
-SElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2YS5s&#13;
-YW5nLlN0cmluZyIgdmFsdWU9InNtdHAiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVSVFku&#13;
-bWFpbC5zbXRwLmhvc3QiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZp&#13;
-Zy5sYWJlbC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiIvPgogICAgICAgIDxw&#13;
-YXJhbSBuYW1lPSJBVVRIX1VTRVIiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVy&#13;
-OmNvbmZpZy5sYWJlbC43IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iIiBtYW5kYXRv&#13;
-cnk9ImZhbHNlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IkFVVEhfUEFTU1dPUkQiIGFjY2Vzcz0i&#13;
-SElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC44IiB0eXBlPSJqYXZhLmxh&#13;
-bmcuU3RyaW5nIiB2YWx1ZT0iIiBtYW5kYXRvcnk9ImZhbHNlIi8+CiAgICA8L2Jsb2NrPgo8L2Nv&#13;
-bmZpZ2Zvcm0+Cg==
+bG9jaXR5IFRlbXBsYXRlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBMVUdJTi4xLkNPTkYiIGFj&#13;
+Y2Vzcz0iSElEREVOIiBsYWJlbD0iUGx1Z2luIGNvbmZpZ3VyYXRpb24iIHR5cGU9ImphdmEubGFu&#13;
+Zy5TdHJpbmciIHZhbHVlPSIlMEElM0NlbnRlcit0ZXh0K2hlcmUlM0UiLz4KICAgICAgICA8cGFy&#13;
+YW0gbmFtZT0iUExVR0lOLjEuTUlNRSIgYWNjZXNzPSJISURERU4iIGxhYmVsPSJNaW1lIHR5cGUi&#13;
+IHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJ0ZXh0L3BsYWluIi8+CiAgICA8L2Jsb2Nr&#13;
+PgogICAgPGJsb2NrIHRpdGxlPSJDb25maWd1cmF0aW9uIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNv&#13;
+bmZpZy5sYWJlbC4yIiBoaWRkZW49ImZhbHNlIj4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVS&#13;
+VFkuYWxsb3cubnVsbC5jYyIgYWNjZXNzPSJISURERU4iIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29u&#13;
+ZmlnLmxhYmVsLjEzIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0idHJ1ZSIvPgogICAg&#13;
+ICAgIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5hbGxvdy5udWxsLmJjYyIgYWNjZXNzPSJISURERU4i&#13;
+IGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjEzIiB0eXBlPSJqYXZhLmxhbmcuU3Ry&#13;
+aW5nIiB2YWx1ZT0idHJ1ZSIvPgogICAgICAgIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5tYWlsLnRy&#13;
+YW5zcG9ydC5wcm90b2NvbCIgYWNjZXNzPSJISURERU4iIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29u&#13;
+ZmlnLmxhYmVsLjEzIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0ic210cCIvPgogICAg&#13;
+ICAgIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5tYWlsLnNtdHAuaG9zdCIgYWNjZXNzPSJISURERU4i&#13;
+IGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjEzIiB0eXBlPSJqYXZhLmxhbmcuU3Ry&#13;
+aW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcu&#13;
+c2VydmVyfSIvPgogICAgICAgIDxwYXJhbSBuYW1lPSJBVVRIX1VTRVIiIGFjY2Vzcz0iSElEREVO&#13;
+IiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC43IiB0eXBlPSJqYXZhLmxhbmcuU3Ry&#13;
+aW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcu&#13;
+c2VydmVyLnVzZXJ9IiBtYW5kYXRvcnk9ImZhbHNlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IkFV&#13;
+VEhfUEFTU1dPUkQiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5s&#13;
+YWJlbC44IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3Bl&#13;
+cnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyLnBhc3N3b3JkfSIgbWFuZGF0b3J5PSJm&#13;
+YWxzZSIvPgogICAgICAgIDxwYXJhbSBuYW1lPSJFWENFUFRJT05fT1VUUFVUIiBhY2Nlc3M9IkhJ&#13;
+RERFTiIgbGFiZWw9IkVycm9yIGFzIG91dHB1dCIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFs&#13;
+dWU9InRydWUiIG1hbmRhdG9yeT0iZmFsc2UiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iRVhDRVBU&#13;
+SU9OIiBhY2Nlc3M9Ik8iIGxhYmVsPSJFcnJvciIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFs&#13;
+dWU9IiIgbWFuZGF0b3J5PSJmYWxzZSIvPgogICAgPC9ibG9jaz4KPC9jb25maWdmb3JtPgo=
 </File>
       <File name="input.map" type="form/mime64">
 PG1hcCB2ZXJzaW9uPSIxLjMiPgogIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5tYWlsLnRyYW5zcG9y&#13;
@@ -349,20 +377,28 @@ UExVR0lOLjEuTUlNRSIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InRleHQvcGxhaW4i&#13
 Lz4KICA8cGFyYW0gbmFtZT0iUExVR0lOLjEuTkFNRSIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIg&#13;
 dmFsdWU9IlZlbG9jaXR5IFRlbXBsYXRlIi8+CiAgPHBhcmFtIG5hbWU9IkJDQyIgdHlwZT0iamF2&#13;
 YS5sYW5nLk9iamVjdCIgdmFsdWU9IiIvPgogIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5tYWlsLnNt&#13;
-dHAuaG9zdCIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiIvPgogIDxwYXJhbSBuYW1l&#13;
-PSJQQVJUX0NPVU5UIiB0eXBlPSJqYXZhLmxhbmcuSW50ZWdlciIgdmFsdWU9IjEiLz4KICA8cGFy&#13;
-YW0gbmFtZT0iQVVUSF9VU0VSIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iIi8+CiAg&#13;
-PHBhcmFtIG5hbWU9IlBST1BFUlRZLmFsbG93Lm51bGwuY2MiIHR5cGU9ImphdmEubGFuZy5TdHJp&#13;
-bmciIHZhbHVlPSJ0cnVlIi8+CiAgPHBhcmFtIG5hbWU9IlNFTkRFUiIgdHlwZT0iamF2YS5sYW5n&#13;
-LlN0cmluZyIgdmFsdWU9IkBCUE1TZW5kZXJSZWNpcGllbnQiLz4KICA8cGFyYW0gbmFtZT0iUkVD&#13;
-SVBJRU5UUyIgdHlwZT0iamF2YS5sYW5nLk9iamVjdCIgdmFsdWU9IkBPbkVycm9yRXNjYWxhdGlv&#13;
-bkxpc3QiLz4KICA8cGFyYW0gbmFtZT0iQ0MiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVl&#13;
-PSIiLz4KICA8cGFyYW0gbmFtZT0iQVVUSF9QQVNTV09SRCIgdHlwZT0iamF2YS5sYW5nLlN0cmlu&#13;
-ZyIgdmFsdWU9IiIvPgogIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5hbGxvdy5udWxsLmJjYyIgdHlw&#13;
-ZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4KPC9tYXA+Cg==
+dHAuaG9zdCIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiR7b2VicHNlbWFpbC5wcm9w&#13;
+ZXJ0aWVzOm9lYnBzLmVtYWlsLm91dGdvaW5nLnNlcnZlcn0iLz4KICA8cGFyYW0gbmFtZT0iUEFS&#13;
+VF9DT1VOVCIgdHlwZT0iamF2YS5sYW5nLkludGVnZXIiIHZhbHVlPSIxIi8+CiAgPHBhcmFtIG5h&#13;
+bWU9IkFVVEhfVVNFUiIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiR7b2VicHNlbWFp&#13;
+bC5wcm9wZXJ0aWVzOm9lYnBzLmVtYWlsLm91dGdvaW5nLnNlcnZlci51c2VyfSIvPgogIDxwYXJh&#13;
+bSBuYW1lPSJQUk9QRVJUWS5hbGxvdy5udWxsLmNjIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2&#13;
+YWx1ZT0idHJ1ZSIvPgogIDxwYXJhbSBuYW1lPSJTRU5ERVIiIHR5cGU9ImphdmEubGFuZy5TdHJp&#13;
+bmciIHZhbHVlPSJAQlBNU2VuZGVyUmVjaXBpZW50Ii8+CiAgPHBhcmFtIG5hbWU9IlJFQ0lQSUVO&#13;
+VFMiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSJAT25FcnJvckVzY2FsYXRpb25MaXN0&#13;
+Ii8+CiAgPHBhcmFtIG5hbWU9IlBMVUdJTi4xLkNPTkYiIHR5cGU9ImphdmEubGFuZy5TdHJpbmci&#13;
+IHZhbHVlPSIlMEElM0NlbnRlcit0ZXh0K2hlcmUlM0UiLz4KICA8cGFyYW0gbmFtZT0iRVhDRVBU&#13;
+SU9OX09VVFBVVCIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4KICA8cGFy&#13;
+YW0gbmFtZT0iQ0MiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSIiLz4KICA8cGFyYW0g&#13;
+bmFtZT0iQVVUSF9QQVNTV09SRCIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiR7b2Vi&#13;
+cHNlbWFpbC5wcm9wZXJ0aWVzOm9lYnBzLmVtYWlsLm91dGdvaW5nLnNlcnZlci5wYXNzd29yZH0i&#13;
+Lz4KICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkuYWxsb3cubnVsbC5iY2MiIHR5cGU9ImphdmEubGFu&#13;
+Zy5TdHJpbmciIHZhbHVlPSJ0cnVlIi8+CjwvbWFwPgo=
 </File>
       <File name="output.map" type="form/mime64">
-PG1hcCB2ZXJzaW9uPSIxLjMiPgo8L21hcD4K
+PG1hcCB2ZXJzaW9uPSIxLjMiPgogIDxwYXJhbSBuYW1lPSJTZW5kaW5nTWFpbEVycm9yVGV4dCIg&#13;
+dHlwZT0iY29tLnByb2dyZXNzLmxhbmcuQ2hhcmFjdGVyIiB2YWx1ZT0iQEVYQ0VQVElPTiIvPgo8&#13;
+L21hcD4K
 </File>
     </Configuration>
   </ExternalWS>
@@ -524,7 +560,7 @@ dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
     <Label>Sending e-mail Errors</Label>
     <DataType>ABL_CHARACTER</DataType>
     <DataValue unknown="false"/>
-    <DataSize>256</DataSize>
+    <DataSize>2256</DataSize>
     <IsPublic>true</IsPublic>
     <MultiLine>false</MultiLine>
     <BizManageAccessFlag>true</BizManageAccessFlag>
@@ -535,7 +571,7 @@ dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
     <Format editable="true" label="Sending e-mail Errors" password="false" required="false" size="20" type="abl_text">
       <Label>Sending e-mail Errors</Label>
     </Format>
-    <Storage size="256" type="CHAR"/>
+    <Storage size="2256" type="CHAR"/>
   </Dataslot>
   <Dataslot Name="PrcErrorHandlingInstructions" category="User" name="PrcErrorHandlingInstructions" type="ABL_CHARACTER" webbpaID="1390401897109">
     <Label>Handeling Instructions</Label>
@@ -659,6 +695,14 @@ dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
   </Performers>
   <TabularViewWorkstepOrder/>
   <History>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390909304606" to="http://WF28:18793/sbm/deployment">Tue Jan 28 13:41:44 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390896504443" to="http://WF28:18793/sbm/deployment">Tue Jan 28 10:08:24 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390893052928" to="http://WF28:18793/sbm/deployment">Tue Jan 28 09:10:52 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390892251782" to="http://WF28:18793/sbm/deployment">Tue Jan 28 08:57:31 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390891682123" to="http://WF28:18793/sbm/deployment">Tue Jan 28 08:48:02 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390690027822" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:47:07 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390688834677" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:27:14 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390688766727" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:26:06 EET 2014</Deployed>
     <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390569754609" to="http://WF28:18793/sbm/deployment">Fri Jan 24 15:22:34 EET 2014</Deployed>
     <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390568227180" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:57:07 EET 2014</Deployed>
     <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390548610822" to="http://WF28:18793/sbm/deployment">Fri Jan 24 09:30:10 EET 2014</Deployed>
@@ -672,6 +716,25 @@ dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
     <Created as="MBAInterfaceHeartBeat" by="daniel.baciu" on="1390299616744">Tue Jan 21 12:20:16 EET 2014</Created>
     <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390394927951" to="http://WF28:18793/sbm/deployment">Wed Jan 22 14:48:47 EET 2014</Deployed>
     <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390489908839" to="http://WF28:18793/sbm/deployment">Thu Jan 23 17:11:48 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390573587376" to="http://WF28:18793/sbm/deployment">Fri Jan 24 16:26:27 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390660844880" to="http://WF28:18793/sbm/deployment">Sat Jan 25 16:40:44 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390683049654" to="http://WF28:18793/sbm/deployment">Sat Jan 25 22:50:49 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390690726923" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:58:46 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390691766296" to="http://WF28:18793/sbm/deployment">Sun Jan 26 01:16:06 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390692893312" to="http://WF28:18793/sbm/deployment">Sun Jan 26 01:34:53 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390693311465" to="http://WF28:18793/sbm/deployment">Sun Jan 26 01:41:51 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390694232433" to="http://WF28:18793/sbm/deployment">Sun Jan 26 01:57:12 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390805754238" to="http://WF28:18793/sbm/deployment">Mon Jan 27 08:55:54 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390808388761" to="http://WF28:18793/sbm/deployment">Mon Jan 27 09:39:48 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390808680139" to="http://WF28:18793/sbm/deployment">Mon Jan 27 09:44:40 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390817313978" to="http://WF28:18793/sbm/deployment">Mon Jan 27 12:08:33 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390817727115" to="http://WF28:18793/sbm/deployment">Mon Jan 27 12:15:27 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390817871550" to="http://WF28:18793/sbm/deployment">Mon Jan 27 12:17:51 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390818093882" to="http://WF28:18793/sbm/deployment">Mon Jan 27 12:21:33 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390913929337" to="http://WF28:18793/sbm/deployment">Tue Jan 28 14:58:49 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390914015414" to="http://WF28:18793/sbm/deployment">Tue Jan 28 15:00:15 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390919752209" to="http://WF28:18793/sbm/deployment">Tue Jan 28 16:35:52 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390920724883" to="http://WF28:18793/sbm/deployment">Tue Jan 28 16:52:04 EET 2014</Deployed>
   </History>
   <Repository/>
   <Forms/>

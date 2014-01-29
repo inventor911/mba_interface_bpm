@@ -1,0 +1,13 @@
+#Tue Jan 28 14:51:26 EET 2014
+publishing.type=Copy_Files_Only
+application.name=MBAInterfaceDeliveryToLocation
+inherit.acl=true
+adapter.version=8.1
+module.type=com.savvion.studio.designer.module.bpm
+publish.webservice=false
+application.mainprocessname=MBAInterfaceDeliveryToLocation
+module.id=cb4362be-ae70-499d-81f7-87425f69a8f3
+module.version=8
+application.mainappfile=MBAInterfaceDeliveryToLocation/processtemplates/MBAInterfaceDeliveryToLocation.spt
+module.name=MBAInterfaceDeliveryToLocation
+application.root=MBAInterfaceDeliveryToLocation
