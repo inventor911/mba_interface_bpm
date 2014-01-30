@@ -162,25 +162,29 @@ bmZpZ2Zvcm0+Cg==
     </Configuration>
   </ExternalWS>
   <Link Name="Connection 4" default="true" webbpaID="1390912704225">
+    <Label>Connection 4</Label>
     <Source cp="1">Follow up No Acknowledge</Source>
     <Point x="372.0" y="180.0"/>
     <Point x="642.0" y="180.0"/>
     <Point x="642.0" y="84.0"/>
     <Target cp="2">End 1</Target>
   </Link>
-  <Link Name="No Ack on time" default="true" type="timeout" webbpaID="1390912704226" y="-1">
+  <Link Name="No Ack on time" default="true" type="timeout" value="No Ack on time" webbpaID="1390912704226" y="-1">
+    <Label>No Ack on time</Label>
     <Source cp="8">Waiting for DeliveryConfirmation</Source>
     <Point x="336.0" y="108.0"/>
     <Point x="336.0" y="144.0"/>
     <Target cp="5">Follow up No Acknowledge</Target>
   </Link>
   <Link Name="Fully received" default="true" webbpaID="1390912704227">
+    <Label>Fully received</Label>
     <Source cp="1">Waiting for DeliveryConfirmation</Source>
     <Point x="372.0" y="66.0"/>
     <Point x="624.0" y="66.0"/>
     <Target cp="3">End 1</Target>
   </Link>
   <Link Name="Connection 1" default="true" webbpaID="1390912704228">
+    <Label>Connection 1</Label>
     <Source cp="1">Start</Source>
     <Point x="84.0" y="66.0"/>
     <Point x="228.0" y="66.0"/>
@@ -228,7 +232,7 @@ bmZpZ2Zvcm0+Cg==
     <Access type="BIZ_MANAGE_ACCESS" value="true"/>
     <Access type="GLOBAL" value="false"/>
     <Access type="BIZ_SITE_COLUMN" value="false"/>
-    <Format editable="true" label="Status" type="checkbox">
+    <Format editable="true" label="Status" password="false" required="false" size="0" type="abl_text">
       <Label>Status</Label>
     </Format>
     <Storage size="30000" type="CHAR"/>
@@ -236,11 +240,15 @@ bmZpZ2Zvcm0+Cg==
   <Performers>
     <Performer name="@CREATOR" type="user" webbpaID="1390912704218"/>
     <Performer name="MBAInterface" select="ANY" type="group" webbpaID="1390912704221"/>
-    <Performer category="EmailAdapters" class="com.savvion.sbm.adapters.email.EmailAdapter" generate="false" id="EmailAdapter 1" managed="true" name="GenericEmailAdapter" type="managed" webbpaID="1390912704230"/>
+    <Performer category="" class="" generate="false" id="EmailAdapter 1" managed="true" name="" type="managed" webbpaID="1390912704230"/>
+    <Performer category="EmailAdapters" class="com.savvion.sbm.adapters.email.EmailAdapter" generate="false" id="Follow up No Acknowledge" managed="true" name="GenericEmailAdapter" type="managed" webbpaID="1391029491824"/>
   </Performers>
   <TabularViewWorkstepOrder/>
   <History>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391072681088" to="http://WF28:18793/sbm/deployment">Thu Jan 30 11:04:41 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391071935009" to="http://WF28:18793/sbm/deployment">Thu Jan 30 10:52:15 EET 2014</Deployed>
     <Created as="MBAInterfaceDeliveryToLocation" by="daniel.baciu" on="1390913486625">Tue Jan 28 14:51:26 EET 2014</Created>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391080741259" to="http://WF28:18793/sbm/deployment">Thu Jan 30 13:19:01 EET 2014</Deployed>
   </History>
   <Repository/>
   <Forms/>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE Process SYSTEM "../../common/processtemplates/processTemplate.dtd">
+<Process name="MBAInterfaceDeliveryToLocation" type="BIZLOGIC">
+  <Description/>
+  <Application name="MBAInterfaceDeliveryToLocation"/>
+  <Category level="0"/>
+  <Category level="1"/>
+  <Group/>
+  <Manager>@CREATOR</Manager>
+  <EstimatedDuration>1d</EstimatedDuration>
+  <TimeCreated>1390913486625</TimeCreated>
+  <Author>daniel.baciu</Author>
+  <Version/>
+  <Attributes>
+    <Attribute name="ProcessType" required="true">
+      <Label>Process Type</Label>
+      <Description>Type of the process</Description>
+      <Value>BusinessProcess</Value>
+    </Attribute>
+  </Attributes>
+  <Alerts>
+    <Alert name="Default">
+      <AlertSeverity>High</AlertSeverity>
+      <AlertMessage>This is the default alert.</AlertMessage>
+      <AlertDescription/>
+      <AlertCondition type="java:expression"/>
+      <AlertDelivery type="sbm">
+        <AlertRecipient type="USER">${@CREATOR}</AlertRecipient>
+      </AlertDelivery>
+    </Alert>
+  </Alerts>
+  <AtomicWS height="36" name="Start" width="36" worktime="false" x="48" y="48">
+    <AtomicType>START</AtomicType>
+    <PerformingApp>
+      <Metadata name="TARGETTYPE">JSP</Metadata>
+      <Metadata name="TARGET">Start.jsp</Metadata>
+    </PerformingApp>
+    <Priority>MEDIUM</Priority>
+    <RollbackPoint>FALSE</RollbackPoint>
+    <Option name="Instructions" visible="true"/>
+    <Option name="Priority" visible="true"/>
+    <Option name="StartDate" visible="false"/>
+    <Option name="DueDate" visible="false"/>
+    <Option name="Reassign" visible="true"/>
+    <Simulation distribution="ct" scenario="(default)"/>
+  </AtomicWS>
+  <AtomicWS height="84" name="Waiting for DeliveryConfirmation" width="144" worktime="false" x="228" y="24">
+    <AtomicType>ACTIVITY</AtomicType>
+    <Performer>@CREATOR</Performer>
+    <PerformingApp>
+      <Metadata name="TARGETTYPE">JSP</Metadata>
+      <Metadata name="TARGET">WaitingforDeliveryConfirmation.jsp</Metadata>
+    </PerformingApp>
+    <Collaboration>
+      <CollabFunction enabled="true" type="Reassign"/>
+    </Collaboration>
+    <Duration>@ConfirmationTimeout</Duration>
+    <Priority>MEDIUM</Priority>
+    <EmailSupport>FALSE</EmailSupport>
+    <RollbackPoint>FALSE</RollbackPoint>
+    <OnOverdue>
+      <ActivateTimeoutFlow/>
+    </OnOverdue>
+    <Simulation distribution="ct" scenario="(default)"/>
+  </AtomicWS>
+  <AtomicWS height="36" name="End 1" width="36" worktime="false" x="624" y="48">
+    <AtomicType>END</AtomicType>
+    <Priority>MEDIUM</Priority>
+    <RollbackPoint>FALSE</RollbackPoint>
+    <Simulation distribution="ct" scenario="(default)"/>
+  </AtomicWS>
+  <ExternalWS height="72" name="Follow up No Acknowledge" width="144" x="228" y="144">
+    <Label>Follow up No Acknowledge</Label>
+    <Performer category="EmailAdapters" generate="false" managed="true" name="GenericEmailAdapter">com.savvion.sbm.adapters.email.EmailAdapter</Performer>
+    <PerformBy>execute</PerformBy>
+    <ClosedConnection>TRUE</ClosedConnection>
+    <Priority>MEDIUM</Priority>
+    <RollbackPoint>FALSE</RollbackPoint>
+    <Simulation distribution="ct" scenario="(default)"/>
+    <InlineExecution>FALSE</InlineExecution>
+    <AdapterType>process</AdapterType>
+  </ExternalWS>
+  <Link Name="Connection 4" default="true">
+    <Label>Connection 4</Label>
+    <Source cp="1">Follow up No Acknowledge</Source>
+    <Point x="372.0" y="180.0"/>
+    <Point x="642.0" y="180.0"/>
+    <Point x="642.0" y="84.0"/>
+    <Target cp="2">End 1</Target>
+  </Link>
+  <Link Name="No Ack on time" default="true" type="timeout" value="No Ack on time" y="-1">
+    <Label>No Ack on time</Label>
+    <Source cp="8">Waiting for DeliveryConfirmation</Source>
+    <Point x="336.0" y="108.0"/>
+    <Point x="336.0" y="144.0"/>
+    <Target cp="5">Follow up No Acknowledge</Target>
+  </Link>
+  <Link Name="Fully received" default="true">
+    <Label>Fully received</Label>
+    <Source cp="1">Waiting for DeliveryConfirmation</Source>
+    <Point x="372.0" y="66.0"/>
+    <Point x="624.0" y="66.0"/>
+    <Target cp="3">End 1</Target>
+  </Link>
+  <Link Name="Connection 1" default="true">
+    <Label>Connection 1</Label>
+    <Source cp="1">Start</Source>
+    <Point x="84.0" y="66.0"/>
+    <Point x="228.0" y="66.0"/>
+    <Target cp="3">Waiting for DeliveryConfirmation</Target>
+  </Link>
+  <Dataslot Name="ConfirmationTimeout" category="User" name="ConfirmationTimeout" type="ABL_INTEGER">
+    <Label>Confirmation timeout</Label>
+    <DataType>ABL_INTEGER</DataType>
+    <DataValue unknown="false">0</DataValue>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Confirmation timeout" required="false" size="20" type="abl_text">
+      <Label>Confirmation timeout</Label>
+    </Format>
+  </Dataslot>
+  <Dataslot Name="FullyConfirmed" category="User" name="FullyConfirmed" type="ABL_LOGICAL">
+    <Label>Delivery is fully confirmed</Label>
+    <DataType>ABL_LOGICAL</DataType>
+    <DataValue unknown="false">false</DataValue>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Delivery is fully confirmed" type="checkbox">
+      <Label>Delivery is fully confirmed</Label>
+    </Format>
+  </Dataslot>
+  <Dataslot Name="Status" category="User" name="Status" type="ABL_CHARACTER">
+    <Label>Status</Label>
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false">false</DataValue>
+    <DataSize>30000</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Status" password="false" required="false" size="0" type="abl_text">
+      <Label>Status</Label>
+    </Format>
+    <Storage size="30000" type="CHAR"/>
+  </Dataslot>
+  <History>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391072681088" to="http://WF28:18793/sbm/deployment">Thu Jan 30 11:04:41 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391071935009" to="http://WF28:18793/sbm/deployment">Thu Jan 30 10:52:15 EET 2014</Deployed>
+    <Created as="MBAInterfaceDeliveryToLocation" by="daniel.baciu" on="1390913486625">Tue Jan 28 14:51:26 EET 2014</Created>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391080741259" to="http://WF28:18793/sbm/deployment">Thu Jan 30 13:19:01 EET 2014</Deployed>
+  </History>
+  <Repository/>
+</Process>

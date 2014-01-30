@@ -182,72 +182,28 @@ aXRpb24+Cg==</ConditionXMLEncoded>
     <InlineExecution>FALSE</InlineExecution>
     <AdapterType>process</AdapterType>
   </ExternalWS>
-  <Link Name="Task Closed" default="true" x="-23" y="-1">
-    <Label>Task Closed</Label>
-    <Source cp="6">Message Processor is not Alive</Source>
-    <Point x="672.0" y="234.0"/>
-    <Point x="692.0" y="234.0"/>
-    <Point x="692.0" y="196.0"/>
-    <Point x="260.0" y="196.0"/>
-    <Point x="260.0" y="135.0"/>
-    <Point x="240.0" y="135.0"/>
-    <Target cp="7">Scheduler Waiting</Target>
+  <Link Name="Connection 13" default="true">
+    <Label>Connection 13</Label>
+    <Source cp="1">Start</Source>
+    <Point x="60.0" y="114.0"/>
+    <Point x="108.0" y="114.0"/>
+    <Target cp="3">Scheduler Waiting</Target>
   </Link>
-  <Link Name="Connection 7" default="true">
-    <Label>Connection 7</Label>
-    <Source cp="6">Escalate Msr Processor not Alive</Source>
-    <Point x="852.0" y="234.0"/>
-    <Point x="872.0" y="234.0"/>
-    <Point x="872.0" y="196.0"/>
-    <Point x="260.0" y="196.0"/>
-    <Point x="260.0" y="135.0"/>
-    <Point x="240.0" y="135.0"/>
-    <Target cp="7">Scheduler Waiting</Target>
+  <Link Name="Message processor started" default="true">
+    <Label>Message processor started</Label>
+    <Source cp="1">Scheduler Waiting</Source>
+    <Point x="240.0" y="114.0"/>
+    <Point x="540.0" y="114.0"/>
+    <Target cp="3">Processing Message</Target>
   </Link>
-  <Link Name="No reaction" default="true" type="timeout" value="No reaction" x="-14" y="42">
-    <Label>No reaction</Label>
-    <Source cp="1">Message Processor is not Alive</Source>
-    <Point x="672.0" y="252.0"/>
-    <Point x="732.0" y="252.0"/>
-    <Target cp="3">Escalate Msr Processor not Alive</Target>
-  </Link>
-  <Link Name="Processing Message Timeout" default="true" type="timeout" value="Processing Message Timeout" x="-59" y="-2">
-    <Label>Processing Message Timeout</Label>
-    <Source cp="9">Processing Message</Source>
-    <Point x="573.0" y="156.0"/>
-    <Point x="573.0" y="216.0"/>
-    <Target cp="4">Message Processor is not Alive</Target>
-  </Link>
-  <Link Name="Connection 6" default="true">
-    <Label>Connection 6</Label>
-    <Source cp="0">Escalate Scheduler Error</Source>
-    <Point x="366.0" y="216.0"/>
-    <Point x="366.0" y="135.0"/>
-    <Point x="240.0" y="135.0"/>
-    <Target cp="7">Scheduler Waiting</Target>
-  </Link>
-  <Link Name="No action" default="true" type="timeout" value="No action" x="-4" y="41">
-    <Label>No action</Label>
-    <Source cp="7">Scheduler Error</Source>
-    <Point x="240.0" y="270.0"/>
-    <Point x="312.0" y="270.0"/>
-    <Target cp="10">Escalate Scheduler Error</Target>
-  </Link>
-  <Link Name="Fixed" default="true" x="-30" y="-10">
-    <Label>Fixed</Label>
-    <Source cp="6">Scheduler Error</Source>
-    <Point x="240.0" y="234.0"/>
-    <Point x="260.0" y="234.0"/>
-    <Point x="260.0" y="135.0"/>
-    <Point x="240.0" y="135.0"/>
-    <Target cp="7">Scheduler Waiting</Target>
-  </Link>
-  <Link Name="Scheduler Timeout" default="true" type="timeout" value="Scheduler Timeout" x="-65" y="9">
-    <Label>Scheduler Timeout</Label>
-    <Source cp="9">Scheduler Waiting</Source>
-    <Point x="141.0" y="156.0"/>
-    <Point x="141.0" y="216.0"/>
-    <Target cp="4">Scheduler Error</Target>
+  <Link Name="Start waiting again" default="true">
+    <Label>Start waiting again</Label>
+    <Source cp="4">Processing Message</Source>
+    <Point x="573.0" y="72.0"/>
+    <Point x="573.0" y="52.0"/>
+    <Point x="174.0" y="52.0"/>
+    <Point x="174.0" y="72.0"/>
+    <Target cp="0">Scheduler Waiting</Target>
   </Link>
   <Link Name="end point is mandatory" default="false" x="93" y="6">
     <Label>end point is mandatory</Label>
@@ -272,28 +228,72 @@ aW5OZXh0PkFORDwvam9pbk5leHQ+CiAgICAgIDwvZXhwcmVzc2lvbj4KICAgIDwvY29uZmlndXJh&#13
 dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
     </Condition>
   </Link>
-  <Link Name="Start waiting again" default="true">
-    <Label>Start waiting again</Label>
-    <Source cp="4">Processing Message</Source>
-    <Point x="573.0" y="72.0"/>
-    <Point x="573.0" y="52.0"/>
-    <Point x="174.0" y="52.0"/>
-    <Point x="174.0" y="72.0"/>
-    <Target cp="0">Scheduler Waiting</Target>
+  <Link Name="Scheduler Timeout" default="true" type="timeout" value="Scheduler Timeout" x="-65" y="9">
+    <Label>Scheduler Timeout</Label>
+    <Source cp="9">Scheduler Waiting</Source>
+    <Point x="141.0" y="156.0"/>
+    <Point x="141.0" y="216.0"/>
+    <Target cp="4">Scheduler Error</Target>
   </Link>
-  <Link Name="Message processor started" default="true">
-    <Label>Message processor started</Label>
-    <Source cp="1">Scheduler Waiting</Source>
-    <Point x="240.0" y="114.0"/>
-    <Point x="540.0" y="114.0"/>
-    <Target cp="3">Processing Message</Target>
+  <Link Name="Fixed" default="true" x="-30" y="-10">
+    <Label>Fixed</Label>
+    <Source cp="6">Scheduler Error</Source>
+    <Point x="240.0" y="234.0"/>
+    <Point x="260.0" y="234.0"/>
+    <Point x="260.0" y="135.0"/>
+    <Point x="240.0" y="135.0"/>
+    <Target cp="7">Scheduler Waiting</Target>
   </Link>
-  <Link Name="Connection 13" default="true">
-    <Label>Connection 13</Label>
-    <Source cp="1">Start</Source>
-    <Point x="60.0" y="114.0"/>
-    <Point x="108.0" y="114.0"/>
-    <Target cp="3">Scheduler Waiting</Target>
+  <Link Name="No action" default="true" type="timeout" value="No action" x="-4" y="41">
+    <Label>No action</Label>
+    <Source cp="7">Scheduler Error</Source>
+    <Point x="240.0" y="270.0"/>
+    <Point x="312.0" y="270.0"/>
+    <Target cp="10">Escalate Scheduler Error</Target>
+  </Link>
+  <Link Name="Connection 6" default="true">
+    <Label>Connection 6</Label>
+    <Source cp="0">Escalate Scheduler Error</Source>
+    <Point x="366.0" y="216.0"/>
+    <Point x="366.0" y="135.0"/>
+    <Point x="240.0" y="135.0"/>
+    <Target cp="7">Scheduler Waiting</Target>
+  </Link>
+  <Link Name="Processing Message Timeout" default="true" type="timeout" value="Processing Message Timeout" x="-59" y="-2">
+    <Label>Processing Message Timeout</Label>
+    <Source cp="9">Processing Message</Source>
+    <Point x="573.0" y="156.0"/>
+    <Point x="573.0" y="216.0"/>
+    <Target cp="4">Message Processor is not Alive</Target>
+  </Link>
+  <Link Name="No reaction" default="true" type="timeout" value="No reaction" x="-14" y="42">
+    <Label>No reaction</Label>
+    <Source cp="1">Message Processor is not Alive</Source>
+    <Point x="672.0" y="252.0"/>
+    <Point x="732.0" y="252.0"/>
+    <Target cp="3">Escalate Msr Processor not Alive</Target>
+  </Link>
+  <Link Name="Connection 7" default="true">
+    <Label>Connection 7</Label>
+    <Source cp="6">Escalate Msr Processor not Alive</Source>
+    <Point x="852.0" y="234.0"/>
+    <Point x="872.0" y="234.0"/>
+    <Point x="872.0" y="196.0"/>
+    <Point x="260.0" y="196.0"/>
+    <Point x="260.0" y="135.0"/>
+    <Point x="240.0" y="135.0"/>
+    <Target cp="7">Scheduler Waiting</Target>
+  </Link>
+  <Link Name="Task Closed" default="true" x="-23" y="-1">
+    <Label>Task Closed</Label>
+    <Source cp="6">Message Processor is not Alive</Source>
+    <Point x="672.0" y="234.0"/>
+    <Point x="692.0" y="234.0"/>
+    <Point x="692.0" y="196.0"/>
+    <Point x="260.0" y="196.0"/>
+    <Point x="260.0" y="135.0"/>
+    <Point x="240.0" y="135.0"/>
+    <Target cp="7">Scheduler Waiting</Target>
   </Link>
   <Dataslot Name="ProcessingMessageTimeout" category="User" name="ProcessingMessageTimeout" type="ABL_INT64">
     <DataType>ABL_INT64</DataType>
@@ -464,46 +464,60 @@ dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
   <History>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390909304606" to="http://WF28:18793/sbm/deployment">Tue Jan 28 13:41:44 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390896504443" to="http://WF28:18793/sbm/deployment">Tue Jan 28 10:08:24 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390893052928" to="http://WF28:18793/sbm/deployment">Tue Jan 28 09:10:52 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390892251782" to="http://WF28:18793/sbm/deployment">Tue Jan 28 08:57:31 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390891682123" to="http://WF28:18793/sbm/deployment">Tue Jan 28 08:48:02 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390690027822" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:47:07 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390688834677" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:27:14 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390688766727" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:26:06 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390569754609" to="http://WF28:18793/sbm/deployment">Fri Jan 24 15:22:34 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390568227180" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:57:07 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390548610822" to="http://WF28:18793/sbm/deployment">Fri Jan 24 09:30:10 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390479795912" to="http://WF28:18793/sbm/deployment">Thu Jan 23 14:23:15 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390403909492" to="http://WF28:18793/sbm/deployment">Wed Jan 22 17:18:29 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390403624449" to="http://WF28:18793/sbm/deployment">Wed Jan 22 17:13:44 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390403229986" to="http://WF28:18793/sbm/deployment">Wed Jan 22 17:07:09 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390403080420" to="http://WF28:18793/sbm/deployment">Wed Jan 22 17:04:40 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390401897400" to="http://WF28:18793/sbm/deployment">Wed Jan 22 16:44:57 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390382666332" to="http://WF28:18793/sbm/deployment">Wed Jan 22 11:24:26 EET 2014</Deployed>
-    <Created as="MBAInterfaceHeartBeat" by="daniel.baciu" on="1390299616744">Tue Jan 21 12:20:16 EET 2014</Created>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390394927951" to="http://WF28:18793/sbm/deployment">Wed Jan 22 14:48:47 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390489908839" to="http://WF28:18793/sbm/deployment">Thu Jan 23 17:11:48 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390573587376" to="http://WF28:18793/sbm/deployment">Fri Jan 24 16:26:27 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390660844880" to="http://WF28:18793/sbm/deployment">Sat Jan 25 16:40:44 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390683049654" to="http://WF28:18793/sbm/deployment">Sat Jan 25 22:50:49 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390690726923" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:58:46 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390691766296" to="http://WF28:18793/sbm/deployment">Sun Jan 26 01:16:06 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390692893312" to="http://WF28:18793/sbm/deployment">Sun Jan 26 01:34:53 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390693311465" to="http://WF28:18793/sbm/deployment">Sun Jan 26 01:41:51 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390694232433" to="http://WF28:18793/sbm/deployment">Sun Jan 26 01:57:12 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390805754238" to="http://WF28:18793/sbm/deployment">Mon Jan 27 08:55:54 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390808388761" to="http://WF28:18793/sbm/deployment">Mon Jan 27 09:39:48 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390808680139" to="http://WF28:18793/sbm/deployment">Mon Jan 27 09:44:40 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390817313978" to="http://WF28:18793/sbm/deployment">Mon Jan 27 12:08:33 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390817727115" to="http://WF28:18793/sbm/deployment">Mon Jan 27 12:15:27 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390817871550" to="http://WF28:18793/sbm/deployment">Mon Jan 27 12:17:51 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390818093882" to="http://WF28:18793/sbm/deployment">Mon Jan 27 12:21:33 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390913929337" to="http://WF28:18793/sbm/deployment">Tue Jan 28 14:58:49 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390914015414" to="http://WF28:18793/sbm/deployment">Tue Jan 28 15:00:15 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390919752209" to="http://WF28:18793/sbm/deployment">Tue Jan 28 16:35:52 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391075669007" to="http://WF28:18793/sbm/deployment">Thu Jan 30 11:54:29 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391074798631" to="http://WF28:18793/sbm/deployment">Thu Jan 30 11:39:58 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391074420534" to="http://WF28:18793/sbm/deployment">Thu Jan 30 11:33:40 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391074293698" to="http://WF28:18793/sbm/deployment">Thu Jan 30 11:31:33 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391072681658" to="http://WF28:18793/sbm/deployment">Thu Jan 30 11:04:41 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391072626319" to="http://WF28:18793/sbm/deployment">Thu Jan 30 11:03:46 EET 2014</Deployed>
     <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390920724883" to="http://WF28:18793/sbm/deployment">Tue Jan 28 16:52:04 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390919752209" to="http://WF28:18793/sbm/deployment">Tue Jan 28 16:35:52 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390914015414" to="http://WF28:18793/sbm/deployment">Tue Jan 28 15:00:15 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390913929337" to="http://WF28:18793/sbm/deployment">Tue Jan 28 14:58:49 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390818093882" to="http://WF28:18793/sbm/deployment">Mon Jan 27 12:21:33 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390817871550" to="http://WF28:18793/sbm/deployment">Mon Jan 27 12:17:51 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390817727115" to="http://WF28:18793/sbm/deployment">Mon Jan 27 12:15:27 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390817313978" to="http://WF28:18793/sbm/deployment">Mon Jan 27 12:08:33 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390808680139" to="http://WF28:18793/sbm/deployment">Mon Jan 27 09:44:40 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390808388761" to="http://WF28:18793/sbm/deployment">Mon Jan 27 09:39:48 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390805754238" to="http://WF28:18793/sbm/deployment">Mon Jan 27 08:55:54 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390694232433" to="http://WF28:18793/sbm/deployment">Sun Jan 26 01:57:12 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390693311465" to="http://WF28:18793/sbm/deployment">Sun Jan 26 01:41:51 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390692893312" to="http://WF28:18793/sbm/deployment">Sun Jan 26 01:34:53 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390691766296" to="http://WF28:18793/sbm/deployment">Sun Jan 26 01:16:06 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390690726923" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:58:46 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390683049654" to="http://WF28:18793/sbm/deployment">Sat Jan 25 22:50:49 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390660844880" to="http://WF28:18793/sbm/deployment">Sat Jan 25 16:40:44 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390573587376" to="http://WF28:18793/sbm/deployment">Fri Jan 24 16:26:27 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390489908839" to="http://WF28:18793/sbm/deployment">Thu Jan 23 17:11:48 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390394927951" to="http://WF28:18793/sbm/deployment">Wed Jan 22 14:48:47 EET 2014</Deployed>
+    <Created as="MBAInterfaceHeartBeat" by="daniel.baciu" on="1390299616744">Tue Jan 21 12:20:16 EET 2014</Created>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390382666332" to="http://WF28:18793/sbm/deployment">Wed Jan 22 11:24:26 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390401897400" to="http://WF28:18793/sbm/deployment">Wed Jan 22 16:44:57 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390403080420" to="http://WF28:18793/sbm/deployment">Wed Jan 22 17:04:40 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390403229986" to="http://WF28:18793/sbm/deployment">Wed Jan 22 17:07:09 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390403624449" to="http://WF28:18793/sbm/deployment">Wed Jan 22 17:13:44 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390403909492" to="http://WF28:18793/sbm/deployment">Wed Jan 22 17:18:29 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390479795912" to="http://WF28:18793/sbm/deployment">Thu Jan 23 14:23:15 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390548610822" to="http://WF28:18793/sbm/deployment">Fri Jan 24 09:30:10 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390568227180" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:57:07 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390569754609" to="http://WF28:18793/sbm/deployment">Fri Jan 24 15:22:34 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390688766727" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:26:06 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390688834677" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:27:14 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390690027822" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:47:07 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390891682123" to="http://WF28:18793/sbm/deployment">Tue Jan 28 08:48:02 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390892251782" to="http://WF28:18793/sbm/deployment">Tue Jan 28 08:57:31 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390893052928" to="http://WF28:18793/sbm/deployment">Tue Jan 28 09:10:52 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390896504443" to="http://WF28:18793/sbm/deployment">Tue Jan 28 10:08:24 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1390909304606" to="http://WF28:18793/sbm/deployment">Tue Jan 28 13:41:44 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391071936281" to="http://WF28:18793/sbm/deployment">Thu Jan 30 10:52:16 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391077138344" to="http://WF28:18793/sbm/deployment">Thu Jan 30 12:18:58 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391077792550" to="http://WF28:18793/sbm/deployment">Thu Jan 30 12:29:52 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391078306801" to="http://WF28:18793/sbm/deployment">Thu Jan 30 12:38:26 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391079850721" to="http://WF28:18793/sbm/deployment">Thu Jan 30 13:04:10 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391080742030" to="http://WF28:18793/sbm/deployment">Thu Jan 30 13:19:02 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391081153607" to="http://WF28:18793/sbm/deployment">Thu Jan 30 13:25:53 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391081424248" to="http://WF28:18793/sbm/deployment">Thu Jan 30 13:30:24 EET 2014</Deployed>
   </History>
   <Repository/>
 </Process>
