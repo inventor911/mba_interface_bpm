@@ -1,0 +1,23 @@
+Dear ${PCTX.WI_PERFORMER}
+
+The details of the workitem are printed below.
+Application: ${PCTX.TEMPLATE_NAME}
+Instance:    ${PCTX.INSTANCE_ID}
+WorkStep:    ${PCTX.WS_NAME}
+WorkItem:    ${PCTX.WI_ID}
+
+${PCTX.WS_INSTRUCTION}
+
+${PCTX.INPUT_DATASLOTS}
+
+${PCTX.OUTPUT_DATASLOTS}
+
+Thanks and Regards
+SBM Administrator
+
+To complete the task, you may either reply to this email
+or go to the URL. The URL option will work only if you have
+the access to the firewall.
+${PCTX.BIZSITE_LOGIN_URL}
+
+$EMAIL.SUBJECT = Assigned Task <${PCTX.WS_NAME} (${PCTX.WI_ID})>

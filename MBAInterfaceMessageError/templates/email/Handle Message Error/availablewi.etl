@@ -1,0 +1,18 @@
+Dear ${EMAIL.USER}
+
+A workitem is made available to you. The details of the
+workitem are printed below. Please reply to this email
+to assign the workitem to yourself.
+
+Application: ${PCTX.TEMPLATE_NAME}
+Instance:    ${PCTX.INSTANCE_ID}
+WorkStep:    ${PCTX.WS_NAME}
+WorkItem:    ${PCTX.WI_ID}
+
+${PCTX.INPUT_DATASLOTS}
+
+
+Thanks and Regards
+SBM Administrator
+
+$EMAIL.SUBJECT = Available Task <${PCTX.WS_NAME} (${PCTX.WI_ID})>
