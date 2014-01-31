@@ -161,6 +161,7 @@
     <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391071935009" to="http://WF28:18793/sbm/deployment">Thu Jan 30 10:52:15 EET 2014</Deployed>
     <Created as="MBAInterfaceDeliveryToLocation" by="daniel.baciu" on="1390913486625">Tue Jan 28 14:51:26 EET 2014</Created>
     <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391080741259" to="http://WF28:18793/sbm/deployment">Thu Jan 30 13:19:01 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391151371532" to="http://WF28:18793/sbm/deployment">Fri Jan 31 08:56:11 EET 2014</Deployed>
   </History>
   <Repository/>
 </Process>

@@ -1,0 +1,10 @@
+Please note all the mandatory dataslots are suffixed with '*'.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+The following data are for system use only.
+Please do not modify.
+
+{EMAIL.SKEY}=[${EMAIL.SKEY}]
+{EMAIL.TYPE}=[${EMAIL.TYPE}]
+{EMAIL.ENC.USER}=[${EMAIL.ENC.USER}]
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -161,20 +161,12 @@ bmZpZ2Zvcm0+Cg==
 </File>
     </Configuration>
   </ExternalWS>
-  <Link Name="Connection 4" default="true" webbpaID="1390912704225">
-    <Label>Connection 4</Label>
-    <Source cp="1">Follow up No Acknowledge</Source>
-    <Point x="372.0" y="180.0"/>
-    <Point x="642.0" y="180.0"/>
-    <Point x="642.0" y="84.0"/>
-    <Target cp="2">End 1</Target>
-  </Link>
-  <Link Name="No Ack on time" default="true" type="timeout" value="No Ack on time" webbpaID="1390912704226" y="-1">
-    <Label>No Ack on time</Label>
-    <Source cp="8">Waiting for DeliveryConfirmation</Source>
-    <Point x="336.0" y="108.0"/>
-    <Point x="336.0" y="144.0"/>
-    <Target cp="5">Follow up No Acknowledge</Target>
+  <Link Name="Connection 1" default="true" webbpaID="1390912704228">
+    <Label>Connection 1</Label>
+    <Source cp="1">Start</Source>
+    <Point x="84.0" y="66.0"/>
+    <Point x="228.0" y="66.0"/>
+    <Target cp="3">Waiting for DeliveryConfirmation</Target>
   </Link>
   <Link Name="Fully received" default="true" webbpaID="1390912704227">
     <Label>Fully received</Label>
@@ -183,12 +175,20 @@ bmZpZ2Zvcm0+Cg==
     <Point x="624.0" y="66.0"/>
     <Target cp="3">End 1</Target>
   </Link>
-  <Link Name="Connection 1" default="true" webbpaID="1390912704228">
-    <Label>Connection 1</Label>
-    <Source cp="1">Start</Source>
-    <Point x="84.0" y="66.0"/>
-    <Point x="228.0" y="66.0"/>
-    <Target cp="3">Waiting for DeliveryConfirmation</Target>
+  <Link Name="No Ack on time" default="true" type="timeout" value="No Ack on time" webbpaID="1390912704226" y="-1">
+    <Label>No Ack on time</Label>
+    <Source cp="8">Waiting for DeliveryConfirmation</Source>
+    <Point x="336.0" y="108.0"/>
+    <Point x="336.0" y="144.0"/>
+    <Target cp="5">Follow up No Acknowledge</Target>
+  </Link>
+  <Link Name="Connection 4" default="true" webbpaID="1390912704225">
+    <Label>Connection 4</Label>
+    <Source cp="1">Follow up No Acknowledge</Source>
+    <Point x="372.0" y="180.0"/>
+    <Point x="642.0" y="180.0"/>
+    <Point x="642.0" y="84.0"/>
+    <Target cp="2">End 1</Target>
   </Link>
   <Dataslot Name="ConfirmationTimeout" category="User" name="ConfirmationTimeout" type="ABL_INTEGER" webbpaID="1390912704229">
     <Label>Confirmation timeout</Label>
@@ -245,10 +245,10 @@ bmZpZ2Zvcm0+Cg==
   </Performers>
   <TabularViewWorkstepOrder/>
   <History>
-    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391072681088" to="http://WF28:18793/sbm/deployment">Thu Jan 30 11:04:41 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391071935009" to="http://WF28:18793/sbm/deployment">Thu Jan 30 10:52:15 EET 2014</Deployed>
-    <Created as="MBAInterfaceDeliveryToLocation" by="daniel.baciu" on="1390913486625">Tue Jan 28 14:51:26 EET 2014</Created>
     <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391080741259" to="http://WF28:18793/sbm/deployment">Thu Jan 30 13:19:01 EET 2014</Deployed>
+    <Created as="MBAInterfaceDeliveryToLocation" by="daniel.baciu" on="1390913486625">Tue Jan 28 14:51:26 EET 2014</Created>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391071935009" to="http://WF28:18793/sbm/deployment">Thu Jan 30 10:52:15 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391072681088" to="http://WF28:18793/sbm/deployment">Thu Jan 30 11:04:41 EET 2014</Deployed>
   </History>
   <Repository/>
   <Forms/>

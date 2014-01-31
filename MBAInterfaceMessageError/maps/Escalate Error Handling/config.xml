@@ -5,15 +5,27 @@
         <param name="CC" access="I" label="emailadapter:config.label.5" type="java.lang.Object" value="" mandatory="false"/>
         <param name="BCC" access="I" label="emailadapter:config.label.6" type="java.lang.Object" value="" mandatory="false"/>
         <param name="SUBJECT" access="I" label="emailadapter:config.label.9" type="java.lang.Object" value="" mandatory="true"/>
-        <param name="PART_COUNT" access="HIDDEN" label="emailadapter:config.label.12" type="java.lang.Integer" value="0" mandatory="true"/>
+        <param name="PART_COUNT" access="HIDDEN" label="emailadapter:config.label.12" type="java.lang.Integer" value="1" mandatory="true"/>
+    </block>
+    <block title="Part 1: Velocity Template" label="emailadapter:config.label.1:1:Velocity Template" hidden="false">
+        <param name="PLUGIN.1.NAME" access="HIDDEN" label="Plugin name" type="java.lang.String" value="Velocity Template"/>
+        <param name="PLUGIN.1.CONF" access="HIDDEN" label="Plugin configuration" type="java.lang.String" value="id%2Cdetails%2Cerrors%0AHello%2C%0A%0AThere+is+one+Interface+Message+task+which+failed+and+it+was+not+handled+in+given+timeslot.%0APlease+assign+a+person+to+handle+this.%0A%0AMessage%3A%0A%09%24id%0A%09%24details%0A%0AErrors%3A+%0A%09%24errors%0A%0ABPM+is+watching.%0AHave+a+nice+day%21%0A"/>
+        <param name="PLUGIN.1.MIME" access="HIDDEN" label="Mime type" type="java.lang.String" value="text/plain"/>
+        <param name="PLUGIN.1.IN.id" access="I" label="fileadapter:plugin.velocity.label.4:id" type="java.lang.Object" value="" mandatory="false"/>
+        <param name="PLUGIN.1.IN.details" access="I" label="fileadapter:plugin.velocity.label.4:details" type="java.lang.Object" value="" mandatory="false"/>
+        <param name="PLUGIN.1.IN.errors" access="I" label="fileadapter:plugin.velocity.label.4:errors" type="java.lang.Object" value="" mandatory="false"/>
     </block>
     <block title="Configuration" label="emailadapter:config.label.2" hidden="false">
         <param name="PROPERTY.allow.null.cc" access="HIDDEN" label="emailadapter:config.label.13" type="java.lang.String" value="true"/>
         <param name="PROPERTY.allow.null.bcc" access="HIDDEN" label="emailadapter:config.label.13" type="java.lang.String" value="true"/>
-        <param name="PROPERTY.mail.transport.protocol" access="HIDDEN" label="emailadapter:config.label.13" type="java.lang.String" value="smtps"/>
-        <param name="PROPERTY.mail.smtp.host" access="HIDDEN" label="emailadapter:config.label.13" type="java.lang.String" value=""/>
-        <param name="AUTH_USER" access="HIDDEN" label="emailadapter:config.label.7" type="java.lang.String" value="" mandatory="false"/>
-        <param name="AUTH_PASSWORD" access="HIDDEN" label="emailadapter:config.label.8" type="java.lang.String" value="" mandatory="false"/>
+        <param name="PROPERTY.mail.smtp.port" access="HIDDEN" label="emailadapter:config.label.13" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.port}"/>
+        <param name="PROPERTY.mail.smtp.socketFactory.port" access="HIDDEN" label="emailadapter:config.label.13" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.portl}"/>
+        <param name="PROPERTY.mail.smtp.socketFactory.fallback" access="HIDDEN" label="emailadapter:config.label.13" type="java.lang.String" value="false"/>
+        <param name="PROPERTY.mail.transport.protocol" access="HIDDEN" label="emailadapter:config.label.13" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.protocol}"/>
+        <param name="PROPERTY.mail.smtp.socketFactory.class" access="HIDDEN" label="emailadapter:config.label.13" type="java.lang.String" value="javax.net.ssl.SSLSocketFactory"/>
+        <param name="PROPERTY.mail.smtp.host" access="HIDDEN" label="emailadapter:config.label.13" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server}"/>
+        <param name="AUTH_USER" access="HIDDEN" label="emailadapter:config.label.7" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.user}" mandatory="false"/>
+        <param name="AUTH_PASSWORD" access="HIDDEN" label="emailadapter:config.label.8" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.password}" mandatory="false"/>
         <param name="EXCEPTION_OUTPUT" access="HIDDEN" label="Error as output" type="java.lang.String" value="true" mandatory="false"/>
         <param name="EXCEPTION" access="O" label="Error" type="java.lang.String" value="" mandatory="false"/>
     </block>
