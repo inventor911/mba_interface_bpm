@@ -142,7 +142,6 @@
     <Datainput>MessageQueueId</Datainput>
     <Datainput>MessageInfo</Datainput>
     <Datainput>MessageErrors</Datainput>
-    <Datainput>BPMSenderRecipient</Datainput>
     <Datainput>OnErrorEscalationList</Datainput>
     <Dataoutput>SendingMailError</Dataoutput>
     <RollbackPoint>FALSE</RollbackPoint>
@@ -151,7 +150,7 @@
     <AdapterType>process</AdapterType>
     <Configuration>
       <File name="mapping.prop" type="form/mime64">
-I1N1biBKYW4gMjYgMDE6Mzc6MzggRUVUIDIwMTQNCmFkYXB0ZXItY2xhc3M9Y29tLnNhdnZpb24u&#13;
+I01vbiBGZWIgMDMgMDk6MTQ6MDIgRUVUIDIwMTQNCmFkYXB0ZXItY2xhc3M9Y29tLnNhdnZpb24u&#13;
 c2JtLmFkYXB0ZXJzLmVtYWlsLkVtYWlsQWRhcHRlcg0KbWFwLWNvbmZpZ3VyYXRvcj1jb20uc2F2&#13;
 dmlvbi5zYm0uYWRhcHRlcnMuZnJhbWV3b3JrLkdyb3VwTWFwQ29uZmlndXJhdG9yDQphZGFwdGVy&#13;
 LWNvbmZpZ3VyYXRvcj1jb20uc2F2dmlvbi5zYm0uYWRhcHRlcnMuZW1haWwuRW1haWxBZGFwdGVy&#13;
@@ -259,30 +258,30 @@ YXMrbm90K2hhbmRsZWQraW4rZ2l2ZW4rdGltZXNsb3QuJTBBUGxlYXNlK2Fzc2lnbithK3BlcnNv&#13
 bit0bytoYW5kbGUrdGhpcy4lMEElMEFNZXNzYWdlJTNBJTBBJTA5JTI0aWQlMEElMDklMjRkZXRh&#13;
 aWxzJTBBJTBBRXJyb3JzJTNBKyUwQSUwOSUyNGVycm9ycyUwQSUwQUJQTStpcyt3YXRjaGluZy4l&#13;
 MEFIYXZlK2ErbmljZStkYXklMjElMEEiLz4KICA8cGFyYW0gbmFtZT0iU0VOREVSIiB0eXBlPSJq&#13;
-YXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iQEJQTVNlbmRlclJlY2lwaWVudCIvPgogIDxwYXJhbSBu&#13;
-YW1lPSJQUk9QRVJUWS5tYWlsLnNtdHAucG9ydCIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFs&#13;
-dWU9IiR7b2VicHNlbWFpbC5wcm9wZXJ0aWVzOm9lYnBzLmVtYWlsLm91dGdvaW5nLnNlcnZlci5w&#13;
-b3J0fSIvPgogIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5tYWlsLnNtdHAuc29ja2V0RmFjdG9yeS5w&#13;
-b3J0IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRp&#13;
-ZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyLnBvcnRsfSIvPgogIDxwYXJhbSBuYW1lPSJQ&#13;
-Uk9QRVJUWS5tYWlsLnNtdHAuaG9zdCIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiR7&#13;
-b2VicHNlbWFpbC5wcm9wZXJ0aWVzOm9lYnBzLmVtYWlsLm91dGdvaW5nLnNlcnZlcn0iLz4KICA8&#13;
-cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFpbC5zbXRwLnNvY2tldEZhY3RvcnkuY2xhc3MiIHR5cGU9&#13;
-ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJqYXZheC5uZXQuc3NsLlNTTFNvY2tldEZhY3Rvcnki&#13;
-Lz4KICA8cGFyYW0gbmFtZT0iQkNDIiB0eXBlPSJqYXZhLmxhbmcuT2JqZWN0IiB2YWx1ZT0iIi8+&#13;
-CiAgPHBhcmFtIG5hbWU9IlNVQkpFQ1QiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSJF&#13;
-U0NBTEFUSU9OOiBNZXNzYWdlIGVycm9yIG5vdCBoYW5kbGVkIG9uIHRpbWUiLz4KICA8cGFyYW0g&#13;
-bmFtZT0iQVVUSF9VU0VSIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2Vt&#13;
-YWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyLnVzZXJ9Ii8+CiAgPHBh&#13;
-cmFtIG5hbWU9IlJFQ0lQSUVOVFMiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSJAT25F&#13;
-cnJvckVzY2FsYXRpb25MaXN0Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwudHJhbnNw&#13;
-b3J0LnByb3RvY29sIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWls&#13;
-LnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyLnByb3RvY29sfSIvPgogIDxw&#13;
-YXJhbSBuYW1lPSJQUk9QRVJUWS5tYWlsLnNtdHAuc29ja2V0RmFjdG9yeS5mYWxsYmFjayIgdHlw&#13;
-ZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9ImZhbHNlIi8+CiAgPHBhcmFtIG5hbWU9IlBST1BF&#13;
-UlRZLmFsbG93Lm51bGwuY2MiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJ0cnVlIi8+&#13;
-CiAgPHBhcmFtIG5hbWU9IlBBUlRfQ09VTlQiIHR5cGU9ImphdmEubGFuZy5JbnRlZ2VyIiB2YWx1&#13;
-ZT0iMSIvPgo8L21hcD4K
+YXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1h&#13;
+aWwub3V0Z29pbmcuc2VydmVyLnVzZXJ9Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwu&#13;
+c210cC5wb3J0IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnBy&#13;
+b3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyLnBvcnR9Ii8+CiAgPHBhcmFtIG5h&#13;
+bWU9IlBST1BFUlRZLm1haWwuc210cC5zb2NrZXRGYWN0b3J5LnBvcnQiIHR5cGU9ImphdmEubGFu&#13;
+Zy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1haWwucHJvcGVydGllczpvZWJwcy5lbWFpbC5vdXRn&#13;
+b2luZy5zZXJ2ZXIucG9ydGx9Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwuc210cC5o&#13;
+b3N0IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRp&#13;
+ZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyfSIvPgogIDxwYXJhbSBuYW1lPSJQUk9QRVJU&#13;
+WS5tYWlsLnNtdHAuc29ja2V0RmFjdG9yeS5jbGFzcyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIg&#13;
+dmFsdWU9ImphdmF4Lm5ldC5zc2wuU1NMU29ja2V0RmFjdG9yeSIvPgogIDxwYXJhbSBuYW1lPSJC&#13;
+Q0MiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSIiLz4KICA8cGFyYW0gbmFtZT0iU1VC&#13;
+SkVDVCIgdHlwZT0iamF2YS5sYW5nLk9iamVjdCIgdmFsdWU9IkVTQ0FMQVRJT046IE1lc3NhZ2Ug&#13;
+ZXJyb3Igbm90IGhhbmRsZWQgb24gdGltZSIvPgogIDxwYXJhbSBuYW1lPSJBVVRIX1VTRVIiIHR5&#13;
+cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1haWwucHJvcGVydGllczpvZWJw&#13;
+cy5lbWFpbC5vdXRnb2luZy5zZXJ2ZXIudXNlcn0iLz4KICA8cGFyYW0gbmFtZT0iUkVDSVBJRU5U&#13;
+UyIgdHlwZT0iamF2YS5sYW5nLk9iamVjdCIgdmFsdWU9IkBPbkVycm9yRXNjYWxhdGlvbkxpc3Qi&#13;
+Lz4KICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFpbC50cmFuc3BvcnQucHJvdG9jb2wiIHR5cGU9&#13;
+ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1haWwucHJvcGVydGllczpvZWJwcy5l&#13;
+bWFpbC5vdXRnb2luZy5zZXJ2ZXIucHJvdG9jb2x9Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZ&#13;
+Lm1haWwuc210cC5zb2NrZXRGYWN0b3J5LmZhbGxiYWNrIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5n&#13;
+IiB2YWx1ZT0iZmFsc2UiLz4KICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkuYWxsb3cubnVsbC5jYyIg&#13;
+dHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4KICA8cGFyYW0gbmFtZT0iUEFS&#13;
+VF9DT1VOVCIgdHlwZT0iamF2YS5sYW5nLkludGVnZXIiIHZhbHVlPSIxIi8+CjwvbWFwPgo=
 </File>
       <File name="output.map" type="form/mime64">
 PG1hcCB2ZXJzaW9uPSIxLjMiPgogIDxwYXJhbSBuYW1lPSJTZW5kaW5nTWFpbEVycm9yIiB0eXBl&#13;
@@ -291,7 +290,8 @@ Pgo=
 </File>
     </Configuration>
   </ExternalWS>
-  <ExternalWS height="60" id="" name="OEAdapter" webbpaID="1391156945807" width="108" x="600" y="48">
+  <ExternalWS height="60" id="" name="Mark Message as Handled" webbpaID="1391156945807" width="168" x="576" y="48">
+    <Label>Mark Message as Handled</Label>
     <Performer category="OEAdapters" generate="false" managed="true" name="GenericOEAdapter">com.savvion.sbm.adapters.oe.OEAdapter</Performer>
     <PerformBy>execute</PerformBy>
     <ClosedConnection>TRUE</ClosedConnection>
@@ -605,8 +605,9 @@ PG1hcCB2ZXJzaW9uPSIxLjMiPgo8L21hcD4K
     </Configuration>
   </ExternalWS>
   <Link Name="Connection 1" default="true" webbpaID="1391156945809">
-    <Source cp="1">OEAdapter</Source>
-    <Point x="708.0" y="78.0"/>
+    <Label>Connection 1</Label>
+    <Source cp="1">Mark Message as Handled</Source>
+    <Point x="744.0" y="78.0"/>
     <Point x="780.0" y="78.0"/>
     <Target cp="3">End 1</Target>
   </Link>
@@ -621,8 +622,8 @@ PG1hcCB2ZXJzaW9uPSIxLjMiPgo8L21hcD4K
     <Label>Handled</Label>
     <Source cp="1">Handle Message Error</Source>
     <Point x="456.0" y="78.0"/>
-    <Point x="600.0" y="78.0"/>
-    <Target cp="3">OEAdapter</Target>
+    <Point x="576.0" y="78.0"/>
+    <Target cp="3">Mark Message as Handled</Target>
   </Link>
   <Link Name="Connection 5" default="true" type="timeout" value="Connection 5" webbpaID="1390546161957">
     <Label>Connection 5</Label>
@@ -782,10 +783,11 @@ PG1hcCB2ZXJzaW9uPSIxLjMiPgo8L21hcD4K
     <Performer category="" class="" generate="false" id="Escalate Error Handling Delay" managed="true" name="" type="managed" webbpaID="1390546161961"/>
     <Performer category="EmailAdapters" class="com.savvion.sbm.adapters.email.EmailAdapter" generate="false" id="Escalate Error Handling" managed="true" name="GenericEmailAdapter" type="managed" webbpaID="1391077138088"/>
     <Performer category="" class="" generate="false" id="OEAdapter" managed="true" name="" type="managed" webbpaID="1391083031130"/>
-    <Performer category="OEAdapters" class="com.savvion.sbm.adapters.oe.OEAdapter" generate="false" id="OEAdapter" managed="true" name="GenericOEAdapter" type="managed" webbpaID="1391156945808"/>
+    <Performer category="OEAdapters" class="com.savvion.sbm.adapters.oe.OEAdapter" generate="false" id="Mark Message as Handled" managed="true" name="GenericOEAdapter" type="managed" webbpaID="1391156945810"/>
   </Performers>
   <TabularViewWorkstepOrder/>
   <History>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391267239966" to="http://WF28:18793/sbm/deployment">Sat Feb 01 17:07:19 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1391168483708" to="http://WF28:18793/sbm/deployment">Fri Jan 31 13:41:23 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1391167128651" to="http://WF28:18793/sbm/deployment">Fri Jan 31 13:18:48 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1391081790830" to="http://WF28:18793/sbm/deployment">Thu Jan 30 13:36:30 EET 2014</Deployed>
@@ -826,6 +828,7 @@ PG1hcCB2ZXJzaW9uPSIxLjMiPgo8L21hcD4K
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1391093011720" to="http://WF28:18793/sbm/deployment">Thu Jan 30 16:43:31 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1391094175533" to="http://WF28:18793/sbm/deployment">Thu Jan 30 17:02:55 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1391094786584" to="http://WF28:18793/sbm/deployment">Thu Jan 30 17:13:06 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391499336451" to="http://WF28:18793/sbm/deployment">Tue Feb 04 09:35:36 EET 2014</Deployed>
   </History>
   <Repository/>
   <Forms/>

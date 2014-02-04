@@ -1,0 +1,13 @@
+#Tue Feb 04 09:05:57 EET 2014
+publishing.type=Copy_Files_Only
+application.name=MBAInterfaceRequestForTransfer
+inherit.acl=true
+adapter.version=8.1
+module.type=com.savvion.studio.designer.module.bpm
+publish.webservice=false
+application.mainprocessname=MBAInterfaceRequestForTransfer
+module.id=797d8f54-7b64-4c85-bf25-d87b1ea953c3
+module.version=8
+application.mainappfile=MBAInterfaceRequestForTransfer/processtemplates/MBAInterfaceRequestForTransfer.spt
+module.name=MBAInterfaceRequestForTransfer
+application.root=MBAInterfaceRequestForTransfer

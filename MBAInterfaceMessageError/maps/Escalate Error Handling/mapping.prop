@@ -1,4 +1,4 @@
-#Sun Jan 26 01:37:38 EET 2014
+#Mon Feb 03 09:14:02 EET 2014
 adapter-class=com.savvion.sbm.adapters.email.EmailAdapter
 map-configurator=com.savvion.sbm.adapters.framework.GroupMapConfigurator
 adapter-configurator=com.savvion.sbm.adapters.email.EmailAdapterConfiguratorDialog

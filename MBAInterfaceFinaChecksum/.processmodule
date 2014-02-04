@@ -1,0 +1,13 @@
+#Tue Feb 04 09:11:50 EET 2014
+publishing.type=Copy_Files_Only
+application.name=MBAInterfaceFinaChecksum
+inherit.acl=true
+adapter.version=8.1
+module.type=com.savvion.studio.designer.module.bpm
+publish.webservice=false
+application.mainprocessname=MBAInterfaceFinaChecksum
+module.id=7c3b1765-bd93-4d37-9364-6a635cea8132
+module.version=8
+application.mainappfile=MBAInterfaceFinaChecksum/processtemplates/MBAInterfaceFinaChecksum.spt
+module.name=MBAInterfaceFinaChecksum
+application.root=MBAInterfaceFinaChecksum

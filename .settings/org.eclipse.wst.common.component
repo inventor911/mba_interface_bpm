@@ -3,5 +3,10 @@
     <wb-module deploy-name="mba_interface_bpm">
         <wb-resource deploy-path="/" source-path="/MBAInterfaceMessageError/src/java"/>
         <wb-resource deploy-path="/" source-path="/MBAInterfaceDeliveryToLocation/src/java"/>
+        <wb-resource deploy-path="/" source-path="/MBAInterfaceRequestForTransfer/src/java"/>
+        <wb-resource deploy-path="/" source-path="/MBAInterfaceMissingTransaction/src/java"/>
+        <wb-resource deploy-path="/" source-path="/MBAInterfaceFinaChecksum/src/java"/>
+        <wb-resource deploy-path="/" source-path="/MBAInterfaceSalesTransaction/src/java"/>
+        <wb-resource deploy-path="/" source-path="/MBAInterfaceCommon/Adapters"/>
     </wb-module>
 </project-modules>

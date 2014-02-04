@@ -206,7 +206,6 @@ aXRpb24+Cg==</ConditionXMLEncoded>
     <PerformBy>execute</PerformBy>
     <ClosedConnection>TRUE</ClosedConnection>
     <Priority>MEDIUM</Priority>
-    <Datainput>BPMSenderRecipient</Datainput>
     <Datainput>OnErrorEscalationList</Datainput>
     <Dataoutput>SendingMailErrorText</Dataoutput>
     <RollbackPoint>FALSE</RollbackPoint>
@@ -307,30 +306,30 @@ MEFIZWxsbyUyQyUwQSUwQVRoZStJbnRlcmZhY2UrTWVzc2FnZStQcm9jZXNzb3IraXMrbm90K3Jl&#13
 c29wbmRpbmcuKyUwQVRoZSt0YXNrK3RvK2hhbmRsZSt0aGlzK2Vycm9yK3dhcytub3QrY29tcGxl&#13;
 dGVkK2FzK2V4cGVjdGVkLiUwQVBsZWFzZSthc3NpZ24rYStwZXJzb24rdG8raGFuZGxlK3RoaXMu&#13;
 JTBBJTBBQlBNLiIvPgogIDxwYXJhbSBuYW1lPSJTRU5ERVIiIHR5cGU9ImphdmEubGFuZy5TdHJp&#13;
-bmciIHZhbHVlPSJAQlBNU2VuZGVyUmVjaXBpZW50Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZ&#13;
-Lm1haWwuc210cC5wb3J0IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2Vt&#13;
-YWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyLnBvcnR9Ii8+CiAgPHBh&#13;
-cmFtIG5hbWU9IlBST1BFUlRZLm1haWwuc210cC5zb2NrZXRGYWN0b3J5LnBvcnQiIHR5cGU9Imph&#13;
+bmciIHZhbHVlPSIke29lYnBzZW1haWwucHJvcGVydGllczpvZWJwcy5lbWFpbC5vdXRnb2luZy5z&#13;
+ZXJ2ZXIudXNlcn0iLz4KICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFpbC5zbXRwLnBvcnQiIHR5&#13;
+cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1haWwucHJvcGVydGllczpvZWJw&#13;
+cy5lbWFpbC5vdXRnb2luZy5zZXJ2ZXIucG9ydH0iLz4KICA8cGFyYW0gbmFtZT0iUFJPUEVSVFku&#13;
+bWFpbC5zbXRwLnNvY2tldEZhY3RvcnkucG9ydCIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFs&#13;
+dWU9IiR7b2VicHNlbWFpbC5wcm9wZXJ0aWVzOm9lYnBzLmVtYWlsLm91dGdvaW5nLnNlcnZlci5w&#13;
+b3J0bH0iLz4KICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFpbC5zbXRwLmhvc3QiIHR5cGU9Imph&#13;
 dmEubGFuZy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1haWwucHJvcGVydGllczpvZWJwcy5lbWFp&#13;
-bC5vdXRnb2luZy5zZXJ2ZXIucG9ydGx9Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwu&#13;
-c210cC5ob3N0IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnBy&#13;
-b3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyfSIvPgogIDxwYXJhbSBuYW1lPSJQ&#13;
-Uk9QRVJUWS5tYWlsLnNtdHAuc29ja2V0RmFjdG9yeS5jbGFzcyIgdHlwZT0iamF2YS5sYW5nLlN0&#13;
-cmluZyIgdmFsdWU9ImphdmF4Lm5ldC5zc2wuU1NMU29ja2V0RmFjdG9yeSIvPgogIDxwYXJhbSBu&#13;
-YW1lPSJCQ0MiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSIiLz4KICA8cGFyYW0gbmFt&#13;
-ZT0iU1VCSkVDVCIgdHlwZT0iamF2YS5sYW5nLk9iamVjdCIgdmFsdWU9IkVTQ0FMQVRJT046IE1l&#13;
-c3NhZ2UgUHJvY2Vzc29yIGVycm9yIG5vdCBoYW5kbGVkIG9uIHRpbWUiLz4KICA8cGFyYW0gbmFt&#13;
-ZT0iQVVUSF9VU0VSIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWls&#13;
-LnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyLnVzZXJ9Ii8+CiAgPHBhcmFt&#13;
-IG5hbWU9IlJFQ0lQSUVOVFMiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSJAT25FcnJv&#13;
-ckVzY2FsYXRpb25MaXN0Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwudHJhbnNwb3J0&#13;
-LnByb3RvY29sIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnBy&#13;
-b3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyLnByb3RvY29sfSIvPgogIDxwYXJh&#13;
-bSBuYW1lPSJQUk9QRVJUWS5tYWlsLnNtdHAuc29ja2V0RmFjdG9yeS5mYWxsYmFjayIgdHlwZT0i&#13;
-amF2YS5sYW5nLlN0cmluZyIgdmFsdWU9ImZhbHNlIi8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZ&#13;
-LmFsbG93Lm51bGwuY2MiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJ0cnVlIi8+CiAg&#13;
-PHBhcmFtIG5hbWU9IlBBUlRfQ09VTlQiIHR5cGU9ImphdmEubGFuZy5JbnRlZ2VyIiB2YWx1ZT0i&#13;
-MSIvPgo8L21hcD4K
+bC5vdXRnb2luZy5zZXJ2ZXJ9Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwuc210cC5z&#13;
+b2NrZXRGYWN0b3J5LmNsYXNzIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iamF2YXgu&#13;
+bmV0LnNzbC5TU0xTb2NrZXRGYWN0b3J5Ii8+CiAgPHBhcmFtIG5hbWU9IkJDQyIgdHlwZT0iamF2&#13;
+YS5sYW5nLk9iamVjdCIgdmFsdWU9IiIvPgogIDxwYXJhbSBuYW1lPSJTVUJKRUNUIiB0eXBlPSJq&#13;
+YXZhLmxhbmcuT2JqZWN0IiB2YWx1ZT0iRVNDQUxBVElPTjogTWVzc2FnZSBQcm9jZXNzb3IgZXJy&#13;
+b3Igbm90IGhhbmRsZWQgb24gdGltZSIvPgogIDxwYXJhbSBuYW1lPSJBVVRIX1VTRVIiIHR5cGU9&#13;
+ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1haWwucHJvcGVydGllczpvZWJwcy5l&#13;
+bWFpbC5vdXRnb2luZy5zZXJ2ZXIudXNlcn0iLz4KICA8cGFyYW0gbmFtZT0iUkVDSVBJRU5UUyIg&#13;
+dHlwZT0iamF2YS5sYW5nLk9iamVjdCIgdmFsdWU9IkBPbkVycm9yRXNjYWxhdGlvbkxpc3QiLz4K&#13;
+ICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFpbC50cmFuc3BvcnQucHJvdG9jb2wiIHR5cGU9Imph&#13;
+dmEubGFuZy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1haWwucHJvcGVydGllczpvZWJwcy5lbWFp&#13;
+bC5vdXRnb2luZy5zZXJ2ZXIucHJvdG9jb2x9Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1h&#13;
+aWwuc210cC5zb2NrZXRGYWN0b3J5LmZhbGxiYWNrIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2&#13;
+YWx1ZT0iZmFsc2UiLz4KICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkuYWxsb3cubnVsbC5jYyIgdHlw&#13;
+ZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4KICA8cGFyYW0gbmFtZT0iUEFSVF9D&#13;
+T1VOVCIgdHlwZT0iamF2YS5sYW5nLkludGVnZXIiIHZhbHVlPSIxIi8+CjwvbWFwPgo=
 </File>
       <File name="output.map" type="form/mime64">
 PG1hcCB2ZXJzaW9uPSIxLjMiPgogIDxwYXJhbSBuYW1lPSJTZW5kaW5nTWFpbEVycm9yVGV4dCIg&#13;
@@ -345,7 +344,6 @@ L21hcD4K
     <ClosedConnection>TRUE</ClosedConnection>
     <Priority>MEDIUM</Priority>
     <Datainput>SchedulerTimeout</Datainput>
-    <Datainput>BPMSenderRecipient</Datainput>
     <Datainput>OnErrorEscalationList</Datainput>
     <Dataoutput>SendingMailErrorText</Dataoutput>
     <RollbackPoint>FALSE</RollbackPoint>
@@ -449,30 +447,31 @@ ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJzZWMlMEFIZWxsbyUyQyUwQSUwQVRoZStJbnRlcmZh&#13
 Y2UrTWVzc2FnZStQcm9jZXNzb3IraGFzK25vdCtiZWVuK3N0YXJ0ZWQrZm9yKyUyNHNlYytzZWNv&#13;
 bmRzLitUaGlzK3dhcytub3QraGFuZGVsZWQreWV0LislMEFQbGVhc2UrYXNzaWduK2ErcGVyc29u&#13;
 K3RvK2hhbmRsZSt0aGlzLiUwQSUwQUJQTSIvPgogIDxwYXJhbSBuYW1lPSJTRU5ERVIiIHR5cGU9&#13;
-ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJAQlBNU2VuZGVyUmVjaXBpZW50Ii8+CiAgPHBhcmFt&#13;
-IG5hbWU9IlBST1BFUlRZLm1haWwuc210cC5wb3J0IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2&#13;
-YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVy&#13;
-LnBvcnR9Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwuc210cC5zb2NrZXRGYWN0b3J5&#13;
-LnBvcnQiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1haWwucHJvcGVy&#13;
-dGllczpvZWJwcy5lbWFpbC5vdXRnb2luZy5zZXJ2ZXIucG9ydGx9Ii8+CiAgPHBhcmFtIG5hbWU9&#13;
-IlBST1BFUlRZLm1haWwuc210cC5ob3N0IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0i&#13;
-JHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyfSIvPgog&#13;
-IDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5tYWlsLnNtdHAuc29ja2V0RmFjdG9yeS5jbGFzcyIgdHlw&#13;
-ZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9ImphdmF4Lm5ldC5zc2wuU1NMU29ja2V0RmFjdG9y&#13;
-eSIvPgogIDxwYXJhbSBuYW1lPSJCQ0MiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSIi&#13;
-Lz4KICA8cGFyYW0gbmFtZT0iU1VCSkVDVCIgdHlwZT0iamF2YS5sYW5nLk9iamVjdCIgdmFsdWU9&#13;
-IkVTQ0FMQVRJT046IFNjaGVkdWxlciBlcnJvciBub3QgaGFuZGxlZCBvbiB0aW1lIi8+CiAgPHBh&#13;
-cmFtIG5hbWU9IkFVVEhfVVNFUiIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiR7b2Vi&#13;
-cHNlbWFpbC5wcm9wZXJ0aWVzOm9lYnBzLmVtYWlsLm91dGdvaW5nLnNlcnZlci51c2VyfSIvPgog&#13;
-IDxwYXJhbSBuYW1lPSJSRUNJUElFTlRTIiB0eXBlPSJqYXZhLmxhbmcuT2JqZWN0IiB2YWx1ZT0i&#13;
-QE9uRXJyb3JFc2NhbGF0aW9uTGlzdCIvPgogIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5tYWlsLnRy&#13;
-YW5zcG9ydC5wcm90b2NvbCIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiR7b2VicHNl&#13;
-bWFpbC5wcm9wZXJ0aWVzOm9lYnBzLmVtYWlsLm91dGdvaW5nLnNlcnZlci5wcm90b2NvbH0iLz4K&#13;
-ICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFpbC5zbXRwLnNvY2tldEZhY3RvcnkuZmFsbGJhY2si&#13;
-IHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJmYWxzZSIvPgogIDxwYXJhbSBuYW1lPSJQ&#13;
-Uk9QRVJUWS5hbGxvdy5udWxsLmNjIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0idHJ1&#13;
-ZSIvPgogIDxwYXJhbSBuYW1lPSJQQVJUX0NPVU5UIiB0eXBlPSJqYXZhLmxhbmcuSW50ZWdlciIg&#13;
-dmFsdWU9IjEiLz4KPC9tYXA+Cg==
+ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1haWwucHJvcGVydGllczpvZWJwcy5l&#13;
+bWFpbC5vdXRnb2luZy5zZXJ2ZXIudXNlcn0iLz4KICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFp&#13;
+bC5zbXRwLnBvcnQiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1haWwu&#13;
+cHJvcGVydGllczpvZWJwcy5lbWFpbC5vdXRnb2luZy5zZXJ2ZXIucG9ydH0iLz4KICA8cGFyYW0g&#13;
+bmFtZT0iUFJPUEVSVFkubWFpbC5zbXRwLnNvY2tldEZhY3RvcnkucG9ydCIgdHlwZT0iamF2YS5s&#13;
+YW5nLlN0cmluZyIgdmFsdWU9IiR7b2VicHNlbWFpbC5wcm9wZXJ0aWVzOm9lYnBzLmVtYWlsLm91&#13;
+dGdvaW5nLnNlcnZlci5wb3J0bH0iLz4KICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFpbC5zbXRw&#13;
+Lmhvc3QiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1haWwucHJvcGVy&#13;
+dGllczpvZWJwcy5lbWFpbC5vdXRnb2luZy5zZXJ2ZXJ9Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BF&#13;
+UlRZLm1haWwuc210cC5zb2NrZXRGYWN0b3J5LmNsYXNzIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5n&#13;
+IiB2YWx1ZT0iamF2YXgubmV0LnNzbC5TU0xTb2NrZXRGYWN0b3J5Ii8+CiAgPHBhcmFtIG5hbWU9&#13;
+IkJDQyIgdHlwZT0iamF2YS5sYW5nLk9iamVjdCIgdmFsdWU9IiIvPgogIDxwYXJhbSBuYW1lPSJT&#13;
+VUJKRUNUIiB0eXBlPSJqYXZhLmxhbmcuT2JqZWN0IiB2YWx1ZT0iRVNDQUxBVElPTjogU2NoZWR1&#13;
+bGVyIGVycm9yIG5vdCBoYW5kbGVkIG9uIHRpbWUiLz4KICA8cGFyYW0gbmFtZT0iQVVUSF9VU0VS&#13;
+IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6&#13;
+b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyLnVzZXJ9Ii8+CiAgPHBhcmFtIG5hbWU9IlJFQ0lQ&#13;
+SUVOVFMiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSJAT25FcnJvckVzY2FsYXRpb25M&#13;
+aXN0Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwudHJhbnNwb3J0LnByb3RvY29sIiB0&#13;
+eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6b2Vi&#13;
+cHMuZW1haWwub3V0Z29pbmcuc2VydmVyLnByb3RvY29sfSIvPgogIDxwYXJhbSBuYW1lPSJQUk9Q&#13;
+RVJUWS5tYWlsLnNtdHAuc29ja2V0RmFjdG9yeS5mYWxsYmFjayIgdHlwZT0iamF2YS5sYW5nLlN0&#13;
+cmluZyIgdmFsdWU9ImZhbHNlIi8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLmFsbG93Lm51bGwu&#13;
+Y2MiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJ0cnVlIi8+CiAgPHBhcmFtIG5hbWU9&#13;
+IlBBUlRfQ09VTlQiIHR5cGU9ImphdmEubGFuZy5JbnRlZ2VyIiB2YWx1ZT0iMSIvPgo8L21hcD4K&#13;
+
 </File>
       <File name="output.map" type="form/mime64">
 PG1hcCB2ZXJzaW9uPSIxLjMiPgogIDxwYXJhbSBuYW1lPSJTZW5kaW5nTWFpbEVycm9yVGV4dCIg&#13;
@@ -485,8 +484,8 @@ L21hcD4K
     <Label>Task Completted</Label>
     <Source cp="0">Message Processor Stopped</Source>
     <Point x="606.0" y="216.0"/>
-    <Point x="606.0" y="196.0"/>
-    <Point x="260.0" y="196.0"/>
+    <Point x="606.0" y="176.0"/>
+    <Point x="260.0" y="176.0"/>
     <Point x="260.0" y="135.0"/>
     <Point x="240.0" y="135.0"/>
     <Target cp="7">Scheduler Waiting</Target>
@@ -850,6 +849,8 @@ dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
     <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391167126516" to="http://WF28:18793/sbm/deployment">Fri Jan 31 13:18:46 EET 2014</Deployed>
     <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391168482141" to="http://WF28:18793/sbm/deployment">Fri Jan 31 13:41:22 EET 2014</Deployed>
     <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391172821643" to="http://WF28:18793/sbm/deployment">Fri Jan 31 14:53:41 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391267238240" to="http://WF28:18793/sbm/deployment">Sat Feb 01 17:07:18 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391499334477" to="http://WF28:18793/sbm/deployment">Tue Feb 04 09:35:34 EET 2014</Deployed>
   </History>
   <Repository/>
   <Forms/>

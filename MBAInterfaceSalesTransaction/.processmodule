@@ -1,0 +1,13 @@
+#Tue Feb 04 09:15:53 EET 2014
+publishing.type=Copy_Files_Only
+application.name=MBAInterfaceSalesTransaction
+inherit.acl=true
+adapter.version=8.1
+module.type=com.savvion.studio.designer.module.bpm
+publish.webservice=false
+application.mainprocessname=MBAInterfaceSalesTransaction
+module.id=5956f3f2-606e-4c0a-9727-18895950e706
+module.version=8
+application.mainappfile=MBAInterfaceSalesTransaction/processtemplates/MBAInterfaceSalesTransaction.spt
+module.name=MBAInterfaceSalesTransaction
+application.root=MBAInterfaceSalesTransaction

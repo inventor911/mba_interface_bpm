@@ -1,0 +1,13 @@
+#Tue Feb 04 09:11:01 EET 2014
+publishing.type=Copy_Files_Only
+application.name=MBAInterfaceMissingTransaction
+inherit.acl=true
+adapter.version=8.1
+module.type=com.savvion.studio.designer.module.bpm
+publish.webservice=false
+application.mainprocessname=MBAInterfaceMissingTransaction
+module.id=17936398-8d64-4741-8917-39c9b5ba9353
+module.version=8
+application.mainappfile=MBAInterfaceMissingTransaction/processtemplates/MBAInterfaceMissingTransaction.spt
+module.name=MBAInterfaceMissingTransaction
+application.root=MBAInterfaceMissingTransaction

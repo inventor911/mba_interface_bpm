@@ -70,7 +70,36 @@
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
   </AtomicWS>
-  <AtomicWS height="84" id="" name="Waiting for DeliveryConfirmation" webbpaID="1390912704223" width="144" worktime="false" x="228" y="24">
+  <AtomicWS height="72" id="" name="No Acknowledged or Partial" webbpaID="1391156945813" width="144" worktime="false" x="336" y="144">
+    <Label>Delivery no Acknowledged or Partial</Label>
+    <AtomicType>ACTIVITY</AtomicType>
+    <Performer>MBAInterface</Performer>
+    <PerformBy>ANY</PerformBy>
+    <PerformingApp>
+      <Metadata name="TARGETTYPE">JSP</Metadata>
+      <Metadata name="TARGET">NoAcknowledgedorPartial.jsp</Metadata>
+    </PerformingApp>
+    <Collaboration>
+      <CollabFunction enabled="true" type="Reassign"/>
+    </Collaboration>
+    <Form empty="true" name="NoAcknowledgedorPartial.jsp" type="form/mime64"/>
+    <Duration value="7200">2h</Duration>
+    <Priority>MEDIUM</Priority>
+    <EmailSupport>TRUE</EmailSupport>
+    <Datainput>FullyConfirmed</Datainput>
+    <Dataoutput>FullyConfirmed</Dataoutput>
+    <Format editable="true" input="FullyConfirmed" label="Delivery is fully confirmed" type="checkbox">
+      <Label>Delivery is fully confirmed</Label>
+    </Format>
+    <RollbackPoint>FALSE</RollbackPoint>
+    <OnOverdue>
+      <ActivateTimeoutFlow/>
+    </OnOverdue>
+    <Simulation distribution="ct" scenario="(default)">
+      <Duration value="7200">2h</Duration>
+    </Simulation>
+  </AtomicWS>
+  <AtomicWS height="84" id="" name="Waiting for DeliveryConfirmation" webbpaID="1390912704223" width="144" worktime="false" x="336" y="24">
     <AtomicType>ACTIVITY</AtomicType>
     <Performer>@CREATOR</Performer>
     <PerformingApp>
@@ -96,12 +125,14 @@
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
   </AtomicWS>
-  <ExternalWS height="72" id="" name="Follow up No Acknowledge" webbpaID="1390912704224" width="144" x="228" y="144">
-    <Label>Follow up No Acknowledge</Label>
+  <ExternalWS height="72" id="" name="Escalation" webbpaID="1390912704224" width="144" x="84" y="144">
+    <Label>Escalation</Label>
     <Performer category="EmailAdapters" generate="false" managed="true" name="GenericEmailAdapter">com.savvion.sbm.adapters.email.EmailAdapter</Performer>
     <PerformBy>execute</PerformBy>
     <ClosedConnection>TRUE</ClosedConnection>
     <Priority>MEDIUM</Priority>
+    <Datainput>ConfirmationNotificationList</Datainput>
+    <Dataoutput>SendingMailErrorText</Dataoutput>
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
     <InlineExecution>FALSE</InlineExecution>
@@ -129,63 +160,145 @@ IG5hbWU9IkNDIiBhY2Nlc3M9IkkiIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjUi&#13
 IHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSIiIG1hbmRhdG9yeT0iZmFsc2UiLz4KICAg&#13;
 ICAgICA8cGFyYW0gbmFtZT0iQkNDIiBhY2Nlc3M9IkkiIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29u&#13;
 ZmlnLmxhYmVsLjYiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSIiIG1hbmRhdG9yeT0i&#13;
-ZmFsc2UiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iU1VCSkVDVCIgYWNjZXNzPSJJIiBsYWJlbD0i&#13;
-ZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC45IiB0eXBlPSJqYXZhLmxhbmcuT2JqZWN0IiB2YWx1&#13;
-ZT0iIiBtYW5kYXRvcnk9InRydWUiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUEFSVF9DT1VOVCIg&#13;
-YWNjZXNzPSJISURERU4iIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjEyIiB0eXBl&#13;
-PSJqYXZhLmxhbmcuSW50ZWdlciIgdmFsdWU9IjEiIG1hbmRhdG9yeT0idHJ1ZSIvPgogICAgPC9i&#13;
-bG9jaz4KICAgIDxibG9jayB0aXRsZT0iUGFydCAxOiBWZWxvY2l0eSBUZW1wbGF0ZSIgbGFiZWw9&#13;
-ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMToxOlZlbG9jaXR5IFRlbXBsYXRlIiBoaWRkZW49&#13;
-ImZhbHNlIj4KICAgICAgICA8cGFyYW0gbmFtZT0iUExVR0lOLjEuTkFNRSIgYWNjZXNzPSJISURE&#13;
-RU4iIGxhYmVsPSJQbHVnaW4gbmFtZSIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IlZl&#13;
-bG9jaXR5IFRlbXBsYXRlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBMVUdJTi4xLk1JTUUiIGFj&#13;
-Y2Vzcz0iSElEREVOIiBsYWJlbD0iTWltZSB0eXBlIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2&#13;
-YWx1ZT0idGV4dC9wbGFpbiIvPgogICAgPC9ibG9jaz4KICAgIDxibG9jayB0aXRsZT0iQ29uZmln&#13;
-dXJhdGlvbiIgbGFiZWw9ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMiIgaGlkZGVuPSJmYWxz&#13;
-ZSI+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLmFsbG93Lm51bGwuY2MiIGFjY2Vzcz0i&#13;
-SElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2YS5s&#13;
-YW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVSVFku&#13;
-YWxsb3cubnVsbC5iY2MiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZp&#13;
-Zy5sYWJlbC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4KICAgICAg&#13;
-ICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFpbC50cmFuc3BvcnQucHJvdG9jb2wiIGFjY2Vzcz0i&#13;
-SElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2YS5s&#13;
-YW5nLlN0cmluZyIgdmFsdWU9InNtdHAiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVSVFku&#13;
-bWFpbC5zbXRwLmhvc3QiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZp&#13;
-Zy5sYWJlbC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiIvPgogICAgICAgIDxw&#13;
-YXJhbSBuYW1lPSJBVVRIX1VTRVIiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVy&#13;
-OmNvbmZpZy5sYWJlbC43IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iIiBtYW5kYXRv&#13;
-cnk9ImZhbHNlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IkFVVEhfUEFTU1dPUkQiIGFjY2Vzcz0i&#13;
-SElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC44IiB0eXBlPSJqYXZhLmxh&#13;
-bmcuU3RyaW5nIiB2YWx1ZT0iIiBtYW5kYXRvcnk9ImZhbHNlIi8+CiAgICA8L2Jsb2NrPgo8L2Nv&#13;
-bmZpZ2Zvcm0+Cg==
+ZmFsc2UiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iU1VCSkVDVCIgYWNjZXNzPSJQUkVTRVQiIGxh&#13;
+YmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjkiIHR5cGU9ImphdmEubGFuZy5PYmplY3Qi&#13;
+IHZhbHVlPSJDb25maXJtIGRlbGl2ZXJ5IHRvIGxvY2F0aW9uIG5vdCBhY2tub3dsZWRnZWQiIG1h&#13;
+bmRhdG9yeT0idHJ1ZSIvPgogICAgICAgIDxwYXJhbSBuYW1lPSJQQVJUX0NPVU5UIiBhY2Nlc3M9&#13;
+IkhJRERFTiIgbGFiZWw9ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMTIiIHR5cGU9ImphdmEu&#13;
+bGFuZy5JbnRlZ2VyIiB2YWx1ZT0iMSIgbWFuZGF0b3J5PSJ0cnVlIi8+CiAgICA8L2Jsb2NrPgog&#13;
+ICAgPGJsb2NrIHRpdGxlPSJQYXJ0IDE6IFZlbG9jaXR5IFRlbXBsYXRlIiBsYWJlbD0iZW1haWxh&#13;
+ZGFwdGVyOmNvbmZpZy5sYWJlbC4xOjE6VmVsb2NpdHkgVGVtcGxhdGUiIGhpZGRlbj0iZmFsc2Ui&#13;
+PgogICAgICAgIDxwYXJhbSBuYW1lPSJQTFVHSU4uMS5OQU1FIiBhY2Nlc3M9IkhJRERFTiIgbGFi&#13;
+ZWw9IlBsdWdpbiBuYW1lIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iVmVsb2NpdHkg&#13;
+VGVtcGxhdGUiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUExVR0lOLjEuQ09ORiIgYWNjZXNzPSJI&#13;
+SURERU4iIGxhYmVsPSJQbHVnaW4gY29uZmlndXJhdGlvbiIgdHlwZT0iamF2YS5sYW5nLlN0cmlu&#13;
+ZyIgdmFsdWU9IiUwQSUzQ2VudGVyK3RleHQraGVyZSUzRSIvPgogICAgICAgIDxwYXJhbSBuYW1l&#13;
+PSJQTFVHSU4uMS5NSU1FIiBhY2Nlc3M9IkhJRERFTiIgbGFiZWw9Ik1pbWUgdHlwZSIgdHlwZT0i&#13;
+amF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InRleHQvcGxhaW4iLz4KICAgIDwvYmxvY2s+CiAgICA8&#13;
+YmxvY2sgdGl0bGU9IkNvbmZpZ3VyYXRpb24iIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxh&#13;
+YmVsLjIiIGhpZGRlbj0iZmFsc2UiPgogICAgICAgIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5hbGxv&#13;
+dy5udWxsLmNjIiBhY2Nlc3M9IkhJRERFTiIgbGFiZWw9ImVtYWlsYWRhcHRlcjpjb25maWcubGFi&#13;
+ZWwuMTMiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJ0cnVlIi8+CiAgICAgICAgPHBh&#13;
+cmFtIG5hbWU9IlBST1BFUlRZLmFsbG93Lm51bGwuYmNjIiBhY2Nlc3M9IkhJRERFTiIgbGFiZWw9&#13;
+ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMTMiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZh&#13;
+bHVlPSJ0cnVlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwuc210cC5wb3J0&#13;
+IiBhY2Nlc3M9IkhJRERFTiIgbGFiZWw9ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMTMiIHR5&#13;
+cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1haWwucHJvcGVydGllczpvZWJw&#13;
+cy5lbWFpbC5vdXRnb2luZy5zZXJ2ZXIucG9ydH0iLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJP&#13;
+UEVSVFkubWFpbC5zbXRwLnNvY2tldEZhY3RvcnkucG9ydCIgYWNjZXNzPSJISURERU4iIGxhYmVs&#13;
+PSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjEzIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2&#13;
+YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVy&#13;
+LnBvcnRsfSIvPgogICAgICAgIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5tYWlsLnNtdHAuc29ja2V0&#13;
+RmFjdG9yeS5mYWxsYmFjayIgYWNjZXNzPSJISURERU4iIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29u&#13;
+ZmlnLmxhYmVsLjEzIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iZmFsc2UiLz4KICAg&#13;
+ICAgICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFpbC50cmFuc3BvcnQucHJvdG9jb2wiIGFjY2Vz&#13;
+cz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2&#13;
+YS5sYW5nLlN0cmluZyIgdmFsdWU9IiR7b2VicHNlbWFpbC5wcm9wZXJ0aWVzOm9lYnBzLmVtYWls&#13;
+Lm91dGdvaW5nLnNlcnZlci5wcm90b2NvbH0iLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVS&#13;
+VFkubWFpbC5zbXRwLnNvY2tldEZhY3RvcnkuY2xhc3MiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0i&#13;
+ZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFs&#13;
+dWU9ImphdmF4Lm5ldC5zc2wuU1NMU29ja2V0RmFjdG9yeSIvPgogICAgICAgIDxwYXJhbSBuYW1l&#13;
+PSJQUk9QRVJUWS5tYWlsLnNtdHAuaG9zdCIgYWNjZXNzPSJISURERU4iIGxhYmVsPSJlbWFpbGFk&#13;
+YXB0ZXI6Y29uZmlnLmxhYmVsLjEzIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtv&#13;
+ZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyfSIvPgogICAg&#13;
+ICAgIDxwYXJhbSBuYW1lPSJBVVRIX1VTRVIiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxh&#13;
+ZGFwdGVyOmNvbmZpZy5sYWJlbC43IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtv&#13;
+ZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyLnVzZXJ9IiBt&#13;
+YW5kYXRvcnk9ImZhbHNlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IkFVVEhfUEFTU1dPUkQiIGFj&#13;
+Y2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC44IiB0eXBlPSJq&#13;
+YXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1h&#13;
+aWwub3V0Z29pbmcuc2VydmVyLnBhc3N3b3JkfSIgbWFuZGF0b3J5PSJmYWxzZSIvPgogICAgICAg&#13;
+IDxwYXJhbSBuYW1lPSJFWENFUFRJT05fT1VUUFVUIiBhY2Nlc3M9IkhJRERFTiIgbGFiZWw9IkVy&#13;
+cm9yIGFzIG91dHB1dCIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InRydWUiIG1hbmRh&#13;
+dG9yeT0iZmFsc2UiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iRVhDRVBUSU9OIiBhY2Nlc3M9Ik8i&#13;
+IGxhYmVsPSJFcnJvciIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiIgbWFuZGF0b3J5&#13;
+PSJmYWxzZSIvPgogICAgPC9ibG9jaz4KPC9jb25maWdmb3JtPgo=
+</File>
+      <File name="output.map" type="form/mime64">
+PG1hcCB2ZXJzaW9uPSIxLjMiPgogIDxwYXJhbSBuYW1lPSJTZW5kaW5nTWFpbEVycm9yVGV4dCIg&#13;
+dHlwZT0iY29tLnByb2dyZXNzLmxhbmcuQ2hhcmFjdGVyIiB2YWx1ZT0iQEVYQ0VQVElPTiIvPgo8&#13;
+L21hcD4K
+</File>
+      <File name="input.map" type="form/mime64">
+PG1hcCB2ZXJzaW9uPSIxLjMiPgogIDxwYXJhbSBuYW1lPSJQTFVHSU4uMS5OQU1FIiB0eXBlPSJq&#13;
+YXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iVmVsb2NpdHkgVGVtcGxhdGUiLz4KICA8cGFyYW0gbmFt&#13;
+ZT0iUFJPUEVSVFkuYWxsb3cubnVsbC5iY2MiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVl&#13;
+PSJ0cnVlIi8+CiAgPHBhcmFtIG5hbWU9IkVYQ0VQVElPTl9PVVRQVVQiIHR5cGU9ImphdmEubGFu&#13;
+Zy5TdHJpbmciIHZhbHVlPSJ0cnVlIi8+CiAgPHBhcmFtIG5hbWU9IlBMVUdJTi4xLk1JTUUiIHR5&#13;
+cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJ0ZXh0L3BsYWluIi8+CiAgPHBhcmFtIG5hbWU9&#13;
+IkFVVEhfUEFTU1dPUkQiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1h&#13;
+aWwucHJvcGVydGllczpvZWJwcy5lbWFpbC5vdXRnb2luZy5zZXJ2ZXIucGFzc3dvcmR9Ii8+CiAg&#13;
+PHBhcmFtIG5hbWU9IkNDIiB0eXBlPSJqYXZhLmxhbmcuT2JqZWN0IiB2YWx1ZT0iIi8+CiAgPHBh&#13;
+cmFtIG5hbWU9IlBMVUdJTi4xLkNPTkYiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIl&#13;
+MEElM0NlbnRlcit0ZXh0K2hlcmUlM0UiLz4KICA8cGFyYW0gbmFtZT0iU0VOREVSIiB0eXBlPSJq&#13;
+YXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1h&#13;
+aWwub3V0Z29pbmcuc2VydmVyLnVzZXJ9Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwu&#13;
+c210cC5wb3J0IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnBy&#13;
+b3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyLnBvcnR9Ii8+CiAgPHBhcmFtIG5h&#13;
+bWU9IlBST1BFUlRZLm1haWwuc210cC5zb2NrZXRGYWN0b3J5LnBvcnQiIHR5cGU9ImphdmEubGFu&#13;
+Zy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1haWwucHJvcGVydGllczpvZWJwcy5lbWFpbC5vdXRn&#13;
+b2luZy5zZXJ2ZXIucG9ydGx9Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwuc210cC5o&#13;
+b3N0IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRp&#13;
+ZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyfSIvPgogIDxwYXJhbSBuYW1lPSJQUk9QRVJU&#13;
+WS5tYWlsLnNtdHAuc29ja2V0RmFjdG9yeS5jbGFzcyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIg&#13;
+dmFsdWU9ImphdmF4Lm5ldC5zc2wuU1NMU29ja2V0RmFjdG9yeSIvPgogIDxwYXJhbSBuYW1lPSJC&#13;
+Q0MiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSIiLz4KICA8cGFyYW0gbmFtZT0iU1VC&#13;
+SkVDVCIgdHlwZT0iamF2YS5sYW5nLk9iamVjdCIgdmFsdWU9IkNvbmZpcm0gZGVsaXZlcnkgdG8g&#13;
+bG9jYXRpb24gbm90IGFja25vd2xlZGdlZCIvPgogIDxwYXJhbSBuYW1lPSJBVVRIX1VTRVIiIHR5&#13;
+cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1haWwucHJvcGVydGllczpvZWJw&#13;
+cy5lbWFpbC5vdXRnb2luZy5zZXJ2ZXIudXNlcn0iLz4KICA8cGFyYW0gbmFtZT0iUkVDSVBJRU5U&#13;
+UyIgdHlwZT0iamF2YS5sYW5nLk9iamVjdCIgdmFsdWU9IkBDb25maXJtYXRpb25Ob3RpZmljYXRp&#13;
+b25MaXN0Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwudHJhbnNwb3J0LnByb3RvY29s&#13;
+IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6&#13;
+b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyLnByb3RvY29sfSIvPgogIDxwYXJhbSBuYW1lPSJQ&#13;
+Uk9QRVJUWS5tYWlsLnNtdHAuc29ja2V0RmFjdG9yeS5mYWxsYmFjayIgdHlwZT0iamF2YS5sYW5n&#13;
+LlN0cmluZyIgdmFsdWU9ImZhbHNlIi8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLmFsbG93Lm51&#13;
+bGwuY2MiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJ0cnVlIi8+CiAgPHBhcmFtIG5h&#13;
+bWU9IlBBUlRfQ09VTlQiIHR5cGU9ImphdmEubGFuZy5JbnRlZ2VyIiB2YWx1ZT0iMSIvPgo8L21h&#13;
+cD4K
 </File>
     </Configuration>
   </ExternalWS>
+  <Link Name="Not handled on time" default="true" type="timeout" webbpaID="1391156945820" x="12" y="1">
+    <Source cp="3">No Acknowledged or Partial</Source>
+    <Point x="336.0" y="180.0"/>
+    <Point x="228.0" y="180.0"/>
+    <Target cp="1">Escalation</Target>
+  </Link>
   <Link Name="Connection 1" default="true" webbpaID="1390912704228">
     <Label>Connection 1</Label>
     <Source cp="1">Start</Source>
     <Point x="84.0" y="66.0"/>
-    <Point x="228.0" y="66.0"/>
+    <Point x="336.0" y="66.0"/>
     <Target cp="3">Waiting for DeliveryConfirmation</Target>
   </Link>
   <Link Name="Fully received" default="true" webbpaID="1390912704227">
     <Label>Fully received</Label>
     <Source cp="1">Waiting for DeliveryConfirmation</Source>
-    <Point x="372.0" y="66.0"/>
+    <Point x="480.0" y="66.0"/>
     <Point x="624.0" y="66.0"/>
     <Target cp="3">End 1</Target>
   </Link>
-  <Link Name="No Ack on time" default="true" type="timeout" value="No Ack on time" webbpaID="1390912704226" y="-1">
+  <Link Name="No Ack on time" default="true" type="timeout" value="No Ack on time" webbpaID="1390912704226" x="-114" y="-3">
     <Label>No Ack on time</Label>
-    <Source cp="8">Waiting for DeliveryConfirmation</Source>
-    <Point x="336.0" y="108.0"/>
-    <Point x="336.0" y="144.0"/>
-    <Target cp="5">Follow up No Acknowledge</Target>
+    <Source cp="9">Waiting for DeliveryConfirmation</Source>
+    <Point x="372.0" y="108.0"/>
+    <Point x="372.0" y="144.0"/>
+    <Target cp="4">No Acknowledged or Partial</Target>
   </Link>
   <Link Name="Connection 4" default="true" webbpaID="1390912704225">
     <Label>Connection 4</Label>
-    <Source cp="1">Follow up No Acknowledge</Source>
-    <Point x="372.0" y="180.0"/>
+    <Source cp="2">Escalation</Source>
+    <Point x="156.0" y="216.0"/>
+    <Point x="156.0" y="236.0"/>
+    <Point x="408.0" y="236.0"/>
+    <Point x="408.0" y="216.0"/>
+    <Target cp="2">No Acknowledged or Partial</Target>
+  </Link>
+  <Link Name="Handled" default="true" webbpaID="1391156945814">
+    <Label>Handled</Label>
+    <Source cp="1">No Acknowledged or Partial</Source>
+    <Point x="480.0" y="180.0"/>
     <Point x="642.0" y="180.0"/>
     <Point x="642.0" y="84.0"/>
     <Target cp="2">End 1</Target>
@@ -232,10 +345,44 @@ bmZpZ2Zvcm0+Cg==
     <Access type="BIZ_MANAGE_ACCESS" value="true"/>
     <Access type="GLOBAL" value="false"/>
     <Access type="BIZ_SITE_COLUMN" value="false"/>
-    <Format editable="true" label="Status" password="false" required="false" size="0" type="abl_text">
+    <Format editable="true" label="Status" password="false" required="false" size="1" type="abl_text">
       <Label>Status</Label>
     </Format>
     <Storage size="30000" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="ConfirmationNotificationList" category="User" name="ConfirmationNotificationList" type="ABL_CHARACTER" webbpaID="1391156945811">
+    <Label>Confirmation Notification List</Label>
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Confirmation Notification List" password="false" required="false" size="20" type="abl_text">
+      <Label>Confirmation Notification List</Label>
+    </Format>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="SendingMailErrorText" category="User" name="SendingMailErrorText" type="ABL_CHARACTER" webbpaID="1391156945812">
+    <Label>Sending e-mail Errors</Label>
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Sending e-mail Errors" password="false" required="false" size="20" type="abl_text">
+      <Label>Sending e-mail Errors</Label>
+    </Format>
+    <Storage size="256" type="CHAR"/>
   </Dataslot>
   <Performers>
     <Performer name="@CREATOR" type="user" webbpaID="1390912704218"/>

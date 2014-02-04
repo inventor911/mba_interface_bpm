@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="src" output="MBAInterfaceCommon/AdaptersBin" path="MBAInterfaceCommon/Adapters"/>
+	<classpathentry kind="src" output="MBAInterfaceSalesTransaction/bin" path="MBAInterfaceSalesTransaction/src/java"/>
+	<classpathentry kind="src" output="MBAInterfaceFinaChecksum/bin" path="MBAInterfaceFinaChecksum/src/java"/>
+	<classpathentry kind="src" output="MBAInterfaceMissingTransaction/bin" path="MBAInterfaceMissingTransaction/src/java"/>
+	<classpathentry kind="src" output="MBAInterfaceRequestForTransfer/bin" path="MBAInterfaceRequestForTransfer/src/java"/>
 	<classpathentry kind="src" output="MBAInterfaceDeliveryToLocation/bin" path="MBAInterfaceDeliveryToLocation/src/java"/>
 	<classpathentry kind="src" output="MBAInterfaceMessageError/bin" path="MBAInterfaceMessageError/src/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">

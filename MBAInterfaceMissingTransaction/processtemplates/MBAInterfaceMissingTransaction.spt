@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Process name="MBAInterfaceMissingTransaction" type="BIZLOGIC" webbpaID="1391156945817">
+  <Package xmlns="http://www.wfmc.org/2004/XPDL2.0alpha" Id="1" Name="">
+    <PackageHeader>
+      <XPDLVersion>2.0</XPDLVersion>
+      <Vendor>Progress Software Corporation</Vendor>
+      <Created>1391497861486</Created>
+    </PackageHeader>
+    <Pools>
+      <Pool BoundaryVisible="true" Id="MBAInterfaceMissingTransaction" Process="MBAInterfaceMissingTransaction">
+        <Lanes/>
+      </Pool>
+    </Pools>
+  </Package>
+  <Description/>
+  <Application name="MBAInterfaceMissingTransaction"/>
+  <Category level="0"/>
+  <Category level="1"/>
+  <Group/>
+  <Manager>@CREATOR</Manager>
+  <EstimatedDuration>1d</EstimatedDuration>
+  <TimeCreated>1391497861486</TimeCreated>
+  <Author>daniel.baciu</Author>
+  <Version/>
+  <Resources runtime="false"/>
+  <Simulation count="10" distribution="ct" interval="600" scenario="(default)"/>
+  <Alerts>
+    <Alert name="Default">
+      <AlertSeverity>High</AlertSeverity>
+      <AlertMessage>This is the default alert.</AlertMessage>
+      <AlertDescription/>
+      <AlertCondition type="java:expression"/>
+      <AlertDelivery type="sbm">
+        <AlertRecipient type="USER">@CREATOR</AlertRecipient>
+      </AlertDelivery>
+    </Alert>
+  </Alerts>
+  <Performers>
+    <Performer name="@CREATOR" type="user" webbpaID="1391156945806"/>
+  </Performers>
+  <TabularViewWorkstepOrder/>
+  <History>
+    <Created as="MBAInterfaceMissingTransaction" by="daniel.baciu" on="1391497861486">Tue Feb 04 09:11:01 EET 2014</Created>
+  </History>
+  <Repository/>
+  <Forms/>
+</Process>
