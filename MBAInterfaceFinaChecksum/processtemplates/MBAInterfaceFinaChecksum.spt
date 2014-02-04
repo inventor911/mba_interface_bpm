@@ -11,7 +11,7 @@
         <Lanes>
           <Lane Id="1" Name="Follow Checksum" ParentLane="MBAInterfaceFinaChecksum">
             <NodeGraphicsInfos>
-              <NodeGraphicsInfo BorderColor="0,0,0" FillColor="255,102,0" Height="180px" Width="0px">
+              <NodeGraphicsInfo BorderColor="0,0,0" FillColor="255,102,0" Height="276px" Width="0px">
                 <Coordinates XCoordinate="0px" YCoordinate="0px"/>
               </NodeGraphicsInfo>
             </NodeGraphicsInfos>
@@ -51,9 +51,309 @@
       </AlertDelivery>
     </Alert>
   </Alerts>
+  <AtomicWS height="36" id="" name="Start" webbpaID="1391505822495" width="36" worktime="false" x="84" y="36">
+    <AtomicType>START</AtomicType>
+    <PerformingApp>
+      <Metadata name="TARGETTYPE">JSP</Metadata>
+      <Metadata name="TARGET">Start.jsp</Metadata>
+    </PerformingApp>
+    <Form empty="true" name="Start.jsp" type="form/mime64">
+PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8&#13;
+IURPQ1RZUEUgRm9ybSBTWVNURU0gImZvcm0uZHRkIj4NCjxGb3JtIHRzdGFtcD0iMTM5MTUwODcx&#13;
+ODA1MyIgdmVyc2lvbj0iOS4wIj4NCiAgPERhdGFTb3VyY2VzLz4NCiAgPFZhbGlkYXRpb24vPg0K&#13;
+ICA8aGVhZD4NCiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIHR5cGU9ImJpenNvbG8iLz4NCiAg&#13;
+PC9oZWFkPg0KICA8Ym9keT4NCiAgICA8c2VjdGlvbiBlZGl0YWJsZT0idHJ1ZSIgaGVpZ2h0PSIw&#13;
+IiB0eXBlPSJoZWFkZXIiIHZpc2libGU9InRydWUiPg0KICAgICAgPGZpZWxkcz4NCiAgICAgICAg&#13;
+PGZpZWxkIG5hbWU9Imluc3RydWN0aW9ucyI+dHJ1ZTwvZmllbGQ+DQogICAgICAgIDxmaWVsZCBu&#13;
+YW1lPSJkdWVEYXRlIj5mYWxzZTwvZmllbGQ+DQogICAgICAgIDxmaWVsZCBuYW1lPSJwcmlvcml0&#13;
+eSI+dHJ1ZTwvZmllbGQ+DQogICAgICAgIDxmaWVsZCBuYW1lPSJzdGFydERhdGUiPmZhbHNlPC9m&#13;
+aWVsZD4NCiAgICAgIDwvZmllbGRzPg0KICAgIDwvc2VjdGlvbj4NCiAgICA8c2VjdGlvbiBlZGl0&#13;
+YWJsZT0idHJ1ZSIgaGVpZ2h0PSIwIiB0eXBlPSJmb290ZXIiIHZpc2libGU9InRydWUiPg0KICAg&#13;
+ICAgPGZpZWxkcz4NCiAgICAgICAgPGZpZWxkIG5hbWU9InJlYXNzaWduIj50cnVlPC9maWVsZD4N&#13;
+CiAgICAgICAgPGZpZWxkIG5hbWU9IndvcmtUaW1lIj5mYWxzZTwvZmllbGQ+DQogICAgICAgIDxm&#13;
+aWVsZCBuYW1lPSJza2lwcGFibGUiPmZhbHNlPC9maWVsZD4NCiAgICAgIDwvZmllbGRzPg0KICAg&#13;
+IDwvc2VjdGlvbj4NCiAgPC9ib2R5Pg0KPC9Gb3JtPg0K
+</Form>
+    <Priority>MEDIUM</Priority>
+    <RollbackPoint>FALSE</RollbackPoint>
+    <Option name="Instructions" visible="true"/>
+    <Option name="Priority" visible="true"/>
+    <Option name="StartDate" visible="false"/>
+    <Option name="DueDate" visible="false"/>
+    <Option name="Reassign" visible="true"/>
+    <Simulation distribution="ct" scenario="(default)"/>
+  </AtomicWS>
+  <AtomicWS height="60" id="" name="Handle Fina Checksum Diff" webbpaID="1391505822512" width="156" worktime="false" x="276" y="24">
+    <Label>Handle Financial Checksum Difference</Label>
+    <AtomicType>ACTIVITY</AtomicType>
+    <Performer>MBAInterface</Performer>
+    <PerformBy>ANY</PerformBy>
+    <PerformingApp>
+      <Metadata name="TARGETTYPE">JSP</Metadata>
+      <Metadata name="TARGET">Activity1.jsp</Metadata>
+    </PerformingApp>
+    <Collaboration>
+      <CollabFunction enabled="true" type="Reassign"/>
+    </Collaboration>
+    <Form empty="true" name="Activity1.jsp" type="form/mime64"/>
+    <Duration>@CheckSumHandlingTimeout</Duration>
+    <Priority>MEDIUM</Priority>
+    <EmailSupport>TRUE</EmailSupport>
+    <Datainput>ChecksumInfo</Datainput>
+    <Dataoutput>ChecksumInfo</Dataoutput>
+    <Format editable="true" input="ChecksumInfo" label="Checksum info" password="false" required="false" size="20" type="abl_text">
+      <Label>Checksum info</Label>
+    </Format>
+    <RollbackPoint>FALSE</RollbackPoint>
+    <OnOverdue>
+      <ActivateTimeoutFlow/>
+    </OnOverdue>
+    <Simulation distribution="ct" scenario="(default)"/>
+  </AtomicWS>
+  <AtomicWS height="36" id="" name="End 1" webbpaID="1391505822497" width="36" worktime="false" x="516" y="36">
+    <AtomicType>END</AtomicType>
+    <Priority>MEDIUM</Priority>
+    <RollbackPoint>FALSE</RollbackPoint>
+    <Simulation distribution="ct" scenario="(default)"/>
+  </AtomicWS>
+  <ExternalWS height="72" id="" name="Escalate Checksum Diff" webbpaID="1391505822498" width="108" x="300" y="132">
+    <Label>Escalate Checksum Differencial</Label>
+    <Performer category="EmailAdapters" generate="false" managed="true" name="GenericEmailAdapter">com.savvion.sbm.adapters.email.EmailAdapter</Performer>
+    <PerformBy>execute</PerformBy>
+    <ClosedConnection>TRUE</ClosedConnection>
+    <Priority>MEDIUM</Priority>
+    <Datainput>OnChecksumDiffEscalationList</Datainput>
+    <Dataoutput>SendingMailError</Dataoutput>
+    <RollbackPoint>FALSE</RollbackPoint>
+    <Simulation distribution="ct" scenario="(default)"/>
+    <InlineExecution>FALSE</InlineExecution>
+    <AdapterType>process</AdapterType>
+    <Configuration>
+      <File name="mapping.prop" type="form/mime64">
+I1R1ZSBGZWIgMDQgMTE6NDA6MDYgRUVUIDIwMTQNCmFkYXB0ZXItY2xhc3M9Y29tLnNhdnZpb24u&#13;
+c2JtLmFkYXB0ZXJzLmVtYWlsLkVtYWlsQWRhcHRlcg0KbWFwLWNvbmZpZ3VyYXRvcj1jb20uc2F2&#13;
+dmlvbi5zYm0uYWRhcHRlcnMuZnJhbWV3b3JrLkdyb3VwTWFwQ29uZmlndXJhdG9yDQphZGFwdGVy&#13;
+LWNvbmZpZ3VyYXRvcj1jb20uc2F2dmlvbi5zYm0uYWRhcHRlcnMuZW1haWwuRW1haWxBZGFwdGVy&#13;
+Q29uZmlndXJhdG9yRGlhbG9nDQpBZGFwdGVyTmFtZT1HZW5lcmljRW1haWxBZGFwdGVyDQpsb2ct&#13;
+bGV2ZWw9MTANCnJ1bnRpbWUtbWFwcGVyPWNvbS5zYXZ2aW9uLnNibS5hZGFwdGVycy5mcmFtZXdv&#13;
+cmsuR3JvdXBNYXBwZXINCkFkYXB0ZXJDYXRlZ29yeT1FbWFpbEFkYXB0ZXJzDQppY29uPW1haWwu&#13;
+cG5nDQppbnN0YW5jZT10cnVlDQphZGFwbGV0PWZhbHNlDQo=
+</File>
+      <File name="config.xml" type="form/mime64">
+PGNvbmZpZ2Zvcm0gc3luY2hyb25vdXM9InRydWUiIHZlcnNpb249IjEuMyI+CiAgICA8YmxvY2sg&#13;
+dGl0bGU9Ik1lc3NhZ2UiIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjAiIGhpZGRl&#13;
+bj0iZmFsc2UiPgogICAgICAgIDxwYXJhbSBuYW1lPSJTRU5ERVIiIGFjY2Vzcz0iSSIgbGFiZWw9&#13;
+ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFs&#13;
+dWU9IiIgbWFuZGF0b3J5PSJ0cnVlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IlJFQ0lQSUVOVFMi&#13;
+IGFjY2Vzcz0iSSIgbGFiZWw9ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuNCIgdHlwZT0iamF2&#13;
+YS5sYW5nLk9iamVjdCIgdmFsdWU9IiIgbWFuZGF0b3J5PSJ0cnVlIi8+CiAgICAgICAgPHBhcmFt&#13;
+IG5hbWU9IkNDIiBhY2Nlc3M9IkkiIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjUi&#13;
+IHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSIiIG1hbmRhdG9yeT0iZmFsc2UiLz4KICAg&#13;
+ICAgICA8cGFyYW0gbmFtZT0iQkNDIiBhY2Nlc3M9IkkiIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29u&#13;
+ZmlnLmxhYmVsLjYiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSIiIG1hbmRhdG9yeT0i&#13;
+ZmFsc2UiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iU1VCSkVDVCIgYWNjZXNzPSJJIiBsYWJlbD0i&#13;
+ZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC45IiB0eXBlPSJqYXZhLmxhbmcuT2JqZWN0IiB2YWx1&#13;
+ZT0iIiBtYW5kYXRvcnk9InRydWUiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUEFSVF9DT1VOVCIg&#13;
+YWNjZXNzPSJISURERU4iIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjEyIiB0eXBl&#13;
+PSJqYXZhLmxhbmcuSW50ZWdlciIgdmFsdWU9IjEiIG1hbmRhdG9yeT0idHJ1ZSIvPgogICAgPC9i&#13;
+bG9jaz4KICAgIDxibG9jayB0aXRsZT0iUGFydCAxOiBWZWxvY2l0eSBUZW1wbGF0ZSIgbGFiZWw9&#13;
+ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMToxOlZlbG9jaXR5IFRlbXBsYXRlIiBoaWRkZW49&#13;
+ImZhbHNlIj4KICAgICAgICA8cGFyYW0gbmFtZT0iUExVR0lOLjEuTkFNRSIgYWNjZXNzPSJISURE&#13;
+RU4iIGxhYmVsPSJQbHVnaW4gbmFtZSIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IlZl&#13;
+bG9jaXR5IFRlbXBsYXRlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBMVUdJTi4xLkNPTkYiIGFj&#13;
+Y2Vzcz0iSElEREVOIiBsYWJlbD0iUGx1Z2luIGNvbmZpZ3VyYXRpb24iIHR5cGU9ImphdmEubGFu&#13;
+Zy5TdHJpbmciIHZhbHVlPSIlMEFIaS4lMEElMEFUaGVyZStpcythK2ZpbmFuY2lhbCtjaGVjaytz&#13;
+dW0rZGlmZmVyZW5jZS4rVGhpcytoYXNhbiUyN3QrYmVlbitoYW5kbGVkK2luK2dpdmVuK3RpbWUr&#13;
+c2xpdC4lNUMlMEElMEFQbGVhc2UrYXNzaWduK2ErcGVyc29uK3RvK2hhbmRsZStpdC4lMEElMEFI&#13;
+YXZlK2ErbmljZStEYXklMjElMEEiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUExVR0lOLjEuTUlN&#13;
+RSIgYWNjZXNzPSJISURERU4iIGxhYmVsPSJNaW1lIHR5cGUiIHR5cGU9ImphdmEubGFuZy5TdHJp&#13;
+bmciIHZhbHVlPSJ0ZXh0L3BsYWluIi8+CiAgICA8L2Jsb2NrPgogICAgPGJsb2NrIHRpdGxlPSJD&#13;
+b25maWd1cmF0aW9uIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4yIiBoaWRkZW49&#13;
+ImZhbHNlIj4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkuYWxsb3cubnVsbC5jYyIgYWNj&#13;
+ZXNzPSJISURERU4iIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjEzIiB0eXBlPSJq&#13;
+YXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0idHJ1ZSIvPgogICAgICAgIDxwYXJhbSBuYW1lPSJQUk9Q&#13;
+RVJUWS5hbGxvdy5udWxsLmJjYyIgYWNjZXNzPSJISURERU4iIGxhYmVsPSJlbWFpbGFkYXB0ZXI6&#13;
+Y29uZmlnLmxhYmVsLjEzIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0idHJ1ZSIvPgog&#13;
+ICAgICAgIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5tYWlsLnNtdHAucG9ydCIgYWNjZXNzPSJISURE&#13;
+RU4iIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjEzIiB0eXBlPSJqYXZhLmxhbmcu&#13;
+U3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29p&#13;
+bmcuc2VydmVyLnBvcnR9Ii8+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwuc210&#13;
+cC5zb2NrZXRGYWN0b3J5LnBvcnQiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVy&#13;
+OmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiR7b2VicHNl&#13;
+bWFpbC5wcm9wZXJ0aWVzOm9lYnBzLmVtYWlsLm91dGdvaW5nLnNlcnZlci5wb3J0bH0iLz4KICAg&#13;
+ICAgICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFpbC5zbXRwLnNvY2tldEZhY3RvcnkuZmFsbGJh&#13;
+Y2siIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIg&#13;
+dHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9ImZhbHNlIi8+CiAgICAgICAgPHBhcmFtIG5h&#13;
+bWU9IlBST1BFUlRZLm1haWwudHJhbnNwb3J0LnByb3RvY29sIiBhY2Nlc3M9IkhJRERFTiIgbGFi&#13;
+ZWw9ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuMTMiIHR5cGU9ImphdmEubGFuZy5TdHJpbmci&#13;
+IHZhbHVlPSIke29lYnBzZW1haWwucHJvcGVydGllczpvZWJwcy5lbWFpbC5vdXRnb2luZy5zZXJ2&#13;
+ZXIucHJvdG9jb2x9Ii8+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwuc210cC5z&#13;
+b2NrZXRGYWN0b3J5LmNsYXNzIiBhY2Nlc3M9IkhJRERFTiIgbGFiZWw9ImVtYWlsYWRhcHRlcjpj&#13;
+b25maWcubGFiZWwuMTMiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJqYXZheC5uZXQu&#13;
+c3NsLlNTTFNvY2tldEZhY3RvcnkiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFp&#13;
+bC5zbXRwLmhvc3QiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5s&#13;
+YWJlbC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiR7b2VicHNlbWFpbC5wcm9w&#13;
+ZXJ0aWVzOm9lYnBzLmVtYWlsLm91dGdvaW5nLnNlcnZlcn0iLz4KICAgICAgICA8cGFyYW0gbmFt&#13;
+ZT0iQVVUSF9VU0VSIiBhY2Nlc3M9IkhJRERFTiIgbGFiZWw9ImVtYWlsYWRhcHRlcjpjb25maWcu&#13;
+bGFiZWwuNyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiR7b2VicHNlbWFpbC5wcm9w&#13;
+ZXJ0aWVzOm9lYnBzLmVtYWlsLm91dGdvaW5nLnNlcnZlci51c2VyfSIgbWFuZGF0b3J5PSJmYWxz&#13;
+ZSIvPgogICAgICAgIDxwYXJhbSBuYW1lPSJBVVRIX1BBU1NXT1JEIiBhY2Nlc3M9IkhJRERFTiIg&#13;
+bGFiZWw9ImVtYWlsYWRhcHRlcjpjb25maWcubGFiZWwuOCIgdHlwZT0iamF2YS5sYW5nLlN0cmlu&#13;
+ZyIgdmFsdWU9IiR7b2VicHNlbWFpbC5wcm9wZXJ0aWVzOm9lYnBzLmVtYWlsLm91dGdvaW5nLnNl&#13;
+cnZlci5wYXNzd29yZH0iIG1hbmRhdG9yeT0iZmFsc2UiLz4KICAgICAgICA8cGFyYW0gbmFtZT0i&#13;
+RVhDRVBUSU9OX09VVFBVVCIgYWNjZXNzPSJISURERU4iIGxhYmVsPSJFcnJvciBhcyBvdXRwdXQi&#13;
+IHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJ0cnVlIiBtYW5kYXRvcnk9ImZhbHNlIi8+&#13;
+CiAgICAgICAgPHBhcmFtIG5hbWU9IkVYQ0VQVElPTiIgYWNjZXNzPSJPIiBsYWJlbD0iRXJyb3Ii&#13;
+IHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIiIG1hbmRhdG9yeT0iZmFsc2UiLz4KICAg&#13;
+IDwvYmxvY2s+CjwvY29uZmlnZm9ybT4K
+</File>
+      <File name="input.map" type="form/mime64">
+PG1hcCB2ZXJzaW9uPSIxLjMiPgogIDxwYXJhbSBuYW1lPSJQTFVHSU4uMS5OQU1FIiB0eXBlPSJq&#13;
+YXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iVmVsb2NpdHkgVGVtcGxhdGUiLz4KICA8cGFyYW0gbmFt&#13;
+ZT0iUFJPUEVSVFkuYWxsb3cubnVsbC5iY2MiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVl&#13;
+PSJ0cnVlIi8+CiAgPHBhcmFtIG5hbWU9IkVYQ0VQVElPTl9PVVRQVVQiIHR5cGU9ImphdmEubGFu&#13;
+Zy5TdHJpbmciIHZhbHVlPSJ0cnVlIi8+CiAgPHBhcmFtIG5hbWU9IlBMVUdJTi4xLk1JTUUiIHR5&#13;
+cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJ0ZXh0L3BsYWluIi8+CiAgPHBhcmFtIG5hbWU9&#13;
+IkFVVEhfUEFTU1dPUkQiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1h&#13;
+aWwucHJvcGVydGllczpvZWJwcy5lbWFpbC5vdXRnb2luZy5zZXJ2ZXIucGFzc3dvcmR9Ii8+CiAg&#13;
+PHBhcmFtIG5hbWU9IkNDIiB0eXBlPSJqYXZhLmxhbmcuT2JqZWN0IiB2YWx1ZT0iIi8+CiAgPHBh&#13;
+cmFtIG5hbWU9IlBMVUdJTi4xLkNPTkYiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIl&#13;
+MEFIaS4lMEElMEFUaGVyZStpcythK2ZpbmFuY2lhbCtjaGVjaytzdW0rZGlmZmVyZW5jZS4rVGhp&#13;
+cytoYXNhbiUyN3QrYmVlbitoYW5kbGVkK2luK2dpdmVuK3RpbWUrc2xpdC4lNUMlMEElMEFQbGVh&#13;
+c2UrYXNzaWduK2ErcGVyc29uK3RvK2hhbmRsZStpdC4lMEElMEFIYXZlK2ErbmljZStEYXklMjEl&#13;
+MEEiLz4KICA8cGFyYW0gbmFtZT0iU0VOREVSIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1&#13;
+ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyLnVz&#13;
+ZXJ9Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwuc210cC5wb3J0IiB0eXBlPSJqYXZh&#13;
+LmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwu&#13;
+b3V0Z29pbmcuc2VydmVyLnBvcnR9Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwuc210&#13;
+cC5zb2NrZXRGYWN0b3J5LnBvcnQiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIke29l&#13;
+YnBzZW1haWwucHJvcGVydGllczpvZWJwcy5lbWFpbC5vdXRnb2luZy5zZXJ2ZXIucG9ydGx9Ii8+&#13;
+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwuc210cC5ob3N0IiB0eXBlPSJqYXZhLmxhbmcu&#13;
+U3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29p&#13;
+bmcuc2VydmVyfSIvPgogIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5tYWlsLnNtdHAuc29ja2V0RmFj&#13;
+dG9yeS5jbGFzcyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9ImphdmF4Lm5ldC5zc2wu&#13;
+U1NMU29ja2V0RmFjdG9yeSIvPgogIDxwYXJhbSBuYW1lPSJCQ0MiIHR5cGU9ImphdmEubGFuZy5P&#13;
+YmplY3QiIHZhbHVlPSIiLz4KICA8cGFyYW0gbmFtZT0iU1VCSkVDVCIgdHlwZT0iamF2YS5sYW5n&#13;
+Lk9iamVjdCIgdmFsdWU9IkVTQ0FMQVRJT046IE5vdCBoYW5kbGVkIGZpbmFuY2lhbCBjaGVjayBz&#13;
+dW0iLz4KICA8cGFyYW0gbmFtZT0iQVVUSF9VU0VSIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2&#13;
+YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVy&#13;
+LnVzZXJ9Ii8+CiAgPHBhcmFtIG5hbWU9IlJFQ0lQSUVOVFMiIHR5cGU9ImphdmEubGFuZy5PYmpl&#13;
+Y3QiIHZhbHVlPSJAT25DaGVja3N1bURpZmZFc2NhbGF0aW9uTGlzdCIvPgogIDxwYXJhbSBuYW1l&#13;
+PSJQUk9QRVJUWS5tYWlsLnRyYW5zcG9ydC5wcm90b2NvbCIgdHlwZT0iamF2YS5sYW5nLlN0cmlu&#13;
+ZyIgdmFsdWU9IiR7b2VicHNlbWFpbC5wcm9wZXJ0aWVzOm9lYnBzLmVtYWlsLm91dGdvaW5nLnNl&#13;
+cnZlci5wcm90b2NvbH0iLz4KICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFpbC5zbXRwLnNvY2tl&#13;
+dEZhY3RvcnkuZmFsbGJhY2siIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJmYWxzZSIv&#13;
+PgogIDxwYXJhbSBuYW1lPSJQUk9QRVJUWS5hbGxvdy5udWxsLmNjIiB0eXBlPSJqYXZhLmxhbmcu&#13;
+U3RyaW5nIiB2YWx1ZT0idHJ1ZSIvPgogIDxwYXJhbSBuYW1lPSJQQVJUX0NPVU5UIiB0eXBlPSJq&#13;
+YXZhLmxhbmcuSW50ZWdlciIgdmFsdWU9IjEiLz4KPC9tYXA+Cg==
+</File>
+      <File name="output.map" type="form/mime64">
+PG1hcCB2ZXJzaW9uPSIxLjMiPgogIDxwYXJhbSBuYW1lPSJTZW5kaW5nTWFpbEVycm9yIiB0eXBl&#13;
+PSJjb20ucHJvZ3Jlc3MubGFuZy5DaGFyYWN0ZXIiIHZhbHVlPSJARVhDRVBUSU9OIi8+CjwvbWFw&#13;
+Pgo=
+</File>
+    </Configuration>
+  </ExternalWS>
+  <Link Name="Handled" default="true" webbpaID="1391505822503">
+    <Label>Handled</Label>
+    <Source cp="1">Handle Fina Checksum Diff</Source>
+    <Point x="432.0" y="54.0"/>
+    <Point x="516.0" y="54.0"/>
+    <Target cp="3">End 1</Target>
+  </Link>
+  <Link Name="Handling Timeout" default="true" type="timeout" value="Handling Timeout" webbpaID="1391505822500">
+    <Label>Handling Timeout</Label>
+    <Source cp="2">Handle Fina Checksum Diff</Source>
+    <Point x="354.0" y="84.0"/>
+    <Point x="354.0" y="132.0"/>
+    <Target cp="0">Escalate Checksum Diff</Target>
+  </Link>
+  <Link Name="Connection 3" default="true" webbpaID="1391505822501">
+    <Source cp="3">Escalate Checksum Diff</Source>
+    <Point x="300.0" y="168.0"/>
+    <Point x="256.0" y="168.0"/>
+    <Point x="256.0" y="69.0"/>
+    <Point x="276.0" y="69.0"/>
+    <Target cp="10">Handle Fina Checksum Diff</Target>
+  </Link>
+  <Link Name="Connection 1" default="true" webbpaID="1391505822502">
+    <Source cp="1">Start</Source>
+    <Point x="120.0" y="54.0"/>
+    <Point x="276.0" y="54.0"/>
+    <Target cp="3">Handle Fina Checksum Diff</Target>
+  </Link>
+  <Dataslot Name="CheckSumHandlingInstructions" category="User" name="CheckSumHandlingInstructions" type="ABL_CHARACTER" webbpaID="1391505822505">
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="CheckSumHandlingTimeout" category="User" name="CheckSumHandlingTimeout" type="ABL_INT64" webbpaID="1391505822506">
+    <DataType>ABL_INT64</DataType>
+    <DataValue unknown="false">0</DataValue>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="" required="false" size="20" type="abl_text"/>
+  </Dataslot>
+  <Dataslot Name="ChecksumInfo" category="User" name="ChecksumInfo" type="ABL_CHARACTER" webbpaID="1391505822507">
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="OnChecksumDiffEscalationList" category="User" name="OnChecksumDiffEscalationList" type="ABL_CHARACTER" webbpaID="1391505822510">
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="SendingMailError" category="User" name="SendingMailError" type="ABL_CHARACTER" webbpaID="1391505822511">
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
   <Performers>
     <Performer name="@CREATOR" type="user" webbpaID="1391156945806"/>
     <Performer name="MBAInterface" select="ANY" type="group" webbpaID="1391156945821"/>
+    <Performer category="EmailAdapters" class="com.savvion.sbm.adapters.email.EmailAdapter" generate="false" id="EmailAdapter 1" managed="true" name="GenericEmailAdapter" type="managed" webbpaID="1391505822499"/>
   </Performers>
   <TabularViewWorkstepOrder/>
   <History>
