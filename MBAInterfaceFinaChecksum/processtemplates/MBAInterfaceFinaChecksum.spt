@@ -269,6 +269,7 @@ Pgo=
     <Target cp="0">Escalate Checksum Diff</Target>
   </Link>
   <Link Name="Connection 3" default="true" webbpaID="1391505822501">
+    <Label>Connection 3</Label>
     <Source cp="3">Escalate Checksum Diff</Source>
     <Point x="300.0" y="168.0"/>
     <Point x="256.0" y="168.0"/>
@@ -277,6 +278,7 @@ Pgo=
     <Target cp="10">Handle Fina Checksum Diff</Target>
   </Link>
   <Link Name="Connection 1" default="true" webbpaID="1391505822502">
+    <Label>Connection 1</Label>
     <Source cp="1">Start</Source>
     <Point x="120.0" y="54.0"/>
     <Point x="276.0" y="54.0"/>
@@ -353,7 +355,8 @@ Pgo=
   <Performers>
     <Performer name="@CREATOR" type="user" webbpaID="1391156945806"/>
     <Performer name="MBAInterface" select="ANY" type="group" webbpaID="1391156945821"/>
-    <Performer category="EmailAdapters" class="com.savvion.sbm.adapters.email.EmailAdapter" generate="false" id="EmailAdapter 1" managed="true" name="GenericEmailAdapter" type="managed" webbpaID="1391505822499"/>
+    <Performer category="" class="" generate="false" id="EmailAdapter 1" managed="true" name="" type="managed" webbpaID="1391505822499"/>
+    <Performer category="EmailAdapters" class="com.savvion.sbm.adapters.email.EmailAdapter" generate="false" id="Escalate Checksum Diff" managed="true" name="GenericEmailAdapter" type="managed" webbpaID="1391523190841"/>
   </Performers>
   <TabularViewWorkstepOrder/>
   <History>

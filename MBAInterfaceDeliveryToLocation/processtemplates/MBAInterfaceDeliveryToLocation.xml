@@ -44,7 +44,35 @@
     <Option name="Reassign" visible="true"/>
     <Simulation distribution="ct" scenario="(default)"/>
   </AtomicWS>
-  <AtomicWS height="84" name="Waiting for DeliveryConfirmation" width="144" worktime="false" x="228" y="24">
+  <AtomicWS height="72" name="No Acknowledged or Partial" width="144" worktime="false" x="336" y="144">
+    <Label>Delivery no Acknowledged or Partial</Label>
+    <AtomicType>ACTIVITY</AtomicType>
+    <Performer>MBAInterface</Performer>
+    <PerformBy>ANY</PerformBy>
+    <PerformingApp>
+      <Metadata name="TARGETTYPE">JSP</Metadata>
+      <Metadata name="TARGET">NoAcknowledgedorPartial.jsp</Metadata>
+    </PerformingApp>
+    <Collaboration>
+      <CollabFunction enabled="true" type="Reassign"/>
+    </Collaboration>
+    <Duration value="7200">2h</Duration>
+    <Priority>MEDIUM</Priority>
+    <EmailSupport>TRUE</EmailSupport>
+    <Datainput>FullyConfirmed</Datainput>
+    <Dataoutput>FullyConfirmed</Dataoutput>
+    <Format editable="true" input="FullyConfirmed" label="Delivery is fully confirmed" type="checkbox">
+      <Label>Delivery is fully confirmed</Label>
+    </Format>
+    <RollbackPoint>FALSE</RollbackPoint>
+    <OnOverdue>
+      <ActivateTimeoutFlow/>
+    </OnOverdue>
+    <Simulation distribution="ct" scenario="(default)">
+      <Duration value="7200">2h</Duration>
+    </Simulation>
+  </AtomicWS>
+  <AtomicWS height="84" name="Waiting for DeliveryConfirmation" width="144" worktime="false" x="336" y="24">
     <AtomicType>ACTIVITY</AtomicType>
     <Performer>@CREATOR</Performer>
     <PerformingApp>
@@ -69,42 +97,60 @@
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
   </AtomicWS>
-  <ExternalWS height="72" name="Follow up No Acknowledge" width="144" x="228" y="144">
-    <Label>Follow up No Acknowledge</Label>
+  <ExternalWS height="72" name="Escalation" width="144" x="84" y="144">
+    <Label>Escalation</Label>
     <Performer category="EmailAdapters" generate="false" managed="true" name="GenericEmailAdapter">com.savvion.sbm.adapters.email.EmailAdapter</Performer>
     <PerformBy>execute</PerformBy>
     <ClosedConnection>TRUE</ClosedConnection>
     <Priority>MEDIUM</Priority>
+    <Datainput>ConfirmationNotificationList</Datainput>
+    <Dataoutput>SendingMailErrorText</Dataoutput>
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
     <InlineExecution>FALSE</InlineExecution>
     <AdapterType>process</AdapterType>
   </ExternalWS>
+  <Link Name="Not handled on time" default="true" type="timeout" value="Not handled on time" x="12" y="1">
+    <Label>Not handled on time</Label>
+    <Source cp="3">No Acknowledged or Partial</Source>
+    <Point x="336.0" y="180.0"/>
+    <Point x="228.0" y="180.0"/>
+    <Target cp="1">Escalation</Target>
+  </Link>
   <Link Name="Connection 1" default="true">
     <Label>Connection 1</Label>
     <Source cp="1">Start</Source>
     <Point x="84.0" y="66.0"/>
-    <Point x="228.0" y="66.0"/>
+    <Point x="336.0" y="66.0"/>
     <Target cp="3">Waiting for DeliveryConfirmation</Target>
   </Link>
   <Link Name="Fully received" default="true">
     <Label>Fully received</Label>
     <Source cp="1">Waiting for DeliveryConfirmation</Source>
-    <Point x="372.0" y="66.0"/>
+    <Point x="480.0" y="66.0"/>
     <Point x="624.0" y="66.0"/>
     <Target cp="3">End 1</Target>
   </Link>
-  <Link Name="No Ack on time" default="true" type="timeout" value="No Ack on time" y="-1">
+  <Link Name="No Ack on time" default="true" type="timeout" value="No Ack on time" x="-114" y="-3">
     <Label>No Ack on time</Label>
-    <Source cp="8">Waiting for DeliveryConfirmation</Source>
-    <Point x="336.0" y="108.0"/>
-    <Point x="336.0" y="144.0"/>
-    <Target cp="5">Follow up No Acknowledge</Target>
+    <Source cp="9">Waiting for DeliveryConfirmation</Source>
+    <Point x="372.0" y="108.0"/>
+    <Point x="372.0" y="144.0"/>
+    <Target cp="4">No Acknowledged or Partial</Target>
   </Link>
   <Link Name="Connection 4" default="true">
     <Label>Connection 4</Label>
-    <Source cp="1">Follow up No Acknowledge</Source>
-    <Point x="372.0" y="180.0"/>
+    <Source cp="2">Escalation</Source>
+    <Point x="156.0" y="216.0"/>
+    <Point x="156.0" y="236.0"/>
+    <Point x="408.0" y="236.0"/>
+    <Point x="408.0" y="216.0"/>
+    <Target cp="2">No Acknowledged or Partial</Target>
+  </Link>
+  <Link Name="Handled" default="true">
+    <Label>Handled</Label>
+    <Source cp="1">No Acknowledged or Partial</Source>
+    <Point x="480.0" y="180.0"/>
     <Point x="642.0" y="180.0"/>
     <Point x="642.0" y="84.0"/>
     <Target cp="2">End 1</Target>
@@ -151,10 +197,44 @@
     <Access type="BIZ_MANAGE_ACCESS" value="true"/>
     <Access type="GLOBAL" value="false"/>
     <Access type="BIZ_SITE_COLUMN" value="false"/>
-    <Format editable="true" label="Status" password="false" required="false" size="0" type="abl_text">
+    <Format editable="true" label="Status" password="false" required="false" size="1" type="abl_text">
       <Label>Status</Label>
     </Format>
     <Storage size="30000" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="ConfirmationNotificationList" category="User" name="ConfirmationNotificationList" type="ABL_CHARACTER">
+    <Label>Confirmation Notification List</Label>
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Confirmation Notification List" password="false" required="false" size="20" type="abl_text">
+      <Label>Confirmation Notification List</Label>
+    </Format>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="SendingMailErrorText" category="User" name="SendingMailErrorText" type="ABL_CHARACTER">
+    <Label>Sending e-mail Errors</Label>
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Sending e-mail Errors" password="false" required="false" size="20" type="abl_text">
+      <Label>Sending e-mail Errors</Label>
+    </Format>
+    <Storage size="256" type="CHAR"/>
   </Dataslot>
   <History>
     <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391080741259" to="http://WF28:18793/sbm/deployment">Thu Jan 30 13:19:01 EET 2014</Deployed>
