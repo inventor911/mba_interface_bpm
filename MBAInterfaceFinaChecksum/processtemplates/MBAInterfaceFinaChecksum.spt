@@ -11,7 +11,7 @@
         <Lanes>
           <Lane Id="1" Name="Follow Checksum" ParentLane="MBAInterfaceFinaChecksum">
             <NodeGraphicsInfos>
-              <NodeGraphicsInfo BorderColor="0,0,0" FillColor="255,102,0" Height="276px" Width="0px">
+              <NodeGraphicsInfo BorderColor="0,0,0" FillColor="255,102,0" Height="228px" Width="0px">
                 <Coordinates XCoordinate="0px" YCoordinate="0px"/>
               </NodeGraphicsInfo>
             </NodeGraphicsInfos>
@@ -254,12 +254,21 @@ Pgo=
 </File>
     </Configuration>
   </ExternalWS>
-  <Link Name="Handled" default="true" webbpaID="1391505822503">
-    <Label>Handled</Label>
-    <Source cp="1">Handle Fina Checksum Diff</Source>
-    <Point x="432.0" y="54.0"/>
-    <Point x="516.0" y="54.0"/>
-    <Target cp="3">End 1</Target>
+  <Link Name="Connection 1" default="true" webbpaID="1391505822502">
+    <Label>Connection 1</Label>
+    <Source cp="1">Start</Source>
+    <Point x="120.0" y="54.0"/>
+    <Point x="276.0" y="54.0"/>
+    <Target cp="3">Handle Fina Checksum Diff</Target>
+  </Link>
+  <Link Name="Connection 3" default="true" webbpaID="1391505822501">
+    <Label>Connection 3</Label>
+    <Source cp="3">Escalate Checksum Diff</Source>
+    <Point x="300.0" y="168.0"/>
+    <Point x="256.0" y="168.0"/>
+    <Point x="256.0" y="69.0"/>
+    <Point x="276.0" y="69.0"/>
+    <Target cp="10">Handle Fina Checksum Diff</Target>
   </Link>
   <Link Name="Handling Timeout" default="true" type="timeout" value="Handling Timeout" webbpaID="1391505822500">
     <Label>Handling Timeout</Label>
@@ -268,19 +277,12 @@ Pgo=
     <Point x="354.0" y="132.0"/>
     <Target cp="0">Escalate Checksum Diff</Target>
   </Link>
-  <Link Name="Connection 3" default="true" webbpaID="1391505822501">
-    <Source cp="3">Escalate Checksum Diff</Source>
-    <Point x="300.0" y="168.0"/>
-    <Point x="256.0" y="168.0"/>
-    <Point x="256.0" y="69.0"/>
-    <Point x="276.0" y="69.0"/>
-    <Target cp="10">Handle Fina Checksum Diff</Target>
-  </Link>
-  <Link Name="Connection 1" default="true" webbpaID="1391505822502">
-    <Source cp="1">Start</Source>
-    <Point x="120.0" y="54.0"/>
-    <Point x="276.0" y="54.0"/>
-    <Target cp="3">Handle Fina Checksum Diff</Target>
+  <Link Name="Handled" default="true" webbpaID="1391505822503">
+    <Label>Handled</Label>
+    <Source cp="1">Handle Fina Checksum Diff</Source>
+    <Point x="432.0" y="54.0"/>
+    <Point x="516.0" y="54.0"/>
+    <Target cp="3">End 1</Target>
   </Link>
   <Dataslot Name="CheckSumHandlingInstructions" category="User" name="CheckSumHandlingInstructions" type="ABL_CHARACTER" webbpaID="1391505822505">
     <DataType>ABL_CHARACTER</DataType>
@@ -350,10 +352,25 @@ Pgo=
     <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
+  <Dataslot Name="MessageQueueId" category="User" name="MessageQueueId" type="ABL_CHARACTER" webbpaID="1392012639461">
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
   <Performers>
     <Performer name="@CREATOR" type="user" webbpaID="1391156945806"/>
     <Performer name="MBAInterface" select="ANY" type="group" webbpaID="1391156945821"/>
-    <Performer category="EmailAdapters" class="com.savvion.sbm.adapters.email.EmailAdapter" generate="false" id="EmailAdapter 1" managed="true" name="GenericEmailAdapter" type="managed" webbpaID="1391505822499"/>
+    <Performer category="" class="" generate="false" id="EmailAdapter 1" managed="true" name="" type="managed" webbpaID="1391505822499"/>
+    <Performer category="EmailAdapters" class="com.savvion.sbm.adapters.email.EmailAdapter" generate="false" id="Escalate Checksum Diff" managed="true" name="GenericEmailAdapter" type="managed" webbpaID="1391523190841"/>
   </Performers>
   <TabularViewWorkstepOrder/>
   <History>
