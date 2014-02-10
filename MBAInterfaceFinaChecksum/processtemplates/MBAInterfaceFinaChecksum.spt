@@ -99,9 +99,12 @@ IDwvc2VjdGlvbj4NCiAgPC9ib2R5Pg0KPC9Gb3JtPg0K
     <Duration>@CheckSumHandlingTimeout</Duration>
     <Priority>MEDIUM</Priority>
     <EmailSupport>TRUE</EmailSupport>
+    <Datainput>MessageQueueId</Datainput>
     <Datainput>ChecksumInfo</Datainput>
-    <Dataoutput>ChecksumInfo</Dataoutput>
-    <Format editable="true" input="ChecksumInfo" label="Checksum info" password="false" required="false" size="20" type="abl_text">
+    <Format editable="false" input="MessageQueueId" label="Message queue id" password="false" required="false" size="20" type="abl_text">
+      <Label>Message queue id</Label>
+    </Format>
+    <Format editable="false" input="ChecksumInfo" label="Checksum info" password="false" required="false" size="20" type="abl_text">
       <Label>Checksum info</Label>
     </Format>
     <RollbackPoint>FALSE</RollbackPoint>
@@ -277,45 +280,13 @@ Pgo=
     <Point x="354.0" y="132.0"/>
     <Target cp="0">Escalate Checksum Diff</Target>
   </Link>
-<<<<<<< HEAD
   <Link Name="Handled" default="true" webbpaID="1391505822503">
     <Label>Handled</Label>
     <Source cp="1">Handle Fina Checksum Diff</Source>
     <Point x="432.0" y="54.0"/>
     <Point x="516.0" y="54.0"/>
     <Target cp="3">End 1</Target>
-=======
-  <Link Name="Connection 3" default="true" webbpaID="1391505822501">
-    <Label>Connection 3</Label>
-    <Source cp="3">Escalate Checksum Diff</Source>
-    <Point x="300.0" y="168.0"/>
-    <Point x="256.0" y="168.0"/>
-    <Point x="256.0" y="69.0"/>
-    <Point x="276.0" y="69.0"/>
-    <Target cp="10">Handle Fina Checksum Diff</Target>
   </Link>
-  <Link Name="Connection 1" default="true" webbpaID="1391505822502">
-    <Label>Connection 1</Label>
-    <Source cp="1">Start</Source>
-    <Point x="120.0" y="54.0"/>
-    <Point x="276.0" y="54.0"/>
-    <Target cp="3">Handle Fina Checksum Diff</Target>
->>>>>>> branch 'master' of ssh://git@github.com/atarba/mba_interface_bpm.git
-  </Link>
-  <Dataslot Name="CheckSumHandlingInstructions" category="User" name="CheckSumHandlingInstructions" type="ABL_CHARACTER" webbpaID="1391505822505">
-    <DataType>ABL_CHARACTER</DataType>
-    <DataValue unknown="false"/>
-    <DataSize>256</DataSize>
-    <IsPublic>true</IsPublic>
-    <MultiLine>false</MultiLine>
-    <BizManageAccessFlag>true</BizManageAccessFlag>
-    <Access type="PUBLIC" value="true"/>
-    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
-    <Access type="GLOBAL" value="false"/>
-    <Access type="BIZ_SITE_COLUMN" value="false"/>
-    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
-    <Storage size="256" type="CHAR"/>
-  </Dataslot>
   <Dataslot Name="CheckSumHandlingTimeout" category="User" name="CheckSumHandlingTimeout" type="ABL_INT64" webbpaID="1391505822506">
     <DataType>ABL_INT64</DataType>
     <DataValue unknown="false">0</DataValue>
@@ -370,7 +341,7 @@ Pgo=
     <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
-  <Dataslot Name="MessageQueueId" category="User" name="MessageQueueId" type="ABL_CHARACTER" webbpaID="1392012639461">
+  <Dataslot Name="MessageQueueId" category="User" name="MessageQueueId" type="ABL_CHARACTER" webbpaID="1392012639462">
     <DataType>ABL_CHARACTER</DataType>
     <DataValue unknown="false"/>
     <DataSize>256</DataSize>
@@ -393,6 +364,7 @@ Pgo=
   <TabularViewWorkstepOrder/>
   <History>
     <Created as="MBAInterfaceFinaChecksum" by="daniel.baciu" on="1391497909993">Tue Feb 04 09:11:49 EET 2014</Created>
+    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392031375469" to="http://WF28:18793/sbm/deployment">Mon Feb 10 13:22:55 EET 2014</Deployed>
   </History>
   <Repository/>
   <Forms/>

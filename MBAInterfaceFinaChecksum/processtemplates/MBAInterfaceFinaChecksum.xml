@@ -59,9 +59,12 @@
     <Duration>@CheckSumHandlingTimeout</Duration>
     <Priority>MEDIUM</Priority>
     <EmailSupport>TRUE</EmailSupport>
+    <Datainput>MessageQueueId</Datainput>
     <Datainput>ChecksumInfo</Datainput>
-    <Dataoutput>ChecksumInfo</Dataoutput>
-    <Format editable="true" input="ChecksumInfo" label="Checksum info" password="false" required="false" size="20" type="abl_text">
+    <Format editable="false" input="MessageQueueId" label="Message queue id" password="false" required="false" size="20" type="abl_text">
+      <Label>Message queue id</Label>
+    </Format>
+    <Format editable="false" input="ChecksumInfo" label="Checksum info" password="false" required="false" size="20" type="abl_text">
       <Label>Checksum info</Label>
     </Format>
     <RollbackPoint>FALSE</RollbackPoint>
@@ -89,19 +92,12 @@
     <InlineExecution>FALSE</InlineExecution>
     <AdapterType>process</AdapterType>
   </ExternalWS>
-  <Link Name="Handled" default="true">
-    <Label>Handled</Label>
-    <Source cp="1">Handle Fina Checksum Diff</Source>
-    <Point x="432.0" y="54.0"/>
-    <Point x="516.0" y="54.0"/>
-    <Target cp="3">End 1</Target>
-  </Link>
-  <Link Name="Handling Timeout" default="true" type="timeout" value="Handling Timeout">
-    <Label>Handling Timeout</Label>
-    <Source cp="2">Handle Fina Checksum Diff</Source>
-    <Point x="354.0" y="84.0"/>
-    <Point x="354.0" y="132.0"/>
-    <Target cp="0">Escalate Checksum Diff</Target>
+  <Link Name="Connection 1" default="true">
+    <Label>Connection 1</Label>
+    <Source cp="1">Start</Source>
+    <Point x="120.0" y="54.0"/>
+    <Point x="276.0" y="54.0"/>
+    <Target cp="3">Handle Fina Checksum Diff</Target>
   </Link>
   <Link Name="Connection 3" default="true">
     <Label>Connection 3</Label>
@@ -112,27 +108,20 @@
     <Point x="276.0" y="69.0"/>
     <Target cp="10">Handle Fina Checksum Diff</Target>
   </Link>
-  <Link Name="Connection 1" default="true">
-    <Label>Connection 1</Label>
-    <Source cp="1">Start</Source>
-    <Point x="120.0" y="54.0"/>
-    <Point x="276.0" y="54.0"/>
-    <Target cp="3">Handle Fina Checksum Diff</Target>
+  <Link Name="Handling Timeout" default="true" type="timeout" value="Handling Timeout">
+    <Label>Handling Timeout</Label>
+    <Source cp="2">Handle Fina Checksum Diff</Source>
+    <Point x="354.0" y="84.0"/>
+    <Point x="354.0" y="132.0"/>
+    <Target cp="0">Escalate Checksum Diff</Target>
   </Link>
-  <Dataslot Name="CheckSumHandlingInstructions" category="User" name="CheckSumHandlingInstructions" type="ABL_CHARACTER">
-    <DataType>ABL_CHARACTER</DataType>
-    <DataValue unknown="false"/>
-    <DataSize>256</DataSize>
-    <IsPublic>true</IsPublic>
-    <MultiLine>false</MultiLine>
-    <BizManageAccessFlag>true</BizManageAccessFlag>
-    <Access type="PUBLIC" value="true"/>
-    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
-    <Access type="GLOBAL" value="false"/>
-    <Access type="BIZ_SITE_COLUMN" value="false"/>
-    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
-    <Storage size="256" type="CHAR"/>
-  </Dataslot>
+  <Link Name="Handled" default="true">
+    <Label>Handled</Label>
+    <Source cp="1">Handle Fina Checksum Diff</Source>
+    <Point x="432.0" y="54.0"/>
+    <Point x="516.0" y="54.0"/>
+    <Target cp="3">End 1</Target>
+  </Link>
   <Dataslot Name="CheckSumHandlingTimeout" category="User" name="CheckSumHandlingTimeout" type="ABL_INT64">
     <DataType>ABL_INT64</DataType>
     <DataValue unknown="false">0</DataValue>
@@ -187,8 +176,23 @@
     <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
+  <Dataslot Name="MessageQueueId" category="User" name="MessageQueueId" type="ABL_CHARACTER">
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
   <History>
     <Created as="MBAInterfaceFinaChecksum" by="daniel.baciu" on="1391497909993">Tue Feb 04 09:11:49 EET 2014</Created>
+    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392031375469" to="http://WF28:18793/sbm/deployment">Mon Feb 10 13:22:55 EET 2014</Deployed>
   </History>
   <Repository/>
 </Process>
