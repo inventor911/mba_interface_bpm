@@ -277,12 +277,30 @@ Pgo=
     <Point x="354.0" y="132.0"/>
     <Target cp="0">Escalate Checksum Diff</Target>
   </Link>
+<<<<<<< HEAD
   <Link Name="Handled" default="true" webbpaID="1391505822503">
     <Label>Handled</Label>
     <Source cp="1">Handle Fina Checksum Diff</Source>
     <Point x="432.0" y="54.0"/>
     <Point x="516.0" y="54.0"/>
     <Target cp="3">End 1</Target>
+=======
+  <Link Name="Connection 3" default="true" webbpaID="1391505822501">
+    <Label>Connection 3</Label>
+    <Source cp="3">Escalate Checksum Diff</Source>
+    <Point x="300.0" y="168.0"/>
+    <Point x="256.0" y="168.0"/>
+    <Point x="256.0" y="69.0"/>
+    <Point x="276.0" y="69.0"/>
+    <Target cp="10">Handle Fina Checksum Diff</Target>
+  </Link>
+  <Link Name="Connection 1" default="true" webbpaID="1391505822502">
+    <Label>Connection 1</Label>
+    <Source cp="1">Start</Source>
+    <Point x="120.0" y="54.0"/>
+    <Point x="276.0" y="54.0"/>
+    <Target cp="3">Handle Fina Checksum Diff</Target>
+>>>>>>> branch 'master' of ssh://git@github.com/atarba/mba_interface_bpm.git
   </Link>
   <Dataslot Name="CheckSumHandlingInstructions" category="User" name="CheckSumHandlingInstructions" type="ABL_CHARACTER" webbpaID="1391505822505">
     <DataType>ABL_CHARACTER</DataType>

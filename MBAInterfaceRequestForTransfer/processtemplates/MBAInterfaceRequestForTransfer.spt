@@ -82,7 +82,7 @@
     <Collaboration>
       <CollabFunction enabled="true" type="Reassign"/>
     </Collaboration>
-    <Form empty="true" name="No_Acknowledged_or_Partial.jsp" type="form/mime64"/>
+    <Form empty="true" name="NoAcknowledgedorPartial.jsp" type="form/mime64"/>
     <Duration value="7200">2h</Duration>
     <Priority>MEDIUM</Priority>
     <EmailSupport>TRUE</EmailSupport>
@@ -109,7 +109,7 @@
     <Collaboration>
       <CollabFunction enabled="true" type="Reassign"/>
     </Collaboration>
-    <Form empty="true" name="WaitingforConfirmation.jsp" type="form/mime64"/>
+    <Form empty="true" name="WaitingforDeliveryConfirmation.jsp" type="form/mime64"/>
     <Duration>@ConfirmationTimeout</Duration>
     <Priority>MEDIUM</Priority>
     <EmailSupport>FALSE</EmailSupport>
@@ -364,7 +364,6 @@ L21hcD4K
     <Access type="GLOBAL" value="false"/>
     <Access type="BIZ_SITE_COLUMN" value="false"/>
     <Format editable="true" label="" required="false" size="20" type="abl_text"/>
-    <Storage type="Integer"/>
   </Dataslot>
   <Performers>
     <Performer name="@CREATOR" type="user" webbpaID="1391156945806"/>

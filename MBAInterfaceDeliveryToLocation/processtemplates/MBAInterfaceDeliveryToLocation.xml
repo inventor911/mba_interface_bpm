@@ -72,12 +72,12 @@
       <Duration value="7200">2h</Duration>
     </Simulation>
   </AtomicWS>
-  <AtomicWS height="84" name="Waiting for DeliveryConfirmation" width="144" worktime="false" x="336" y="24">
+  <AtomicWS height="84" name="Waiting for Confirmation" width="144" worktime="false" x="336" y="24">
     <AtomicType>ACTIVITY</AtomicType>
     <Performer>@CREATOR</Performer>
     <PerformingApp>
       <Metadata name="TARGETTYPE">JSP</Metadata>
-      <Metadata name="TARGET">WaitingforDeliveryConfirmation.jsp</Metadata>
+      <Metadata name="TARGET">WaitingforConfirmation.jsp</Metadata>
     </PerformingApp>
     <Collaboration>
       <CollabFunction enabled="true" type="Reassign"/>
@@ -110,33 +110,13 @@
     <InlineExecution>FALSE</InlineExecution>
     <AdapterType>process</AdapterType>
   </ExternalWS>
-  <Link Name="Not handled on time" default="true" type="timeout" value="Not handled on time" x="12" y="1">
-    <Label>Not handled on time</Label>
-    <Source cp="3">No Acknowledged or Partial</Source>
-    <Point x="336.0" y="180.0"/>
-    <Point x="228.0" y="180.0"/>
-    <Target cp="1">Escalation</Target>
-  </Link>
-  <Link Name="Connection 1" default="true">
-    <Label>Connection 1</Label>
-    <Source cp="1">Start</Source>
-    <Point x="84.0" y="66.0"/>
-    <Point x="336.0" y="66.0"/>
-    <Target cp="3">Waiting for DeliveryConfirmation</Target>
-  </Link>
-  <Link Name="Fully received" default="true">
-    <Label>Fully received</Label>
-    <Source cp="1">Waiting for DeliveryConfirmation</Source>
-    <Point x="480.0" y="66.0"/>
-    <Point x="624.0" y="66.0"/>
-    <Target cp="3">End 1</Target>
-  </Link>
-  <Link Name="No Ack on time" default="true" type="timeout" value="No Ack on time" x="-114" y="-3">
-    <Label>No Ack on time</Label>
-    <Source cp="9">Waiting for DeliveryConfirmation</Source>
-    <Point x="372.0" y="108.0"/>
-    <Point x="372.0" y="144.0"/>
-    <Target cp="4">No Acknowledged or Partial</Target>
+  <Link Name="Handled" default="true">
+    <Label>Handled</Label>
+    <Source cp="1">No Acknowledged or Partial</Source>
+    <Point x="480.0" y="180.0"/>
+    <Point x="642.0" y="180.0"/>
+    <Point x="642.0" y="84.0"/>
+    <Target cp="2">End 1</Target>
   </Link>
   <Link Name="Connection 4" default="true">
     <Label>Connection 4</Label>
@@ -147,13 +127,33 @@
     <Point x="408.0" y="216.0"/>
     <Target cp="2">No Acknowledged or Partial</Target>
   </Link>
-  <Link Name="Handled" default="true">
-    <Label>Handled</Label>
-    <Source cp="1">No Acknowledged or Partial</Source>
-    <Point x="480.0" y="180.0"/>
-    <Point x="642.0" y="180.0"/>
-    <Point x="642.0" y="84.0"/>
-    <Target cp="2">End 1</Target>
+  <Link Name="No Ack on time" default="true" type="timeout" value="No Ack on time" x="-114" y="-3">
+    <Label>No Ack on time</Label>
+    <Source cp="9">Waiting for Confirmation</Source>
+    <Point x="372.0" y="108.0"/>
+    <Point x="372.0" y="144.0"/>
+    <Target cp="4">No Acknowledged or Partial</Target>
+  </Link>
+  <Link Name="Fully received" default="true">
+    <Label>Fully received</Label>
+    <Source cp="1">Waiting for Confirmation</Source>
+    <Point x="480.0" y="66.0"/>
+    <Point x="624.0" y="66.0"/>
+    <Target cp="3">End 1</Target>
+  </Link>
+  <Link Name="Connection 1" default="true">
+    <Label>Connection 1</Label>
+    <Source cp="1">Start</Source>
+    <Point x="84.0" y="66.0"/>
+    <Point x="336.0" y="66.0"/>
+    <Target cp="3">Waiting for Confirmation</Target>
+  </Link>
+  <Link Name="Not handled on time" default="true" type="timeout" value="Not handled on time" x="12" y="1">
+    <Label>Not handled on time</Label>
+    <Source cp="3">No Acknowledged or Partial</Source>
+    <Point x="336.0" y="180.0"/>
+    <Point x="228.0" y="180.0"/>
+    <Target cp="1">Escalation</Target>
   </Link>
   <Dataslot Name="ConfirmationTimeout" category="User" name="ConfirmationTimeout" type="ABL_INTEGER">
     <Label>Confirmation timeout</Label>
@@ -237,10 +237,10 @@
     <Storage size="256" type="CHAR"/>
   </Dataslot>
   <History>
-    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391080741259" to="http://WF28:18793/sbm/deployment">Thu Jan 30 13:19:01 EET 2014</Deployed>
-    <Created as="MBAInterfaceDeliveryToLocation" by="daniel.baciu" on="1390913486625">Tue Jan 28 14:51:26 EET 2014</Created>
-    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391071935009" to="http://WF28:18793/sbm/deployment">Thu Jan 30 10:52:15 EET 2014</Deployed>
     <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391072681088" to="http://WF28:18793/sbm/deployment">Thu Jan 30 11:04:41 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391071935009" to="http://WF28:18793/sbm/deployment">Thu Jan 30 10:52:15 EET 2014</Deployed>
+    <Created as="MBAInterfaceDeliveryToLocation" by="daniel.baciu" on="1390913486625">Tue Jan 28 14:51:26 EET 2014</Created>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391080741259" to="http://WF28:18793/sbm/deployment">Thu Jan 30 13:19:01 EET 2014</Deployed>
   </History>
   <Repository/>
 </Process>
