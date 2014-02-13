@@ -355,6 +355,18 @@ Pgo=
     <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
+  <Notes>
+    <Note color="255,255,0" connectTo="Handle Fina Checksum Diff" height="100" shape="sticky" webbpaID="1392012639484" width="100" x="72" y="96">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&#13;
+&lt;!DOCTYPE Form SYSTEM "form.dtd"&gt;&#13;
+&lt;Form tstamp="1392102247876" version="9.0"&gt;&#13;
+  &lt;body&gt;&#13;
+    &lt;font color="#000000"&gt;We have a financial check sum difference.&lt;/font&gt;&#13;
+    &lt;br clear="all"/&gt;&#13;
+&lt;font color="#000000"&gt;Wait for this to be handled.&lt;/font&gt;&#13;
+  &lt;/body&gt;&#13;
+&lt;/Form&gt;&#13;
+</Note>
+  </Notes>
   <Performers>
     <Performer name="@CREATOR" type="user" webbpaID="1391156945806"/>
     <Performer name="MBAInterface" select="ANY" type="group" webbpaID="1391156945821"/>

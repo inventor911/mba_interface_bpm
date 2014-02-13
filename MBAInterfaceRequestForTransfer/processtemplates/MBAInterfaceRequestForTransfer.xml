@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE Process SYSTEM "../../common/processtemplates/processTemplate.dtd">
-<Process name="MBAInterfaceFinaChecksum" type="BIZLOGIC">
+<Process name="MBAInterfaceRequestForTransfer" type="BIZLOGIC">
   <Description/>
-  <Application name="MBAInterfaceFinaChecksum"/>
+  <Application name="MBAInterfaceRequestForTransfer"/>
   <Category level="0"/>
   <Category level="1"/>
   <Group/>
   <Manager>@CREATOR</Manager>
   <EstimatedDuration>1d</EstimatedDuration>
-  <TimeCreated>1391497909993</TimeCreated>
+  <TimeCreated>1391497557282</TimeCreated>
   <Author>daniel.baciu</Author>
   <Version/>
   <Attributes>
@@ -29,7 +29,7 @@
       </AlertDelivery>
     </Alert>
   </Alerts>
-  <AtomicWS height="36" name="Start" width="36" worktime="false" x="84" y="36">
+  <AtomicWS height="36" name="Start" width="36" worktime="false" x="60" y="48">
     <AtomicType>START</AtomicType>
     <PerformingApp>
       <Metadata name="TARGETTYPE">JSP</Metadata>
@@ -44,49 +44,67 @@
     <Option name="Reassign" visible="true"/>
     <Simulation distribution="ct" scenario="(default)"/>
   </AtomicWS>
-  <AtomicWS height="60" name="Handle Fina Checksum Diff" width="156" worktime="false" x="276" y="24">
-    <Label>Handle Financial Checksum Difference</Label>
+  <AtomicWS height="72" name="No Acknowledged or Partial" width="144" worktime="false" x="348" y="144">
+    <Label>Delivery no Acknowledged or Partial</Label>
     <AtomicType>ACTIVITY</AtomicType>
     <Performer>MBAInterface</Performer>
     <PerformBy>ANY</PerformBy>
     <PerformingApp>
       <Metadata name="TARGETTYPE">JSP</Metadata>
-      <Metadata name="TARGET">Activity1.jsp</Metadata>
+      <Metadata name="TARGET">NoAcknowledgedorPartial.jsp</Metadata>
     </PerformingApp>
     <Collaboration>
       <CollabFunction enabled="true" type="Reassign"/>
     </Collaboration>
-    <Duration>@CheckSumHandlingTimeout</Duration>
+    <Duration value="7200">2h</Duration>
     <Priority>MEDIUM</Priority>
     <EmailSupport>TRUE</EmailSupport>
-    <Datainput>MessageQueueId</Datainput>
-    <Datainput>ChecksumInfo</Datainput>
-    <Format editable="false" input="MessageQueueId" label="Message queue id" password="false" required="false" size="20" type="abl_text">
-      <Label>Message queue id</Label>
+    <Datainput>FullyConfirmed</Datainput>
+    <Dataoutput>FullyConfirmed</Dataoutput>
+    <Format editable="true" input="FullyConfirmed" label="Delivery is fully confirmed" type="checkbox">
+      <Label>Delivery is fully confirmed</Label>
     </Format>
-    <Format editable="false" input="ChecksumInfo" label="Checksum info" password="false" required="false" size="20" type="abl_text">
-      <Label>Checksum info</Label>
-    </Format>
+    <RollbackPoint>FALSE</RollbackPoint>
+    <OnOverdue>
+      <ActivateTimeoutFlow/>
+    </OnOverdue>
+    <Simulation distribution="ct" scenario="(default)">
+      <Duration value="7200">2h</Duration>
+    </Simulation>
+  </AtomicWS>
+  <AtomicWS height="84" name="Waiting for Confirmation" width="144" worktime="false" x="348" y="24">
+    <AtomicType>ACTIVITY</AtomicType>
+    <Performer>@CREATOR</Performer>
+    <PerformingApp>
+      <Metadata name="TARGETTYPE">JSP</Metadata>
+      <Metadata name="TARGET">WaitingforDeliveryConfirmation.jsp</Metadata>
+    </PerformingApp>
+    <Collaboration>
+      <CollabFunction enabled="true" type="Reassign"/>
+    </Collaboration>
+    <Duration>@ConfirmationTimeout</Duration>
+    <Priority>MEDIUM</Priority>
+    <EmailSupport>FALSE</EmailSupport>
     <RollbackPoint>FALSE</RollbackPoint>
     <OnOverdue>
       <ActivateTimeoutFlow/>
     </OnOverdue>
     <Simulation distribution="ct" scenario="(default)"/>
   </AtomicWS>
-  <AtomicWS height="36" name="End 1" width="36" worktime="false" x="516" y="36">
+  <AtomicWS height="36" name="End 1" width="36" worktime="false" x="636" y="48">
     <AtomicType>END</AtomicType>
     <Priority>MEDIUM</Priority>
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
   </AtomicWS>
-  <ExternalWS height="72" name="Escalate Checksum Diff" width="108" x="300" y="132">
-    <Label>Escalate Checksum Differencial</Label>
+  <ExternalWS height="72" name="Escalation" width="144" x="96" y="144">
+    <Label>Escalation</Label>
     <Performer category="EmailAdapters" generate="false" managed="true" name="GenericEmailAdapter">com.savvion.sbm.adapters.email.EmailAdapter</Performer>
     <PerformBy>execute</PerformBy>
     <ClosedConnection>TRUE</ClosedConnection>
     <Priority>MEDIUM</Priority>
-    <Datainput>OnChecksumDiffEscalationList</Datainput>
-    <Dataoutput>SendingMailError</Dataoutput>
+    <Datainput>ConfirmationNotificationList</Datainput>
+    <Dataoutput>SendingMailErrorText</Dataoutput>
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
     <InlineExecution>FALSE</InlineExecution>
@@ -95,35 +113,99 @@
   <Link Name="Connection 1" default="true">
     <Label>Connection 1</Label>
     <Source cp="1">Start</Source>
-    <Point x="120.0" y="54.0"/>
-    <Point x="276.0" y="54.0"/>
-    <Target cp="3">Handle Fina Checksum Diff</Target>
-  </Link>
-  <Link Name="Connection 3" default="true">
-    <Label>Connection 3</Label>
-    <Source cp="3">Escalate Checksum Diff</Source>
-    <Point x="300.0" y="168.0"/>
-    <Point x="256.0" y="168.0"/>
-    <Point x="256.0" y="69.0"/>
-    <Point x="276.0" y="69.0"/>
-    <Target cp="10">Handle Fina Checksum Diff</Target>
-  </Link>
-  <Link Name="Handling Timeout" default="true" type="timeout" value="Handling Timeout">
-    <Label>Handling Timeout</Label>
-    <Source cp="2">Handle Fina Checksum Diff</Source>
-    <Point x="354.0" y="84.0"/>
-    <Point x="354.0" y="132.0"/>
-    <Target cp="0">Escalate Checksum Diff</Target>
+    <Point x="96.0" y="66.0"/>
+    <Point x="348.0" y="66.0"/>
+    <Target cp="3">Waiting for Confirmation</Target>
   </Link>
   <Link Name="Handled" default="true">
     <Label>Handled</Label>
-    <Source cp="1">Handle Fina Checksum Diff</Source>
-    <Point x="432.0" y="54.0"/>
-    <Point x="516.0" y="54.0"/>
+    <Source cp="1">No Acknowledged or Partial</Source>
+    <Point x="492.0" y="180.0"/>
+    <Point x="654.0" y="180.0"/>
+    <Point x="654.0" y="84.0"/>
+    <Target cp="2">End 1</Target>
+  </Link>
+  <Link Name="Not handled on time" default="true" type="timeout" value="Not handled on time" x="12" y="1">
+    <Label>Not handled on time</Label>
+    <Source cp="3">No Acknowledged or Partial</Source>
+    <Point x="348.0" y="180.0"/>
+    <Point x="240.0" y="180.0"/>
+    <Target cp="1">Escalation</Target>
+  </Link>
+  <Link Name="Fully received" default="true">
+    <Label>Fully received</Label>
+    <Source cp="1">Waiting for Confirmation</Source>
+    <Point x="492.0" y="66.0"/>
+    <Point x="636.0" y="66.0"/>
     <Target cp="3">End 1</Target>
   </Link>
-  <Dataslot Name="CheckSumHandlingTimeout" category="User" name="CheckSumHandlingTimeout" type="ABL_INT64">
-    <DataType>ABL_INT64</DataType>
+  <Link Name="No Ack on time" default="true" type="timeout" value="No Ack on time" x="-114" y="-3">
+    <Label>No Ack on time</Label>
+    <Source cp="9">Waiting for Confirmation</Source>
+    <Point x="384.0" y="108.0"/>
+    <Point x="384.0" y="144.0"/>
+    <Target cp="4">No Acknowledged or Partial</Target>
+  </Link>
+  <Link Name="Connection 4" default="true">
+    <Label>Connection 4</Label>
+    <Source cp="2">Escalation</Source>
+    <Point x="168.0" y="216.0"/>
+    <Point x="168.0" y="236.0"/>
+    <Point x="420.0" y="236.0"/>
+    <Point x="420.0" y="216.0"/>
+    <Target cp="2">No Acknowledged or Partial</Target>
+  </Link>
+  <Dataslot Name="FullyConfirmed" category="User" name="FullyConfirmed" type="ABL_LOGICAL">
+    <Label>Delivery is fully confirmed</Label>
+    <DataType>ABL_LOGICAL</DataType>
+    <DataValue unknown="false">false</DataValue>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Delivery is fully confirmed" type="checkbox">
+      <Label>Delivery is fully confirmed</Label>
+    </Format>
+  </Dataslot>
+  <Dataslot Name="ConfirmationNotificationList" category="User" name="ConfirmationNotificationList" type="ABL_CHARACTER">
+    <Label>Confirmation Notification List</Label>
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Confirmation Notification List" password="false" required="false" size="20" type="abl_text">
+      <Label>Confirmation Notification List</Label>
+    </Format>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="SendingMailErrorText" category="User" name="SendingMailErrorText" type="ABL_CHARACTER">
+    <Label>Sending e-mail Errors</Label>
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Sending e-mail Errors" password="false" required="false" size="20" type="abl_text">
+      <Label>Sending e-mail Errors</Label>
+    </Format>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <Dataslot Name="ConfirmationTimeout" category="User" name="ConfirmationTimeout" type="ABL_INTEGER">
+    <DataType>ABL_INTEGER</DataType>
     <DataValue unknown="false">0</DataValue>
     <IsPublic>true</IsPublic>
     <MultiLine>false</MultiLine>
@@ -133,48 +215,6 @@
     <Access type="GLOBAL" value="false"/>
     <Access type="BIZ_SITE_COLUMN" value="false"/>
     <Format editable="true" label="" required="false" size="20" type="abl_text"/>
-  </Dataslot>
-  <Dataslot Name="ChecksumInfo" category="User" name="ChecksumInfo" type="ABL_CHARACTER">
-    <DataType>ABL_CHARACTER</DataType>
-    <DataValue unknown="false"/>
-    <DataSize>256</DataSize>
-    <IsPublic>true</IsPublic>
-    <MultiLine>false</MultiLine>
-    <BizManageAccessFlag>true</BizManageAccessFlag>
-    <Access type="PUBLIC" value="true"/>
-    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
-    <Access type="GLOBAL" value="false"/>
-    <Access type="BIZ_SITE_COLUMN" value="false"/>
-    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
-    <Storage size="256" type="CHAR"/>
-  </Dataslot>
-  <Dataslot Name="OnChecksumDiffEscalationList" category="User" name="OnChecksumDiffEscalationList" type="ABL_CHARACTER">
-    <DataType>ABL_CHARACTER</DataType>
-    <DataValue unknown="false"/>
-    <DataSize>256</DataSize>
-    <IsPublic>true</IsPublic>
-    <MultiLine>false</MultiLine>
-    <BizManageAccessFlag>true</BizManageAccessFlag>
-    <Access type="PUBLIC" value="true"/>
-    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
-    <Access type="GLOBAL" value="false"/>
-    <Access type="BIZ_SITE_COLUMN" value="false"/>
-    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
-    <Storage size="256" type="CHAR"/>
-  </Dataslot>
-  <Dataslot Name="SendingMailError" category="User" name="SendingMailError" type="ABL_CHARACTER">
-    <DataType>ABL_CHARACTER</DataType>
-    <DataValue unknown="false"/>
-    <DataSize>256</DataSize>
-    <IsPublic>true</IsPublic>
-    <MultiLine>false</MultiLine>
-    <BizManageAccessFlag>true</BizManageAccessFlag>
-    <Access type="PUBLIC" value="true"/>
-    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
-    <Access type="GLOBAL" value="false"/>
-    <Access type="BIZ_SITE_COLUMN" value="false"/>
-    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
-    <Storage size="256" type="CHAR"/>
   </Dataslot>
   <Dataslot Name="MessageQueueId" category="User" name="MessageQueueId" type="ABL_CHARACTER">
     <DataType>ABL_CHARACTER</DataType>
@@ -190,21 +230,8 @@
     <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
-  <Notes>
-    <Note color="255,255,0" connectTo="Handle Fina Checksum Diff" height="100" shape="sticky" width="100" x="72" y="96">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&#13;
-&lt;!DOCTYPE Form SYSTEM "form.dtd"&gt;&#13;
-&lt;Form tstamp="1392102247876" version="9.0"&gt;&#13;
-  &lt;body&gt;&#13;
-    &lt;font color="#000000"&gt;We have a financial check sum difference.&lt;/font&gt;&#13;
-    &lt;br clear="all"/&gt;&#13;
-&lt;font color="#000000"&gt;Wait for this to be handled.&lt;/font&gt;&#13;
-  &lt;/body&gt;&#13;
-&lt;/Form&gt;&#13;
-</Note>
-  </Notes>
   <History>
-    <Created as="MBAInterfaceFinaChecksum" by="daniel.baciu" on="1391497909993">Tue Feb 04 09:11:49 EET 2014</Created>
-    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392031375469" to="http://WF28:18793/sbm/deployment">Mon Feb 10 13:22:55 EET 2014</Deployed>
+    <Created as="MBAInterfaceRequestForTransfer" by="daniel.baciu" on="1391497557282">Tue Feb 04 09:05:57 EET 2014</Created>
   </History>
   <Repository/>
 </Process>

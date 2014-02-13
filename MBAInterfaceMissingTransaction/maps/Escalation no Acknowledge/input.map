@@ -1,0 +1,22 @@
+<map version="1.3">
+  <param name="PLUGIN.1.NAME" type="java.lang.String" value="Velocity Template"/>
+  <param name="PROPERTY.allow.null.bcc" type="java.lang.String" value="true"/>
+  <param name="EXCEPTION_OUTPUT" type="java.lang.String" value="true"/>
+  <param name="PLUGIN.1.MIME" type="java.lang.String" value="text/plain"/>
+  <param name="AUTH_PASSWORD" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.password}"/>
+  <param name="CC" type="java.lang.Object" value=""/>
+  <param name="PLUGIN.1.CONF" type="java.lang.String" value="%0A%3Center+text+here%3E"/>
+  <param name="SENDER" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.user}"/>
+  <param name="PROPERTY.mail.smtp.port" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.port}"/>
+  <param name="PROPERTY.mail.smtp.socketFactory.port" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.portl}"/>
+  <param name="PROPERTY.mail.smtp.host" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server}"/>
+  <param name="PROPERTY.mail.smtp.socketFactory.class" type="java.lang.String" value="javax.net.ssl.SSLSocketFactory"/>
+  <param name="BCC" type="java.lang.Object" value=""/>
+  <param name="SUBJECT" type="java.lang.Object" value="Confirm delivery to location not acknowledged"/>
+  <param name="AUTH_USER" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.user}"/>
+  <param name="RECIPIENTS" type="java.lang.Object" value="@EscalationList"/>
+  <param name="PROPERTY.mail.transport.protocol" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.protocol}"/>
+  <param name="PROPERTY.mail.smtp.socketFactory.fallback" type="java.lang.String" value="false"/>
+  <param name="PROPERTY.allow.null.cc" type="java.lang.String" value="true"/>
+  <param name="PART_COUNT" type="java.lang.Integer" value="1"/>
+</map>

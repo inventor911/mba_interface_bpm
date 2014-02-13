@@ -575,9 +575,6 @@ Ok1vZGU+MTwvd3NhZDpNb2RlPg0KICAgIDwvd3NhZDpQYXJhbWV0ZXI+DQogIDwvd3NhZDpQcm9j&#13
 RGV0YWlsPg0KPC93c2FkOk9wZXJhdGlvbj4NCiAgPC9waWRsOmJpbmRpbmc+DQo8L3BpZGw6ZGVz&#13;
 Y3JpcHRpb24+DQo=
 </File>
-      <File name="output.map" type="form/mime64">
-PG1hcCB2ZXJzaW9uPSIxLjMiPgo8L21hcD4K
-</File>
       <File name="input.map" type="form/mime64">
 PG1hcCB2ZXJzaW9uPSIxLjMiPgogIDxwYXJhbSBuYW1lPSJjb24uc2VydmljZW5hbWUiIHR5cGU9&#13;
 ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSI1MTYyIi8+CiAgPHBhcmFtIG5hbWU9ImNhZi5hcmNo&#13;
@@ -602,30 +599,17 @@ YXJhbSBuYW1lPSJjb24uYXBwc2VydmljZSIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9&#13
 ImJwc2Jyb2tlcjEiLz4KICA8cGFyYW0gbmFtZT0iY29uLnNlc3Npb25tb2RlbCIgdHlwZT0iamF2&#13;
 YS5sYW5nLlN0cmluZyIgdmFsdWU9IlNlc3Npb24tZnJlZSIvPgo8L21hcD4K
 </File>
+      <File name="output.map" type="form/mime64">
+PG1hcCB2ZXJzaW9uPSIxLjMiPgo8L21hcD4K
+</File>
     </Configuration>
   </ExternalWS>
-  <Link Name="Connection 6" default="true" webbpaID="1390546161956">
-    <Label>Connection 6</Label>
-    <Source cp="3">Escalate Error Handling</Source>
-    <Point x="312.0" y="180.0"/>
-    <Point x="292.0" y="180.0"/>
-    <Point x="292.0" y="93.0"/>
-    <Point x="312.0" y="93.0"/>
-    <Target cp="10">Handle Message Error</Target>
-  </Link>
-  <Link Name="Not handled on time" default="true" type="timeout" value="Not handled on time" webbpaID="1390546161957">
-    <Label>Not handled on time</Label>
-    <Source cp="8">Handle Message Error</Source>
-    <Point x="420.0" y="108.0"/>
-    <Point x="420.0" y="144.0"/>
-    <Target cp="5">Escalate Error Handling</Target>
-  </Link>
-  <Link Name="Handled" default="true" webbpaID="1390546161939">
-    <Label>Handled</Label>
-    <Source cp="1">Handle Message Error</Source>
-    <Point x="456.0" y="78.0"/>
-    <Point x="576.0" y="78.0"/>
-    <Target cp="3">Mark Message as Handled</Target>
+  <Link Name="Connection 1" default="true" webbpaID="1391156945809">
+    <Label>Connection 1</Label>
+    <Source cp="1">Mark Message as Handled</Source>
+    <Point x="744.0" y="78.0"/>
+    <Point x="780.0" y="78.0"/>
+    <Target cp="3">End 1</Target>
   </Link>
   <Link Name="Connection 3" default="true" webbpaID="1390546161962">
     <Label>Connection 3</Label>
@@ -634,12 +618,28 @@ YS5sYW5nLlN0cmluZyIgdmFsdWU9IlNlc3Npb24tZnJlZSIvPgo8L21hcD4K
     <Point x="312.0" y="78.0"/>
     <Target cp="3">Handle Message Error</Target>
   </Link>
-  <Link Name="Connection 1" default="true" webbpaID="1391156945809">
-    <Label>Connection 1</Label>
-    <Source cp="1">Mark Message as Handled</Source>
-    <Point x="744.0" y="78.0"/>
-    <Point x="780.0" y="78.0"/>
-    <Target cp="3">End 1</Target>
+  <Link Name="Handled" default="true" webbpaID="1390546161939">
+    <Label>Handled</Label>
+    <Source cp="1">Handle Message Error</Source>
+    <Point x="456.0" y="78.0"/>
+    <Point x="576.0" y="78.0"/>
+    <Target cp="3">Mark Message as Handled</Target>
+  </Link>
+  <Link Name="Not handled on time" default="true" type="timeout" value="Not handled on time" webbpaID="1390546161957">
+    <Label>Not handled on time</Label>
+    <Source cp="8">Handle Message Error</Source>
+    <Point x="420.0" y="108.0"/>
+    <Point x="420.0" y="144.0"/>
+    <Target cp="5">Escalate Error Handling</Target>
+  </Link>
+  <Link Name="Connection 6" default="true" webbpaID="1390546161956">
+    <Label>Connection 6</Label>
+    <Source cp="3">Escalate Error Handling</Source>
+    <Point x="312.0" y="180.0"/>
+    <Point x="292.0" y="180.0"/>
+    <Point x="292.0" y="93.0"/>
+    <Point x="312.0" y="93.0"/>
+    <Target cp="10">Handle Message Error</Target>
   </Link>
   <Dataslot Name="SendingMailError" category="User" name="SendingMailError" type="ABL_CHARACTER" webbpaID="1390401897106">
     <Label>Error on Sending mail</Label>
@@ -775,6 +775,18 @@ YS5sYW5nLlN0cmluZyIgdmFsdWU9IlNlc3Npb24tZnJlZSIvPgo8L21hcD4K
       <Label>Error Handling Timeout</Label>
     </Format>
   </Dataslot>
+  <Notes>
+    <Note color="255,255,0" connectTo="Handle Message Error" height="72" shape="sticky" webbpaID="1392012639483" width="108" x="60" y="120">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&#13;
+&lt;!DOCTYPE Form SYSTEM "form.dtd"&gt;&#13;
+&lt;Form tstamp="1392102183005" version="9.0"&gt;&#13;
+  &lt;body&gt;&#13;
+    &lt;font color="#000000"&gt;We have an error. &lt;/font&gt;&#13;
+    &lt;br clear="all"/&gt;&#13;
+&lt;font color="#000000"&gt;Wait for the error to be handled.&lt;/font&gt;&#13;
+  &lt;/body&gt;&#13;
+&lt;/Form&gt;&#13;
+</Note>
+  </Notes>
   <Performers>
     <Performer name="@CREATOR" type="user" webbpaID="1390298999730"/>
     <Performer name="MBAInterface" select="ANY" type="group" webbpaID="1390298999772"/>
@@ -787,49 +799,49 @@ YS5sYW5nLlN0cmluZyIgdmFsdWU9IlNlc3Npb24tZnJlZSIvPgo8L21hcD4K
   </Performers>
   <TabularViewWorkstepOrder/>
   <History>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391499336451" to="http://WF28:18793/sbm/deployment">Tue Feb 04 09:35:36 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391094786584" to="http://WF28:18793/sbm/deployment">Thu Jan 30 17:13:06 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391094175533" to="http://WF28:18793/sbm/deployment">Thu Jan 30 17:02:55 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391093011720" to="http://WF28:18793/sbm/deployment">Thu Jan 30 16:43:31 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391092343571" to="http://WF28:18793/sbm/deployment">Thu Jan 30 16:32:23 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391091640433" to="http://WF28:18793/sbm/deployment">Thu Jan 30 16:20:40 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391090805619" to="http://WF28:18793/sbm/deployment">Thu Jan 30 16:06:45 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391080757333" to="http://WF28:18793/sbm/deployment">Thu Jan 30 13:19:17 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391075670484" to="http://WF28:18793/sbm/deployment">Thu Jan 30 11:54:30 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391074799901" to="http://WF28:18793/sbm/deployment">Thu Jan 30 11:39:59 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390920727817" to="http://WF28:18793/sbm/deployment">Tue Jan 28 16:52:07 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390919754152" to="http://WF28:18793/sbm/deployment">Tue Jan 28 16:35:54 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390914016861" to="http://WF28:18793/sbm/deployment">Tue Jan 28 15:00:16 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390913931225" to="http://WF28:18793/sbm/deployment">Tue Jan 28 14:58:51 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390891683852" to="http://WF28:18793/sbm/deployment">Tue Jan 28 08:48:03 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390690029518" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:47:09 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390566841255" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:34:01 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390566337344" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:25:37 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390566122585" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:22:02 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390489910606" to="http://WF28:18793/sbm/deployment">Thu Jan 23 17:11:50 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390481727809" to="http://WF28:18793/sbm/deployment">Thu Jan 23 14:55:27 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390401902448" to="http://WF28:18793/sbm/deployment">Wed Jan 22 16:45:02 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390382668175" to="http://WF28:18793/sbm/deployment">Wed Jan 22 11:24:28 EET 2014</Deployed>
-    <Created as="MBAInterfaceMessageError" by="daniel.baciu" on="1390367888600">Wed Jan 22 07:18:08 EET 2014</Created>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390394943623" to="http://WF28:18793/sbm/deployment">Wed Jan 22 14:49:03 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390475424811" to="http://WF28:18793/sbm/deployment">Thu Jan 23 13:10:24 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390475522507" to="http://WF28:18793/sbm/deployment">Thu Jan 23 13:12:02 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390476099884" to="http://WF28:18793/sbm/deployment">Thu Jan 23 13:21:39 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390548612244" to="http://WF28:18793/sbm/deployment">Fri Jan 24 09:30:12 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390553422254" to="http://WF28:18793/sbm/deployment">Fri Jan 24 10:50:22 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390553939493" to="http://WF28:18793/sbm/deployment">Fri Jan 24 10:58:59 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390690728879" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:58:48 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390891423422" to="http://WF28:18793/sbm/deployment">Tue Jan 28 08:43:43 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390896517684" to="http://WF28:18793/sbm/deployment">Tue Jan 28 10:08:37 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390909306064" to="http://WF28:18793/sbm/deployment">Tue Jan 28 13:41:46 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391071937724" to="http://WF28:18793/sbm/deployment">Thu Jan 30 10:52:17 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391077143716" to="http://WF28:18793/sbm/deployment">Thu Jan 30 12:19:03 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391077794216" to="http://WF28:18793/sbm/deployment">Thu Jan 30 12:29:54 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391081790830" to="http://WF28:18793/sbm/deployment">Thu Jan 30 13:36:30 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391167128651" to="http://WF28:18793/sbm/deployment">Fri Jan 31 13:18:48 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391168483708" to="http://WF28:18793/sbm/deployment">Fri Jan 31 13:41:23 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391267239966" to="http://WF28:18793/sbm/deployment">Sat Feb 01 17:07:19 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1392019495639" to="http://WF28:18793/sbm/deployment">Mon Feb 10 10:04:55 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391267239966" to="http://WF28:18793/sbm/deployment">Sat Feb 01 17:07:19 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391168483708" to="http://WF28:18793/sbm/deployment">Fri Jan 31 13:41:23 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391167128651" to="http://WF28:18793/sbm/deployment">Fri Jan 31 13:18:48 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391081790830" to="http://WF28:18793/sbm/deployment">Thu Jan 30 13:36:30 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391077794216" to="http://WF28:18793/sbm/deployment">Thu Jan 30 12:29:54 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391077143716" to="http://WF28:18793/sbm/deployment">Thu Jan 30 12:19:03 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391071937724" to="http://WF28:18793/sbm/deployment">Thu Jan 30 10:52:17 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390909306064" to="http://WF28:18793/sbm/deployment">Tue Jan 28 13:41:46 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390896517684" to="http://WF28:18793/sbm/deployment">Tue Jan 28 10:08:37 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390891423422" to="http://WF28:18793/sbm/deployment">Tue Jan 28 08:43:43 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390690728879" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:58:48 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390553939493" to="http://WF28:18793/sbm/deployment">Fri Jan 24 10:58:59 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390553422254" to="http://WF28:18793/sbm/deployment">Fri Jan 24 10:50:22 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390548612244" to="http://WF28:18793/sbm/deployment">Fri Jan 24 09:30:12 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390476099884" to="http://WF28:18793/sbm/deployment">Thu Jan 23 13:21:39 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390475522507" to="http://WF28:18793/sbm/deployment">Thu Jan 23 13:12:02 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390475424811" to="http://WF28:18793/sbm/deployment">Thu Jan 23 13:10:24 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390394943623" to="http://WF28:18793/sbm/deployment">Wed Jan 22 14:49:03 EET 2014</Deployed>
+    <Created as="MBAInterfaceMessageError" by="daniel.baciu" on="1390367888600">Wed Jan 22 07:18:08 EET 2014</Created>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390382668175" to="http://WF28:18793/sbm/deployment">Wed Jan 22 11:24:28 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390401902448" to="http://WF28:18793/sbm/deployment">Wed Jan 22 16:45:02 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390481727809" to="http://WF28:18793/sbm/deployment">Thu Jan 23 14:55:27 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390489910606" to="http://WF28:18793/sbm/deployment">Thu Jan 23 17:11:50 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390566122585" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:22:02 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390566337344" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:25:37 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390566841255" to="http://WF28:18793/sbm/deployment">Fri Jan 24 14:34:01 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390690029518" to="http://WF28:18793/sbm/deployment">Sun Jan 26 00:47:09 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390891683852" to="http://WF28:18793/sbm/deployment">Tue Jan 28 08:48:03 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390913931225" to="http://WF28:18793/sbm/deployment">Tue Jan 28 14:58:51 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390914016861" to="http://WF28:18793/sbm/deployment">Tue Jan 28 15:00:16 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390919754152" to="http://WF28:18793/sbm/deployment">Tue Jan 28 16:35:54 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1390920727817" to="http://WF28:18793/sbm/deployment">Tue Jan 28 16:52:07 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391074799901" to="http://WF28:18793/sbm/deployment">Thu Jan 30 11:39:59 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391075670484" to="http://WF28:18793/sbm/deployment">Thu Jan 30 11:54:30 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391080757333" to="http://WF28:18793/sbm/deployment">Thu Jan 30 13:19:17 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391090805619" to="http://WF28:18793/sbm/deployment">Thu Jan 30 16:06:45 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391091640433" to="http://WF28:18793/sbm/deployment">Thu Jan 30 16:20:40 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391092343571" to="http://WF28:18793/sbm/deployment">Thu Jan 30 16:32:23 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391093011720" to="http://WF28:18793/sbm/deployment">Thu Jan 30 16:43:31 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391094175533" to="http://WF28:18793/sbm/deployment">Thu Jan 30 17:02:55 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391094786584" to="http://WF28:18793/sbm/deployment">Thu Jan 30 17:13:06 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1391499336451" to="http://WF28:18793/sbm/deployment">Tue Feb 04 09:35:36 EET 2014</Deployed>
   </History>
   <Repository/>
   <Forms/>

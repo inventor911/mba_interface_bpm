@@ -236,6 +236,40 @@
     </Format>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
+  <Dataslot Name="MessageQueueId" category="User" name="MessageQueueId" type="ABL_CHARACTER">
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
+  <Notes>
+    <Note color="255,255,0" connectTo="Waiting for Confirmation" height="48" shape="sticky" width="132" x="672" y="108">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&#13;
+&lt;!DOCTYPE Form SYSTEM "form.dtd"&gt;&#13;
+&lt;Form tstamp="1392102733943" version="9.0"&gt;&#13;
+  &lt;body&gt;&#13;
+    &lt;font color="#000000"&gt;Wait for callback with requested data&lt;/font&gt;&#13;
+  &lt;/body&gt;&#13;
+&lt;/Form&gt;&#13;
+</Note>
+    <Note color="255,255,0" connectTo="No Acknowledged or Partial" height="48" shape="sticky" width="216" x="516" y="192">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&#13;
+&lt;!DOCTYPE Form SYSTEM "form.dtd"&gt;&#13;
+&lt;Form tstamp="1392102798499" version="9.0"&gt;&#13;
+  &lt;body&gt;&#13;
+    &lt;font color="#000000"&gt;No acknowledge was received. &lt;/font&gt;&#13;
+    &lt;br clear="all"/&gt;&#13;
+&lt;font color="#000000"&gt;Or the partial delivery was confirmed.&lt;/font&gt;&#13;
+  &lt;/body&gt;&#13;
+&lt;/Form&gt;&#13;
+</Note>
+  </Notes>
   <History>
     <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391072681088" to="http://WF28:18793/sbm/deployment">Thu Jan 30 11:04:41 EET 2014</Deployed>
     <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391071935009" to="http://WF28:18793/sbm/deployment">Thu Jan 30 10:52:15 EET 2014</Deployed>

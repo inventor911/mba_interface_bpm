@@ -259,35 +259,12 @@ L21hcD4K
 </File>
     </Configuration>
   </ExternalWS>
-  <Link Name="Connection 4" default="true" webbpaID="1390912704225">
-    <Label>Connection 4</Label>
-    <Source cp="2">Escalation</Source>
-    <Point x="168.0" y="216.0"/>
-    <Point x="168.0" y="236.0"/>
-    <Point x="420.0" y="236.0"/>
-    <Point x="420.0" y="216.0"/>
-    <Target cp="2">No Acknowledged or Partial</Target>
-  </Link>
-  <Link Name="No Ack on time" default="true" type="timeout" value="No Ack on time" webbpaID="1390912704226" x="-114" y="-3">
-    <Label>No Ack on time</Label>
-    <Source cp="9">Waiting for Confirmation</Source>
-    <Point x="384.0" y="108.0"/>
-    <Point x="384.0" y="144.0"/>
-    <Target cp="4">No Acknowledged or Partial</Target>
-  </Link>
-  <Link Name="Fully received" default="true" webbpaID="1390912704227">
-    <Label>Fully received</Label>
-    <Source cp="1">Waiting for Confirmation</Source>
-    <Point x="492.0" y="66.0"/>
-    <Point x="636.0" y="66.0"/>
-    <Target cp="3">End 1</Target>
-  </Link>
-  <Link Name="Not handled on time" default="true" type="timeout" value="Not handled on time" webbpaID="1391156945820" x="12" y="1">
-    <Label>Not handled on time</Label>
-    <Source cp="3">No Acknowledged or Partial</Source>
-    <Point x="348.0" y="180.0"/>
-    <Point x="240.0" y="180.0"/>
-    <Target cp="1">Escalation</Target>
+  <Link Name="Connection 1" default="true" webbpaID="1390912704228">
+    <Label>Connection 1</Label>
+    <Source cp="1">Start</Source>
+    <Point x="96.0" y="66.0"/>
+    <Point x="348.0" y="66.0"/>
+    <Target cp="3">Waiting for Confirmation</Target>
   </Link>
   <Link Name="Handled" default="true" webbpaID="1391156945814">
     <Label>Handled</Label>
@@ -297,12 +274,35 @@ L21hcD4K
     <Point x="654.0" y="84.0"/>
     <Target cp="2">End 1</Target>
   </Link>
-  <Link Name="Connection 1" default="true" webbpaID="1390912704228">
-    <Label>Connection 1</Label>
-    <Source cp="1">Start</Source>
-    <Point x="96.0" y="66.0"/>
-    <Point x="348.0" y="66.0"/>
-    <Target cp="3">Waiting for Confirmation</Target>
+  <Link Name="Not handled on time" default="true" type="timeout" value="Not handled on time" webbpaID="1391156945820" x="12" y="1">
+    <Label>Not handled on time</Label>
+    <Source cp="3">No Acknowledged or Partial</Source>
+    <Point x="348.0" y="180.0"/>
+    <Point x="240.0" y="180.0"/>
+    <Target cp="1">Escalation</Target>
+  </Link>
+  <Link Name="Fully received" default="true" webbpaID="1390912704227">
+    <Label>Fully received</Label>
+    <Source cp="1">Waiting for Confirmation</Source>
+    <Point x="492.0" y="66.0"/>
+    <Point x="636.0" y="66.0"/>
+    <Target cp="3">End 1</Target>
+  </Link>
+  <Link Name="No Ack on time" default="true" type="timeout" value="No Ack on time" webbpaID="1390912704226" x="-114" y="-3">
+    <Label>No Ack on time</Label>
+    <Source cp="9">Waiting for Confirmation</Source>
+    <Point x="384.0" y="108.0"/>
+    <Point x="384.0" y="144.0"/>
+    <Target cp="4">No Acknowledged or Partial</Target>
+  </Link>
+  <Link Name="Connection 4" default="true" webbpaID="1390912704225">
+    <Label>Connection 4</Label>
+    <Source cp="2">Escalation</Source>
+    <Point x="168.0" y="216.0"/>
+    <Point x="168.0" y="236.0"/>
+    <Point x="420.0" y="236.0"/>
+    <Point x="420.0" y="216.0"/>
+    <Target cp="2">No Acknowledged or Partial</Target>
   </Link>
   <Dataslot Name="FullyConfirmed" category="User" name="FullyConfirmed" type="ABL_LOGICAL" webbpaID="1390912704232">
     <Label>Delivery is fully confirmed</Label>
@@ -364,6 +364,20 @@ L21hcD4K
     <Access type="GLOBAL" value="false"/>
     <Access type="BIZ_SITE_COLUMN" value="false"/>
     <Format editable="true" label="" required="false" size="20" type="abl_text"/>
+  </Dataslot>
+  <Dataslot Name="MessageQueueId" category="User" name="MessageQueueId" type="ABL_CHARACTER" webbpaID="1392012639463">
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
+    <Storage size="256" type="CHAR"/>
   </Dataslot>
   <Performers>
     <Performer name="@CREATOR" type="user" webbpaID="1391156945806"/>

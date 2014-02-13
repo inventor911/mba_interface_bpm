@@ -45,7 +45,7 @@
     <Option name="Reassign" visible="true"/>
     <Simulation distribution="ct" scenario="(default)"/>
   </AtomicWS>
-  <AtomicWS height="72" name="Message Processor Stopped" width="132" worktime="false" x="540" y="216">
+  <AtomicWS height="72" name="Message Processor Stopped" width="132" worktime="false" x="552" y="276">
     <Label>Message Processor Stopped</Label>
     <AtomicType>ACTIVITY</AtomicType>
     <Performer>MBAInterface</Performer>
@@ -72,7 +72,7 @@
     </OnOverdue>
     <Simulation distribution="ct" scenario="(default)"/>
   </AtomicWS>
-  <AtomicWS height="84" name="Processing Message" width="132" worktime="false" x="540" y="72">
+  <AtomicWS height="84" name="Processing Message" width="132" worktime="false" x="552" y="72">
     <AtomicType>ACTIVITY</AtomicType>
     <Performer>@CREATOR</Performer>
     <PerformingApp>
@@ -115,7 +115,7 @@ aXRpb24+Cg==</ConditionXMLEncoded>
       <Counter variable="@ProcessMessageLoopCtr"/>
     </Loop>
   </AtomicWS>
-  <AtomicWS height="72" name="Scheduler Error" width="132" worktime="false" x="108" y="216">
+  <AtomicWS height="72" name="Scheduler Error" width="132" worktime="false" x="168" y="276">
     <AtomicType>ACTIVITY</AtomicType>
     <Performer>MBAInterface</Performer>
     <PerformBy>ANY</PerformBy>
@@ -145,7 +145,7 @@ aXRpb24+Cg==</ConditionXMLEncoded>
     </OnOverdue>
     <Simulation distribution="ct" scenario="(default)"/>
   </AtomicWS>
-  <AtomicWS height="84" name="Scheduler Waiting" width="132" worktime="false" x="108" y="72">
+  <AtomicWS height="84" name="Scheduler Waiting" width="132" worktime="false" x="168" y="72">
     <Label>Waiting for Message Processor</Label>
     <AtomicType>ACTIVITY</AtomicType>
     <Performer>@CREATOR</Performer>
@@ -165,13 +165,13 @@ aXRpb24+Cg==</ConditionXMLEncoded>
     </OnOverdue>
     <Simulation distribution="ct" scenario="(default)"/>
   </AtomicWS>
-  <AtomicWS height="36" name="End 1" width="36" worktime="false" x="900" y="96">
+  <AtomicWS height="36" name="End 1" width="36" worktime="false" x="912" y="96">
     <AtomicType>END</AtomicType>
     <Priority>MEDIUM</Priority>
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
   </AtomicWS>
-  <ExternalWS height="72" name="Escalate Msr Processor not Alive" width="120" x="732" y="216">
+  <ExternalWS height="72" name="Escalate Msr Processor not Alive" width="120" x="744" y="276">
     <Performer category="EmailAdapters" generate="false" managed="true" name="GenericEmailAdapter">com.savvion.sbm.adapters.email.EmailAdapter</Performer>
     <PerformBy>execute</PerformBy>
     <ClosedConnection>TRUE</ClosedConnection>
@@ -183,7 +183,7 @@ aXRpb24+Cg==</ConditionXMLEncoded>
     <InlineExecution>FALSE</InlineExecution>
     <AdapterType>process</AdapterType>
   </ExternalWS>
-  <ExternalWS height="72" name="Escalate Scheduler Error" width="108" x="312" y="216">
+  <ExternalWS height="72" name="Escalate Scheduler Error" width="108" x="372" y="276">
     <Performer category="EmailAdapters" generate="false" managed="true" name="GenericEmailAdapter">com.savvion.sbm.adapters.email.EmailAdapter</Performer>
     <PerformBy>execute</PerformBy>
     <ClosedConnection>TRUE</ClosedConnection>
@@ -196,77 +196,79 @@ aXRpb24+Cg==</ConditionXMLEncoded>
     <InlineExecution>FALSE</InlineExecution>
     <AdapterType>process</AdapterType>
   </ExternalWS>
-  <Link Name="Task Completted" default="true">
+  <Link Name="Task Completted" default="true" x="6" y="-31">
     <Label>Task Completted</Label>
-    <Source cp="0">Message Processor Stopped</Source>
-    <Point x="606.0" y="216.0"/>
-    <Point x="606.0" y="176.0"/>
-    <Point x="260.0" y="176.0"/>
-    <Point x="260.0" y="135.0"/>
-    <Point x="240.0" y="135.0"/>
-    <Target cp="7">Scheduler Waiting</Target>
+    <Source cp="6">Message Processor Stopped</Source>
+    <Point x="684.0" y="294.0"/>
+    <Point x="704.0" y="294.0"/>
+    <Point x="704.0" y="176.0"/>
+    <Point x="267.0" y="176.0"/>
+    <Point x="267.0" y="156.0"/>
+    <Target cp="8">Scheduler Waiting</Target>
   </Link>
-  <Link Name="Timeout" default="true" type="timeout" value="Timeout">
+  <Link Name="Timeout" default="true" type="timeout" value="Timeout" x="-5" y="48">
     <Label>Timeout</Label>
     <Source cp="1">Message Processor Stopped</Source>
-    <Point x="672.0" y="252.0"/>
-    <Point x="732.0" y="252.0"/>
+    <Point x="684.0" y="312.0"/>
+    <Point x="744.0" y="312.0"/>
     <Target cp="3">Escalate Msr Processor not Alive</Target>
   </Link>
   <Link Name="Connection 7" default="true">
     <Label>Connection 7</Label>
     <Source cp="6">Escalate Msr Processor not Alive</Source>
-    <Point x="852.0" y="234.0"/>
-    <Point x="872.0" y="234.0"/>
-    <Point x="872.0" y="196.0"/>
-    <Point x="260.0" y="196.0"/>
-    <Point x="260.0" y="135.0"/>
-    <Point x="240.0" y="135.0"/>
-    <Target cp="7">Scheduler Waiting</Target>
+    <Point x="864.0" y="294.0"/>
+    <Point x="884.0" y="294.0"/>
+    <Point x="884.0" y="176.0"/>
+    <Point x="267.0" y="176.0"/>
+    <Point x="267.0" y="156.0"/>
+    <Target cp="8">Scheduler Waiting</Target>
   </Link>
-  <Link Name="Processing Message Timeout" default="true" type="timeout" value="Processing Message Timeout">
+  <Link Name="Processing Message Timeout" default="true" type="timeout" value="Processing Message Timeout" x="-69" y="65">
     <Label>Processing Message Timeout</Label>
     <Source cp="9">Processing Message</Source>
-    <Point x="573.0" y="156.0"/>
-    <Point x="573.0" y="216.0"/>
+    <Point x="585.0" y="156.0"/>
+    <Point x="585.0" y="276.0"/>
     <Target cp="4">Message Processor Stopped</Target>
   </Link>
   <Link Name="Connection 6" default="true">
     <Label>Connection 6</Label>
-    <Source cp="0">Escalate Scheduler Error</Source>
-    <Point x="366.0" y="216.0"/>
-    <Point x="366.0" y="135.0"/>
-    <Point x="240.0" y="135.0"/>
-    <Target cp="7">Scheduler Waiting</Target>
+    <Source cp="6">Escalate Scheduler Error</Source>
+    <Point x="480.0" y="294.0"/>
+    <Point x="500.0" y="294.0"/>
+    <Point x="500.0" y="176.0"/>
+    <Point x="267.0" y="176.0"/>
+    <Point x="267.0" y="156.0"/>
+    <Target cp="8">Scheduler Waiting</Target>
   </Link>
-  <Link Name="No action" default="true" type="timeout" value="No action" x="-4" y="41">
+  <Link Name="No action" default="true" type="timeout" value="No action" x="-2" y="47">
     <Label>No action</Label>
-    <Source cp="7">Scheduler Error</Source>
-    <Point x="240.0" y="270.0"/>
-    <Point x="312.0" y="270.0"/>
-    <Target cp="10">Escalate Scheduler Error</Target>
+    <Source cp="1">Scheduler Error</Source>
+    <Point x="300.0" y="312.0"/>
+    <Point x="372.0" y="312.0"/>
+    <Target cp="3">Escalate Scheduler Error</Target>
   </Link>
-  <Link Name="Fixed" default="true" x="-30" y="-10">
+  <Link Name="Fixed" default="true" x="6" y="-29">
     <Label>Fixed</Label>
     <Source cp="6">Scheduler Error</Source>
-    <Point x="240.0" y="234.0"/>
-    <Point x="260.0" y="234.0"/>
-    <Point x="260.0" y="135.0"/>
-    <Point x="240.0" y="135.0"/>
-    <Target cp="7">Scheduler Waiting</Target>
+    <Point x="300.0" y="294.0"/>
+    <Point x="320.0" y="294.0"/>
+    <Point x="320.0" y="176.0"/>
+    <Point x="267.0" y="176.0"/>
+    <Point x="267.0" y="156.0"/>
+    <Target cp="8">Scheduler Waiting</Target>
   </Link>
-  <Link Name="Scheduler Timeout" default="true" type="timeout" value="Scheduler Timeout" x="-65" y="9">
+  <Link Name="Scheduler Timeout" default="true" type="timeout" value="Scheduler Timeout" x="-14" y="67">
     <Label>Scheduler Timeout</Label>
     <Source cp="9">Scheduler Waiting</Source>
-    <Point x="141.0" y="156.0"/>
-    <Point x="141.0" y="216.0"/>
+    <Point x="201.0" y="156.0"/>
+    <Point x="201.0" y="276.0"/>
     <Target cp="4">Scheduler Error</Target>
   </Link>
   <Link Name="end point is mandatory" default="false" x="93" y="6">
     <Label>end point is mandatory</Label>
     <Source cp="1">Processing Message</Source>
-    <Point x="672.0" y="114.0"/>
-    <Point x="900.0" y="114.0"/>
+    <Point x="684.0" y="114.0"/>
+    <Point x="912.0" y="114.0"/>
     <Target cp="3">End 1</Target>
     <Condition type="java">jst.getStringDataSlot("@CREATOR")==null<ConditionXMLEncoded>PGNvbmRpdGlvbj4KICA8Z2V0ZmllbGQ+CiR7ZmllbGR9CiAgPC9nZXRmaWVsZD4KICA8ZXhwcmVz&#13;
 c2lvbnM+CiAgICA8Y29uZmlndXJhdGlvbj4KICAgICAgPGNhdGVnb3J5PjwvY2F0ZWdvcnk+CiAg&#13;
@@ -285,27 +287,27 @@ aW5OZXh0PkFORDwvam9pbk5leHQ+CiAgICAgIDwvZXhwcmVzc2lvbj4KICAgIDwvY29uZmlndXJh&#13
 dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
     </Condition>
   </Link>
-  <Link Name="Start waiting again" default="true">
+  <Link Name="Start waiting again" default="true" x="-118" y="-9">
     <Label>Start waiting again</Label>
     <Source cp="4">Processing Message</Source>
-    <Point x="573.0" y="72.0"/>
-    <Point x="573.0" y="52.0"/>
-    <Point x="174.0" y="52.0"/>
-    <Point x="174.0" y="72.0"/>
+    <Point x="585.0" y="72.0"/>
+    <Point x="585.0" y="52.0"/>
+    <Point x="234.0" y="52.0"/>
+    <Point x="234.0" y="72.0"/>
     <Target cp="0">Scheduler Waiting</Target>
   </Link>
-  <Link Name="Message processor started" default="true">
-    <Label>Message processor started</Label>
+  <Link Name="Message Processor was started" default="true" x="-8" y="6">
+    <Label>Message Processor was started</Label>
     <Source cp="1">Scheduler Waiting</Source>
-    <Point x="240.0" y="114.0"/>
-    <Point x="540.0" y="114.0"/>
+    <Point x="300.0" y="114.0"/>
+    <Point x="552.0" y="114.0"/>
     <Target cp="3">Processing Message</Target>
   </Link>
   <Link Name="Connection 13" default="true">
     <Label>Connection 13</Label>
     <Source cp="1">Start</Source>
     <Point x="60.0" y="114.0"/>
-    <Point x="108.0" y="114.0"/>
+    <Point x="168.0" y="114.0"/>
     <Target cp="3">Scheduler Waiting</Target>
   </Link>
   <Dataslot Name="ProcessingMessageTimeout" category="User" name="ProcessingMessageTimeout" type="ABL_INT64">
@@ -479,6 +481,44 @@ dGlvbj4KICA8L2V4cHJlc3Npb25zPgo8L2NvbmRpdGlvbj4K</ConditionXMLEncoded>
     </Format>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
+  <Notes>
+    <Note color="255,255,0" connectTo="Scheduler Waiting" height="144" shape="sticky" width="132" x="24" y="144">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&#13;
+&lt;!DOCTYPE Form SYSTEM "form.dtd"&gt;&#13;
+&lt;Form tstamp="1392103070325" version="9.0"&gt;&#13;
+  &lt;body&gt;&#13;
+    &lt;font color="#000000"&gt;Wait to for Message Processor (MP) to be started.&lt;/font&gt;&#13;
+    &lt;br clear="all"/&gt;&#13;
+&lt;br clear="all"/&gt;&#13;
+&lt;font color="#000000"&gt;Some extarnal Schedulers will start MP.&lt;/font&gt;&#13;
+    &lt;br clear="all"/&gt;&#13;
+&lt;br clear="all"/&gt;&#13;
+&lt;font color="#000000"&gt;Detects when the MP is not started.&lt;/font&gt;&#13;
+  &lt;/body&gt;&#13;
+&lt;/Form&gt;&#13;
+</Note>
+    <Note color="255,255,0" connectTo="Processing Message" height="132" shape="sticky" width="168" x="912" y="144">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&#13;
+&lt;!DOCTYPE Form SYSTEM "form.dtd"&gt;&#13;
+&lt;Form tstamp="1392103092260" version="9.0"&gt;&#13;
+  &lt;body&gt;&#13;
+    &lt;font color="#000000"&gt;Loop until All messages are processed.&lt;/font&gt;&#13;
+    &lt;br clear="all"/&gt;&#13;
+&lt;br clear="all"/&gt;&#13;
+&lt;font color="#000000"&gt;Complete current instance when a message is processed.&lt;/font&gt;&#13;
+    &lt;br clear="all"/&gt;&#13;
+&lt;br clear="all"/&gt;&#13;
+&lt;font color="#000000"&gt;Detects when a message is not finished (on time).&lt;/font&gt;&#13;
+  &lt;/body&gt;&#13;
+&lt;/Form&gt;&#13;
+</Note>
+    <Note color="255,255,0" height="48" shape="sticky" width="168" x="744" y="24">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&#13;
+&lt;!DOCTYPE Form SYSTEM "form.dtd"&gt;&#13;
+&lt;Form tstamp="1392102109295" version="9.0"&gt;&#13;
+  &lt;body&gt;&#13;
+    &lt;font color="#000000"&gt;We have to have end point. But we will not get there.&lt;/font&gt;&#13;
+  &lt;/body&gt;&#13;
+&lt;/Form&gt;&#13;
+</Note>
+  </Notes>
   <History>
     <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391090295875" to="http://WF28:18793/sbm/deployment">Thu Jan 30 15:58:15 EET 2014</Deployed>
     <Deployed as="MBAInterfaceHeartBeat" by="admin" on="1391083581336" to="http://WF28:18793/sbm/deployment">Thu Jan 30 14:06:21 EET 2014</Deployed>
