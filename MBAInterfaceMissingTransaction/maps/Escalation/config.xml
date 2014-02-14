@@ -9,7 +9,7 @@
     </block>
     <block title="Part 1: Velocity Template" label="emailadapter:config.label.1:1:Velocity Template" hidden="false">
         <param name="PLUGIN.1.NAME" access="HIDDEN" label="Plugin name" type="java.lang.String" value="Velocity Template"/>
-        <param name="PLUGIN.1.CONF" access="HIDDEN" label="Plugin configuration" type="java.lang.String" value="%0AHello%2C%0A%0AThere+is+one+request+for+transfer+which+was+not+fully+confirmed+or+not+confirmed+at+all+and+it+was+not+handled+in+given+time+slot.%0A%0APlease+assign+a+person+to+handle+this.%0A%0ARequest%3A%0A%0A+++++++++++++++%3CRequest+info%3E%0A%0ABPM.%0A%0AHave+a+nice+day%21%0A%0A"/>
+        <param name="PLUGIN.1.CONF" access="HIDDEN" label="Plugin configuration" type="java.lang.String" value="%0AHello%2C%0A%0AThere+is+one+request+for+missing+transactions+which+was+not+fully+received+or+not+received+at+all+and+it+was+not+handled+in+given+time+slot.%0A%0APlease+assign+a+person+to+handle+this.%0A%0A%0ABPM.%0A%0AHave+a+nice+day%21"/>
         <param name="PLUGIN.1.MIME" access="HIDDEN" label="Mime type" type="java.lang.String" value="text/plain"/>
     </block>
     <block title="Configuration" label="emailadapter:config.label.2" hidden="false">

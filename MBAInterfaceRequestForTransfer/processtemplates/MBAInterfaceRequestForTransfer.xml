@@ -59,9 +59,16 @@
     <Duration value="7200">2h</Duration>
     <Priority>MEDIUM</Priority>
     <EmailSupport>TRUE</EmailSupport>
+    <Datainput>MessageQueueId</Datainput>
+    <Datainput>RequestInfo</Datainput>
     <Datainput>FullyConfirmed</Datainput>
-    <Dataoutput>FullyConfirmed</Dataoutput>
-    <Format editable="true" input="FullyConfirmed" label="Delivery is fully confirmed" type="checkbox">
+    <Format editable="false" input="MessageQueueId" label="Message queue id" password="false" required="false" size="20" type="abl_text">
+      <Label>Message queue id</Label>
+    </Format>
+    <Format editable="false" input="RequestInfo" label="Request info" password="false" required="false" size="20" type="abl_text">
+      <Label>Request info</Label>
+    </Format>
+    <Format editable="false" input="FullyConfirmed" label="Delivery is fully confirmed" type="checkbox">
       <Label>Delivery is fully confirmed</Label>
     </Format>
     <RollbackPoint>FALSE</RollbackPoint>
@@ -85,6 +92,14 @@
     <Duration>@ConfirmationTimeout</Duration>
     <Priority>MEDIUM</Priority>
     <EmailSupport>FALSE</EmailSupport>
+    <Datainput>MessageQueueId</Datainput>
+    <Datainput>RequestInfo</Datainput>
+    <Format editable="false" input="MessageQueueId" label="Message queue id" password="false" required="false" size="20" type="abl_text">
+      <Label>Message queue id</Label>
+    </Format>
+    <Format editable="false" input="RequestInfo" label="Request info" password="false" required="false" size="20" type="abl_text">
+      <Label>Request info</Label>
+    </Format>
     <RollbackPoint>FALSE</RollbackPoint>
     <OnOverdue>
       <ActivateTimeoutFlow/>
@@ -204,8 +219,8 @@
     </Format>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
-  <Dataslot Name="ConfirmationTimeout" category="User" name="ConfirmationTimeout" type="ABL_INTEGER">
-    <DataType>ABL_INTEGER</DataType>
+  <Dataslot Name="ConfirmationTimeout" category="User" name="ConfirmationTimeout" type="ABL_INT64">
+    <DataType>ABL_INT64</DataType>
     <DataValue unknown="false">0</DataValue>
     <IsPublic>true</IsPublic>
     <MultiLine>false</MultiLine>
@@ -230,8 +245,26 @@
     <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
+  <Dataslot Name="RequestInfo" category="User" name="RequestInfo" type="ABL_CHARACTER">
+    <DataType>ABL_CHARACTER</DataType>
+    <DataValue unknown="false"/>
+    <DataSize>256</DataSize>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
+    <Storage size="256" type="CHAR"/>
+  </Dataslot>
   <History>
+    <Deployed as="MBAInterfaceRequestForTransfer" by="admin" on="1392305644660" to="http://WF28:18793/sbm/deployment">Thu Feb 13 17:34:04 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceRequestForTransfer" by="admin" on="1392305574497" to="http://WF28:18793/sbm/deployment">Thu Feb 13 17:32:54 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceRequestForTransfer" by="admin" on="1392305374978" to="http://WF28:18793/sbm/deployment">Thu Feb 13 17:29:34 EET 2014</Deployed>
     <Created as="MBAInterfaceRequestForTransfer" by="daniel.baciu" on="1391497557282">Tue Feb 04 09:05:57 EET 2014</Created>
+    <Deployed as="MBAInterfaceRequestForTransfer" by="admin" on="1392361339344" to="http://WF28:18793/sbm/deployment">Fri Feb 14 09:02:19 EET 2014</Deployed>
   </History>
   <Repository/>
 </Process>

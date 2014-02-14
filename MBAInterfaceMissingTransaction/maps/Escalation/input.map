@@ -5,16 +5,16 @@
   <param name="PLUGIN.1.MIME" type="java.lang.String" value="text/plain"/>
   <param name="AUTH_PASSWORD" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.password}"/>
   <param name="CC" type="java.lang.Object" value=""/>
-  <param name="PLUGIN.1.CONF" type="java.lang.String" value="%0AHello%2C%0A%0AThere+is+one+request+for+transfer+which+was+not+fully+confirmed+or+not+confirmed+at+all+and+it+was+not+handled+in+given+time+slot.%0A%0APlease+assign+a+person+to+handle+this.%0A%0ARequest%3A%0A%0A+++++++++++++++%3CRequest+info%3E%0A%0ABPM.%0A%0AHave+a+nice+day%21%0A%0A"/>
+  <param name="PLUGIN.1.CONF" type="java.lang.String" value="%0AHello%2C%0A%0AThere+is+one+request+for+missing+transactions+which+was+not+fully+received+or+not+received+at+all+and+it+was+not+handled+in+given+time+slot.%0A%0APlease+assign+a+person+to+handle+this.%0A%0A%0ABPM.%0A%0AHave+a+nice+day%21"/>
   <param name="SENDER" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.user}"/>
   <param name="PROPERTY.mail.smtp.port" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.port}"/>
   <param name="PROPERTY.mail.smtp.socketFactory.port" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.portl}"/>
   <param name="PROPERTY.mail.smtp.host" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server}"/>
   <param name="PROPERTY.mail.smtp.socketFactory.class" type="java.lang.String" value="javax.net.ssl.SSLSocketFactory"/>
   <param name="BCC" type="java.lang.Object" value=""/>
-  <param name="SUBJECT" type="java.lang.Object" value="Missing of confirmation of request for transfer not handled"/>
+  <param name="SUBJECT" type="java.lang.Object" value="ESCALATION: Missing transaction not handled"/>
   <param name="AUTH_USER" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.user}"/>
-  <param name="RECIPIENTS" type="java.lang.Object" value="@ConfirmationNotificationList"/>
+  <param name="RECIPIENTS" type="java.lang.Object" value="@EscalationList"/>
   <param name="PROPERTY.mail.transport.protocol" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.protocol}"/>
   <param name="PROPERTY.mail.smtp.socketFactory.fallback" type="java.lang.String" value="false"/>
   <param name="PROPERTY.allow.null.cc" type="java.lang.String" value="true"/>

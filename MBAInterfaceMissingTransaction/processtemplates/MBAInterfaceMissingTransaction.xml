@@ -44,29 +44,7 @@
     <Option name="Reassign" visible="true"/>
     <Simulation distribution="ct" scenario="(default)"/>
   </AtomicWS>
-  <AtomicWS height="72" name="Missing Transactions" width="132" worktime="false" x="564" y="168">
-    <AtomicType>ACTIVITY</AtomicType>
-    <Performer>MBAInterface</Performer>
-    <PerformBy>ANY</PerformBy>
-    <PerformingApp>
-      <Metadata name="TARGETTYPE">JSP</Metadata>
-      <Metadata name="TARGET">MissingTransactions.jsp</Metadata>
-    </PerformingApp>
-    <Collaboration>
-      <CollabFunction enabled="true" type="Reassign"/>
-    </Collaboration>
-    <Duration value="7200">2h</Duration>
-    <Priority>MEDIUM</Priority>
-    <EmailSupport>FALSE</EmailSupport>
-    <RollbackPoint>FALSE</RollbackPoint>
-    <OnOverdue>
-      <ActivateTimeoutFlow/>
-    </OnOverdue>
-    <Simulation distribution="ct" scenario="(default)">
-      <Duration value="7200">2h</Duration>
-    </Simulation>
-  </AtomicWS>
-  <AtomicWS height="72" name="No Acknowledged" width="144" worktime="false" x="240" y="168">
+  <AtomicWS height="72" name="No Acknowledged or Missing" width="144" worktime="false" x="372" y="168">
     <AtomicType>ACTIVITY</AtomicType>
     <Performer>MBAInterface</Performer>
     <PerformBy>ANY</PerformBy>
@@ -81,8 +59,7 @@
     <Priority>MEDIUM</Priority>
     <EmailSupport>TRUE</EmailSupport>
     <Datainput>MessageQueueId</Datainput>
-    <Dataoutput>MessageQueueId</Dataoutput>
-    <Format editable="true" input="MessageQueueId" label="Message queue id" password="false" required="false" size="20" type="abl_text">
+    <Format editable="false" input="MessageQueueId" label="Message queue id" password="false" required="false" size="20" type="abl_text">
       <Label>Message queue id</Label>
     </Format>
     <RollbackPoint>FALSE</RollbackPoint>
@@ -118,20 +95,8 @@
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
   </AtomicWS>
-  <ExternalWS height="72" name="Escalation Missing Transactions" width="132" x="696" y="264">
-    <Performer category="EmailAdapters" generate="false" managed="true" name="GenericEmailAdapter">com.savvion.sbm.adapters.email.EmailAdapter</Performer>
-    <PerformBy>execute</PerformBy>
-    <ClosedConnection>TRUE</ClosedConnection>
-    <Priority>MEDIUM</Priority>
-    <Datainput>EscalationList</Datainput>
-    <Dataoutput>SendingMailErrorText</Dataoutput>
-    <RollbackPoint>FALSE</RollbackPoint>
-    <Simulation distribution="ct" scenario="(default)"/>
-    <InlineExecution>FALSE</InlineExecution>
-    <AdapterType>process</AdapterType>
-  </ExternalWS>
-  <ExternalWS height="72" name="Escalation no Acknowledge" width="144" x="372" y="264">
-    <Label>Escalation no Acknowledge</Label>
+  <ExternalWS height="72" name="Escalation" width="144" x="156" y="168">
+    <Label>Escalation</Label>
     <Performer category="EmailAdapters" generate="false" managed="true" name="GenericEmailAdapter">com.savvion.sbm.adapters.email.EmailAdapter</Performer>
     <PerformBy>execute</PerformBy>
     <ClosedConnection>TRUE</ClosedConnection>
@@ -145,20 +110,20 @@
   </ExternalWS>
   <Link Name="Connection 4" default="true">
     <Label>Connection 4</Label>
-    <Source cp="3">Escalation no Acknowledge</Source>
-    <Point x="372.0" y="300.0"/>
-    <Point x="312.0" y="300.0"/>
-    <Point x="312.0" y="240.0"/>
-    <Target cp="2">No Acknowledged</Target>
+    <Source cp="2">Escalation</Source>
+    <Point x="228.0" y="240.0"/>
+    <Point x="228.0" y="260.0"/>
+    <Point x="352.0" y="260.0"/>
+    <Point x="352.0" y="222.0"/>
+    <Point x="372.0" y="222.0"/>
+    <Target cp="10">No Acknowledged or Missing</Target>
   </Link>
   <Link Name="No Ack on time" default="true" type="timeout" value="No Ack on time">
     <Label>No Ack on time</Label>
     <Source cp="9">Waiting for Missing Trans</Source>
     <Point x="408.0" y="108.0"/>
-    <Point x="408.0" y="148.0"/>
-    <Point x="348.0" y="148.0"/>
-    <Point x="348.0" y="168.0"/>
-    <Target cp="5">No Acknowledged</Target>
+    <Point x="408.0" y="168.0"/>
+    <Target cp="4">No Acknowledged or Missing</Target>
   </Link>
   <Link Name="Fully received" default="true" x="-1" y="-4">
     <Label>Fully received</Label>
@@ -167,20 +132,19 @@
     <Point x="792.0" y="66.0"/>
     <Target cp="3">End 1</Target>
   </Link>
-  <Link Name="Not handled on time" default="true" type="timeout" value="Not handled on time" x="9" y="41">
+  <Link Name="Not handled on time" default="true" type="timeout" value="Not handled on time" x="19" y="-7">
     <Label>Not handled on time</Label>
-    <Source cp="7">No Acknowledged</Source>
-    <Point x="384.0" y="222.0"/>
-    <Point x="444.0" y="222.0"/>
-    <Point x="444.0" y="264.0"/>
-    <Target cp="0">Escalation no Acknowledge</Target>
+    <Source cp="11">No Acknowledged or Missing</Source>
+    <Point x="372.0" y="186.0"/>
+    <Point x="300.0" y="186.0"/>
+    <Target cp="6">Escalation</Target>
   </Link>
   <Link Name="Handled" default="true" x="26" y="6">
     <Label>Handled</Label>
-    <Source cp="1">No Acknowledged</Source>
-    <Point x="384.0" y="204.0"/>
-    <Point x="544.0" y="204.0"/>
-    <Point x="544.0" y="66.0"/>
+    <Source cp="1">No Acknowledged or Missing</Source>
+    <Point x="516.0" y="204.0"/>
+    <Point x="772.0" y="204.0"/>
+    <Point x="772.0" y="66.0"/>
     <Point x="792.0" y="66.0"/>
     <Target cp="3">End 1</Target>
   </Link>
@@ -191,13 +155,14 @@
     <Point x="372.0" y="66.0"/>
     <Target cp="3">Waiting for Missing Trans</Target>
   </Link>
-  <Link Name="Not matching" default="false" x="40" y="70">
+  <Link Name="Not matching" default="false" x="-16" y="75">
     <Label>Not matching</Label>
     <Source cp="7">Waiting for Missing Trans</Source>
     <Point x="516.0" y="87.0"/>
-    <Point x="597.0" y="87.0"/>
-    <Point x="597.0" y="168.0"/>
-    <Target cp="4">Missing Transactions</Target>
+    <Point x="536.0" y="87.0"/>
+    <Point x="536.0" y="186.0"/>
+    <Point x="516.0" y="186.0"/>
+    <Target cp="6">No Acknowledged or Missing</Target>
     <Condition type="java">!ReceivedAll<ConditionXMLEncoded>PGNvbmRpdGlvbj4KICA8Z2V0ZmllbGQ+CiR7ZmllbGR9CiAgPC9nZXRmaWVsZD4KICA8ZXhwcmVz&#13;
 c2lvbnM+CiAgICA8Y29uZmlndXJhdGlvbj4KICAgICAgPGNhdGVnb3J5PjwvY2F0ZWdvcnk+CiAg&#13;
 ICAgIDxleHByZXNzaW9uIHR5cGU9ImJhc2ljIj4KICAgICAgICA8bmFtZT48L25hbWU+CiAgICAg&#13;
@@ -214,31 +179,6 @@ ICAgICAgPC9jb2RlPgogICAgICAgIDxqb2luTmV4dD5BTkQ8L2pvaW5OZXh0PgogICAgICA8L2V4&#13
 cHJlc3Npb24+CiAgICA8L2NvbmZpZ3VyYXRpb24+CiAgPC9leHByZXNzaW9ucz4KPC9jb25kaXRp&#13;
 b24+Cg==</ConditionXMLEncoded>
     </Condition>
-  </Link>
-  <Link Name="Missing handled" default="true" x="26" y="-14">
-    <Label>Missing handled</Label>
-    <Source cp="1">Missing Transactions</Source>
-    <Point x="696.0" y="204.0"/>
-    <Point x="772.0" y="204.0"/>
-    <Point x="772.0" y="66.0"/>
-    <Point x="792.0" y="66.0"/>
-    <Target cp="3">End 1</Target>
-  </Link>
-  <Link Name="Connection 12" default="true">
-    <Label>Connection 12</Label>
-    <Source cp="3">Escalation Missing Transactions</Source>
-    <Point x="696.0" y="300.0"/>
-    <Point x="630.0" y="300.0"/>
-    <Point x="630.0" y="240.0"/>
-    <Target cp="2">Missing Transactions</Target>
-  </Link>
-  <Link Name="Handling missing timeout" default="true" type="timeout" value="Handling missing timeout" x="35" y="38">
-    <Label>Handling missing timeout</Label>
-    <Source cp="7">Missing Transactions</Source>
-    <Point x="696.0" y="222.0"/>
-    <Point x="762.0" y="222.0"/>
-    <Point x="762.0" y="264.0"/>
-    <Target cp="0">Escalation Missing Transactions</Target>
   </Link>
   <Dataslot Name="SendingMailErrorText" category="User" name="SendingMailErrorText" type="ABL_CHARACTER">
     <Label>Sending e-mail Errors</Label>
@@ -257,8 +197,8 @@ b24+Cg==</ConditionXMLEncoded>
     </Format>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
-  <Dataslot Name="ResponseTimeout" category="User" name="ResponseTimeout" type="ABL_INTEGER">
-    <DataType>ABL_INTEGER</DataType>
+  <Dataslot Name="ResponseTimeout" category="User" name="ResponseTimeout" type="ABL_INT64">
+    <DataType>ABL_INT64</DataType>
     <DataValue unknown="false">0</DataValue>
     <IsPublic>true</IsPublic>
     <MultiLine>false</MultiLine>
@@ -297,8 +237,8 @@ b24+Cg==</ConditionXMLEncoded>
     <Format editable="true" label="" password="false" required="false" size="20" type="abl_text"/>
     <Storage size="256" type="CHAR"/>
   </Dataslot>
-  <Dataslot Name="HandlingTimeout" category="User" name="HandlingTimeout" type="ABL_INTEGER">
-    <DataType>ABL_INTEGER</DataType>
+  <Dataslot Name="HandlingTimeout" category="User" name="HandlingTimeout" type="ABL_INT64">
+    <DataType>ABL_INT64</DataType>
     <DataValue unknown="false">0</DataValue>
     <IsPublic>true</IsPublic>
     <MultiLine>false</MultiLine>
@@ -322,24 +262,15 @@ b24+Cg==</ConditionXMLEncoded>
     <Format editable="true" label="" type="checkbox"/>
   </Dataslot>
   <Notes>
-    <Note color="255,255,0" connectTo="Missing Transactions" height="100" shape="sticky" width="100" x="912" y="144">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&#13;
+    <Note color="255,255,0" connectTo="No Acknowledged or Missing" height="48" shape="sticky" width="180" x="648" y="216">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&#13;
 &lt;!DOCTYPE Form SYSTEM "form.dtd"&gt;&#13;
-&lt;Form tstamp="1392102980271" version="9.0"&gt;&#13;
+&lt;Form tstamp="1392274299237" version="9.0"&gt;&#13;
   &lt;body&gt;&#13;
-    &lt;font color="#000000"&gt;Acknowledge was received, but not all requested transactions were provided. &lt;/font&gt;&#13;
-    &lt;br clear="all"/&gt;&#13;
-&lt;/body&gt;&#13;
-&lt;/Form&gt;&#13;
-</Note>
-    <Note color="255,255,0" connectTo="No Acknowledged" height="48" shape="sticky" width="108" x="60" y="228">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&#13;
-&lt;!DOCTYPE Form SYSTEM "form.dtd"&gt;&#13;
-&lt;Form tstamp="1392102931257" version="9.0"&gt;&#13;
-  &lt;body&gt;&#13;
-    &lt;font color="#000000"&gt;No acknowledge was received. &lt;/font&gt;&#13;
+    &lt;font color="#000000"&gt;No acknowledge was received or we still miss some transactions&lt;/font&gt;&#13;
   &lt;/body&gt;&#13;
 &lt;/Form&gt;&#13;
 </Note>
-    <Note color="255,255,0" connectTo="Waiting for Missing Trans" height="60" shape="sticky" width="168" x="36" y="108">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&#13;
+    <Note color="255,255,0" connectTo="Waiting for Missing Trans" height="60" shape="sticky" width="168" x="36" y="96">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&#13;
 &lt;!DOCTYPE Form SYSTEM "form.dtd"&gt;&#13;
 &lt;Form tstamp="1392102895186" version="9.0"&gt;&#13;
   &lt;body&gt;&#13;
@@ -352,7 +283,11 @@ b24+Cg==</ConditionXMLEncoded>
 </Note>
   </Notes>
   <History>
+    <Deployed as="MBAInterfaceMissingTransaction" by="admin" on="1392305643718" to="http://WF28:18793/sbm/deployment">Thu Feb 13 17:34:03 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMissingTransaction" by="admin" on="1392305573517" to="http://WF28:18793/sbm/deployment">Thu Feb 13 17:32:53 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMissingTransaction" by="admin" on="1392305365154" to="http://WF28:18793/sbm/deployment">Thu Feb 13 17:29:25 EET 2014</Deployed>
     <Created as="MBAInterfaceMissingTransaction" by="daniel.baciu" on="1391497861486">Tue Feb 04 09:11:01 EET 2014</Created>
+    <Deployed as="MBAInterfaceMissingTransaction" by="admin" on="1392361337354" to="http://WF28:18793/sbm/deployment">Fri Feb 14 09:02:17 EET 2014</Deployed>
   </History>
   <Repository/>
 </Process>
