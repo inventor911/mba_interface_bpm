@@ -92,12 +92,19 @@
     <InlineExecution>FALSE</InlineExecution>
     <AdapterType>process</AdapterType>
   </ExternalWS>
-  <Link Name="Connection 1" default="true">
-    <Label>Connection 1</Label>
-    <Source cp="1">Start</Source>
-    <Point x="120.0" y="54.0"/>
-    <Point x="276.0" y="54.0"/>
-    <Target cp="3">Handle Fina Checksum Diff</Target>
+  <Link Name="Handled" default="true">
+    <Label>Handled</Label>
+    <Source cp="1">Handle Fina Checksum Diff</Source>
+    <Point x="432.0" y="54.0"/>
+    <Point x="516.0" y="54.0"/>
+    <Target cp="3">End 1</Target>
+  </Link>
+  <Link Name="Handling Timeout" default="true" type="timeout" value="Handling Timeout">
+    <Label>Handling Timeout</Label>
+    <Source cp="2">Handle Fina Checksum Diff</Source>
+    <Point x="354.0" y="84.0"/>
+    <Point x="354.0" y="132.0"/>
+    <Target cp="0">Escalate Checksum Diff</Target>
   </Link>
   <Link Name="Connection 3" default="true">
     <Label>Connection 3</Label>
@@ -108,19 +115,12 @@
     <Point x="276.0" y="69.0"/>
     <Target cp="10">Handle Fina Checksum Diff</Target>
   </Link>
-  <Link Name="Handling Timeout" default="true" type="timeout" value="Handling Timeout">
-    <Label>Handling Timeout</Label>
-    <Source cp="2">Handle Fina Checksum Diff</Source>
-    <Point x="354.0" y="84.0"/>
-    <Point x="354.0" y="132.0"/>
-    <Target cp="0">Escalate Checksum Diff</Target>
-  </Link>
-  <Link Name="Handled" default="true">
-    <Label>Handled</Label>
-    <Source cp="1">Handle Fina Checksum Diff</Source>
-    <Point x="432.0" y="54.0"/>
-    <Point x="516.0" y="54.0"/>
-    <Target cp="3">End 1</Target>
+  <Link Name="Connection 1" default="true">
+    <Label>Connection 1</Label>
+    <Source cp="1">Start</Source>
+    <Point x="120.0" y="54.0"/>
+    <Point x="276.0" y="54.0"/>
+    <Target cp="3">Handle Fina Checksum Diff</Target>
   </Link>
   <Dataslot Name="CheckSumHandlingTimeout" category="User" name="CheckSumHandlingTimeout" type="ABL_INT64">
     <DataType>ABL_INT64</DataType>
@@ -203,14 +203,20 @@
 </Note>
   </Notes>
   <History>
-    <Created as="MBAInterfaceFinaChecksum" by="daniel.baciu" on="1391497909993">Tue Feb 04 09:11:49 EET 2014</Created>
-    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392031375469" to="http://WF28:18793/sbm/deployment">Mon Feb 10 13:22:55 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392272877016" to="http://WF28:18793/sbm/deployment">Thu Feb 13 08:27:57 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392292124052" to="http://WF28:18793/sbm/deployment">Thu Feb 13 13:48:44 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392305360385" to="http://WF28:18793/sbm/deployment">Thu Feb 13 17:29:20 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392305569610" to="http://WF28:18793/sbm/deployment">Thu Feb 13 17:32:49 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392305642372" to="http://WF28:18793/sbm/deployment">Thu Feb 13 17:34:02 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392371317986" to="http://WF28:18793/sbm/deployment">Fri Feb 14 11:48:37 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392370068978" to="http://WF28:18793/sbm/deployment">Fri Feb 14 11:27:48 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392365651735" to="http://WF28:18793/sbm/deployment">Fri Feb 14 10:14:11 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392361925083" to="http://WF28:18793/sbm/deployment">Fri Feb 14 09:12:05 EET 2014</Deployed>
     <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392361332506" to="http://WF28:18793/sbm/deployment">Fri Feb 14 09:02:12 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392305642372" to="http://WF28:18793/sbm/deployment">Thu Feb 13 17:34:02 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392305569610" to="http://WF28:18793/sbm/deployment">Thu Feb 13 17:32:49 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392305360385" to="http://WF28:18793/sbm/deployment">Thu Feb 13 17:29:20 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392292124052" to="http://WF28:18793/sbm/deployment">Thu Feb 13 13:48:44 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392272877016" to="http://WF28:18793/sbm/deployment">Thu Feb 13 08:27:57 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392031375469" to="http://WF28:18793/sbm/deployment">Mon Feb 10 13:22:55 EET 2014</Deployed>
+    <Created as="MBAInterfaceFinaChecksum" by="daniel.baciu" on="1391497909993">Tue Feb 04 09:11:49 EET 2014</Created>
+    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392372127102" to="http://WF28:18793/sbm/deployment">Fri Feb 14 12:02:07 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceFinaChecksum" by="admin" on="1392372504848" to="http://WF28:18793/sbm/deployment">Fri Feb 14 12:08:24 EET 2014</Deployed>
   </History>
   <Repository/>
 </Process>

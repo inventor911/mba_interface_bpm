@@ -22,7 +22,7 @@
         <param name="PROPERTY.mail.smtp.socketFactory.port" access="HIDDEN" label="emailadapter:config.label.13" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.portl}"/>
         <param name="PROPERTY.mail.smtp.socketFactory.fallback" access="HIDDEN" label="emailadapter:config.label.13" type="java.lang.String" value="false"/>
         <param name="PROPERTY.mail.transport.protocol" access="HIDDEN" label="emailadapter:config.label.13" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.protocol}"/>
-        <param name="PROPERTY.mail.smtp.socketFactory.class" access="HIDDEN" label="emailadapter:config.label.13" type="java.lang.String" value="javax.net.ssl.SSLSocketFactory"/>
+        <param name="PROPERTY.mail.smtp.socketFactory.class" access="HIDDEN" label="emailadapter:config.label.13" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.smtp.socketFactory.class}"/>
         <param name="PROPERTY.mail.smtp.host" access="HIDDEN" label="emailadapter:config.label.13" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server}"/>
         <param name="AUTH_USER" access="HIDDEN" label="emailadapter:config.label.7" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.user}" mandatory="false"/>
         <param name="AUTH_PASSWORD" access="HIDDEN" label="emailadapter:config.label.8" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.password}" mandatory="false"/>

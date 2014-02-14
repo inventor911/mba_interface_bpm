@@ -10,7 +10,7 @@
   <param name="PROPERTY.mail.smtp.port" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.port}"/>
   <param name="PROPERTY.mail.smtp.socketFactory.port" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.portl}"/>
   <param name="PROPERTY.mail.smtp.host" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server}"/>
-  <param name="PROPERTY.mail.smtp.socketFactory.class" type="java.lang.String" value="javax.net.ssl.SSLSocketFactory"/>
+  <param name="PROPERTY.mail.smtp.socketFactory.class" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.smtp.socketFactory.class}"/>
   <param name="BCC" type="java.lang.Object" value=""/>
   <param name="SUBJECT" type="java.lang.Object" value="Missing of confirmation of request for transfer not handled"/>
   <param name="AUTH_USER" type="java.lang.String" value="${oebpsemail.properties:oebps.email.outgoing.server.user}"/>

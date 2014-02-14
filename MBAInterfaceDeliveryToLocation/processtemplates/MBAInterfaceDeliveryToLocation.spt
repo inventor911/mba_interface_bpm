@@ -208,22 +208,23 @@ YS5sYW5nLlN0cmluZyIgdmFsdWU9IiR7b2VicHNlbWFpbC5wcm9wZXJ0aWVzOm9lYnBzLmVtYWls&#13
 Lm91dGdvaW5nLnNlcnZlci5wcm90b2NvbH0iLz4KICAgICAgICA8cGFyYW0gbmFtZT0iUFJPUEVS&#13;
 VFkubWFpbC5zbXRwLnNvY2tldEZhY3RvcnkuY2xhc3MiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0i&#13;
 ZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC4xMyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFs&#13;
-dWU9ImphdmF4Lm5ldC5zc2wuU1NMU29ja2V0RmFjdG9yeSIvPgogICAgICAgIDxwYXJhbSBuYW1l&#13;
-PSJQUk9QRVJUWS5tYWlsLnNtdHAuaG9zdCIgYWNjZXNzPSJISURERU4iIGxhYmVsPSJlbWFpbGFk&#13;
-YXB0ZXI6Y29uZmlnLmxhYmVsLjEzIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtv&#13;
-ZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyfSIvPgogICAg&#13;
-ICAgIDxwYXJhbSBuYW1lPSJBVVRIX1VTRVIiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxh&#13;
-ZGFwdGVyOmNvbmZpZy5sYWJlbC43IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtv&#13;
-ZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyLnVzZXJ9IiBt&#13;
-YW5kYXRvcnk9ImZhbHNlIi8+CiAgICAgICAgPHBhcmFtIG5hbWU9IkFVVEhfUEFTU1dPUkQiIGFj&#13;
-Y2Vzcz0iSElEREVOIiBsYWJlbD0iZW1haWxhZGFwdGVyOmNvbmZpZy5sYWJlbC44IiB0eXBlPSJq&#13;
-YXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6b2VicHMuZW1h&#13;
-aWwub3V0Z29pbmcuc2VydmVyLnBhc3N3b3JkfSIgbWFuZGF0b3J5PSJmYWxzZSIvPgogICAgICAg&#13;
-IDxwYXJhbSBuYW1lPSJFWENFUFRJT05fT1VUUFVUIiBhY2Nlc3M9IkhJRERFTiIgbGFiZWw9IkVy&#13;
-cm9yIGFzIG91dHB1dCIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InRydWUiIG1hbmRh&#13;
-dG9yeT0iZmFsc2UiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iRVhDRVBUSU9OIiBhY2Nlc3M9Ik8i&#13;
-IGxhYmVsPSJFcnJvciIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9IiIgbWFuZGF0b3J5&#13;
-PSJmYWxzZSIvPgogICAgPC9ibG9jaz4KPC9jb25maWdmb3JtPgo=
+dWU9IiR7b2VicHNlbWFpbC5wcm9wZXJ0aWVzOm9lYnBzLmVtYWlsLm91dGdvaW5nLnNlcnZlci5z&#13;
+bXRwLnNvY2tldEZhY3RvcnkuY2xhc3N9Ii8+CiAgICAgICAgPHBhcmFtIG5hbWU9IlBST1BFUlRZ&#13;
+Lm1haWwuc210cC5ob3N0IiBhY2Nlc3M9IkhJRERFTiIgbGFiZWw9ImVtYWlsYWRhcHRlcjpjb25m&#13;
+aWcubGFiZWwuMTMiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1haWwu&#13;
+cHJvcGVydGllczpvZWJwcy5lbWFpbC5vdXRnb2luZy5zZXJ2ZXJ9Ii8+CiAgICAgICAgPHBhcmFt&#13;
+IG5hbWU9IkFVVEhfVVNFUiIgYWNjZXNzPSJISURERU4iIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29u&#13;
+ZmlnLmxhYmVsLjciIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1haWwu&#13;
+cHJvcGVydGllczpvZWJwcy5lbWFpbC5vdXRnb2luZy5zZXJ2ZXIudXNlcn0iIG1hbmRhdG9yeT0i&#13;
+ZmFsc2UiLz4KICAgICAgICA8cGFyYW0gbmFtZT0iQVVUSF9QQVNTV09SRCIgYWNjZXNzPSJISURE&#13;
+RU4iIGxhYmVsPSJlbWFpbGFkYXB0ZXI6Y29uZmlnLmxhYmVsLjgiIHR5cGU9ImphdmEubGFuZy5T&#13;
+dHJpbmciIHZhbHVlPSIke29lYnBzZW1haWwucHJvcGVydGllczpvZWJwcy5lbWFpbC5vdXRnb2lu&#13;
+Zy5zZXJ2ZXIucGFzc3dvcmR9IiBtYW5kYXRvcnk9ImZhbHNlIi8+CiAgICAgICAgPHBhcmFtIG5h&#13;
+bWU9IkVYQ0VQVElPTl9PVVRQVVQiIGFjY2Vzcz0iSElEREVOIiBsYWJlbD0iRXJyb3IgYXMgb3V0&#13;
+cHV0IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0idHJ1ZSIgbWFuZGF0b3J5PSJmYWxz&#13;
+ZSIvPgogICAgICAgIDxwYXJhbSBuYW1lPSJFWENFUFRJT04iIGFjY2Vzcz0iTyIgbGFiZWw9IkVy&#13;
+cm9yIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iIiBtYW5kYXRvcnk9ImZhbHNlIi8+&#13;
+CiAgICA8L2Jsb2NrPgo8L2NvbmZpZ2Zvcm0+Cg==
 </File>
       <File name="input.map" type="form/mime64">
 PG1hcCB2ZXJzaW9uPSIxLjMiPgogIDxwYXJhbSBuYW1lPSJQTFVHSU4uMS5OQU1FIiB0eXBlPSJq&#13;
@@ -247,21 +248,21 @@ b2luZy5zZXJ2ZXIucG9ydGx9Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwuc210cC5o&#13
 b3N0IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRp&#13;
 ZXM6b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyfSIvPgogIDxwYXJhbSBuYW1lPSJQUk9QRVJU&#13;
 WS5tYWlsLnNtdHAuc29ja2V0RmFjdG9yeS5jbGFzcyIgdHlwZT0iamF2YS5sYW5nLlN0cmluZyIg&#13;
-dmFsdWU9ImphdmF4Lm5ldC5zc2wuU1NMU29ja2V0RmFjdG9yeSIvPgogIDxwYXJhbSBuYW1lPSJC&#13;
-Q0MiIHR5cGU9ImphdmEubGFuZy5PYmplY3QiIHZhbHVlPSIiLz4KICA8cGFyYW0gbmFtZT0iU1VC&#13;
-SkVDVCIgdHlwZT0iamF2YS5sYW5nLk9iamVjdCIgdmFsdWU9IkNvbmZpcm0gZGVsaXZlcnkgdG8g&#13;
-bG9jYXRpb24gbm90IGFja25vd2xlZGdlZCIvPgogIDxwYXJhbSBuYW1lPSJBVVRIX1VTRVIiIHR5&#13;
-cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1haWwucHJvcGVydGllczpvZWJw&#13;
-cy5lbWFpbC5vdXRnb2luZy5zZXJ2ZXIudXNlcn0iLz4KICA8cGFyYW0gbmFtZT0iUkVDSVBJRU5U&#13;
-UyIgdHlwZT0iamF2YS5sYW5nLk9iamVjdCIgdmFsdWU9IkBDb25maXJtYXRpb25Ob3RpZmljYXRp&#13;
-b25MaXN0Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1haWwudHJhbnNwb3J0LnByb3RvY29s&#13;
-IiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2YWx1ZT0iJHtvZWJwc2VtYWlsLnByb3BlcnRpZXM6&#13;
-b2VicHMuZW1haWwub3V0Z29pbmcuc2VydmVyLnByb3RvY29sfSIvPgogIDxwYXJhbSBuYW1lPSJQ&#13;
-Uk9QRVJUWS5tYWlsLnNtdHAuc29ja2V0RmFjdG9yeS5mYWxsYmFjayIgdHlwZT0iamF2YS5sYW5n&#13;
-LlN0cmluZyIgdmFsdWU9ImZhbHNlIi8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLmFsbG93Lm51&#13;
-bGwuY2MiIHR5cGU9ImphdmEubGFuZy5TdHJpbmciIHZhbHVlPSJ0cnVlIi8+CiAgPHBhcmFtIG5h&#13;
-bWU9IlBBUlRfQ09VTlQiIHR5cGU9ImphdmEubGFuZy5JbnRlZ2VyIiB2YWx1ZT0iMSIvPgo8L21h&#13;
-cD4K
+dmFsdWU9IiR7b2VicHNlbWFpbC5wcm9wZXJ0aWVzOm9lYnBzLmVtYWlsLm91dGdvaW5nLnNlcnZl&#13;
+ci5zbXRwLnNvY2tldEZhY3RvcnkuY2xhc3N9Ii8+CiAgPHBhcmFtIG5hbWU9IkJDQyIgdHlwZT0i&#13;
+amF2YS5sYW5nLk9iamVjdCIgdmFsdWU9IiIvPgogIDxwYXJhbSBuYW1lPSJTVUJKRUNUIiB0eXBl&#13;
+PSJqYXZhLmxhbmcuT2JqZWN0IiB2YWx1ZT0iQ29uZmlybSBkZWxpdmVyeSB0byBsb2NhdGlvbiBu&#13;
+b3QgYWNrbm93bGVkZ2VkIi8+CiAgPHBhcmFtIG5hbWU9IkFVVEhfVVNFUiIgdHlwZT0iamF2YS5s&#13;
+YW5nLlN0cmluZyIgdmFsdWU9IiR7b2VicHNlbWFpbC5wcm9wZXJ0aWVzOm9lYnBzLmVtYWlsLm91&#13;
+dGdvaW5nLnNlcnZlci51c2VyfSIvPgogIDxwYXJhbSBuYW1lPSJSRUNJUElFTlRTIiB0eXBlPSJq&#13;
+YXZhLmxhbmcuT2JqZWN0IiB2YWx1ZT0iQENvbmZpcm1hdGlvbk5vdGlmaWNhdGlvbkxpc3QiLz4K&#13;
+ICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkubWFpbC50cmFuc3BvcnQucHJvdG9jb2wiIHR5cGU9Imph&#13;
+dmEubGFuZy5TdHJpbmciIHZhbHVlPSIke29lYnBzZW1haWwucHJvcGVydGllczpvZWJwcy5lbWFp&#13;
+bC5vdXRnb2luZy5zZXJ2ZXIucHJvdG9jb2x9Ii8+CiAgPHBhcmFtIG5hbWU9IlBST1BFUlRZLm1h&#13;
+aWwuc210cC5zb2NrZXRGYWN0b3J5LmZhbGxiYWNrIiB0eXBlPSJqYXZhLmxhbmcuU3RyaW5nIiB2&#13;
+YWx1ZT0iZmFsc2UiLz4KICA8cGFyYW0gbmFtZT0iUFJPUEVSVFkuYWxsb3cubnVsbC5jYyIgdHlw&#13;
+ZT0iamF2YS5sYW5nLlN0cmluZyIgdmFsdWU9InRydWUiLz4KICA8cGFyYW0gbmFtZT0iUEFSVF9D&#13;
+T1VOVCIgdHlwZT0iamF2YS5sYW5nLkludGVnZXIiIHZhbHVlPSIxIi8+CjwvbWFwPgo=
 </File>
       <File name="output.map" type="form/mime64">
 PG1hcCB2ZXJzaW9uPSIxLjMiPgogIDxwYXJhbSBuYW1lPSJTZW5kaW5nTWFpbEVycm9yVGV4dCIg&#13;
@@ -270,33 +271,13 @@ L21hcD4K
 </File>
     </Configuration>
   </ExternalWS>
-  <Link Name="Not handled on time" default="true" type="timeout" value="Not handled on time" webbpaID="1391156945820" x="12" y="1">
-    <Label>Not handled on time</Label>
-    <Source cp="3">No Acknowledged or Partial</Source>
-    <Point x="336.0" y="180.0"/>
-    <Point x="228.0" y="180.0"/>
-    <Target cp="1">Escalation</Target>
-  </Link>
-  <Link Name="Connection 1" default="true" webbpaID="1390912704228">
-    <Label>Connection 1</Label>
-    <Source cp="1">Start</Source>
-    <Point x="84.0" y="66.0"/>
-    <Point x="336.0" y="66.0"/>
-    <Target cp="3">Waiting for Confirmation</Target>
-  </Link>
-  <Link Name="Fully received" default="true" webbpaID="1390912704227">
-    <Label>Fully received</Label>
-    <Source cp="1">Waiting for Confirmation</Source>
-    <Point x="480.0" y="66.0"/>
-    <Point x="624.0" y="66.0"/>
-    <Target cp="3">End 1</Target>
-  </Link>
-  <Link Name="No Ack on time" default="true" type="timeout" value="No Ack on time" webbpaID="1390912704226" x="-114" y="-3">
-    <Label>No Ack on time</Label>
-    <Source cp="9">Waiting for Confirmation</Source>
-    <Point x="372.0" y="108.0"/>
-    <Point x="372.0" y="144.0"/>
-    <Target cp="4">No Acknowledged or Partial</Target>
+  <Link Name="Handled" default="true" webbpaID="1391156945814">
+    <Label>Handled</Label>
+    <Source cp="1">No Acknowledged or Partial</Source>
+    <Point x="480.0" y="180.0"/>
+    <Point x="642.0" y="180.0"/>
+    <Point x="642.0" y="84.0"/>
+    <Target cp="2">End 1</Target>
   </Link>
   <Link Name="Connection 4" default="true" webbpaID="1390912704225">
     <Label>Connection 4</Label>
@@ -307,13 +288,33 @@ L21hcD4K
     <Point x="408.0" y="216.0"/>
     <Target cp="2">No Acknowledged or Partial</Target>
   </Link>
-  <Link Name="Handled" default="true" webbpaID="1391156945814">
-    <Label>Handled</Label>
-    <Source cp="1">No Acknowledged or Partial</Source>
-    <Point x="480.0" y="180.0"/>
-    <Point x="642.0" y="180.0"/>
-    <Point x="642.0" y="84.0"/>
-    <Target cp="2">End 1</Target>
+  <Link Name="No Ack on time" default="true" type="timeout" value="No Ack on time" webbpaID="1390912704226" x="-114" y="-3">
+    <Label>No Ack on time</Label>
+    <Source cp="9">Waiting for Confirmation</Source>
+    <Point x="372.0" y="108.0"/>
+    <Point x="372.0" y="144.0"/>
+    <Target cp="4">No Acknowledged or Partial</Target>
+  </Link>
+  <Link Name="Fully received" default="true" webbpaID="1390912704227">
+    <Label>Fully received</Label>
+    <Source cp="1">Waiting for Confirmation</Source>
+    <Point x="480.0" y="66.0"/>
+    <Point x="624.0" y="66.0"/>
+    <Target cp="3">End 1</Target>
+  </Link>
+  <Link Name="Connection 1" default="true" webbpaID="1390912704228">
+    <Label>Connection 1</Label>
+    <Source cp="1">Start</Source>
+    <Point x="84.0" y="66.0"/>
+    <Point x="336.0" y="66.0"/>
+    <Target cp="3">Waiting for Confirmation</Target>
+  </Link>
+  <Link Name="Not handled on time" default="true" type="timeout" value="Not handled on time" webbpaID="1391156945820" x="12" y="1">
+    <Label>Not handled on time</Label>
+    <Source cp="3">No Acknowledged or Partial</Source>
+    <Point x="336.0" y="180.0"/>
+    <Point x="228.0" y="180.0"/>
+    <Target cp="1">Escalation</Target>
   </Link>
   <Dataslot Name="FullyConfirmed" category="User" name="FullyConfirmed" type="ABL_LOGICAL" webbpaID="1390912704232">
     <Label>Delivery is fully confirmed</Label>
@@ -422,6 +423,14 @@ L21hcD4K
     <Format editable="true" label="" required="false" size="20" type="abl_text"/>
   </Dataslot>
   <Notes>
+    <Note color="255,255,0" connectTo="Waiting for Confirmation" height="48" shape="sticky" webbpaID="1392012639485" width="132" x="672" y="108">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&#13;
+&lt;!DOCTYPE Form SYSTEM "form.dtd"&gt;&#13;
+&lt;Form tstamp="1392102733943" version="9.0"&gt;&#13;
+  &lt;body&gt;&#13;
+    &lt;font color="#000000"&gt;Wait for callback with requested data&lt;/font&gt;&#13;
+  &lt;/body&gt;&#13;
+&lt;/Form&gt;&#13;
+</Note>
     <Note color="255,255,0" connectTo="No Acknowledged or Partial" height="48" shape="sticky" webbpaID="1392012639486" width="216" x="516" y="192">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&#13;
 &lt;!DOCTYPE Form SYSTEM "form.dtd"&gt;&#13;
 &lt;Form tstamp="1392102798499" version="9.0"&gt;&#13;
@@ -429,14 +438,6 @@ L21hcD4K
     &lt;font color="#000000"&gt;No acknowledge was received. &lt;/font&gt;&#13;
     &lt;br clear="all"/&gt;&#13;
 &lt;font color="#000000"&gt;Or the partial delivery was confirmed.&lt;/font&gt;&#13;
-  &lt;/body&gt;&#13;
-&lt;/Form&gt;&#13;
-</Note>
-    <Note color="255,255,0" connectTo="Waiting for Confirmation" height="48" shape="sticky" webbpaID="1392012639485" width="132" x="672" y="108">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&#13;
-&lt;!DOCTYPE Form SYSTEM "form.dtd"&gt;&#13;
-&lt;Form tstamp="1392102733943" version="9.0"&gt;&#13;
-  &lt;body&gt;&#13;
-    &lt;font color="#000000"&gt;Wait for callback with requested data&lt;/font&gt;&#13;
   &lt;/body&gt;&#13;
 &lt;/Form&gt;&#13;
 </Note>
@@ -450,16 +451,22 @@ L21hcD4K
   </Performers>
   <TabularViewWorkstepOrder/>
   <History>
-    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1392361005387" to="http://WF28:18793/sbm/deployment">Fri Feb 14 08:56:45 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1392305641191" to="http://WF28:18793/sbm/deployment">Thu Feb 13 17:34:01 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1392305567949" to="http://WF28:18793/sbm/deployment">Thu Feb 13 17:32:47 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1392305355101" to="http://WF28:18793/sbm/deployment">Thu Feb 13 17:29:15 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391080741259" to="http://WF28:18793/sbm/deployment">Thu Jan 30 13:19:01 EET 2014</Deployed>
-    <Created as="MBAInterfaceDeliveryToLocation" by="daniel.baciu" on="1390913486625">Tue Jan 28 14:51:26 EET 2014</Created>
-    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391071935009" to="http://WF28:18793/sbm/deployment">Thu Jan 30 10:52:15 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391072681088" to="http://WF28:18793/sbm/deployment">Thu Jan 30 11:04:41 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1392361199357" to="http://WF28:18793/sbm/deployment">Fri Feb 14 08:59:59 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1392371315589" to="http://WF28:18793/sbm/deployment">Fri Feb 14 11:48:35 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1392370067417" to="http://WF28:18793/sbm/deployment">Fri Feb 14 11:27:47 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1392365649175" to="http://WF28:18793/sbm/deployment">Fri Feb 14 10:14:09 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1392361923254" to="http://WF28:18793/sbm/deployment">Fri Feb 14 09:12:03 EET 2014</Deployed>
     <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1392361246851" to="http://WF28:18793/sbm/deployment">Fri Feb 14 09:00:46 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1392361199357" to="http://WF28:18793/sbm/deployment">Fri Feb 14 08:59:59 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391072681088" to="http://WF28:18793/sbm/deployment">Thu Jan 30 11:04:41 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391071935009" to="http://WF28:18793/sbm/deployment">Thu Jan 30 10:52:15 EET 2014</Deployed>
+    <Created as="MBAInterfaceDeliveryToLocation" by="daniel.baciu" on="1390913486625">Tue Jan 28 14:51:26 EET 2014</Created>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1391080741259" to="http://WF28:18793/sbm/deployment">Thu Jan 30 13:19:01 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1392305355101" to="http://WF28:18793/sbm/deployment">Thu Feb 13 17:29:15 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1392305567949" to="http://WF28:18793/sbm/deployment">Thu Feb 13 17:32:47 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1392305641191" to="http://WF28:18793/sbm/deployment">Thu Feb 13 17:34:01 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1392361005387" to="http://WF28:18793/sbm/deployment">Fri Feb 14 08:56:45 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1392372125656" to="http://WF28:18793/sbm/deployment">Fri Feb 14 12:02:05 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceDeliveryToLocation" by="admin" on="1392372503050" to="http://WF28:18793/sbm/deployment">Fri Feb 14 12:08:23 EET 2014</Deployed>
   </History>
   <Repository/>
   <Forms/>
