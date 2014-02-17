@@ -15,4 +15,5 @@
   <param name="ipcMessageQueueId" type="com.progress.lang.Character" value="@MessageQueueId"/>
   <param name="con.appservice" type="java.lang.String" value="bpsbroker1"/>
   <param name="con.sessionmodel" type="java.lang.String" value="Session-free"/>
+  <param name="iplReactivate" type="com.progress.lang.Logical" value="@ReactivateMessage"/>
 </map>

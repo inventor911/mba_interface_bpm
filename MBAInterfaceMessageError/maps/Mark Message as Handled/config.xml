@@ -43,6 +43,8 @@
     <pidl:operation name="ErrorMessageHandled">
       <pidl:input messageLabel="ipcMessageQueueId" req="false" type="oedatatype:character">
     </pidl:input>
+      <pidl:input messageLabel="iplReactivate" req="false" type="oedatatype:logical">
+    </pidl:input>
     </pidl:operation>
   </pidl:interface>
   <pidl:binding name="com.progress.openedge.pdt.bpmbindings" interface="wsad:com.progress.openedge.pdt.bpminterfaces" type="urn:schemas-progress-com:bpm:appserverbinding:0001">
@@ -58,6 +60,12 @@
       <wsad:Name>ipcMessageQueueId</wsad:Name>
       <wsad:OrigName>ipcMessageQueueId</wsad:OrigName>
       <wsad:Type>1</wsad:Type>
+      <wsad:Mode>1</wsad:Mode>
+    </wsad:Parameter>
+    <wsad:Parameter allowUnknown="true" ordinal="2" writeXmlBeforeImage="false">
+      <wsad:Name>iplReactivate</wsad:Name>
+      <wsad:OrigName>iplReactivate</wsad:OrigName>
+      <wsad:Type>3</wsad:Type>
       <wsad:Mode>1</wsad:Mode>
     </wsad:Parameter>
   </wsad:ProcDetail>
@@ -82,7 +90,7 @@
        <string>ErrorMessageHandled</string>
       </void>
       <void property="params">
-       <array class="com.savvion.sbm.adapters.oe.model.Parameter" length="1">
+       <array class="com.savvion.sbm.adapters.oe.model.Parameter" length="2">
         <void index="0">
          <object class="com.savvion.sbm.adapters.oe.model.Parameter">
           <void property="dataType">
@@ -93,6 +101,19 @@
           </void>
           <void property="name">
            <string>ipcMessageQueueId</string>
+          </void>
+         </object>
+        </void>
+        <void index="1">
+         <object class="com.savvion.sbm.adapters.oe.model.Parameter">
+          <void property="dataType">
+           <string>LOGICAL</string>
+          </void>
+          <void property="input">
+           <boolean>true</boolean>
+          </void>
+          <void property="name">
+           <string>iplReactivate</string>
           </void>
          </object>
         </void>
@@ -112,5 +133,7 @@
     <block title="data" label="Type Mapping" hidden="false">
         <param name="ipcMessageQueueId" access="I" label="ipcMessageQueueId" type="com.progress.lang.Character" value=""/>
         <param name="ipcMessageQueueId.type" access="CONFIG_ONLY" label="ipcMessageQueueId" type="java.lang.String" value="com.progress.lang.Character"/>
+        <param name="iplReactivate" access="I" label="iplReactivate" type="com.progress.lang.Logical" value=""/>
+        <param name="iplReactivate.type" access="CONFIG_ONLY" label="iplReactivate" type="java.lang.String" value="com.progress.lang.Logical"/>
     </block>
 </configform>

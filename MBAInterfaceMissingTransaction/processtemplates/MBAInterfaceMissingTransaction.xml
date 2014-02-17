@@ -297,6 +297,9 @@ b24+Cg==</ConditionXMLEncoded>
     <Deployed as="MBAInterfaceMissingTransaction" by="admin" on="1392377993814" to="http://WF28:18793/sbm/deployment">Fri Feb 14 13:39:53 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMissingTransaction" by="admin" on="1392378458735" to="http://WF28:18793/sbm/deployment">Fri Feb 14 13:47:38 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMissingTransaction" by="admin" on="1392378888238" to="http://WF28:18793/sbm/deployment">Fri Feb 14 13:54:48 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMissingTransaction" by="admin" on="1392614333062" to="http://WF28:18793/sbm/deployment">Mon Feb 17 07:18:53 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMissingTransaction" by="admin" on="1392618522049" to="http://WF28:18793/sbm/deployment">Mon Feb 17 08:28:42 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMissingTransaction" by="admin" on="1392619454254" to="http://WF28:18793/sbm/deployment">Mon Feb 17 08:44:14 EET 2014</Deployed>
   </History>
   <Repository/>
 </Process>

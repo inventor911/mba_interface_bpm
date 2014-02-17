@@ -27,6 +27,8 @@
     <pidl:operation name="ErrorMessageHandled">
       <pidl:input messageLabel="ipcMessageQueueId" req="false" type="oedatatype:character">
     </pidl:input>
+      <pidl:input messageLabel="iplReactivate" req="false" type="oedatatype:logical">
+    </pidl:input>
     </pidl:operation>
   </pidl:interface>
   <pidl:binding name="com.progress.openedge.pdt.bpmbindings" interface="wsad:com.progress.openedge.pdt.bpminterfaces" type="urn:schemas-progress-com:bpm:appserverbinding:0001">
@@ -42,6 +44,12 @@
       <wsad:Name>ipcMessageQueueId</wsad:Name>
       <wsad:OrigName>ipcMessageQueueId</wsad:OrigName>
       <wsad:Type>1</wsad:Type>
+      <wsad:Mode>1</wsad:Mode>
+    </wsad:Parameter>
+    <wsad:Parameter allowUnknown="true" ordinal="2" writeXmlBeforeImage="false">
+      <wsad:Name>iplReactivate</wsad:Name>
+      <wsad:OrigName>iplReactivate</wsad:OrigName>
+      <wsad:Type>3</wsad:Type>
       <wsad:Mode>1</wsad:Mode>
     </wsad:Parameter>
   </wsad:ProcDetail>

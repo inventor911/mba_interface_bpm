@@ -92,6 +92,8 @@
     <Datainput>MessageQueueId</Datainput>
     <Datainput>MessageInfo</Datainput>
     <Datainput>MessageErrors</Datainput>
+    <Datainput>ReactivateMessage</Datainput>
+    <Dataoutput>ReactivateMessage</Dataoutput>
     <Format editable="false" input="MessageQueueId" label="Message Queue ID" password="false" required="false" size="20" type="abl_text">
       <Label>Message Queue ID</Label>
     </Format>
@@ -100,6 +102,9 @@
     </Format>
     <Format editable="false" input="MessageErrors" label="Errors on Processing Message" password="false" required="false" size="20" type="abl_text">
       <Label>Errors on Processing Message</Label>
+    </Format>
+    <Format editable="true" input="ReactivateMessage" label="Reactivate Message" type="checkbox">
+      <Label>Reactivate Message</Label>
     </Format>
     <RollbackPoint>FALSE</RollbackPoint>
     <OnOverdue>
@@ -137,6 +142,7 @@
     <ClosedConnection>TRUE</ClosedConnection>
     <Priority>MEDIUM</Priority>
     <Datainput>MessageQueueId</Datainput>
+    <Datainput>ReactivateMessage</Datainput>
     <RollbackPoint>FALSE</RollbackPoint>
     <Simulation distribution="ct" scenario="(default)"/>
     <InlineExecution>FALSE</InlineExecution>
@@ -313,8 +319,23 @@
       <Label>Error Handling Timeout</Label>
     </Format>
   </Dataslot>
+  <Dataslot Name="ReactivateMessage" category="User" name="ReactivateMessage" type="ABL_LOGICAL">
+    <Label>Reactivate Message</Label>
+    <DataType>ABL_LOGICAL</DataType>
+    <DataValue unknown="false">true</DataValue>
+    <IsPublic>true</IsPublic>
+    <MultiLine>false</MultiLine>
+    <BizManageAccessFlag>true</BizManageAccessFlag>
+    <Access type="PUBLIC" value="true"/>
+    <Access type="BIZ_MANAGE_ACCESS" value="true"/>
+    <Access type="GLOBAL" value="false"/>
+    <Access type="BIZ_SITE_COLUMN" value="false"/>
+    <Format editable="true" label="Reactivate Message" type="checkbox">
+      <Label>Reactivate Message</Label>
+    </Format>
+  </Dataslot>
   <Notes>
-    <Note color="255,255,0" connectTo="Handle Message Error" height="72" shape="sticky" width="108" x="60" y="120">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&#13;
+    <Note color="255,255,0" connectTo="Handle Message Error" height="72" shape="sticky" width="108" x="72" y="132">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&#13;
 &lt;!DOCTYPE Form SYSTEM "form.dtd"&gt;&#13;
 &lt;Form tstamp="1392102183005" version="9.0"&gt;&#13;
   &lt;body&gt;&#13;
@@ -326,6 +347,8 @@
 </Note>
   </Notes>
   <History>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1392618519995" to="http://WF28:18793/sbm/deployment">Mon Feb 17 08:28:39 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1392614331106" to="http://WF28:18793/sbm/deployment">Mon Feb 17 07:18:51 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1392372508968" to="http://WF28:18793/sbm/deployment">Fri Feb 14 12:08:28 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1392372130432" to="http://WF28:18793/sbm/deployment">Fri Feb 14 12:02:10 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1392019495639" to="http://WF28:18793/sbm/deployment">Mon Feb 10 10:04:55 EET 2014</Deployed>
@@ -388,8 +411,8 @@
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1392365654251" to="http://WF28:18793/sbm/deployment">Fri Feb 14 10:14:14 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1392370072059" to="http://WF28:18793/sbm/deployment">Fri Feb 14 11:27:52 EET 2014</Deployed>
     <Deployed as="MBAInterfaceMessageError" by="admin" on="1392371321831" to="http://WF28:18793/sbm/deployment">Fri Feb 14 11:48:41 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1392378456481" to="http://WF28:18793/sbm/deployment">Fri Feb 14 13:47:36 EET 2014</Deployed>
-    <Deployed as="MBAInterfaceMessageError" by="admin" on="1392378886095" to="http://WF28:18793/sbm/deployment">Fri Feb 14 13:54:46 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1392621560562" to="http://WF28:18793/sbm/deployment">Mon Feb 17 09:19:20 EET 2014</Deployed>
+    <Deployed as="MBAInterfaceMessageError" by="admin" on="1392623819622" to="http://WF28:18793/sbm/deployment">Mon Feb 17 09:56:59 EET 2014</Deployed>
   </History>
   <Repository/>
 </Process>
